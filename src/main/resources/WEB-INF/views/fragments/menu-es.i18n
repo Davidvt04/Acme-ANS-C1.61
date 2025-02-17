@@ -1,0 +1,41 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# master.menu.anonymous #######################################################
+
+master.menu.anonymous = Anónimo
+master.menu.anonymous.favourite-link = Enlace favorito
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrador
+master.menu.administrator.list-user-accounts = Ver cuentas de usuario
+master.menu.administrator.populate-db-initial = Poblar BD (inicial)
+master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
+master.menu.administrator.shut-system-down = Parar el sistema
+
+# master.menu.provider ########################################################
+
+master.menu.provider = Proveedor
+master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.consumer ##########################################################
+
+master.menu.consumer = Consumidor
+master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-profile = Perfil general
+master.menu.user-account.become-provider = Hacerse proveedor
+master.menu.user-account.provider-profile = Perfil de proveedor
+master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.consumer-profile = Perfil de consumidor

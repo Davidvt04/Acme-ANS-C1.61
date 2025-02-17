@@ -1,0 +1,43 @@
+# CHANGELOG.txt
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+** Year 2025
+
+25.1.1 Updated .i18n files, banner, readme and photos of the project to adapt it to the aircraft navigate solution project
+25.1.0	Upgraded to the new version of the Acme framework. Fixed a bug that allowed
+to get the same role twice.
+
+** Year 2024
+
+24.1.0	Upgraded to the new version of the Acme framework.
+24.4.0	Upgraded to the new version of the Acme framework.
+24.5.0	Upgraded to the new version of the Acme framework.
+
+** Year 2023
+
+23.1.0	Upgraded to the new version of the Acme framework.
+23.2.0	No significant changes.  Not distributed to the students.
+23.3.1	Upgraded to the new version of the Acme Framework.  Corrected configuration 
+parameters that prevented UNICODE text from being saved correctly to the database.
+23.4.0	Upgraded to the new version of the Acme Framework.
+23.4.1	Upgraded to the new version of the Acme Framework.
+23.5.0	Upgraded to the new version of the Acme Framework.
+
+** Year 2022
+
+22.0	This is a brand new project. Previous versions are now abandoned.
+22.1	Minor bug fixes and re-organisation of some files.
+22.2	Minor bug fixes and improvements. 
+22.3	Minor bug fixes and improvements.
+22.4 	Minor bug fixes and improvements.
+22.5 	Upgraded to the new version of the Acme Framework.
+22.6 	Upgraded to the new version of the Acme Framework.
+22.7 	Upgraded to the new version of the Acme Framework.
+22.8 	Upgraded to the new version of the Acme Framework.

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+  - pom.xml 
+  -   
+  - Copyright (C) 2012-2025 Rafael Corchuelo. 
+  -
+  - In keeping with the traditional purpose of furthering education and research, it is 
+  - the policy of the copyright owner to permit non-commercial use and redistribution of 
+  - this software. It has been tested carefully, but it is not guaranteed for any particular 
+  - purposes. The copyright owner does not offer any warranties or representations, nor do 
+  - they accept any liabilities with respect to them. 
+  -->
+  
+<!DOCTYPE xml>
+
+<project 
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	
+	<artifactId>Acme-ANS</artifactId>
+	<!-- <version>X.Y.Z</version> --> <!-- Omit the version tag unless it's different from the parent version -->
+	<packaging>war</packaging>
+	
+	<parent>
+		<groupId>Acme</groupId>
+		<artifactId>pom</artifactId>
+		<version>25.1.0</version>
+		<relativePath>../../pom-25.1.0.xml</relativePath>
+	</parent>
+	
+</project>
