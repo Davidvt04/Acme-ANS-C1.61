@@ -23,6 +23,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.ivo" action="https://www.noticiasmontehermoso.com.ar"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.david" action="https://cadenadh.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.maria" action="https://archivoniebla.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link.eloy" action="https://www.diariodesevilla.es/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
