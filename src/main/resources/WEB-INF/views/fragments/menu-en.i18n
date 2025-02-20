@@ -11,10 +11,11 @@
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
-master.menu.anonymous.favourite-link = Favourite link
 master.menu.anonymous.favourite-link.ivo = Y8060028Z: Raimondi, Ivo
 master.menu.anonymous.favourite-link.david = 49130329Y: Valencia Toscano, David
 master.menu.anonymous.favourite-link.maria = 49956658Z: Perez Dominguez, Maria del Pino
+master.menu.anonymous.favourite-link.eloy = 77864371X: Sancho Cebrero, Eloy
+master.menu.anonymous.favourite-link.ivan = 77015962W: Fernandez Limarquez, Ivan
 
 # master.menu.administrator ###################################################
 
