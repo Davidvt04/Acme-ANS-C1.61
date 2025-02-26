@@ -8,6 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+** Delivery 02 
+2.0.0 Updated project and framework for the second delivery
 
 ** Delivery 01 
 
