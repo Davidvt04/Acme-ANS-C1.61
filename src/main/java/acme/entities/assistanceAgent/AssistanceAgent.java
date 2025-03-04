@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class assistanceAgent extends AbstractEntity {
+public class AssistanceAgent extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
