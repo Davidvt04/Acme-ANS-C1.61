@@ -42,6 +42,7 @@ public class Manager extends AbstractEntity {
 	private Date				dateOfBirth;
 
 	@Optional
+	@Automapped
 	@ValidUrl
 	private String				pictureLink;
 
