@@ -55,6 +55,7 @@ public class Booking extends AbstractEntity {
 
 	@Optional
 	@Automapped
+	@Valid
 	private String				lastNibble;
 
 }
