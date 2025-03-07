@@ -29,7 +29,7 @@ public class Technician extends AbstractRole {
 
 	@Mandatory
 	@ValidString(min = 6, max = 15, pattern = "^\\+?\\d{6,15}$")
-	@Automapped
+	@Column(unique = true)
 	private String				phoneNumber;
 
 	@Mandatory
@@ -43,7 +43,7 @@ public class Technician extends AbstractRole {
 	private boolean				passedAnnualHealthTest;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 80)
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
 	private Integer				experienceYears;
 
