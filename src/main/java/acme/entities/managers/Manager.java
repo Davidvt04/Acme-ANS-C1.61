@@ -37,11 +37,12 @@ public class Manager extends AbstractEntity {
 	private Integer				yearsOfExperience;
 
 	@Mandatory
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment
 	private Date				dateOfBirth;
 
 	@Optional
+	@Automapped
 	@ValidUrl
 	private String				pictureLink;
 
