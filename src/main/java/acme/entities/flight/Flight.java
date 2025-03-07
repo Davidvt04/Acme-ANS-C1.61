@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
+import org.apache.catalina.Manager;
+
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
@@ -15,7 +17,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
-import acme.realms.managers.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,14 +34,14 @@ public class Flight extends AbstractEntity {
 	private Manager				manager;
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 50, max = 50)
 	@Automapped
 	private String				tag;
 
 	@Mandatory
 	@Automapped
 	@Valid
-	private Boolean				requiresSelfTransfer;
+	private Indication			indication;
 
 	@Mandatory
 	@ValidMoney(min = 0.00, max = 1000000.00)
