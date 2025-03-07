@@ -5,8 +5,6 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -33,12 +31,12 @@ public class Manager extends AbstractRole {
 
 	@Mandatory
 	@Automapped
-	@ValidNumber(min = 0, max = 75)
+	@ValidNumber(min = 0, max = 120)
 	private Integer				yearsOfExperience;
 
 	@Mandatory
-	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment
+	@Automapped
+	@ValidMoment(past = true)
 	private Date				dateOfBirth;
 
 	@Optional
@@ -46,4 +44,5 @@ public class Manager extends AbstractRole {
 	@ValidUrl
 	private String				pictureLink;
 
+	//Airline?
 }
