@@ -17,6 +17,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.entities.aircraft.Aircraft;
+import acme.entities.airport.Airport;
 import acme.entities.flight.Flight;
 import lombok.Getter;
 import lombok.Setter;
@@ -67,14 +68,16 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private LegStatus			status;
 
-	@Mandatory // Preguntar si está asociada a aeropuerto o esta propiedad es el nombre
+	@ManyToOne(optional = false)
+	@Mandatory
+	@Valid
 	@Automapped
-	@ValidString(max = 50)
-	private String				departureAirport;
+	private Airport				departureAirport;
 
-	@Mandatory // Preguntar si está asociada a aeropuerto o esta propiedad es el nombre
+	@ManyToOne(optional = false)
+	@Mandatory
+	@Valid
 	@Automapped
-	@ValidString(max = 50)
-	private String				arrivalAirport;
+	private Airport				arrivalAirport;
 
 }
