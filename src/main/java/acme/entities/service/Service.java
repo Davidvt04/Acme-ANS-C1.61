@@ -1,16 +1,17 @@
 
-package acme.realms;
+package acme.entities.service;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import acme.client.components.basis.AbstractRole;
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidLongText;
+import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,38 +19,32 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Customer extends AbstractRole {
+public class Service extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	private String				identifier;
-
-	@Mandatory
-	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
-
-	@Mandatory
-	@Automapped
-	@ValidLongText
-	private String				address;
-
-	@Mandatory
 	@Automapped
 	@ValidShortText
-	private String				city;
+	private String				name;
 
 	@Mandatory
+	@ValidUrl
 	@Automapped
-	@ValidShortText
-	private String				country;
+	private String				picture;
+
+	@Mandatory
+	@ValidNumber(min = 1, max = 100, integer = 3, fraction = 2)
+	@Automapped
+	private Double				averageDwellTime;
 
 	@Optional
-	@Automapped
-	@ValidNumber(max = 500000)
-	private Integer				earnedPoints;
+	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
+	@Column(unique = true)
+	private String				promotionCode;
 
+	@Optional
+	@ValidScore
+	@Automapped
+	private Double				discountMoney;
 }

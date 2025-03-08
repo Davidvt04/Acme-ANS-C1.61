@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
@@ -52,7 +53,7 @@ public class Passenger extends AbstractRole {
 	@ValidMoment(past = true)
 	private Date				dateOfBirth;
 
-	@Mandatory
+	@Optional
 	@Automapped
 	@ValidShortText
 	private String				specialNeeds;
