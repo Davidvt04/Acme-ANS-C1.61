@@ -43,3 +43,8 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+
+# master.menu.customer ##########################################################
+
+master.menu.customer = Customer
+master.menu.customer.dashboard= Dashboard

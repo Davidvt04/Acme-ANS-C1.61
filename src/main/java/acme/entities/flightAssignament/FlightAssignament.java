@@ -29,13 +29,16 @@ public class FlightAssignament extends AbstractEntity {
 	@Valid
 	@ManyToOne
 	private FlightCrewMember	flightCrewMember;
-
-	@Mandatory
-	@Automapped
-	@Valid
-	@ManyToOne
-	private Leg					leg; //todavia no está creada
-
+	/*
+	 * @Mandatory
+	 * 
+	 * @Automapped
+	 * 
+	 * @Valid
+	 * 
+	 * @ManyToOne
+	 * private Leg leg; //todavia no está creada
+	 */
 	@Mandatory
 	@Automapped
 	@Valid
