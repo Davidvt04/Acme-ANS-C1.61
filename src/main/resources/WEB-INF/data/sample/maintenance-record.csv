@@ -1,0 +1,53 @@
+key,moment,status,next-inspection-due-time,estimated-cost,notes,key:aircraft,key:technician
+# base entity
+maintenance-record-00,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+# moment - standard variations
+maintenance-record-01,2000/01/01 00:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-02,2000/01/01 00:01,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-03,2024/12/31 23:59,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-04,2025/01/01 00:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+# next-inspection-due-time - standard variations for each moment
+## moment 2000/01/01 00:00
+maintenance-record-05,2000/01/01 00:00,PENDING,2000/01/01 01:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-06,2000/01/01 00:00,PENDING,2000/01/01 01:01,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-07,2000/01/01 00:00,PENDING,2200/12/31 23:59,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-08,2000/01/01 00:00,PENDING,2201/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+## moment 2000/01/01 00:01
+maintenance-record-09,2000/01/01 00:01,PENDING,2000/01/01 01:01,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-10,2000/01/01 00:01,PENDING,2000/01/01 01:02,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-11,2000/01/01 00:01,PENDING,2200/12/31 23:59,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-12,2000/01/01 00:01,PENDING,2201/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+## moment 2024/12/31 23:59
+maintenance-record-13,2024/12/31 23:59,PENDING,2025/01/01 01:59,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-14,2024/12/31 23:59,PENDING,2025/01/01 02:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-15,2024/12/31 23:59,PENDING,2200/12/31 23:59,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-16,2024/12/31 23:59,PENDING,2201/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+## moment 2025/01/01 00:00
+maintenance-record-17,2025/01/01 00:00,PENDING,2025/01/01 01:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-18,2025/01/01 00:00,PENDING,2025/01/01 01:01,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-19,2025/01/01 00:00,PENDING,2200/12/31 23:59,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-20,2025/01/01 00:00,PENDING,2201/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+# estimated-cost standard variations
+maintenance-record-21,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 0.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-22,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 0.01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-23,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 999999998.99,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-24,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 999999999.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+# notes - standard variations
+maintenance-record-25,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"L",aircraft-01,technician-01
+maintenance-record-26,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lo",aircraft-01,technician-01
+maintenance-record-27,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",aircraft-01,technician-01
+maintenance-record-28,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",aircraft-01,technician-01
+maintenance-record-29,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"โลเร็ม อิปซัม",aircraft-01,technician-01
+maintenance-record-30,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"لوريم إيبسوم",aircraft-01,technician-01
+maintenance-record-31,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"洛伦·伊普森",aircraft-01,technician-01
+maintenance-record-32,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"<marquee>Hacked</marquee>",aircraft-01,technician-01
+maintenance-record-33,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"<script>alert(‘Hacked!’);</script>",aircraft-01,technician-01
+maintenance-record-34,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"' or 'A' = 'A ",aircraft-01,technician-01
+maintenance-record-39,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,null,aircraft-01,technician-01
+# aircraft - standard variations
+maintenance-record-35,2024/12/28 12:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-02,technician-01
+# technician - standard variations
+maintenance-record-36,2024/12/28 12:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-02
+# status - standard variations
+maintenance-record-37,2024/12/28 12:00,IN_PROGRESS,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
+maintenance-record-38,2024/12/28 12:00,COMPLETED,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01

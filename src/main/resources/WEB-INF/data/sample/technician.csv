@@ -1,0 +1,3 @@
+key,license-number,phone-number,specialisation,passed-annual-health-test,experience-years,certifications,key:user-account
+technician-01,AAA123456,+11234567890,Everything,TRUE,20,Total Repairman,user-account-technician-01
+technician-02,ZZ098765,+34456537890,Circuitry,TRUE,6,null,user-account-technician-02
