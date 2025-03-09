@@ -4,6 +4,7 @@ package acme.entities.maintenanceRecord;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -16,13 +17,15 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.constraints.ValidLongText;
-import acme.constraints.ValidNextInspection;
+import acme.constraints.ValidMaintenanceRecord;
+import acme.entities.aircraft.Aircraft;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidMaintenanceRecord
 public class MaintenanceRecord extends AbstractEntity {
 
 	private static final long		serialVersionUID	= 1L;
@@ -38,7 +41,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	private MaintenaceRecordStatus	status;
 
 	@Mandatory
-	@ValidNextInspection
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date					nextInspectionDueTime;
 
@@ -51,5 +54,10 @@ public class MaintenanceRecord extends AbstractEntity {
 	@ValidLongText
 	@Automapped
 	private String					notes;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Aircraft				aircraft;
 
 }
