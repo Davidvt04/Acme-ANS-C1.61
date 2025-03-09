@@ -1,17 +1,19 @@
 
 package acme.entities.trackingLog;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
-import acme.client.components.datatypes.Moment;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLongText;
+import acme.constraints.ValidShortText;
 import acme.entities.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class TrakingLog extends AbstractEntity {
+public class TrackingLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
@@ -31,11 +33,11 @@ public class TrakingLog extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	@ValidMoment
-	private Moment				lastUpdateMoment;
+	private Date				lastUpdateMoment;
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
+	@ValidShortText
 	private String				step;
 
 	@Mandatory
@@ -49,7 +51,7 @@ public class TrakingLog extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 255)
+	@ValidLongText
 	private String				resolution;
 
 }

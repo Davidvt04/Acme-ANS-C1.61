@@ -1,0 +1,3 @@
+key,key:userAccount,identifier,phoneNumber,address,city,country,earnedPoints
+customer-01,user-account-customer-01,AB123456,+11234567890,123 Main Street Apartment 4B,New York,USA,12000
+customer-02,user-account-customer-02,CD789012,+447890123456,456 Elm Avenue Suite 300,Los Angeles,USA,25000
