@@ -10,3 +10,6 @@ user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטי�
 user-account-customer-01,true,"UserIdentity{name: 'David', surname: 'Alioli', email: 'davali@acme.com'}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: 'Jason', surname: 'शर्मा ', email: 'jason@acme.com'}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: 'Manolo', surname: 'वर्मा ', email: 'manolo@acme.com'}",customer3,customer3
+user-account-technician-01,true,"UserIdentity{name: 'Técnico', surname: 'Técniquez', email: 'tecnico@acme.com'}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: 'Pepe', surname: 'Proton', email: 'proton@acme.com'}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: 'коза', surname: '之乎路', email: 'chingchong@acme.com'}",technician3,technician3
