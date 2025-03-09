@@ -1,57 +1,51 @@
 
-package acme.entities.review;
+package acme.entities.flightAssignament;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
-import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.constraints.ValidLongText;
-import acme.constraints.ValidShortText;
+import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Review extends AbstractEntity {
-
-	private static final long	serialVersionUID	= 1L;
+public class ActivityLog extends AbstractEntity {
 
 	@Mandatory
-	@ValidShortText
+	@Valid
 	@Automapped
-	private String				name;
+	@ManyToOne
+	private FlightAssignament	flighAssignament;
 
 	@Mandatory
-	@ValidMoment(past = true)
+	@ValidMoment(past = true, min = "2000/01/01 00:00:00")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				moment;
+	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidShortText
+	@ValidString(min = 1, max = 50)
 	@Automapped
-	private String				subject;
+	private String				typeOfIncident;
 
 	@Mandatory
-	@ValidLongText
+	@ValidString(min = 1)
 	@Automapped
-	private String				text;
+	private String				description;
 
-	@Optional
-	@ValidNumber(min = 0, max = 10, fraction = 2)
+	@Mandatory
+	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 0)
 	@Automapped
-	private double				score;
-
-	@Optional
-	// @Valid by default
-	@Automapped
-	private boolean				recommended;
+	private Integer				severityLevel;
 }
