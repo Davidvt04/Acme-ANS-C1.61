@@ -9,33 +9,34 @@ import javax.validation.ConstraintValidatorContext;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 
 @Validator
-public class NextInspectionValidator extends AbstractValidator<ValidNextInspection, Date> {
+public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenanceRecord, MaintenanceRecord> {
 
 	// ConstraintValidator interface ------------------------------------------
 
 	@Override
-	protected void initialise(final ValidNextInspection annotation) {
+	protected void initialise(final ValidMaintenanceRecord annotation) {
 		assert annotation != null;
 	}
 
 	@Override
-	public boolean isValid(final Date nextInspection, final ConstraintValidatorContext context) {
+	public boolean isValid(final MaintenanceRecord maintenanceRecord, final ConstraintValidatorContext context) {
 
 		assert context != null;
 
 		boolean result;
 
-		if (nextInspection == null)
+		if (maintenanceRecord == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			Date minimumNextInspection;
 
 			boolean correctNextInspection;
 
-			minimumNextInspection = MomentHelper.deltaFromCurrentMoment(1, ChronoUnit.HOURS);
-			correctNextInspection = MomentHelper.isAfterOrEqual(nextInspection, minimumNextInspection);
+			minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
+			correctNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
 
 			super.state(context, correctNextInspection, "*", "acme.validation.nextInspection.message");
 		}
