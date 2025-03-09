@@ -2,7 +2,6 @@
 package acme.realms.flightCrewMembers;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
@@ -43,11 +42,16 @@ public class FlightCrewMember extends AbstractRole {
 	@Valid
 	private AvailabilityStatus	availabilityStatus;
 
-	@Mandatory
-	@Automapped
-	@Valid
-	@ManyToOne(optional = false) //preguntar
-	private Airline				airline; //todavia no esta creada xd
+	/*
+	 * @Mandatory
+	 * 
+	 * @Automapped
+	 * 
+	 * @Valid
+	 * 
+	 * @ManyToOne(optional = false) //preguntar
+	 * private Airline airline; //todavia no esta creada xd
+	 */
 
 	@Mandatory
 	@Automapped

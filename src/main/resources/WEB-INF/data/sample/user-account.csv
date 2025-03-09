@@ -1,4 +1,6 @@
 key,enabled,identity,password,username
+user-account-administrator-02,true,"UserIdentity{name: 'Harry', surname: 'Potter', email: 'harry@acme.com'}",administrator1,administrator1
+user-account-administrator-03,true,"UserIdentity{name: 'Aitana', surname: 'Ocaña', email: 'aitana@acme.com'}",administrator2,administrator2
 user-account-consumer-01,true,"UserIdentity{name: 'Peter', surname: 'Consumer', email: 'peter@acme.com'}",consumer1,consumer1
 user-account-consumer-02,true,"UserIdentity{name: 'Mary', surname: '貸んい建濯よ芝弾テソ Λορεμ ιπσθμ', email: 'mary@acme.com'}",consumer2,consumer2
 user-account-consumer-03,true,"UserIdentity{name: 'Manolo', surname: '之乎路可良 ᏥᏲᏎᎭ', email: 'manolo@acme.com'}",consumer3,consumer3
