@@ -1,0 +1,20 @@
+key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
+airport-00,L,AAA,INTERNATIONAL,L,L,http://lorem.com/ipsum,a@b.e,+123456
+airport-01,Lo,BBB,DOMESTIC,Lo,Lo,ftp://a,a@b.es,+1234567
+airport-02,Lorem ipsum dolor sit amet; consectetur adipiscin,CCC,REGIONAL,Lorem ipsum dolor sit amet; consectetur adipiscin,Lorem ipsum dolor sit amet; consectetur adipiscin,null,null,null
+airport-03,Lorem ipsum dolor sit amet; consectetur adipiscing,DDD,INTERNATIONAL,Lorem ipsum dolor sit amet; consectetur adipiscing,Lorem ipsum dolor sit amet; consectetur adipiscing,ftp://a.b,a@b.esx,+987654321012345
+airport-04,โลเร็ม อิปซัม,EEE,DOMESTIC,โลเร็ม อิปซัม,โลเร็ม อิปซัม,http://www.lorem-ipsum.org/dolor/sit/amet;/consectetur/adipiscing/elit;/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/,acme@lorem-ipsum.org,+6543210
+airport-05,لوريم إيبسوم,FFF,REGIONAL,لوريم إيبسوم,لوريم إيبسوم,http://www.lorem-ipsum.org/dolor/sit/amet;/consectetur/adipiscing/elit;/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,null,+7654321
+airport-06,洛伦·伊普森,GHI,INTERNATIONAL,洛伦·伊普森,洛伦·伊普森,https://www.lorem-ipsum.org,acme@lorem-ipsum.org,+198765432
+airport-07,<marquee>Hacked</marquee>,JKL,DOMESTIC,<marquee>Hacked</marquee>,<marquee>Hacked</marquee>,ftp://www.lorem-ipsum.org,null,+34123456789
+airport-08,<script>alert(‘Hacked!’);</script>,MNO,INTERNATIONAL,<script>alert(‘Hacked!’);</script>,<script>alert(‘Hacked!’);</script>,http://www.lorem-ipsum.org/dolor/sit.html,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+79111234567
+airport-09,' or 'A' = 'A,PQR,REGIONAL,' or 'A' = 'A,' or 'A' = 'A,http://www.lorem-ipsum.org/dolor/sit.html#dolor,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,+100000000000000
+airport-10,NearLimit,XYZ,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org?a=1&b=2,null,+12345678901234
+airport-11,EjemploUno,ZZZ,DOMESTIC,L,L,http://example.org?,a@b.e,+112233445566
+airport-12,EjemploDos,PAR,INTERNATIONAL,Lo,Lo,http://example.org?a,a@b.es,+223344556677
+airport-13,EjemploTres,LON,REGIONAL,Lorem ipsum dolor sit amet; consectetur adipiscin,Lorem ipsum dolor sit amet; consectetur adipiscin,http://example.org?a&b,a@b.esx,+334455667788
+airport-14,EjemploCuatro,SVQ,DOMESTIC,Lorem ipsum dolor sit amet; consectetur adipiscing,Lorem ipsum dolor sit amet; consectetur adipiscing,http://example.org/,acme@lorem-ipsum.org,+445566778899
+airport-15,EjemploCinco,DAV,INTERNATIONAL,โลเร็ม อิปซัม,โลเร็ม อิปซัม,http://example.org/a,acme@lorem-ipsum.org,+556677889900
+airport-16,EjemploSeis,MDR,REGIONAL,لوريم إيبسوم,لوريم إيبسوم,http://example.org/a/b,null,+667788990011
+airport-17,EjemploSiete,GGG,DOMESTIC,洛伦·伊普森,洛伦·伊普森,http://example.org/a/b?,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex/ea.commodo.consequat.duis.aute.irure.doloris.edu,+778899001122
+airport-18,EjemploOcho,HHH,INTERNATIONAL,<marquee>Hacked</marquee>,<marquee>Hacked</marquee>,http://example.org/a/b?a&b,null,+889900112233
