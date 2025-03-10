@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.constraints.ValidLongText;
@@ -30,11 +31,12 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@OneToOne(optional = false)
+	//@ManyToOne
 	private Claim				claim;
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@ValidMoment
+	@ValidMoment(past = true)
 	private Date				lastUpdateMoment;
 
 	@Mandatory
@@ -51,7 +53,7 @@ public class TrackingLog extends AbstractEntity {
 	@Automapped
 	private boolean				indicator;
 
-	@Mandatory
+	@Optional
 	@Automapped
 	@ValidLongText
 	private String				resolution;

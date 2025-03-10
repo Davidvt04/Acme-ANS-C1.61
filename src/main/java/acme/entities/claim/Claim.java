@@ -28,12 +28,6 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
-	@Valid
-	@ManyToOne(optional = false)
-	private AssistanceAgent		assistanceAgent;
-
-	@Mandatory
-	@Automapped
 	@ValidMoment(past = true)
 	private Date				registrationMoment;
 
@@ -55,5 +49,10 @@ public class Claim extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	private boolean				indicator;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private AssistanceAgent		assistanceAgent;
 
 }
