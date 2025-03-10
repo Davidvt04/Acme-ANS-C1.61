@@ -44,7 +44,4 @@ master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 
-# master.menu.customer ##########################################################
 
-master.menu.customer = Customer
-master.menu.customer.dashboard= Dashboard
