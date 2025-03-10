@@ -17,7 +17,8 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.constraints.ValidLongText;
-import acme.constraints.ValidNextInspection;
+import acme.constraints.ValidMaintenanceRecord;
+import acme.entities.aircraft.Aircraft;
 import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidMaintenanceRecord
 public class MaintenanceRecord extends AbstractEntity {
 
 	private static final long		serialVersionUID	= 1L;
@@ -40,7 +42,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	private MaintenaceRecordStatus	status;
 
 	@Mandatory
-	@ValidNextInspection
+	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date					nextInspectionDueTime;
 
@@ -57,5 +59,11 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
+	private Aircraft				aircraft;
+
+  @Mandatory
+	@Valid
+	@ManyToOne(optional = false)
 	private Technician				technician;
+  
 }

@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -25,9 +27,9 @@ public class Claim extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private AssistanceAgent		assistanceAgent;
 
 	@Mandatory

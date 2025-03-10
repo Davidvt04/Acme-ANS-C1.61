@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -33,13 +35,18 @@ public class Booking extends AbstractEntity {
 	@ManyToOne
 	private Customer			customer;
 
+	//@Mandatory
+	//@Valid
+	//@ManyToOne(optional = false)
+	//private Flight				flight;
+
 	@Mandatory
 	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
 	private String				locatorCode;
 
 	@Mandatory
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				purchaseMoment;
 
@@ -48,7 +55,7 @@ public class Booking extends AbstractEntity {
 	@Valid
 	private TravelClass			travelClass;
 
-	@Optional
+	@Mandatory
 	@Automapped
 	@ValidMoney
 	private Money				price;
