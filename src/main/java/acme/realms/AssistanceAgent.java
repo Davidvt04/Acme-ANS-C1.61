@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.datatypes.Money;
@@ -28,7 +30,7 @@ public class AssistanceAgent extends AbstractRole {
 
 	@Mandatory
 	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				employeeCode;
 
 	@Mandatory
@@ -37,7 +39,7 @@ public class AssistanceAgent extends AbstractRole {
 	private String				spokenLanguages;
 
 	@Mandatory
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				moment;
 
