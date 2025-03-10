@@ -45,9 +45,9 @@ maintenance-record-33,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"<sc
 maintenance-record-34,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"' or 'A' = 'A ",aircraft-01,technician-01
 maintenance-record-39,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,null,aircraft-01,technician-01
 # aircraft - standard variations
-maintenance-record-35,2024/12/28 12:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-02,technician-01
+maintenance-record-35,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-02,technician-01
 # technician - standard variations
-maintenance-record-36,2024/12/28 12:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-02
+maintenance-record-36,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-02
 # status - standard variations
 maintenance-record-37,2024/12/28 12:00,IN_PROGRESS,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
 maintenance-record-38,2024/12/28 12:00,COMPLETED,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-01,technician-01
