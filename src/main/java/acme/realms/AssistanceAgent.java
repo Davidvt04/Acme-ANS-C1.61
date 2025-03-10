@@ -35,7 +35,7 @@ public class AssistanceAgent extends AbstractRole {
 
 	@Mandatory
 	@Automapped
-	@ValidLongText
+	@ValidString
 	private String				spokenLanguages;
 
 	@Mandatory
@@ -57,5 +57,15 @@ public class AssistanceAgent extends AbstractRole {
 	@Automapped
 	@ValidUrl
 	private String				photo;
+
+	/*
+	 * 
+	 * @Mandatory
+	 * @Valid
+	 * @ManyToOne
+	 * private Airline airline;
+	 * 
+	 * 
+	 */
 
 }
