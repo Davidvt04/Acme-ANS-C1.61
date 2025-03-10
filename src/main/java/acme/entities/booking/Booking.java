@@ -55,7 +55,7 @@ public class Booking extends AbstractEntity {
 	@Valid
 	private TravelClass			travelClass;
 
-	@Optional
+	@Mandatory
 	@Automapped
 	@ValidMoney
 	private Money				price;
