@@ -13,6 +13,7 @@ import acme.client.components.validation.ValidString;
 import acme.constraints.ValidCustomerIdentifier;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +31,7 @@ public class Customer extends AbstractRole {
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Mandatory
