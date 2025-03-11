@@ -13,6 +13,7 @@ airport-07,<marquee>Hacked</marquee>,AAH,INTERNATIONAL,Sevilla,España,https://w
 airport-08,<script>alert(‘Hacked!’);</script>,AAI,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019  
 airport-09,' or 'A' = 'A,AAJ,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019  
 
+
 #operationalScope - variations
 airport-10,Aeropuerto Sevilla,AAK,REGIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 airport-11,Aeropuerto Sevilla,AAL,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
@@ -44,8 +45,9 @@ airport-30,Aeropuerto Sevilla,ABE,INTERNATIONAL,Sevilla,' or 'A' = 'A,https://ww
 airport-31,Aeropuerto Sevilla,ABG,INTERNATIONAL,Sevilla,España,http://lorem.com/ipsum,aenasevilla@aenacorp.es,+633921019
 airport-32,Aeropuerto Sevilla,ABH,INTERNATIONAL,Sevilla,España,ftp://a,aenasevilla@aenacorp.es,+633921019
 airport-33,Aeropuerto Sevilla,ABI,INTERNATIONAL,Sevilla,España,ftp://a.b,aenasevilla@aenacorp.es,+633921019
-airport-34,Aeropuerto Sevilla,ABJ,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet./consectetur/adipiscing/elit./sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqu[...]
-airport-35,Aeropuerto Sevilla,ABK,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet./consectetur/adipiscing/elit./sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqu[...]
+airport-34,Aeropuerto Sevilla,ABJ,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/,aenasevilla@aenacorp.es,+633921019
+key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
+airport-35,Aeropuerto Sevilla,ABK,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet./consectetur/adipiscing/elit./sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X,aenasevilla@aenacorp.es,+633921019
 airport-36,Aeropuerto Sevilla,ABL,INTERNATIONAL,Sevilla,España,https://www.lorem-ipsum.org,aenasevilla@aenacorp.es,+633921019
 airport-37,Aeropuerto Sevilla,ABM,INTERNATIONAL,Sevilla,España,ftp://www.lorem-ipsum.org,aenasevilla@aenacorp.es,+633921019
 airport-38,Aeropuerto Sevilla,ABN,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit.html,aenasevilla@aenacorp.es,+633921019
@@ -64,9 +66,9 @@ airport-49,Aeropuerto Sevilla,ABX,INTERNATIONAL,Sevilla,España,https://www.aena
 airport-50,Aeropuerto Sevilla,ABY,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,a@b.e,+633921019
 airport-51,Aeropuerto Sevilla,ABZ,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,a@b.es,+633921019
 airport-52,Aeropuerto Sevilla,ACA,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,a@b.esx,+633921019
-airport-53,Aeropuerto Sevilla,ACB,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et[...]
+airport-53,Aeropuerto Sevilla,ACB,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu
 ,+633921019
-airport-54,Aeropuerto Sevilla,ACD,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et[...]
+airport-54,Aeropuerto Sevilla,ACD,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org
 ,+633921019
 airport-55,Aeropuerto Sevilla,ACE,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 
@@ -74,3 +76,4 @@ airport-55,Aeropuerto Sevilla,ACE,INTERNATIONAL,Sevilla,España,https://www.aena
 airport-56,Aeropuerto Sevilla,ACF,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+123456
 airport-57,Aeropuerto Sevilla,ACG,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+1234567
 airport-58,Aeropuerto Sevilla,ACH,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+123456789123
+Arregla el error: It looks like row 2 should actually have 9 columns, instead of 1 in line 1.
