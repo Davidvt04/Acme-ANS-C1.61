@@ -18,7 +18,8 @@ public class TechnicianDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	Integer						numberOfMaintenanceRecordsPerStatus;
+	List<Integer>				numberOfMaintenanceRecordsPerStatus;
+	List<String>				statusOfMaintenanceRecordsOrderByNumber;
 	List<MaintenanceRecord>		nearestMaintenanceRecord;				// podria haber mas de un record con esa fecha
 	List<String>				topFiveAircraftsWithMoreTasks;
 	Double						averageNumberOfEstimatedCost;
