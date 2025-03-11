@@ -1,10 +1,10 @@
 
-package acme.entities.airline;
+package acme.entities.flightAssignament;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -13,54 +13,48 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidPhoneNumber;
+import acme.entities.leg.Leg;
+import acme.realms.flightCrewMembers.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airline extends AbstractEntity {
+public class FlightAssignament extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
-	@ValidString(min = 1, max = 50)
-	private String				name;
+	@Valid
+	@ManyToOne(optional = false)
+	private FlightCrewMember	flightCrewMember;
 
 	@Mandatory
-	@Column(unique = true)
-	@ValidString(pattern = "^[A-Z]{3}$")
-	private String				iataCode;
-
-	@Mandatory
-	@Automapped
-	@ValidUrl
-	private String				website;
+	@Valid
+	@ManyToOne(optional = false)
+	private Leg					leg;
 
 	@Mandatory
 	@Automapped
 	@Valid
-	private AirlineType			type;
+	private Duty				duty;
 
 	@Mandatory
-	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Date				foundationMoment;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				moment;
+
+	@Mandatory
+	@Automapped
+	@Valid
+	private CurrentStatus		currentStatus;
 
 	@Optional
 	@Automapped
-	@ValidEmail
-	private String				email;
-
-	@Optional
-	@Automapped
-	@ValidPhoneNumber
-	private String				phoneNumber;
+	@ValidString
+	private String				remarks;
 
 }

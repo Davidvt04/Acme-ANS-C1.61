@@ -1,17 +1,21 @@
 
 package acme.entities.passenger;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import acme.client.components.basis.AbstractEntity;
-import acme.client.components.datatypes.Moment;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.entities.booking.Booking;
+import acme.constraints.ValidLongText;
+import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,12 +28,7 @@ public class Passenger extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ManyToOne
-	private Booking				booking;
-
-	@Mandatory
-	@Automapped
-	@ValidString(min = 1, max = 256)
+	@ValidLongText
 	private String				fullName;
 
 	@Mandatory
@@ -43,13 +42,13 @@ public class Passenger extends AbstractEntity {
 	private String				passportNumber;
 
 	@Mandatory
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Moment				dateOfBirth;
+	private Date				dateOfBirth;
 
-	@Mandatory
+	@Optional
 	@Automapped
-	@ValidString(max = 51)
+	@ValidShortText
 	private String				specialNeeds;
 
 }
