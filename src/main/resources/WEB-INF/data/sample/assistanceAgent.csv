@@ -1,4 +1,4 @@
 key,key:userAccount,employeeCode,spokenLanguages,moment,briefBio,salary,photo,key:airline
-assistanceAgent-01,user-account-assistanceAgent-01,MP123456,"Español,English,中文",2025-03-10 09:00:00,Agente con 5 años de experiencia. 中文能力优秀.,55000.75,https://example.com/photo01.jpg, 1
-assistanceAgent-02,user-account-assistanceAgent-02,MP654321,"Français,Deutsch,日本語",2025-03-10 10:30:00,Agente experta en reclamos internacionales. Adaptable y eficiente.,62500.00,https://example.com/photo02.jpg",2 
+assistanceAgent-01,user-account-assistanceAgent-01,MP123456,"Español,English,中文",2025/03/10 09:00,Agente con 5 años de experiencia. 中文能力优秀.,EUR 55000.75,https://example.com/photo01.jpg, "airline-01"
+assistanceAgent-02,user-account-assistanceAgent-02,MP654321,"Français,Deutsch,日本語",2025/03/10 10:30,Agente experta en reclamos internacionales. Adaptable y eficiente.,EUR 62500.00,https://example.com/photo02.jpg,"airline-02"
 

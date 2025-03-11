@@ -30,9 +30,8 @@ public class Booking extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Customer			customer;
 
 	//@Mandatory
@@ -57,12 +56,12 @@ public class Booking extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ValidMoney
+	@ValidMoney(min = 0)
 	private Money				price;
 
 	@Optional
 	@Automapped
-	@Valid
+	@ValidString(min = 4, max = 4)
 	private String				lastNibble;
 
 }
