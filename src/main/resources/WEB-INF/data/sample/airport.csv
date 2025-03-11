@@ -1,5 +1,4 @@
 key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
-
 #base entity
 airport-00,Aeropuerto Sevilla,AAA,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 
