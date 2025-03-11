@@ -1,4 +1,4 @@
-# key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
+key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
 # base entity
 aircraft-00,Lorem ipsum dolor sit ame,ABC123,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 

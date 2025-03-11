@@ -44,7 +44,7 @@ airport-30,Aeropuerto Sevilla,ABE,INTERNATIONAL,Sevilla,' or 'A' = 'A,https://ww
 airport-31,Aeropuerto Sevilla,ABG,INTERNATIONAL,Sevilla,España,http://lorem.com/ipsum,aenasevilla@aenacorp.es,+633921019
 airport-32,Aeropuerto Sevilla,ABH,INTERNATIONAL,Sevilla,España,ftp://a,aenasevilla@aenacorp.es,+633921019
 airport-33,Aeropuerto Sevilla,ABI,INTERNATIONAL,Sevilla,España,ftp://a.b,aenasevilla@aenacorp.es,+633921019
-airport-34,Aeropuerto Sevilla,ABJ,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqu[...]
+airport-34,Aeropuerto Sevilla,ABJ,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet./consectetur/adipiscing/elit./sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqu[...]
 airport-35,Aeropuerto Sevilla,ABK,INTERNATIONAL,Sevilla,España,http://www.lorem-ipsum.org/dolor/sit/amet./consectetur/adipiscing/elit./sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqu[...]
 airport-36,Aeropuerto Sevilla,ABL,INTERNATIONAL,Sevilla,España,https://www.lorem-ipsum.org,aenasevilla@aenacorp.es,+633921019
 airport-37,Aeropuerto Sevilla,ABM,INTERNATIONAL,Sevilla,España,ftp://www.lorem-ipsum.org,aenasevilla@aenacorp.es,+633921019
