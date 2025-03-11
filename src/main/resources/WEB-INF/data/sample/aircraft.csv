@@ -1,0 +1,37 @@
+# key,model,registrationNumber,capacity,cargoWeight,status,details,key:airline
+# base entity
+aircraft-00,Lorem ipsum dolor sit ame,ABC123,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+
+# model - standard variations
+aircraft-01,L,DEF456,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-02,Lo,GHI789,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-03,Lorem ipsum dolor sit amet. consectetur adipiscin,JKL101,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-04,Lorem ipsum dolor sit amet. consectetur adipiscing,MNO112,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-05,โลเร็ม อิปซัม,PQR131,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-06,لوريم إيبسوم,STU415,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-07,洛伦·伊普森,VWX718,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-08,<marquee>Hacked</marquee>,YZA912,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-09,<script>alert(‘Hacked!’);</script>,BCD234,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-10,' or 'A' = 'A ,EFG345,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+
+# capacity - standard variations
+aircraft-11,Lorem ipsum dolor sit ame,DEF456,1,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-12,Lorem ipsum dolor sit ame,GHI789,2,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-13,Lorem ipsum dolor sit ame,JKL101,254,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-14,Lorem ipsum dolor sit ame,MNO112,255,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+
+# cargoWeight - standard variations
+aircraft-15,Lorem ipsum dolor sit ame,PQR123,128,2000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-16,Lorem ipsum dolor sit ame,STU456,128,2001,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-17,Lorem ipsum dolor sit ame,VWX789,128,49999,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-18,Lorem ipsum dolor sit ame,YZA101,128,50000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+
+# status - standard variations
+aircraft-19,Lorem ipsum dolor sit ame,AZC123,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-20,Lorem ipsum dolor sit ame,APC123,128,26000,MAINTENANCE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+
+# details - standard variations
+aircraft-21,Lorem ipsum dolor sit ame,DEF123,128,26000,ACTIVE,L,airline-01
+aircraft-22,Lorem ipsum dolor sit ame,GHI456,128,26000,ACTIVE,Lo,airline-01
+aircraft-23,Lorem ipsum dolor sit ame,JKL789,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,airline-01
+aircraft-24,Lorem ipsum dolor sit ame,MNO101,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,airline-01
