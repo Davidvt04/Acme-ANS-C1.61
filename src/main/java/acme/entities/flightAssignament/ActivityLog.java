@@ -14,7 +14,8 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLongText;
+import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,17 +31,17 @@ public class ActivityLog extends AbstractEntity {
 	private FlightAssignament	flighAssignament;
 
 	@Mandatory
-	@ValidMoment(past = true, min = "2000/01/01 00:00:00")
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationMoment;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50)
+	@ValidShortText
 	@Automapped
 	private String				typeOfIncident;
 
 	@Mandatory
-	@ValidString(min = 1)
+	@ValidLongText
 	@Automapped
 	private String				description;
 

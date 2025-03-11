@@ -1,13 +1,13 @@
 
-package acme.realms;
+package acme.entities.passenger;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.validation.Valid;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import acme.client.components.basis.AbstractRole;
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -16,22 +16,15 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
-import acme.entities.booking.Booking;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Passenger extends AbstractRole {
+public class Passenger extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
-
-	@Mandatory
-	@Automapped
-	@Valid
-	@ManyToOne
-	private Booking				booking;
 
 	@Mandatory
 	@Automapped
@@ -49,7 +42,7 @@ public class Passenger extends AbstractRole {
 	private String				passportNumber;
 
 	@Mandatory
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				dateOfBirth;
 

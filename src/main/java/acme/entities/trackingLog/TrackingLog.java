@@ -5,13 +5,16 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidScore;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
 import acme.entities.claim.Claim;
@@ -27,12 +30,13 @@ public class TrackingLog extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@OneToOne
+	@OneToOne(optional = false)
+	//@ManyToOne
 	private Claim				claim;
 
 	@Mandatory
-	@Automapped
-	@ValidMoment
+	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true)
 	private Date				lastUpdateMoment;
 
 	@Mandatory
@@ -42,14 +46,14 @@ public class TrackingLog extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ValidNumber(min = 0, max = 100)
+	@ValidScore
 	private Double				resolutionPercentage;
 
 	@Mandatory
 	@Automapped
 	private boolean				indicator;
 
-	@Mandatory
+	@Optional
 	@Automapped
 	@ValidLongText
 	private String				resolution;
