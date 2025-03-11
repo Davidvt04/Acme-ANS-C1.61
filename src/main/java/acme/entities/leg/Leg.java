@@ -30,20 +30,6 @@ public class Leg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Relación muchos Leg -> un Flight
-	@ManyToOne
-	@Mandatory // No sabemos si un flight tiene porque tener legs
-	@Automapped
-	@Valid
-	private Flight				flight;
-
-	// Relación muchos Leg -> un Aircraft
-	@ManyToOne
-	@Mandatory // No sabemos si un aircraft tiene porque tener legs
-	@Automapped
-	@Valid
-	private Aircraft			aircraft;
-
 	@Mandatory
 	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
@@ -78,8 +64,19 @@ public class Leg extends AbstractEntity {
 	@ManyToOne(optional = false)
 	@Mandatory
 	@Valid
-	@Automapped
 	private Airport				arrivalAirport;
+
+	// Relación muchos Leg -> un Flight
+	@ManyToOne
+	@Mandatory // No sabemos si un flight tiene porque tener legs
+	@Valid
+	private Flight				flight;
+
+	// Relación muchos Leg -> un Aircraft
+	@ManyToOne
+	@Mandatory // No sabemos si un aircraft tiene porque tener legs
+	@Valid
+	private Aircraft			aircraft;
 
 
 	@Transient

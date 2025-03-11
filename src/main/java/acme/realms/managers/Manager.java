@@ -45,5 +45,4 @@ public class Manager extends AbstractRole {
 	@ValidUrl
 	private String				pictureLink;
 
-	//Airline?
 }
