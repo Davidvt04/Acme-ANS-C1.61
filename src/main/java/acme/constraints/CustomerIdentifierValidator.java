@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 import acme.client.components.principals.UserAccount;
 import acme.realms.Customer;
 
-public class IdentifierValidator implements ConstraintValidator<ValidIdentifier, String> {
+public class CustomerIdentifierValidator implements ConstraintValidator<ValidCustomerIdentifier, String> {
 
 	private Customer customer;
 
