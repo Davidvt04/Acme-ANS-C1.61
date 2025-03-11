@@ -29,8 +29,7 @@ public class Flight extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Valid
-	@Automapped
-	@ManyToOne //Preguntar obligatoriedad manager
+	@ManyToOne(optional = false)
 	@Mandatory
 	private Manager				manager;
 
@@ -47,7 +46,6 @@ public class Flight extends AbstractEntity {
 	@Mandatory
 	@ValidMoney(min = 0.00, max = 1000000.00)
 	@Automapped
-
 	private Money				cost;
 
 	@Optional
