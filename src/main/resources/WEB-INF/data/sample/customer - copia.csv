@@ -1,0 +1,4 @@
+key,key:userAccount,identifier,phoneNumber,address,city,country,earnedPoints
+customer-01,user-account-customer-01,AB123456,+11234567890,123 Main Street Apartment 4B,New York,USA,12000
+customer-02,user-account-customer-02,EF345678,+8613912345678,北京市朝阳区光华路5号,北京,中国,18000
+
