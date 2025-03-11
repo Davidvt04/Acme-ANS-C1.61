@@ -10,9 +10,9 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidCustomerIdentifier;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
+import acme.constraints.ValidPhoneNumber;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,12 +25,12 @@ public class Customer extends AbstractRole {
 
 	@Mandatory
 	@Column(unique = true)
-	@ValidCustomerIdentifier
+	//@ValidCustomerIdentifier
 	private String				identifier;
 
 	@Mandatory
 	@Automapped
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Mandatory
