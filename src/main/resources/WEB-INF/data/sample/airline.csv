@@ -1,0 +1,12 @@
+key,name,iataCode,website,type,foundationMoment,email,phoneNumber
+# base entity
+airline-00,"Airline One","AON","https://www.airlineone.com","STANDARD","2010/06/15 12:00","contact@airlineone.com","+123456789"
+airline-01,"A","BOS","https://www.bosair.com","LOW_COST","2005/03/10 08:30","info@boseconomy.com","+44123456"
+airline-02,"Global Airlines","GLB","http://globalair.com","LUXURY","2020/11/30 16:45","global@air.com","+19876543210"
+airline-03,"Sky High","SKY","ftp://skyhigh.air","LOW_COST","2000/01/01 00:00","support@skyhigh.com","+551234567890"
+airline-04,"Budget Flyer","BFL","https://www.budgetflyer.com","LOW_COST","2015/07/20 14:20","contact@budgetflyer.com","+331234567"
+airline-05,"Heritage Air","HTA","https://www.heritageair.com","STANDARD","2000/01/01 00:00","info@heritageair.com","+61123456789"
+airline-06,"International Wings","INT","https://www.intl-wings.com","LUXURY","2008/09/15 09:15","contact@intlwings.com","+8612345678901"
+airline-07,"Express Air","EXP","https://www.expressair.com","STANDARD","2012/12/12 12:12","service@expressair.com","+1123456"
+airline-08,"NoMail Airways","NMA","https://www.nomailairways.com","LOW_COST","2018/04/01 10:10","contact@airlineone.com","+441234567890"
+airline-09,"ContactLess Air","CLA","https://www.contactlessair.com","LUXURY","2003/05/05 05:05","hello@contactless.com",""
