@@ -29,11 +29,6 @@ public class TrackingLog extends AbstractEntity {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Valid
-	@ManyToOne
-	private Claim				claim;
-
-	@Mandatory
 	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
 	private Date				lastUpdateMoment;
@@ -50,11 +45,17 @@ public class TrackingLog extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private boolean				indicator;
+	@Valid
+	private TrackingLogStatus	status;
 
 	@Optional
 	@Automapped
 	@ValidLongText
 	private String				resolution;
+
+	@Mandatory
+	@Valid
+	@ManyToOne
+	private Claim				claim;
 
 }
