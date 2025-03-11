@@ -8,8 +8,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
-import org.apache.catalina.Manager;
-
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
@@ -19,6 +17,7 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.features.authenticated.leg.LegRepository;
+import acme.realms.managers.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
