@@ -3,6 +3,7 @@ package acme.entities.aircraft;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -10,7 +11,9 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLongText;
+import acme.constraints.ValidShortText;
+import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,17 +26,17 @@ public class Aircraft extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ValidString(min = 1, max = 50)
+	@ValidShortText
 	private String				model;
 
 	@Mandatory
-	@Automapped
 	@Column(unique = true)
-	@ValidString(max = 50)
+	@ValidShortText
 	private String				registrationNumber;
 
 	@Mandatory
 	@Automapped
+	@ValidNumber(min = 1, max = 255)
 	private Integer				capacity;
 
 	@Mandatory
@@ -48,7 +51,12 @@ public class Aircraft extends AbstractEntity {
 
 	@Optional
 	@Automapped
-	@ValidString(max = 255)
+	@ValidLongText
 	private String				details;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airline				airline;
 
 }

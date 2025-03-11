@@ -1,0 +1,42 @@
+key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
+#base entity
+airport-00,Aeropuerto Sevilla,AAA,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+
+#name - variations
+airport-01,L,AAB,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-02,Lorem ipsum dolor sit amet. consectetur adipiscin,AAC,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-03,Lorem ipsum dolor sit amet. consectetur adipiscing,AAD,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-04,โลเร็ม อิปซัม,AAE,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-05,لوريم إيبسوم,AAF,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-06,洛伦·伊普森,AAG,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-07,<marquee>Hacked</marquee>,AAH,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-08,<script>alert(‘Hacked!’);</script>,AAI,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-09,' or 'A' = 'A,AAJ,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+
+#operationalScope - variations
+airport-10,Aeropuerto Sevilla,AAK,REGIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-11,Aeropuerto Sevilla,AAL,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-12,Aeropuerto Sevilla,AAM,DOMESTIC,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+
+#city - variations
+airport-13,Aeropuerto Sevilla,AAN,INTERNATIONAL,L,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921032
+airport-14,Aeropuerto Sevilla,AAO,INTERNATIONAL,Lorem ipsum dolor sit amet. consectetur adipiscin,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-15,Aeropuerto Sevilla,AAP,INTERNATIONAL,Lorem ipsum dolor sit amet. consectetur adipiscing,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-16,Aeropuerto Sevilla,AAQ,INTERNATIONAL,โลเร็ม อิปซัม,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-17,Aeropuerto Sevilla,AAR,INTERNATIONAL,لوريم إيبسوم,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-18,Aeropuerto Sevilla,AAS,INTERNATIONAL,洛伦·伊普森,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-19,Aeropuerto Sevilla,AAT,INTERNATIONAL,<marquee>Hacked</marquee>,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-20,Aeropuerto Sevilla,AAU,INTERNATIONAL,<script>alert(‘Hacked!’);</script>,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-21,Aeropuerto Sevilla,AAV,INTERNATIONAL,' or 'A' = 'A,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+
+#country - variations
+airport-22,Aeropuerto Sevilla,AAW,INTERNATIONAL,Sevilla,L,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-23,Aeropuerto Sevilla,AAX,INTERNATIONAL,Sevilla,Lorem ipsum dolor sit amet. consectetur adipiscin,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-24,Aeropuerto Sevilla,AAY,INTERNATIONAL,Sevilla,Lorem ipsum dolor sit amet. consectetur adipiscing,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-25,Aeropuerto Sevilla,AAZ,INTERNATIONAL,Sevilla,โลเร็ม อิปซัม,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-26,Aeropuerto Sevilla,ABA,INTERNATIONAL,Sevilla,لوريم إيبسوم,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+
+#email - variations
+airport-48,Aeropuerto Sevilla,ABW,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,acme@lorem-ipsum.org,+633921019
+airport-49,Aeropuerto Sevilla,ABX,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,acme@lorem-ipsum.org,+633921019
+airport-50,Aeropuerto Sevilla,ABY,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,a@b.es,+633921019

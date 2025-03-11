@@ -1,8 +1,12 @@
 
-package acme.entities.airport;
+package acme.entities.airline;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -10,22 +14,22 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
+import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airport extends AbstractEntity {
+public class Airline extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
 	@Automapped
-	@ValidShortText
+	@ValidString(min=1, max = 50)
 	private String				name;
 
 	@Mandatory
@@ -35,23 +39,18 @@ public class Airport extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@Valid
-	private OperationalScope	operationalScope;
-
-	@Mandatory
-	@Automapped
-	@ValidShortText
-	private String				city;
-
-	@Mandatory
-	@Automapped
-	@ValidShortText
-	private String				country;
-
-	@Optional
-	@Automapped
 	@ValidUrl
 	private String				website;
+
+	@Mandatory
+	@Automapped
+	@Valid
+	private AirlineType			type;
+
+	@Mandatory
+	@Temporal(TemporalType.TIMESTAMP)
+	@ValidMoment(past = true)
+	private Date				foundationMoment;
 
 	@Optional
 	@Automapped
@@ -62,4 +61,5 @@ public class Airport extends AbstractEntity {
 	@Automapped
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
+
 }

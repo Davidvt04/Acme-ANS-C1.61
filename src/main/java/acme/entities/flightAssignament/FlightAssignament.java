@@ -1,34 +1,49 @@
 
-package acme.entities.review;
+package acme.entities.flightAssignament;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
-import acme.constraints.ValidLongText;
-import acme.constraints.ValidShortText;
+import acme.client.components.validation.ValidString;
+import acme.realms.flightCrewMembers.FlightCrewMember;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Review extends AbstractEntity {
-
-	private static final long	serialVersionUID	= 1L;
+public class FlightAssignament extends AbstractEntity {
 
 	@Mandatory
-	@ValidShortText
 	@Automapped
-	private String				name;
+	@Valid
+	@ManyToOne
+	private FlightCrewMember	flightCrewMember;
+
+	/*
+	 * @Mandatory
+	 * 
+	 * @Automapped
+	 * 
+	 * @Valid
+	 * 
+	 * @ManyToOne
+	 * private Leg leg; //todavia no está creada
+	 */
+	@Mandatory
+	@Automapped
+	@Valid
+	private Duty				duty;
 
 	@Mandatory
 	@ValidMoment(past = true)
@@ -36,22 +51,13 @@ public class Review extends AbstractEntity {
 	private Date				moment;
 
 	@Mandatory
-	@ValidShortText
 	@Automapped
-	private String				subject;
-
-	@Mandatory
-	@ValidLongText
-	@Automapped
-	private String				text;
+	@Valid
+	private CurrentStatus		currentStatus;
 
 	@Optional
-	@ValidNumber(min = 0, max = 10, fraction = 2)
 	@Automapped
-	private double				score;
+	@ValidString
+	private String				remarks;
 
-	@Optional
-	// @Valid by default
-	@Automapped
-	private boolean				recommended;
 }

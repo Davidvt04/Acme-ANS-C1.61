@@ -1,11 +1,16 @@
 
-package acme.entities.assistanceAgent;
+package acme.realms;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
-import acme.client.components.datatypes.Moment;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
@@ -14,35 +19,36 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidLongText;
+import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class AssistanceAgent extends AbstractEntity {
+public class AssistanceAgent extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
 	@Column(unique = true)
-	@Automapped
-	@ValidString(min = 3, max = 3, pattern = "^[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				employeeCode;
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 255)
+	@ValidString
 	private String				spokenLanguages;
 
 	@Mandatory
-	@Automapped
+	@Temporal(TemporalType.TIMESTAMP)
 	@ValidMoment(past = true)
-	private Moment				moment;
+	private Date				moment;
 
 	@Optional
 	@Automapped
-	@ValidString(max = 255)
+	@ValidLongText
 	private String				briefBio;
 
 	@Optional
@@ -54,5 +60,10 @@ public class AssistanceAgent extends AbstractEntity {
 	@Automapped
 	@ValidUrl
 	private String				photo;
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airline				airline;
 
 }
