@@ -15,10 +15,10 @@ aircraft-09,<script>alert(‘Hacked!’);</script>,BCD234,128,26000,ACTIVE,Lorem
 aircraft-10,' or 'A' = 'A ,EFG345,128,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 
 # capacity - standard variations
-aircraft-11,Lorem ipsum dolor sit ame,DEF456,1,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
-aircraft-12,Lorem ipsum dolor sit ame,GHI789,2,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
-aircraft-13,Lorem ipsum dolor sit ame,JKL101,254,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
-aircraft-14,Lorem ipsum dolor sit ame,MNO112,255,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-11,Lorem ipsum dolor sit ame,DEF406,1,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-12,Lorem ipsum dolor sit ame,GHI089,2,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-13,Lorem ipsum dolor sit ame,JKL111,254,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
+aircraft-14,Lorem ipsum dolor sit ame,MNO113,255,26000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
 
 # cargoWeight - standard variations
 aircraft-15,Lorem ipsum dolor sit ame,PQR123,128,2000,ACTIVE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,airline-01
