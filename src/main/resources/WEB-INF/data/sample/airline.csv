@@ -1,12 +1,30 @@
 key,name,iataCode,website,type,foundationMoment,email,phoneNumber
 # base entity
-airline-00,"Airline One","AON","https://www.airlineone.com","STANDARD","2010/06/15 12:00","contact@airlineone.com","+123456789"
-airline-01,"A","BOS","https://www.bosair.com","LOW_COST","2005/03/10 08:30","info@boseconomy.com","+44123456"
-airline-02,"Global Airlines","GLB","http://globalair.com","LUXURY","2020/11/30 16:45","global@air.com","+19876543210"
-airline-03,"Sky High","SKY","ftp://skyhigh.air","LOW_COST","2000/01/01 00:00","support@skyhigh.com","+551234567890"
-airline-04,"Budget Flyer","BFL","https://www.budgetflyer.com","LOW_COST","2015/07/20 14:20","contact@budgetflyer.com","+331234567"
-airline-05,"Heritage Air","HTA","https://www.heritageair.com","STANDARD","2000/01/01 00:00","info@heritageair.com","+61123456789"
-airline-06,"International Wings","INT","https://www.intl-wings.com","LUXURY","2008/09/15 09:15","contact@intlwings.com","+8612345678901"
-airline-07,"Express Air","EXP","https://www.expressair.com","STANDARD","2012/12/12 12:12","service@expressair.com","+1123456"
-airline-08,"NoMail Airways","NMA","https://www.nomailairways.com","LOW_COST","2018/04/01 10:10","contact@airlineone.com","+441234567890"
-airline-09,"ContactLess Air","CLA","https://www.contactlessair.com","LUXURY","2003/05/05 05:05","hello@contactless.com",""
+airline-00,"Airline One","ALO","https://www.airlineone.com","STANDARD","2010/06/15 12:00","contact@airlineone.com","+123456789"
+# name - standard variations
+airline-01,"A","BOS","https://www.testair.com","LOW_COST","2005/03/10 08:30","test@air.com","+44123456"
+airline-02,"Airline with an exceptionally long name","ABC","https://www.longnameair.com","LUXURY","2000/11/30 16:45","long@air.com","+19876543210"
+airline-03,"<script>alert('Hacked');</script>","DEF","https://www.injectair.com","STANDARD","2000/01/01 00:00","inject@air.com","+551234567890"
+# iataCode - standard variations
+airline-04,"Test Air","XYZ","https://www.testair.com","STANDARD","2003/05/05 05:05","test@air.com","+1123456"
+airline-05,"Budget Air","LOW","https://www.budgetair.com","LOW_COST","2007/07/07 07:07","budget@air.com","+331234567"
+airline-06,"Alpha Air","AAA","https://www.alphaair.com","LUXURY","2012/12/12 12:12","alpha@air.com","+441234567890"
+# website - standard variations
+airline-07,"WebAir","WEB","http://www.webair.com","STANDARD","2000/01/01 00:00","web@air.com","+551234567"
+airline-08,"FTP Air","FTP","ftp://ftpair.com","LOW_COST","2005/05/05 05:05","ftp@air.com","+661234567890"
+airline-09,"FTP No TLD","FNT","ftp://ftpsrv","STANDARD","2005/05/05 05:05","notld@air.com","+661234567890"
+airline-019,"Alpha Eir","AAE","https://www.alphaair.esx","LUXURY","2012/12/12 12:12","alpha@eir.com","+441234567820"
+
+# type - standard variations
+airline-10,"Luxury Wings","LUX","https://www.luxurywings.com","LUXURY","2008/08/08 08:08","lux@air.com","+771234567890"
+airline-11,"Standard Flyer","STD","https://www.standardflyer.com","STANDARD","2010/10/10 10:10","std@air.com","+881234567"
+airline-12,"Low Cost Jet","LCJ","https://www.lowcostjet.com","LOW_COST","2014/04/04 04:04","low@air.com","+991234567"
+# foundationMoment - standard variations
+airline-13,"History Air","HIS","https://www.historyair.com","STANDARD","2000/01/01 00:00","history@air.com","+123456789"
+airline-14,"Recent Air","REC","https://www.recentair.com","LOW_COST","2024/12/31 23:53","recent@air.com","+987654321"
+# email - standard variations
+airline-15,"NoEmail Air","NOE","https://www.noemailair.com","LUXURY","2003/03/03 03:03","a@email.ftp","+123123123"
+airline-16,"Valid Email Air","EMA","https://www.validemailair.com","STANDARD","2004/04/04 04:04","contact@validemail.com","+456456456"
+# phoneNumber - standard variations
+airline-17,"Phone Air","PHN","https://www.phoneair.com","LOW_COST","2006/06/06 06:06","phone@air.com","+123456"
+airline-18,"NoPhone Air","NPH","https://www.nophoneair.com","STANDARD","2007/07/07 07:07","nophone@air.com",""
