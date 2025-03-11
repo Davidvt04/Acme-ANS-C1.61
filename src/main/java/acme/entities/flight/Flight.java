@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.Valid;
 
+import org.apache.catalina.Manager;
+
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
@@ -15,7 +17,8 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
-import acme.realms.managers.Manager;
+import acme.client.helpers.SpringHelper;
+import acme.features.authenticated.leg.LegRepository;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -54,35 +57,34 @@ public class Flight extends AbstractEntity {
 	private String				description;
 
 
-	// Todas estas propiedades derivadas, no se si hay que tomarlas del repo cuando esté, hay que preguntar
 	@Transient
 	public Date getScheduledDeparture() {
-		// TODO: Computar a partir de la primera Leg asociada (si existe)
-		return null;
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findFirstScheduledDeparture(this.getId()).orElse(null);
 	}
 
 	@Transient
 	public Date getScheduledArrival() {
-		// TODO: Computar a partir de la última Leg asociada (si existe)
-		return null;
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findLastScheduledArrival(this.getId()).orElse(null);
 	}
 
 	@Transient
-	public String getOrigin() {
-		// TODO: Obtener a partir de la primera Leg
-		return null;
+	public String getOriginCity() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findFirstOriginCity(this.getId()).orElse("");
 	}
 
 	@Transient
-	public String getDestination() {
-		// TODO: Obtener a partir de la última Leg
-		return null;
+	public String getDestinationCity() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findLastDestinationCity(this.getId()).orElse("");
 	}
 
 	@Transient
 	public Integer getNumberOfLayovers() {
-		// TODO: Número de paradas intermedias (legs.size() - 1, etc.)
-		return null;
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.numberOfLayovers(this.getId());
 	}
 
 }

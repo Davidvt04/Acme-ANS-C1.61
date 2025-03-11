@@ -1,6 +1,7 @@
 
 package acme.entities.leg;
 
+import java.beans.Transient;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -80,4 +81,13 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private Airport				arrivalAirport;
 
+
+	@Transient
+	public Double getDuration() {
+
+		long departureMilieconds = this.getScheduledDeparture().getTime();
+		long arrivalMilieconds = this.getScheduledArrival().getTime();
+		return (arrivalMilieconds - departureMilieconds) / 3600000.0;
+
+	}
 }
