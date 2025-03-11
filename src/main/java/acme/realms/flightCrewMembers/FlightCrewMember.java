@@ -2,6 +2,7 @@
 package acme.realms.flightCrewMembers;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
@@ -13,6 +14,8 @@ import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidLongText;
+import acme.constraints.ValidPhoneNumber;
+import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,14 +26,14 @@ public class FlightCrewMember extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
-	@Automapped
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$") //¿Hay que validar que sean sus iniciales? decia una "\d", pero me daba error, preguntar
 	@Mandatory
+	@Automapped
+	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
 	private String				employeeCode;
 
 	@Automapped
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$") //Mismo error que antes, no se si asi está solucionado (una "\" no "\\")
+	@ValidPhoneNumber
 	private String				phoneNumber;
 
 	@Automapped
@@ -43,16 +46,10 @@ public class FlightCrewMember extends AbstractRole {
 	@Valid
 	private AvailabilityStatus	availabilityStatus;
 
-	/*
-	 * @Mandatory
-	 * 
-	 * @Automapped
-	 * 
-	 * @Valid
-	 * 
-	 * @ManyToOne(optional = false) //preguntar
-	 * private Airline airline; //todavia no esta creada xd
-	 */
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	private Airline				airline;
 
 	@Mandatory
 	@Automapped
