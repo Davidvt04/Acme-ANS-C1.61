@@ -1,0 +1,20 @@
+key,flightNumber,scheduledDeparture,scheduledArrival,durationInHours,status,key:departureAirport,key:arrivalAirport,key:flight,key:aircraft
+# Base entity
+leg-00,"ABC1234","2025/01/01 09:00","2025/01/01 11:00",2.0,"ON_TIME","airport-00","airport-01","flight-00","aircraft-00"
+
+# flightNumber - estándar (otra variante)
+leg-01,"XYZ0001","2025/01/01 11:30","2025/01/01 13:30",2.0,"DELAYED","airport-00","airport-02","flight-01","aircraft-00"
+
+# scheduledDeparture y scheduledArrival - modificando rango
+leg-02,"TST9999","2024/12/31 23:50","2025/01/01 01:50",2.0,"CANCELLED","airport-01","airport-02","flight-02","aircraft-01"
+
+# durationInHours - mínimo (1 hora)
+leg-03,"AAA1000","2025/02/15 12:00","2025/02/15 13:00",1.0,"ON_TIME","airport-02","airport-03","flight-00","aircraft-01"
+
+# durationInHours - máximo (17 horas)
+leg-04,"BBB2000","2025/03/01 07:00","2025/03/02 00:00",17.0,"LANDED","airport-02","airport-04","flight-01","aircraft-02"
+
+# status - distintas opciones
+leg-05,"CCC3000","2025/04/10 06:00","2025/04/10 09:00",3.0,"CANCELLED","airport-03","airport-01","flight-02","aircraft-01"
+leg-06,"CCC3001","2025/04/15 08:00","2025/04/15 09:45",1.75,"DELAYED","airport-04","airport-00","flight-00","aircraft-02"
+leg-07,"CCC3002","2025/04/20 10:00","2025/04/20 11:30",1.5,"LANDED","airport-00","airport-01","flight-02","aircraft-00"
