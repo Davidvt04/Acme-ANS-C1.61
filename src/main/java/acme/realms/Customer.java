@@ -10,7 +10,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidCustomerIdentifier;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
@@ -25,7 +24,7 @@ public class Customer extends AbstractRole {
 
 	@Mandatory
 	@Column(unique = true)
-	@ValidCustomerIdentifier
+	//@ValidCustomerIdentifier
 	private String				identifier;
 
 	@Mandatory
