@@ -24,10 +24,11 @@ import lombok.Setter;
 @Setter
 public class ActivityLog extends AbstractEntity {
 
+	private static final long	serialVersionUID	= 1L;
+
 	@Mandatory
 	@Valid
-	@Automapped
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private FlightAssignament	flighAssignament;
 
 	@Mandatory
