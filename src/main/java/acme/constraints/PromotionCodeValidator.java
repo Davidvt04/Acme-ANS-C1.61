@@ -33,7 +33,7 @@ public class PromotionCodeValidator extends AbstractValidator<ValidPromotionCode
 			String last2DigitsYear = String.valueOf(currentYear).substring(2);
 
 			if (service.getPromotionCode() != null) {
-				String last2DigirsCode = service.getPromotionCode().substring(5);
+				String last2DigirsCode = service.getPromotionCode().substring(service.getPromotionCode().length() - 2);
 				super.state(context, last2DigirsCode.equals(last2DigitsYear), "PromotionCode", "acme.validation.promotion-code.not-current-year");
 			}
 		}
