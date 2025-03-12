@@ -1,0 +1,24 @@
+key,key:flightCrewMember,key:leg,duty,moment,currentStatus,remarks
+# base entity
+flightAssignament-00, flightCrewMember-00, leg-00, PILOT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# duty - standard variations
+flightAssignament-01, flightCrewMember-01, leg-01, PILOT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-02, flightCrewMember-02, leg-02, COPILOT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-03, flightCrewMember-03, leg-03, LEAD_ATTENDANT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-04, flightCrewMember-07, leg-04, CABIN_ATTENDANT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-05, flightCrewMember-05, leg-05, PILOT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+# moment - standard variations
+flightAssignament-06, flightCrewMember-00, leg-00, PILOT, 2000/01/01 00:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-07, flightCrewMember-01, leg-01, PILOT, 2000/01/01 00:01, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-08, flightCrewMember-02, leg-02, PILOT, 2024/12/31 23:59, CONFIRMED, "Past assignment"
+
+# currentStatus - standard variations
+flightAssignament-09, flightCrewMember-00, leg-04, PILOT, 2023/01/01 10:00, PENDING, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+flightAssignament-10, flightCrewMember-00, leg-05, PILOT, 2023/01/01 10:00, CANCELLED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*"
+
+# remarks - standard variations
+flightAssignament-11, flightCrewMember-00, leg-06, PILOT, 2023/01/01 10:00, CONFIRMED, "L"
+flightAssignament-12, flightCrewMember-00, leg-07, PILOT, 2023/01/01 10:00, CONFIRMED, "Lo"
+flightAssignament-13, flightCrewMember-00, leg-08, PILOT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+flightAssignament-14, flightCrewMember-00, leg-09, PILOT, 2023/01/01 10:00, CONFIRMED, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*"
+flightAssignament-15, flightCrewMember-00, leg-10, PILOT, 2023/01/01 10:00, CONFIRMED, 

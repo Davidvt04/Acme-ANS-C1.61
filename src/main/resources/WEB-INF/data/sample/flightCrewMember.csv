@@ -1,0 +1,27 @@
+key,key:userAccount,employeeCode,phoneNumber,languageSkill,availabilityStatus,key:airline,salary,yearsOfExperience
+# base entity
+flightCrewMember-00, user-account-flightCrewMember-01,II000000,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,20
+# phoneNumber - standard variations
+flightCrewMember-01, user-account-flightCrewMember-02,LX000000,+123456,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,20
+flightCrewMember-02, user-account-flightCrewMember-03,AA000000,+123456763,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,20
+flightCrewMember-03, user-account-flightCrewMember-04,TA000000,+11111111111111,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,20
+# languageSkill - standard variations
+flightCrewMember-04, user-account-flightCrewMember-05,JIM000000,+11234567890,"L", "AVAILABLE", airline-00,EUR 500000.00,20
+flightCrewMember-05, user-account-flightCrewMember-04,TA000001,+11234567890,"Lo", "AVAILABLE", airline-00,EUR 500000.00,20
+flightCrewMember-06, user-account-flightCrewMember-04,TA000002,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor", "AVAILABLE", airline-00,EUR 500000.00,20
+flightCrewMember-07, user-account-flightCrewMember-04,TA000003,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*", "AVAILABLE", airline-00,EUR 500000.00,20
+# availabilityStatus -standard variations
+flightCrewMember-08, user-account-flightCrewMember-04,TA000004,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "ON_VACATION", airline-00,EUR 500000.00,20
+flightCrewMember-09, user-account-flightCrewMember-04,TA000005,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "ON_LEAVE", airline-00,EUR 500000.00,20
+# salary - standard variations
+flightCrewMember-10, user-account-flightCrewMember-04,TA000006,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 0.00,20
+flightCrewMember-11, user-account-flightCrewMember-04,TA000007,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 0.01,20
+flightCrewMember-12, user-account-flightCrewMember-04,TA000008,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 999999.99,20
+flightCrewMember-13, user-account-flightCrewMember-04,TA000009,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 1000000.00,20
+
+# yearsOfExperience - standard variations
+flightCrewMember-14, user-account-flightCrewMember-04,TA000010,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,0
+flightCrewMember-15, user-account-flightCrewMember-04,TA000011,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,1
+flightCrewMember-16, user-account-flightCrewMember-04,TA000012,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,5
+flightCrewMember-17, user-account-flightCrewMember-04,TA000013,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,119
+flightCrewMember-18, user-account-flightCrewMember-04,TA000014,+11234567890,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", "AVAILABLE", airline-00,EUR 500000.00,120

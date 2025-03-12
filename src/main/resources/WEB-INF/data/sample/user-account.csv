@@ -19,3 +19,8 @@ user-account-assistanceAgent-03,true,"UserIdentity{name: 'Marco', surname: 'Parr
 user-account-technician-01,true,"UserIdentity{name: 'Técnico', surname: 'Técniquez', email: 'tecnico@acme.com'}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: 'Pepe', surname: 'Proton', email: 'proton@acme.com'}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: 'коза', surname: '之乎路', email: 'chingchong@acme.com'}",technician3,technician3
+user-account-flightCrewMember-01,true,"UserIdentity{name: 'Иван', surname: 'Иванович', email: 'ivanovich@acme.com'}",member1,member1 # II
+user-account-flightCrewMember-02,true,"UserIdentity{name: '李', surname: '小龙', email: 'xiaolong@acme.com'}",member2,member2         # LX
+user-account-flightCrewMember-03,true,"UserIdentity{name: 'أحمد', surname: 'بن علي', email: 'ahmed@acme.com'}",member3,member3      # AA
+user-account-flightCrewMember-04,true,"UserIdentity{name: 'Tomás', surname: 'Anselmo', email: 'eltomi@acme.com'}",member4,member4
+user-account-flightCrewMember-04,true,"UserIdentity{name: 'Jorge', surname: 'Iturmendi Mantos', email: 'jorgelin@acme.com'}",member,member
