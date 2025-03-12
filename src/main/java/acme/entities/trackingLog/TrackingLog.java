@@ -17,6 +17,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidScore;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
+import acme.constraints.ValidTrackingLog;
 import acme.entities.claim.Claim;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidTrackingLog
 public class TrackingLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -46,7 +48,7 @@ public class TrackingLog extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	@Valid
-	private TrackingLogStatus	status;
+	private ClaimStatus			status;
 
 	@Optional
 	@Automapped
