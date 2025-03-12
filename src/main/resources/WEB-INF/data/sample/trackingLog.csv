@@ -1,50 +1,38 @@
 key,lastUpdateMoment,step,resolutionPercentage,status,resolution,key:claim
 #base entity
-trackingLog-01,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-
-#lastUpdateMoment - variations
-trackingLog-02,2000/01/01 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-03,2000/01/01 0:01,Lorem ipsum dolor sit ame,50.00, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-05,2024/12/31 23:59,Lorem ipsum dolor sit ame,50.00, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-06,2025/01/01 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-
+trackingLog-01,2012/07/02 0:00,Lorem ipsum dolor sit ame,02.00,PENDING,null,claim-01
+#lastUpdateMoment - variations,"","",""
+trackingLog-02,2000/01/01 0:00,Lorem ipsum dolor sit ame,00.00,PENDING,null,claim-01
+trackingLog-03,2000/01/01 0:01,Lorem ipsum dolor sit ame,01.00,PENDING,null,claim-01
+trackingLog-05,2024/12/31 23:59,Lorem ipsum dolor sit ame,98.00,PENDING,null,claim-01
+trackingLog-06,2025/01/01 0:00,Lorem ipsum dolor sit ame,99.00,PENDING,null,claim-01
 #step - variations
-trackingLog-07,2012/07/02 0:00,L,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-08,2012/07/02 0:00,Lo,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-09,2012/07/02 0:00,Lorem ipsum dolor sit amet. consectetur adipiscin,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-10,2012/07/02 0:00,Lorem ipsum dolor sit amet. consectetur adipiscing,50.00, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-11,2012/07/02 0:00,โลเร็ม อิปซัม,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-12,2012/07/02 0:00, لوريم إيبسوم:L,50.00,ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-13,2012/07/02 0:00,洛伦·伊普森,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-14,2012/07/02 0:00,Hacked,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-15,2012/07/02 0:00,alert(‘Hacked!’);,50.00, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-16,2012/07/02 0:00,' or 'A' = 'A,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-
-#resolutionPercentage - variations 
-trackingLog-17,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-18,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.01, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-19,2012/07/02 0:00,Lorem ipsum dolor sit ame,99.99, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-30,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00, ACCEPTED,L orem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-
+trackingLog-07,2012/07/02 0:01,L,03.00,PENDING,null,claim-01
+trackingLog-08,2012/07/02 0:04,Lo,04.00,PENDING,null,claim-01
+trackingLog-09,2012/07/02 0:05,Lorem ipsum dolor sit amet. consectetur adipiscin,05.00,PENDING,null,claim-01
+trackingLog-10,2012/07/02 0:06,Lorem ipsum dolor sit amet. consectetur adipiscing,06.00,PENDING,null,claim-01
+trackingLog-11,2012/07/02 0:07,โลเร็ม อิปซัม,07.00,PENDING,null,claim-01
+trackingLog-12,2012/07/02 0:08,لوريم إيبسوم:L,08.00,PENDING,null,claim-01
+trackingLog-13,2012/07/02 0:09,洛伦·伊普森,09.00,PENDING,null,claim-01
+trackingLog-14,2012/07/02 0:10,Hacked,10.00,PENDING,null,claim-01
+trackingLog-15,2012/07/02 0:11,alert(‘Hacked!’);,11.00,PENDING,null,claim-01
+trackingLog-16,2012/07/02 0:12,' or 'A' = 'A,12.00,PENDING,null,claim-01
+#resolutionPercentage - variations
+trackingLog-17,2012/07/02 0:00,Lorem ipsum dolor sit ame,0.00,PENDING,null,claim-02
+trackingLog-18,2012/07/02 0:02,Lorem ipsum dolor sit ame,0.01,PENDING,null,claim-02
+trackingLog-19,2012/07/02 0:04,Lorem ipsum dolor sit ame,99.99,PENDING,null,claim-02
+trackingLog-30,2012/07/02 0:06,Lorem ipsum dolor sit ame,100.00,ACCEPTED,L orem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-02
 #status - variations
-trackingLog-31,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, PENDING,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-32,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-trackingLog-33,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, REJECTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-01
-
+trackingLog-31,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00,PENDING,null,claim-03
+trackingLog-32,2012/07/02 0:03,Lorem ipsum dolor sit ame,100.00,ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-03
+trackingLog-33,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,REJECTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,claim-04
 #resolution - variations
-trackingLog-34,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, L,claim-01
-trackingLog-35,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, Lo,claim-01
-trackingLog-36,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? r,claim-01
-trackingLog-37,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor i,claim-01
-trackingLog-38,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, โลเร็ม อิปซัม,claim-01
-trackingLog-39,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, لوريم إيبسوم,claim-01
-trackingLog-40,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, 洛伦·伊普森,claim-01
-trackingLog-41,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, <marquee>Hacked</marquee>,claim-01
-trackingLog-42,2012/07/02 0:00,Lorem ipsum dolor sit ame,50.00, ACCEPTED, <script>alert(‘Hacked!’);</script>,claim-01
-
-
-
-
-
-
-
+trackingLog-34,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,L,claim-05
+trackingLog-35,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,Lo,claim-06
+trackingLog-36,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? r,claim-07
+trackingLog-37,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor i,claim-08
+trackingLog-38,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,โลเร็ม อิปซัม,claim-09
+trackingLog-39,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,لوريم إيبسوم,claim-10
+trackingLog-40,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,洛伦·伊普森,claim-11
+trackingLog-41,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,<marquee>Hacked</marquee>,claim-12
+trackingLog-42,2012/07/02 0:00,Lorem ipsum dolor sit ame,100.00,ACCEPTED,<script>alert(‘Hacked!’);</script>,claim-13
