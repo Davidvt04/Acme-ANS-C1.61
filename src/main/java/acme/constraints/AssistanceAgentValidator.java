@@ -17,21 +17,15 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 	}
 
 	@Override
-	public boolean isValid(final AssistanceAgent customer, final ConstraintValidatorContext context) {
+	public boolean isValid(final AssistanceAgent assistanceAgent, final ConstraintValidatorContext context) {
 
-		if (customer.getEmployeeCode() == null || customer.getEmployeeCode().isBlank() || !customer.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$")) {
+		if (assistanceAgent.getEmployeeCode() == null || assistanceAgent.getEmployeeCode().isBlank() || !assistanceAgent.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$")) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("The identifier must not be null or blank and must follow the pattern").addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("The employee code must not be null or blank and must follow the pattern").addConstraintViolation();
 			return false;
 		}
 
-		if (customer == null) {
-			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("Customer must not be null").addConstraintViolation();
-			return false;
-		}
-
-		UserAccount userAccount = customer.getUserAccount();
+		UserAccount userAccount = assistanceAgent.getUserAccount();
 		if (userAccount == null || userAccount.getIdentity() == null) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate("User Account and Identity must not be null").addConstraintViolation();
@@ -61,7 +55,7 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 		}
 		String iniciales = inicialNombre + inicial1Apellido + inicial2Apellido;
 
-		String identifierInitials = customer.getEmployeeCode().substring(0, initialsLenght);
+		String identifierInitials = assistanceAgent.getEmployeeCode().substring(0, initialsLenght);
 
 		if (!iniciales.equals(identifierInitials)) {
 			context.disableDefaultConstraintViolation();

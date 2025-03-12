@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
-import acme.client.helpers.StringHelper;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
 import acme.entities.trackingLog.TrackingLogRepository;
@@ -33,26 +32,25 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		assert context != null;
 
 		if (trackingLog == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "TrackingLog", "No hay trackingLogs");
 		else {
-			{
-				if (trackingLog.getResolutionPercentage() == 100.0)
-					super.state(context, !trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.notPendingStatus.message");
-				else
-					super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "*", "acme.validation.trackingLog.pendingStatus.message");
-			}
-			{
-				if (trackingLog.getStatus().equals(ClaimStatus.PENDING))
-					super.state(context, !StringHelper.isBlank(trackingLog.getResolution()), "*", "acme.validation.trackingLog.resolution.message");
-			}
-			{
-				List<TrackingLog> trackingLogs;
 
-				trackingLogs = this.repository.findAllByClaimId(trackingLog.getClaim().getId());
+			if (trackingLog.getResolutionPercentage() == 100.0)
+				super.state(context, !trackingLog.getStatus().equals(ClaimStatus.PENDING), "Status", "El estado no puede ser PENDING");
+			else
+				super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "Status", "El estado debe ser PENDING");
 
-				if (!trackingLogs.isEmpty())
-					super.state(context, trackingLogs.get(0).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "*", "acme.validation.trackingLog.resolutionPercentage.message");
-			}
+			if (trackingLog.getStatus().equals(ClaimStatus.PENDING))
+				super.state(context, trackingLog.getResolution() == null, "Resolution", "El campo resolucion es incorrecto");
+			else
+				super.state(context, trackingLog.getResolution() != null, "Resolution", "El campo resolucion es incorrecto");
+
+			List<TrackingLog> trackingLogs;
+			trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
+			Integer pos = trackingLogs.indexOf(trackingLog);
+			if (trackingLogs.size() > 1 && pos < trackingLogs.size() - 1)
+				super.state(context, trackingLogs.get(pos + 1).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "ResolutionPercentage", "Error el porcentaje debe ser mayor a:" + trackingLogs.get(pos + 1).getResolutionPercentage());
+
 		}
 		result = !super.hasErrors(context);
 		return result;
