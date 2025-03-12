@@ -18,3 +18,8 @@ leg-04,"BBB2000","2025/03/01 07:00","2025/03/02 00:00",17.0,"LANDED","airport-02
 leg-05,"CCC3000","2025/04/10 06:00","2025/04/10 09:00",3.0,"CANCELLED","airport-03","airport-01","flight-02","aircraft-01"
 leg-06,"CCC3001","2025/04/15 08:00","2025/04/15 09:45",1.75,"DELAYED","airport-04","airport-00","flight-00","aircraft-02"
 leg-07,"CCC3002","2025/04/20 10:00","2025/04/20 11:30",1.5,"LANDED","airport-00","airport-01","flight-02","aircraft-00"
+
+# Fechas futuras (06/01/2025, 06/01/2025 00:01, 31/12/2200 23:59, 01/01/2201 00:00)
+leg-08,"FUT1001","2025/01/06 00:00","2025/01/06 01:00",1.0,"ON_TIME","airport-05","airport-06","flight-03","aircraft-02"
+leg-09,"FUT1002","2025/01/06 00:01","2025/01/06 02:31",2.5,"DELAYED","airport-06","airport-07","flight-04","aircraft-00"
+leg-10,"FUT1003","2200/12/31 16:59","2200/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-03","aircraft-01"
