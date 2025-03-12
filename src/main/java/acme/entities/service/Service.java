@@ -12,7 +12,6 @@ import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
-import acme.constraints.ValidPromotionCode;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@ValidPromotionCode
+//@ValidPromotionCode
 public class Service extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
