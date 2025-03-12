@@ -43,7 +43,7 @@ maintenance-record-31,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"洛
 maintenance-record-32,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"<marquee>Hacked</marquee>",aircraft-01,technician-01
 maintenance-record-33,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"<script>alert(‘Hacked!’);</script>",aircraft-01,technician-01
 maintenance-record-34,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"' or 'A' = 'A ",aircraft-01,technician-01
-maintenance-record-39,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,NULL,aircraft-01,technician-01
+maintenance-record-39,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,null,aircraft-01,technician-01
 # aircraft - standard variations
 maintenance-record-35,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",aircraft-02,technician-01
 # technician - standard variations
