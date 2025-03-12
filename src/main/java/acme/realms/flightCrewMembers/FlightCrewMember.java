@@ -1,6 +1,7 @@
 
 package acme.realms.flightCrewMembers;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
@@ -29,8 +30,8 @@ public class FlightCrewMember extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Automapped
-	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
+	@Column(unique = true)
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				employeeCode;
 
 	@Automapped
