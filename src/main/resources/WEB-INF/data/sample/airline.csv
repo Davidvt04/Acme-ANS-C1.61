@@ -16,7 +16,7 @@ airline-06,"Alpha Air","AAA","https://www.alphaair.com","LUXURY","2012/12/12 12:
 airline-07,"WebAir","WEB","http://www.webair.com","STANDARD","2000/01/01 00:00","web@air.com","+551234567"
 airline-08,"FTP Air","FTP","ftp://ftpair.com","LOW_COST","2005/05/05 05:05","ftp@air.com","+661234567890"
 airline-09,"FTP No TLD","FNT","ftp://ftpsrv","STANDARD","2005/05/05 05:05","notld@air.com","+661234567890"
-airline-19,"Alpha Eir","AAE","https://www.alphaair.esx","LUXURY","2012/12/12 12:12","alpha@eir.com","+441234567820"
+airline-19,"Alpha Eir","AAZ","https://www.alphaair.esx","LUXURY","2012/12/12 12:12","alpha@eir.com","+441234567820"
 
 # type - standard variations
 airline-10,"Luxury Wings","LUX","https://www.luxurywings.com","LUXURY","2008/08/08 08:08","lux@air.com","+771234567890"
@@ -49,3 +49,24 @@ airline-27,"Test Email 4","TEC","http://example.org/email4","STANDARD","2013/04/
 airline-28,"Test Email 5","TEA","http://example.org/email5","LOW_COST","2014/05/05 05:05","a@b.esx","+555555555"
 airline-29,"Test Email 6","TEP","http://example.org/email6","LUXURY","2015/06/06 06:06","lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu","+666666666"
 airline-30,"Test Email 7","TEV","http://example.org/email7","STANDARD","2016/07/07 07:07","lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org","+777777777"
+
+# additional website variations (19 new URLs requested)
+airline-31,"URL Test 1","APP","http://lorem.com/ipsum","STANDARD","2016/01/01 00:00","url1@air.com","+310000000"
+airline-32,"URL Test 2","AAB","ftp://a","LOW_COST","2016/01/02 00:00","url2@air.com","+320000000"
+airline-33,"URL Test 3","AAC","ftp://a.b","LUXURY","2016/01/03 00:00","url3@air.com","+330000000"
+airline-34,"URL Test 4","AAD","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/","STANDARD","2016/01/04 00:00","url4@air.com","+340000000"
+airline-35,"URL Test 5","AAE","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X","LOW_COST","2016/01/05 00:00","url5@air.com","+350000000"
+airline-36,"URL Test 6","AAF","https://www.lorem-ipsum.org","LUXURY","2016/01/06 00:00","url6@air.com","+360000000"
+airline-37,"URL Test 7","AAG","ftp://www.lorem-ipsum.org","STANDARD","2016/01/07 00:00","url7@air.com","+370000000"
+airline-38,"URL Test 8","AAH","http://www.lorem-ipsum.org/dolor/sit.html","LOW_COST","2016/01/08 00:00","url8@air.com","+380000000"
+airline-39,"URL Test 9","AAI","http://www.lorem-ipsum.org/dolor/sit.html#dolor","LUXURY","2016/01/09 00:00","url9@air.com","+390000000"
+airline-40,"URL Test 10","AAJ","http://example.org?a=1&b=2","STANDARD","2016/01/10 00:00","url10@air.com","+400000000"
+airline-41,"URL Test 11","AAK","http://example.org?","LOW_COST","2016/01/11 00:00","url11@air.com","+410000000"
+airline-42,"URL Test 12","AAL","http://example.org?a","LUXURY","2016/01/12 00:00","url12@air.com","+420000000"
+airline-43,"URL Test 13","AAM","http://example.org?a&b","STANDARD","2016/01/13 00:00","url13@air.com","+430000000"
+airline-44,"URL Test 14","AAN","http://example.org/","LOW_COST","2016/01/14 00:00","url14@air.com","+440000000"
+airline-45,"URL Test 15","AAO","http://example.org/a","LUXURY","2016/01/15 00:00","url15@air.com","+450000000"
+airline-46,"URL Test 16","AAP","http://example.org/a/b","STANDARD","2016/01/16 00:00","url16@air.com","+460000000"
+airline-47,"URL Test 17","AAQ","http://example.org/a/b?","LOW_COST","2016/01/17 00:00","url17@air.com","+470000000"
+airline-48,"URL Test 18","AAR","http://example.org/a/b?a&b","LUXURY","2016/01/18 00:00","url18@air.com","+480000000"
+airline-49,"URL Test 19","AAS","ftp://","STANDARD","2016/01/19 00:00","url19@air.com","+490000000"

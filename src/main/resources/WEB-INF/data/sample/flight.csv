@@ -1,6 +1,6 @@
 key,key:manager,tag,requiresSelfTransfer,cost,description
 # Base entity
-flight-00,manager-00,"The fastest flight",false,"EUR 100.00","Base flight example with typical values."
+flight-00,manager-00,"The fastest flight",false,"EUR 100.00","a"
 
 # requiresSelfTransfer variations
 flight-01,manager-00,"Cheap direct flight",false,"EUR 50.00","Short, direct route."
