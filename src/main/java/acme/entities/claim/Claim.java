@@ -16,6 +16,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.constraints.ValidLongText;
 import acme.entities.leg.Leg;
+import acme.entities.trackingLog.ClaimStatus;
 import acme.realms.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +50,8 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	private boolean				indicator;
+	@Valid
+	private ClaimStatus			indicator;
 
 	@Mandatory
 	@Valid
@@ -58,7 +60,7 @@ public class Claim extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@ManyToOne()
+	@ManyToOne
 	private Leg					leg;
 
 }

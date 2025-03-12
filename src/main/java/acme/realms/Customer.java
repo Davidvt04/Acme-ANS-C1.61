@@ -9,23 +9,23 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidString;
+import acme.constraints.ValidCustomer;
 import acme.constraints.ValidLongText;
-import acme.constraints.ValidShortText;
 import acme.constraints.ValidPhoneNumber;
+import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@ValidCustomer
 public class Customer extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
 	@Column(unique = true)
-	//@ValidCustomerIdentifier
 	private String				identifier;
 
 	@Mandatory

@@ -13,6 +13,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidFlightCrewMember;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidPhoneNumber;
 import acme.entities.airline.Airline;
@@ -22,6 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@ValidFlightCrewMember
 public class FlightCrewMember extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
