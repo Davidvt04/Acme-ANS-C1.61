@@ -30,7 +30,7 @@ public class ActivityLog extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private FlightAssignament	flighAssignament;
+	private FlightAssignament	flightAssignament;
 
 	@Mandatory
 	@ValidMoment(past = true)

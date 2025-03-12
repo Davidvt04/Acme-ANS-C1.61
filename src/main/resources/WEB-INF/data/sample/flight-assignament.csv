@@ -19,6 +19,6 @@ flight-assignament-10,flight-crew-member-00,leg-05,PILOT,2023/01/01 10:00, CANCE
 # remarks - standard variations
 flight-assignament-11,flight-crew-member-00,leg-06,PILOT,2023/01/01 10:00, CONFIRMED,"L"
 flight-assignament-12,flight-crew-member-00,leg-07,PILOT,2023/01/01 10:00, CONFIRMED,"Lo"
-flight-assignament-13,flight-crew-member-00,leg-08,PILOT,2023/01/01 10:00, CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
-flight-assignament-14,flight-crew-member-00,leg-09,PILOT,2023/01/01 10:00, CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*"
-flight-assignament-15,flight-crew-member-00,leg-10,PILOT,2023/01/01 10:00, CONFIRMED,
+flight-assignament-13,flight-crew-member-00,leg-06,PILOT,2023/01/01 10:00, CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor"
+flight-assignament-14,flight-crew-member-00,leg-03,PILOT,2023/01/01 10:00, CONFIRMED,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*"
+flight-assignament-15,flight-crew-member-00,leg-02,PILOT,2023/01/01 10:00, CONFIRMED,
