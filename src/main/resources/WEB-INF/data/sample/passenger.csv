@@ -1,0 +1,45 @@
+key,fullName,email,passportNumber,dateOfBirth,specialNeeds
+
+# base entity
+passenger-00,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+
+# fullName - variations
+passenger-01,L,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-02,Lo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-03,Lorem ipsum dolor sit amet consectetur adipiscing elit,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-04,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-05,โลเร็ม อิปซัม,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-06,لوريم إيبسوم,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-07,洛伦·伊普森,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-08,<marquee>Hacked</marquee>,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-09,<script>alert(‘Hacked!’);</script>,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-10,' or 'A' = 'A,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+
+# email - variations
+passenger-11,Marco Polo,a@b.es,AAAA1234,2004/02/24 06:54,Is blind
+passenger-12,Marco Polo,acme@lorem-ipsum.org,AAAA1234,2004/02/24 06:54,Is blind
+passenger-13,Marco Polo,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,AAAA1234,2004/02/24 06:54,Is blind
+passenger-14,Marco Polo,a@b.esx,AAAA1234,2004/02/24 06:54,Is blind
+
+# passportNumber - variations
+passenger-15,Marco Polo,marco@gmail.com,A1A1A11,2004/02/24 06:54,Is blind
+passenger-16,Marco Polo,marco@gmail.com,AAAAAAAAA,2004/02/24 06:54,Is blind
+passenger-17,Marco Polo,marco@gmail.com,111111111,2004/02/24 06:54,Is blind
+
+# birthDate - variations
+passenger-18,Marco Polo,marco@gmail.com,AAAA1234,2000/01/01 00:00,Is blind
+passenger-19,Marco Polo,marco@gmail.com,AAAA1234,2012/11/04 06:54,Is blind
+passenger-20,Marco Polo,marco@gmail.com,AAAA1234,2024/03/10 06:54,Is blind
+
+# specialNeeds - variations
+passenger-21,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,L
+passenger-22,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Lo
+passenger-23,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Lorem ipsum dolor sit amet consectetur adipiscing
+passenger-24,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind
+passenger-25,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,โลเร็ม อิปซัม
+passenger-26,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,لوريم إيبسوم
+passenger-27,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,洛伦·伊普森
+passenger-28,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,<marquee>Hacked</marquee>
+passenger-29,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,<script>alert(‘Hacked!’);</script>
+passenger-30,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,' or 'A' = 'A
+passenger-31,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,NULL

@@ -1,0 +1,13 @@
+key,key:userAccount,identifier,yearsOfExperience,dateOfBirth,pictureLink
+# Base entity: Aא
+manager-00,"user-account-manager-01","AFP123456",10,"2002/05/20 09:30","https://www.managerpic.com/aא.jpg"
+
+#Con Optional Link vacio
+manager-01,"user-account-manager-01","AFP111111",5,"2001/01/01 00:00",""
+
+# YearsOfExperience test data
+manager-02,"user-account-manager-01","AFP222222",120,"2004/12/31 23:59","ftp://managerpic.com/aø.png"
+manager-03,"user-account-manager-01","AFP333333",0,"2001/06/10 10:10","http://www.managerpic.com/aå"
+manager-04,"user-account-manager-01","AFP424444",78,"2001/06/10 10:10","https://www.managerpic.com/aå1.jpg"
+manager-05,"user-account-manager-01","AFP444444",1,"2002/01/01 01:01","https://www.managerpic.com/aå1.jpg"
+manager-06,"user-account-manager-01","AFP555555",119,"2010/01/02 02:02","http://www.managerpic.com/aø119"

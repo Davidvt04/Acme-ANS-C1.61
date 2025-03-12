@@ -10,6 +10,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidPhoneNumber;
 import acme.constraints.ValidShortText;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +28,7 @@ public class Technician extends AbstractRole {
 	private String				licenseNumber;
 
 	@Mandatory
-	@ValidString(min = 6, max = 15, pattern = "^\\+?\\d{6,15}$")
+	@ValidPhoneNumber
 	@Column(unique = true)
 	private String				phoneNumber;
 
