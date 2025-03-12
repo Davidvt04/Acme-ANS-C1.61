@@ -1,23 +1,23 @@
 key,key:flighAssignament,registrationMoment,typeOfIncident,description,severityLevel
 
 # base entity
-ActivityLog-00, flighAssignament-00,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
+activityLog-00,flighAssignament-00,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
 # registrationMoment - standard variations
-ActivityLog-01, flighAssignament-00,2024/12/31 23:59, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
-ActivityLog-02, flighAssignament-00,2000/01/01 00:01, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
-ActivityLog-03, flighAssignament-00,2000/01/01 00:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
+activityLog-01,flighAssignament-00,2024/12/31 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
+activityLog-02,flighAssignament-00,2000/01/01 00:01,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
+activityLog-03,flighAssignament-00,2000/01/01 00:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
 # typeOfIncident - standard variations
-ActivityLog-04, flighAssignament-01,2023/01/01 10:00, "L","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
-ActivityLog-05, flighAssignament-02,2023/01/01 10:00, "Lo","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
-ActivityLog-06, flighAssignament-03,2023/01/01 10:00, "Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
-ActivityLog-07, flighAssignament-04,2023/01/01 10:00, "Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 5
+activityLog-04,flighAssignament-01,2023/01/01 10:00,"L","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
+activityLog-05,flighAssignament-02,2023/01/01 10:00,"Lo","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
+activityLog-06,flighAssignament-03,2023/01/01 10:00,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
+activityLog-07,flighAssignament-04,2023/01/01 10:00,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5
 # description - standard variations
-ActivityLog-08, flighAssignament-05,2023/01/01 10:00, "Lorem ipsum dolor sit ame","L", 5
-ActivityLog-09, flighAssignament-01,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lo", 5
-ActivityLog-10, flighAssignament-02,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor", 5
-ActivityLog-11, flighAssignament-03,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*", 5
+activityLog-08,flighAssignament-05,2023/01/01 10:00,"Lorem ipsum dolor sit ame","L",5
+activityLog-09,flighAssignament-01,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lo",5
+activityLog-10,flighAssignament-02,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",5
+activityLog-11,flighAssignament-03,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",5
 # severityLevel - standard variations
-ActivityLog-12, flighAssignament-04,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 0
-ActivityLog-13, flighAssignament-05,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 1
-ActivityLog-14, flighAssignament-01,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 9
-ActivityLog-15, flighAssignament-02,2023/01/01 10:00, "Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*", 10
+activityLog-12,flighAssignament-04,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0
+activityLog-13,flighAssignament-05,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1
+activityLog-14,flighAssignament-01,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",9
+activityLog-15,flighAssignament-02,2023/01/01 10:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",10
