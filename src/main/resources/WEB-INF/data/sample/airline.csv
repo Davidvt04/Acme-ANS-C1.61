@@ -27,4 +27,4 @@ airline-15,"NoEmail Air","NOE","https://www.noemailair.com","LUXURY","2003/03/03
 airline-16,"Valid Email Air","EMA","https://www.validemailair.com","STANDARD","2004/04/04 04:04","contact@validemail.com","+456456456"
 # phoneNumber - standard variations
 airline-17,"Phone Air","PHN","https://www.phoneair.com","LOW_COST","2006/06/06 06:06","phone@air.com","+123456"
-airline-18,"NoPhone Air","NPH","https://www.nophoneair.com","STANDARD","2007/07/07 07:07","nophone@air.com",""
+airline-18,"NoPhone Air","NPH","https://www.nophoneair.com","STANDARD","2007/07/07 07:07","nophone@air.com","+123456"
