@@ -1,5 +1,5 @@
 
-package acme.entities.flightAssignament;
+package acme.entities.activityLog;
 
 import java.util.Date;
 
@@ -16,6 +16,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
+import acme.entities.flightAssignament.FlightAssignament;
 import lombok.Getter;
 import lombok.Setter;
 
