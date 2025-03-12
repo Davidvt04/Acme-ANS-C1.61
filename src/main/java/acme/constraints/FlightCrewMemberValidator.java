@@ -51,8 +51,8 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 			return false;
 		}
 
-		String nombre = this.transliterate(userAccount.getIdentity().getName());
-		String[] apellidos = this.transliterate(userAccount.getIdentity().getSurname()).split(" ");
+		String nombre = userAccount.getIdentity().getName();
+		String[] apellidos = userAccount.getIdentity().getSurname().split(" ");
 
 		String inicialNombre = nombre.isEmpty() ? "" : String.valueOf(nombre.charAt(0)).toUpperCase();
 		String inicial1Apellido = apellidos.length > 0 ? String.valueOf(apellidos[0].charAt(0)).toUpperCase() : "";

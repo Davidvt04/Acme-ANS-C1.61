@@ -25,12 +25,6 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			return false;
 		}
 
-		if (customer == null) {
-			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("Customer must not be null").addConstraintViolation();
-			return false;
-		}
-
 		UserAccount userAccount = customer.getUserAccount();
 		if (userAccount == null || userAccount.getIdentity() == null) {
 			context.disableDefaultConstraintViolation();
