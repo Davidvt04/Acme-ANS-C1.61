@@ -1,29 +1,51 @@
 key,name,iataCode,website,type,foundationMoment,email,phoneNumber
 # base entity
 airline-00,"Airline One","ALO","https://www.airlineone.com","STANDARD","2010/06/15 12:00","contact@airlineone.com","+123456789"
+
 # name - standard variations
 airline-01,"A","BOS","https://www.testair.com","LOW_COST","2005/03/10 08:30","test@air.com","+44123456"
 airline-02,"Airline with an exceptionally long name","ABC","https://www.longnameair.com","LUXURY","2000/11/30 16:45","long@air.com","+19876543210"
 airline-03,"<script>alert('Hacked');</script>","DEF","https://www.injectair.com","STANDARD","2000/01/01 00:00","inject@air.com","+551234567890"
+
 # iataCode - standard variations
 airline-04,"Test Air","XYZ","https://www.testair.com","STANDARD","2003/05/05 05:05","test@air.com","+1123456"
 airline-05,"Budget Air","LOW","https://www.budgetair.com","LOW_COST","2007/07/07 07:07","budget@air.com","+331234567"
 airline-06,"Alpha Air","AAA","https://www.alphaair.com","LUXURY","2012/12/12 12:12","alpha@air.com","+441234567890"
+
 # website - standard variations
 airline-07,"WebAir","WEB","http://www.webair.com","STANDARD","2000/01/01 00:00","web@air.com","+551234567"
 airline-08,"FTP Air","FTP","ftp://ftpair.com","LOW_COST","2005/05/05 05:05","ftp@air.com","+661234567890"
 airline-09,"FTP No TLD","FNT","ftp://ftpsrv","STANDARD","2005/05/05 05:05","notld@air.com","+661234567890"
-airline-019,"Alpha Eir","AAE","https://www.alphaair.esx","LUXURY","2012/12/12 12:12","alpha@eir.com","+441234567820"
+airline-19,"Alpha Eir","AAE","https://www.alphaair.esx","LUXURY","2012/12/12 12:12","alpha@eir.com","+441234567820"
+
 # type - standard variations
 airline-10,"Luxury Wings","LUX","https://www.luxurywings.com","LUXURY","2008/08/08 08:08","lux@air.com","+771234567890"
 airline-11,"Standard Flyer","STD","https://www.standardflyer.com","STANDARD","2010/10/10 10:10","std@air.com","+881234567"
 airline-12,"Low Cost Jet","LCJ","https://www.lowcostjet.com","LOW_COST","2014/04/04 04:04","low@air.com","+991234567"
+
 # foundationMoment - standard variations
 airline-13,"History Air","HIS","https://www.historyair.com","STANDARD","2000/01/01 00:00","history@air.com","+123456789"
-airline-14,"Recent Air","REC","https://www.recentair.com","LOW_COST","2024/12/31 23:53","recent@air.com","+987654321"
+airline-14,"Recent Air","REC","https://www.recentair.com","LOW_COST","2024/12/31 23:59","recent@air.com","+987654321"
+
 # email - standard variations
 airline-15,"NoEmail Air","NOE","https://www.noemailair.com","LUXURY","2003/03/03 03:03","a@email.ftp","+123123123"
 airline-16,"Valid Email Air","EMA","https://www.validemailair.com","STANDARD","2004/04/04 04:04","contact@validemail.com","+456456456"
+
 # phoneNumber - standard variations
 airline-17,"Phone Air","PHN","https://www.phoneair.com","LOW_COST","2006/06/06 06:06","phone@air.com","+123456"
-airline-18,"NoPhone Air","NPH","https://www.nophoneair.com","STANDARD","2007/07/07 07:07","nophone@air.com",""
+airline-18,"NoPhone Air","NPH","https://www.nophoneair.com","STANDARD","2007/07/07 07:07","nophone@air.com","+123456"
+
+# non-latin name / email tests
+airline-20,"โลเร็ม อิปซัม Airlines","LRM","ftp://a.b","LOW_COST","2004/03/03 03:03","lorem@โลเร็ม.org","+999999999"
+airline-21,"لوريم إيبسوم Flight","LRE","http://example.org?a=1&b=2","LUXURY","2010/03/03 03:03","لوريم@إيبسوم.org","+888888888"
+airline-22,"洛伦·伊普森","CHI","https://www.lorem-ipsum.org/dolor/sit.html#dolor","STANDARD","2011/05/05 05:05","contact@洛伦.com","+777777777"
+airline-23,"ロレム・イプサム","JPN","http://example.org?a&b","LOW_COST","2012/06/06 06:06","lorem@ロレム.jp","+666666666"
+
+# additional email variations
+airline-24,"Test Email 1","TEE","http://example.org/email1","STANDARD","2010/01/01 01:01","acme@lorem-ipsum.org","+111111111"
+airline-25,"Test Email 2","TED","http://example.org/email2","LOW_COST","2011/02/02 02:02","acmepassword@lorem-ipsum.org","+222222222"
+airline-26,"Test Email 3","TEG","http://example.org/email3","LUXURY","2012/03/03 03:03","a@b.e","+333333333"
+airline-27,"Test Email 4","TEC","http://example.org/email4","STANDARD","2013/04/04 04:04","a@b.es","+444444444"
+airline-28,"Test Email 5","TEA","http://example.org/email5","LOW_COST","2014/05/05 05:05","a@b.esx","+555555555"
+airline-29,"Test Email 6","TEP","http://example.org/email6","LUXURY","2015/06/06 06:06","lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu","+666666666"
+airline-30,"Test Email 7","TEV","http://example.org/email7","STANDARD","2016/07/07 07:07","lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org","+777777777"
