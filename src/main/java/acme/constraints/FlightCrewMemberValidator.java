@@ -1,6 +1,8 @@
 
 package acme.constraints;
 
+import java.text.Normalizer;
+
 import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.principals.UserAccount;
@@ -18,16 +20,15 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 
 	@Override
 	public boolean isValid(final FlightCrewMember flightCrewMember, final ConstraintValidatorContext context) {
+		if (flightCrewMember == null) {
+			context.disableDefaultConstraintViolation();
+			context.buildConstraintViolationWithTemplate("FlightCrewMember must not be null").addConstraintViolation();
+			return false;
+		}
 
 		if (flightCrewMember.getEmployeeCode() == null || flightCrewMember.getEmployeeCode().isBlank() || !flightCrewMember.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$")) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate("The identifier must not be null or blank and must follow the pattern").addConstraintViolation();
-			return false;
-		}
-
-		if (flightCrewMember == null) {
-			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("FlightCrewMember must not be null").addConstraintViolation();
 			return false;
 		}
 
@@ -37,6 +38,7 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 			context.buildConstraintViolationWithTemplate("User Account and Identity must not be null").addConstraintViolation();
 			return false;
 		}
+
 		if (userAccount.getIdentity().getName() == null || userAccount.getIdentity().getName().isBlank()) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate("User Name must be fullfilled").addConstraintViolation();
@@ -45,30 +47,31 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 
 		if (userAccount.getIdentity().getSurname() == null || userAccount.getIdentity().getSurname().isBlank()) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("User Name must be fullfilled").addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("User Surname must be fullfilled").addConstraintViolation();
 			return false;
 		}
 
-		String nombre = userAccount.getIdentity().getName();
-		String[] apellidos = userAccount.getIdentity().getSurname().split(" ");
-		String inicialNombre = String.valueOf(nombre.charAt(0)).toUpperCase();
-		String inicial1Apellido = String.valueOf(apellidos[0].charAt(0)).toUpperCase();
-		String inicial2Apellido = "";
-		int initialsLenght = 2;
-		if (apellidos.length > 1) {
-			inicial2Apellido = String.valueOf(apellidos[1].charAt(0)).toUpperCase();
-			initialsLenght = 3;
-		}
+		String nombre = this.transliterate(userAccount.getIdentity().getName());
+		String[] apellidos = this.transliterate(userAccount.getIdentity().getSurname()).split(" ");
+
+		String inicialNombre = nombre.isEmpty() ? "" : String.valueOf(nombre.charAt(0)).toUpperCase();
+		String inicial1Apellido = apellidos.length > 0 ? String.valueOf(apellidos[0].charAt(0)).toUpperCase() : "";
+		String inicial2Apellido = apellidos.length > 1 ? String.valueOf(apellidos[1].charAt(0)).toUpperCase() : "";
+
 		String iniciales = inicialNombre + inicial1Apellido + inicial2Apellido;
 
-		String identifierInitials = flightCrewMember.getEmployeeCode().substring(0, initialsLenght);
+		String identifierInitials = flightCrewMember.getEmployeeCode().substring(0, iniciales.length());
 
 		if (!iniciales.equals(identifierInitials)) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("Identifier must start with initials of the user: Should be " + identifierInitials + " but is " + iniciales).addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("Identifier must start with initials of the user: Should be " + iniciales + " but is " + identifierInitials).addConstraintViolation();
 			return false;
 		}
 		return true;
 	}
 
+	private String transliterate(final String input) {
+		String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+		return normalized.replaceAll("[^\\p{ASCII}]", "");
+	}
 }
