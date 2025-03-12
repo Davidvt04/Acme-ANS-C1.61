@@ -14,7 +14,6 @@ airline-07,"WebAir","WEB","http://www.webair.com","STANDARD","2000/01/01 00:00",
 airline-08,"FTP Air","FTP","ftp://ftpair.com","LOW_COST","2005/05/05 05:05","ftp@air.com","+661234567890"
 airline-09,"FTP No TLD","FNT","ftp://ftpsrv","STANDARD","2005/05/05 05:05","notld@air.com","+661234567890"
 airline-019,"Alpha Eir","AAE","https://www.alphaair.esx","LUXURY","2012/12/12 12:12","alpha@eir.com","+441234567820"
-
 # type - standard variations
 airline-10,"Luxury Wings","LUX","https://www.luxurywings.com","LUXURY","2008/08/08 08:08","lux@air.com","+771234567890"
 airline-11,"Standard Flyer","STD","https://www.standardflyer.com","STANDARD","2010/10/10 10:10","std@air.com","+881234567"
