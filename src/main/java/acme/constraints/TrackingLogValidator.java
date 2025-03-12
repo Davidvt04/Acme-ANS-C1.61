@@ -46,7 +46,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 				super.state(context, trackingLog.getResolution() != null, "Resolution", "El campo resolucion es incorrecto");
 
 			List<TrackingLog> trackingLogs;
-			trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
+			trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId()).get();
 			Integer pos = trackingLogs.indexOf(trackingLog);
 			if (trackingLogs.size() > 1 && pos < trackingLogs.size() - 1)
 				super.state(context, trackingLogs.get(pos + 1).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "ResolutionPercentage", "Error el porcentaje debe ser mayor a:" + trackingLogs.get(pos + 1).getResolutionPercentage());
