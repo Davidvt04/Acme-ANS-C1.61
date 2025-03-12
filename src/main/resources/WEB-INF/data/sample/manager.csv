@@ -1,13 +1,18 @@
 key,key:userAccount,identifier,yearsOfExperience,dateOfBirth,pictureLink
-# Base entity: Aא
-manager-00,"user-account-manager-01","AFP123456",10,"2002/05/20 09:30","https://www.managerpic.com/aא.jpg"
-
-#Con Optional Link vacio
-manager-01,"user-account-manager-01","AFP111111",5,"2001/01/01 00:00",""
-
-# YearsOfExperience test data
-manager-02,"user-account-manager-01","AFP222222",120,"2004/12/31 23:59","ftp://managerpic.com/aø.png"
-manager-03,"user-account-manager-01","AFP333333",0,"2001/06/10 10:10","http://www.managerpic.com/aå"
-manager-04,"user-account-manager-01","AFP424444",78,"2001/06/10 10:10","https://www.managerpic.com/aå1.jpg"
-manager-05,"user-account-manager-01","AFP444444",1,"2002/01/01 01:01","https://www.managerpic.com/aå1.jpg"
-manager-06,"user-account-manager-01","AFP555555",119,"2010/01/02 02:02","http://www.managerpic.com/aø119"
+manager-00,"user-account-manager-01","AFP000000",10,"2000/01/01 00:00","http://lorem.com/ipsum"
+manager-01,"user-account-manager-01","AFP000001",0,"2002/02/02 02:02","ftp://a"
+manager-02,"user-account-manager-01","AFP000002",25,"2003/03/03 03:03","ftp://a.b"
+manager-03,"user-account-manager-01","AFP000003",78,"2004/04/04 04:04","https://www.lorem-ipsum.org"
+manager-04,"user-account-manager-01","AFP000004",15,"2005/05/05 05:05","ftp://www.lorem-ipsum.org"
+manager-05,"user-account-manager-01","AFP000005",120,"2006/06/06 06:06","http://www.lorem-ipsum.org/dolor/sit.html"
+manager-06,"user-account-manager-01","AFP000006",1,"2007/07/07 07:07","http://www.lorem-ipsum.org/dolor/sit.html#dolor"
+manager-07,"user-account-manager-01","AFP000007",17,"2008/08/08 08:08","http://example.org?a=1&b=2"
+manager-08,"user-account-manager-01","AFP000008",39,"2009/09/09 09:09","http://example.org?"
+manager-09,"user-account-manager-01","AFP000009",50,"2010/10/10 10:10","http://example.org?a"
+manager-10,"user-account-manager-01","AFP000010",119,"2011/11/11 11:11","http://example.org?a&b"
+manager-11,"user-account-manager-01","AFP000011",34,"2012/12/12 12:12","http://example.org/"
+manager-12,"user-account-manager-01","AFP000012",99,"2013/03/13 13:13","http://example.org/a"
+manager-13,"user-account-manager-01","AFP000013",12,"2014/04/14 14:14","http://example.org/a/b"
+manager-14,"user-account-manager-01","AFP000014",43,"2015/05/15 15:15","http://example.org/a/b?"
+manager-15,"user-account-manager-01","AFP000015",75,"2024/12/31 23:59","http://example.org/a/b?a&b"
+manager-16,"user-account-manager-01","AFP999999",16,"2016/06/06 06:06","http://example.org?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
