@@ -4,6 +4,7 @@ package acme.forms;
 import java.util.List;
 
 import acme.client.components.basis.AbstractForm;
+import acme.client.components.datatypes.Money;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,12 +23,12 @@ public class TechnicianDashboard extends AbstractForm {
 	List<String>				statusOfMaintenanceRecordsOrderByNumber;
 	List<MaintenanceRecord>		nearestMaintenanceRecord;				// podria haber mas de un record con esa fecha
 	List<String>				topFiveAircraftsWithMoreTasks;
-	Double						averageNumberOfEstimatedCost;
-	Double						minimumNumberOfEstimatedCost;
-	Double						maximumNumberOfEstimatedCost;
-	Double						standardDeviationOfEstimatedCost;
+	Money						averageNumberOfEstimatedCost;
+	Money						minimumNumberOfEstimatedCost;
+	Money						maximumNumberOfEstimatedCost;
+	Money						standardDeviationOfEstimatedCost;
 	Double						averageNumberOfEstimatedDuration;
-	Double						minimumNumberOfEstimatedDuration;
-	Double						maximumNumberOfEstimatedDuration;
+	Integer						minimumNumberOfEstimatedDuration;
+	Integer						maximumNumberOfEstimatedDuration;
 	Double						standardDeviationOfEstimatedDuration;
 }
