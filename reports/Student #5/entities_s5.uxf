@@ -41,7 +41,7 @@ bg=green</panel_attributes>
       <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-MaintenanceRecord
+MaintenanceRecord {ValidMaintenanceRecord}
 --
 + moment: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
 + status: MaintenanceRecordStatus {Mandatory, Valid, Automapped}
