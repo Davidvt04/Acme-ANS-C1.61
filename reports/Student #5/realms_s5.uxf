@@ -13,7 +13,7 @@
 Technician
 --
 + licenseNumber: String {Mandatory, ValidString(min=8,max=9,pattern="^[A-Z]{2,3}\\d{6}$"), Column(unique=true)}
-+ phoneNumber: String {Mandatory, ValidString(min=6,max =15,pattern="^\\+?\\d{6,15}$"), Column(unique=true)}
++ phoneNumber: String {Mandatory, ValidPhoneNumber, Column(unique=true)}
 + specialisation: String {Mandatory, ValidShortText, Automapped}
 + passedAnnualHealthTest: boolean {Mandatory, Valid, Automapped}
 + experienceYears: Integer {Mandatory, ValidNumber(min=0,max=120), Automapped}

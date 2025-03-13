@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>60</x>
-      <y>370</y>
+      <x>10</x>
+      <y>360</y>
       <w>140</w>
       <h>50</h>
     </coordinates>
@@ -17,8 +17,8 @@ bg=pink</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>570</y>
+      <x>350</x>
+      <y>560</y>
       <w>590</w>
       <h>120</h>
     </coordinates>
@@ -35,8 +35,8 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
-      <y>90</y>
+      <x>330</x>
+      <y>80</y>
       <w>590</w>
       <h>140</h>
     </coordinates>
@@ -54,8 +54,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>100</x>
-      <y>150</y>
+      <x>50</x>
+      <y>140</y>
       <w>300</w>
       <h>240</h>
     </coordinates>
@@ -68,8 +68,8 @@ lt=&lt;-x</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>90</x>
-      <y>410</y>
+      <x>40</x>
+      <y>400</y>
       <w>330</w>
       <h>270</h>
     </coordinates>
@@ -82,8 +82,8 @@ lt=&lt;-x</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>540</x>
-      <y>380</y>
+      <x>490</x>
+      <y>370</y>
       <w>240</w>
       <h>60</h>
     </coordinates>
@@ -96,8 +96,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>220</y>
+      <x>600</x>
+      <y>210</y>
       <w>110</w>
       <h>180</h>
     </coordinates>
@@ -110,8 +110,8 @@ lt=&lt;-x</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>650</x>
-      <y>430</y>
+      <x>600</x>
+      <y>420</y>
       <w>100</w>
       <h>160</h>
     </coordinates>
@@ -124,8 +124,8 @@ lt=&lt;-x</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1160</x>
-      <y>140</y>
+      <x>1110</x>
+      <y>130</y>
       <w>240</w>
       <h>50</h>
     </coordinates>
@@ -138,8 +138,8 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>140</y>
+      <x>910</x>
+      <y>130</y>
       <w>220</w>
       <h>50</h>
     </coordinates>
