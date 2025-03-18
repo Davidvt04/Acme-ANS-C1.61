@@ -1,8 +1,6 @@
 
 package acme.constraints;
 
-import java.text.Normalizer;
-
 import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.principals.UserAccount;
@@ -69,9 +67,10 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 		}
 		return true;
 	}
-
-	private String transliterate(final String input) {
-		String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
-		return normalized.replaceAll("[^\\p{ASCII}]", "");
-	}
+	/*
+	 * private String transliterate(final String input) {
+	 * String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+	 * return normalized.replaceAll("[^\\p{ASCII}]", "");
+	 * }
+	 */
 }

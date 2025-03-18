@@ -22,14 +22,21 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<artifactId>Acme-ANS</artifactId>
-	<version>D02</version> 
+	<version>D03</version> 
 	<packaging>war</packaging>
 	
 	<parent>
 		<groupId>Acme</groupId>
 		<artifactId>pom</artifactId>
-		<version>25.2.0</version>
-		<relativePath>../../pom-25.2.0.xml</relativePath>
+		<version>25.3.0</version>
+		<relativePath>../../pom-25.3.0.xml</relativePath>
 	</parent>
 	
+	<dependencies>
+		<dependency>
+			<groupId>Acme</groupId>
+			<artifactId>Acme-Framework</artifactId>
+			<version>25.3.0</version>
+		</dependency>
+	</dependencies>
 </project>
