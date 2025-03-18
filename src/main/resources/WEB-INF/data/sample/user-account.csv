@@ -8,17 +8,17 @@ user-account-provider-01,true,"UserIdentity{name: 'Laurel', surname: 'Provider',
 user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза თხა', email: 'martina@acme.com'}",provider2,provider2
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
 user-account-manager-01,true,"UserIdentity{name: 'Antonio', surname: 'Fernandez Perez', email: 'antonio@acme.com'}",manager1,manager1
-user-account-manager-02,true,"UserIdentity{name: 'Josefo', surname: 'Oppo Lele', email: 'lol@acme.esx'}",manager2,manager2
-user-account-manager-03,true,"UserIdentity{name: '之乎路可良', surname: 'Λορεμ貸 んい建濯よ芝弾テソ', email: 'a@pochoclo.arg'}",manager4,manager4
+user-account-manager-02,true,"UserIdentity{name: 'Alejandro', surname: 'Fergo Pololo', email: 'lol@acme.esx'}",manager2,manager2
+user-account-manager-03,true,"UserIdentity{name: 'Alfonso', surname: 'Ferrero Pengoa', email: 'a@pochoclo.arg'}",manager4,manager4
 user-account-customer-01,true,"UserIdentity{name: 'David', surname: 'Alioli', email: 'davali@acme.com'}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: 'Jason', surname: 'Momoa', email: 'jason@acme.com'}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: 'Manolo', surname: 'Ornitorrinco', email: 'manolo@acme.com'}",customer3,customer3
 user-account-assistanceAgent-01,true,"UserIdentity{name: 'Maria', surname: 'Marquez', email: 'maria@acme.com'}",agent1,agent1
 user-account-assistanceAgent-02,true,"UserIdentity{name: 'Manuel', surname: 'Maria', email: 'manuel@acme.com'}",agent2,agent2
 user-account-assistanceAgent-03,true,"UserIdentity{name: 'Marco', surname: 'Parra', email: 'marco@acme.com'}",manager3,manager3
-user-account-technician-01,true,"UserIdentity{name: 'Técnico', surname: 'Técniquez', email: 'tecnico@acme.com'}",technician1,technician1
+user-account-technician-01,true,"UserIdentity{name: 'Tecnico', surname: 'Tecniquez', email: 'tecnico@acme.com'}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: 'Pepe', surname: 'Proton', email: 'proton@acme.com'}",technician2,technician2
-user-account-technician-03,true,"UserIdentity{name: 'коза', surname: '之乎路', email: 'chingchong@acme.com'}",technician3,technician3
+user-account-technician-03,true,"UserIdentity{name: 'Chino', surname: 'Chinaceo', email: 'chingchong@acme.com'}",technician3,technician3
 user-account-flight-crew-member-01,true,"UserIdentity{name: 'Ivo', surname: 'Ivolandia', email: 'ivanovich@acme.com'}",member1,member1 # II
 user-account-flight-crew-member-02,true,"UserIdentity{name: 'Laura', surname: 'Xilofomo', email: 'xiaolong@acme.com'}",member2,member2         # LX
 user-account-flight-crew-member-03,true,"UserIdentity{name: 'Alberto', surname: 'Andador', email: 'ahmed@acme.com'}",member3,member3      # AA

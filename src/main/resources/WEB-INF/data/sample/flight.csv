@@ -1,29 +1,29 @@
 key,key:manager,tag,requiresSelfTransfer,cost,description
 # Base entity
-flight-00,manager-00,"The fastest flight",false,"EUR 100.00","a"
+flight-00,manager-01,"The fastest flight",false,"EUR 100.00","a"
 
 # requiresSelfTransfer variations
-flight-01,manager-00,"Cheap direct flight",false,"EUR 50.00","Short, direct route."
+flight-01,manager-01,"Cheap direct flight",false,"EUR 50.00","Short, direct route."
 flight-02,manager-01,"Self-transfer flight",true,"USD 120.00","You must handle baggage transfer yourself."
 
 # cost standard variations
-flight-03,manager-02,"Zero cost flight",true,"EUR 0.00","Promotional flight with no cost."
-flight-04,manager-03,"High cost flight",false,"EUR 999999.99","Luxury experience—near the maximum price."
+flight-03,manager-01,"Zero cost flight",true,"EUR 0.00","Promotional flight with no cost."
+flight-04,manager-02,"High cost flight",false,"EUR 999999.99","Luxury experience—near the maximum price."
 
 # description standard variations
-flight-05,manager-04,"The cheapest flight",false,"GBP 10.00",""
-flight-06,manager-05,"Short desc flight",true,"EUR 200.00","Brief description!"
+flight-05,manager-01,"The cheapest flight",false,"GBP 10.00",""
+flight-06,manager-01,"Short desc flight",true,"EUR 200.00","Brief description!"
 
 # tag near max length (50 chars)
-flight-07,manager-05,"Longest flight tag, up to exactly 50 chars check!!",false,"EUR 500.50","Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+flight-07,manager-01,"Longest flight tag, up to exactly 50 chars check!!",false,"EUR 500.50","Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 
 # additional cost tests
-flight-08,manager-00,"Min positive cost flight",false,"EUR 0.01","Minimum positive cost"
+flight-08,manager-01,"Min positive cost flight",false,"EUR 0.01","Minimum positive cost"
 flight-09,manager-01,"Half million flight",true,"EUR 500000.00","Cost is half million"
-flight-10,manager-02,"Max cost flight",false,"EUR 1000000.00","Top limit cost allowed"
+flight-10,manager-01,"Max cost flight",false,"EUR 1000000.00","Top limit cost allowed"
 
 # 255-chars description, includes some non-latin (Дата, Тест)
-flight-11,manager-04,"Non-latin 255 desc",true,"EUR 123.45","LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL Дата Тест LoremipsumXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+flight-11,manager-01,"Non-latin 255 desc",true,"EUR 123.45","LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL Дата Тест LoremipsumXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXLLLLLLLLLLLLLLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 # short tag with non-latin
-flight-12,manager-05,"โลเร็ม Flights",false,"EUR 800000.00","A flight with non-latin tag."
+flight-12,manager-01,"โลเร็ม Flights",false,"EUR 800000.00","A flight with non-latin tag."
