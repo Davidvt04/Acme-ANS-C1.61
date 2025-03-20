@@ -20,7 +20,7 @@ import acme.constraints.ValidLongText;
 import acme.entities.leg.Leg;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
-import acme.entities.trackingLog.TrackingLogRepository;
+import acme.features.authenticated.trackingLog.TrackingLogRepository;
 import acme.realms.AssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;

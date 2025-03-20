@@ -1,32 +1,27 @@
-key,key:customer,locatorCode,purchaseMoment,travelClass,price,lastNibble
+key,key:customer,locatorCode,purchaseMoment,travelClass,lastNibble,key:flight
 
 # base entity
-booking-00,customer-01,AAA000,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
+booking-00,customer-01,AAA000,2024/03/06 10:00,ECONOMY,1111,flight-00
 
 # locatorCode - variations
-booking-01,customer-01,WE34A1,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
-booking-02,customer-02,021AOC,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
-booking-03,customer-02,01234567,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
-booking-04,customer-02,AAAAAAAA,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
-booking-05,customer-01,11AA2D,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
+booking-01,customer-01,WE34A1,2024/03/06 10:00,ECONOMY,1111,flight-00
+booking-02,customer-02,021AOC,2024/03/06 10:00,ECONOMY,1111,flight-00
+booking-03,customer-02,01234567,2024/03/06 10:00,ECONOMY,1111,flight-00
+booking-04,customer-02,AAAAAAAA,2024/03/06 10:00,ECONOMY,1111,flight-00
+booking-05,customer-01,11AA2D,2024/03/06 10:00,ECONOMY,1111,flight-00
 
 # purchaseMoment - variations
-booking-06,customer-01,AAA001,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
-booking-07,customer-02,AAA002,2000/01/01 00:00,ECONOMY,EUR 40.00,1111
-booking-08,customer-02,AAA003,2012/12/12 10:00,ECONOMY,EUR 40.00,1111
+booking-06,customer-01,AAA001,2024/03/06 10:00,ECONOMY,1111,flight-00
+booking-07,customer-02,AAA002,2000/01/01 00:00,ECONOMY,1111,flight-00
+booking-08,customer-02,AAA003,2012/12/12 10:00,ECONOMY,1111,flight-00
 
 
 # travelClass - variations
-booking-09,customer-02,AAA004,2024/03/06 10:00,ECONOMY,EUR 40.00,1111
-booking-10,customer-01,AAA005,2024/03/06 10:00,BUSINESS,EUR 40.00,1111
+booking-09,customer-02,AAA004,2024/03/06 10:00,ECONOMY,1111,flight-00
+booking-10,customer-01,AAA005,2024/03/06 10:00,BUSINESS,1111,flight-00
 
-# price - variations
-booking-11,customer-02,AAA006,2024/03/06 10:00,ECONOMY,EUR 0.00,1111
-booking-12,customer-01,AAA007,2024/03/06 10:00,ECONOMY,EUR 0.01,1111
-booking-13,customer-01,AAA008,2024/03/06 10:00,ECONOMY,EUR 999999.99,1111
-booking-14,customer-01,AAA009,2024/03/06 10:00,ECONOMY,EUR 1000000.00,1111
 
 # lastNibble - variations
-booking-15,customer-01,AAA010,2024/03/06 10:00,ECONOMY,EUR 40.00,
-booking-16,customer-02,AAA011,2024/03/06 10:00,ECONOMY,EUR 40.00,0000
-booking-17,customer-01,AAA012,2024/03/06 10:00,ECONOMY,EUR 40.00,1234
+booking-11,customer-01,AAA010,2024/03/06 10:00,ECONOMY,,flight-00
+booking-12,customer-02,AAA011,2024/03/06 10:00,ECONOMY,0000,flight-00
+booking-13,customer-01,AAA012,2024/03/06 10:00,ECONOMY,1234,flight-00
