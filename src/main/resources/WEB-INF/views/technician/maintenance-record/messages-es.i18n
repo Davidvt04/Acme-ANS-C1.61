@@ -1,0 +1,19 @@
+
+technician.maintenance-record.list.title = Registros de mantenimiento
+technician.maintenance-record.form.title = Formulario de registro de mantenimiento
+
+technician.maintenance-record.list.label.moment = Momento
+technician.maintenance-record.list.label.status = Estado
+technician.maintenance-record.list.label.next-inspection = Siguiente inspección
+technician.maintenance-record.list.label.aircraft = Avión
+
+technician.maintenance-record.form.label.moment = Momento
+technician.maintenance-record.form.label.status = Estado
+technician.maintenance-record.form.label.next-inspection = Siguiente inspección
+technician.maintenance-record.form.label.aircraft = Avión
+technician.maintenance-record.form.label.estimated-cost = Coste estimado
+technician.maintenance-record.form.label.notes = Notas
+technician.maintenance-record.form.button.tasks = Tareas
+technician.maintenance-record.form.button.update = Actualizar
+technician.maintenance-record.form.button.delete = Borrar
+technician.maintenance-record.form.button.publish = Publicar
