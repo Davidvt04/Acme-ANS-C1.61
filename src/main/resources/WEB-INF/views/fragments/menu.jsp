@@ -17,7 +17,6 @@
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.airline.list" action="/administrator/airline/list"/>
-			<acme:menu-suboption code="master.menu.airline.create" action="/administrator/airline/create"/>
 			<acme:menu-separator/>
 			
 		</acme:menu-option>

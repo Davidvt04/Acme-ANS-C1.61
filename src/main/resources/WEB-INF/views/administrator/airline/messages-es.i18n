@@ -28,3 +28,10 @@ button.create.airline= Crear
 
 administrator.airline.form.button.create = Registrar
 administrator.airline.form.button.update = Actualizar
+
+
+administrator.airline.form.error.invalidPhoneNumber = El número de teléfono no es válido.
+
+administrator.airline.form.error.duplicateIata = IATA ya existe
+
+administrator.airline.form.label.confirmation = Confirmar

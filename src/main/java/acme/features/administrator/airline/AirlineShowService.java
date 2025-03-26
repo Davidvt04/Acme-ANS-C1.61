@@ -27,7 +27,7 @@ public class AirlineShowService extends AbstractGuiService<Administrator, Airlin
 	public void load() {
 		Airline airline;
 		int id = super.getRequest().getData("id", int.class);
-		airline = (Airline) this.airlineRepository.findById(id).get();
+		airline = this.airlineRepository.findById(id);
 		super.getBuffer().addData(airline);
 	}
 
@@ -39,7 +39,6 @@ public class AirlineShowService extends AbstractGuiService<Administrator, Airlin
 
 		dataset.put("type", airline.getType());
 		dataset.put("airlineTypes", choices);
-		dataset.put("readonly", true);
 
 		super.getResponse().addData(dataset);
 	}

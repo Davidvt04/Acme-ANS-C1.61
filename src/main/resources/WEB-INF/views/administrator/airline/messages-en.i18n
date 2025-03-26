@@ -31,3 +31,8 @@ button.create.airline= Create
 
 administrator.airline.form.button.create = Register
 administrator.airline.form.button.update = Update
+
+
+administrator.airline.form.error.duplicateIata = IATA already exists
+administrator.airline.form.error.invalidPhoneNumber = Not a valid phone number
+administrator.airline.form.label.confirmation = Confirm

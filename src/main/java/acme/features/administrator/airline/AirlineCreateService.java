@@ -45,6 +45,10 @@ public class AirlineCreateService extends AbstractGuiService<Administrator, Airl
 
 	@Override
 	public void validate(final Airline airline) {
+		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		Airline existing = this.airlineRepository.findByIataCode(airline.getIataCode());
+		super.state(existing == null, "iataCode", "administrator.airline.form.error.duplicateIata");
 	}
 
 	@Override
