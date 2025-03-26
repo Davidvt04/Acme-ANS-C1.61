@@ -1,21 +1,3 @@
-<%--
-- menu.jsp
--
-- Copyright (C) 2012-2025 Rafael Corchuelo.
--
-- In keeping with the traditional purpose of furthering education and research, it is
-- the policy of the copyright owner to permit non-commercial use and redistribution of
-- this software. It has been tested carefully, but it is not guaranteed for any particular
-- purposes.  The copyright owner does not offer any warranties or representations, nor do
-- they accept any liabilities with respect to them.
---%>
-
-<%@page%>
-
-<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@taglib prefix="acme" uri="http://acme-framework.org/"%>
-
 <acme:menu-bar>
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
@@ -24,7 +6,6 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.maria" action="https://archivoniebla.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.eloy" action="https://www.diariodesevilla.es/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.ivan" action="https://puginarug.com/"/>
-			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
@@ -34,6 +15,11 @@
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.airline.list" action="/administrator/airline/list"/>
+			<acme:menu-suboption code="master.menu.airline.create" action="/administrator/airline/create"/>
+			<acme:menu-separator/>
+			
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider" access="hasRealm('Provider')">
@@ -43,6 +29,8 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
+	
+
 	</acme:menu-left>
 
 	<acme:menu-right>		
@@ -55,4 +43,3 @@
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
-
