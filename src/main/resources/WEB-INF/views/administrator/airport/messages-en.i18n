@@ -28,6 +28,8 @@ administrator.airport.list.label.website=Website
 administrator.airport.list.label.email=Email Address
 administrator.airport.list.label.phoneNumber=Phone Number
 
+administrator.airline.form.error.duplicateIata = That IATA code is already in use
+
 
 
 
