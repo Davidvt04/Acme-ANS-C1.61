@@ -1,8 +1,7 @@
 
-package acme.features.authenticated.airport;
+package acme.features.administrator.airport;
 
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,30 +12,33 @@ import acme.client.services.GuiService;
 import acme.entities.airport.Airport;
 
 @GuiService
-public class AirportListService extends AbstractGuiService<Administrator, Airport> {
+public class AdministratorAirportListService extends AbstractGuiService<Administrator, Airport> {
 
 	@Autowired
-	private AirportRepository airportRepository;
+	private AdministratorAirportRepository repository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Collection<Airport> airports;
-		airports = this.airportRepository.findAll().stream().map(e -> (Airport) e).collect(Collectors.toList());
+		airports = this.repository.getAllAirports();
 		super.getBuffer().addData(airports);
 	}
 
 	@Override
 	public void unbind(final Airport airport) {
+		assert airport != null;
+
 		Dataset dataset;
 
 		dataset = super.unbindObject(airport, "name", "iataCode", "city", "country");
-		super.addPayload(dataset, airport, "operationalScope", "website", "email", "phoneNumber");
 
 		super.getResponse().addData(dataset);
 	}
