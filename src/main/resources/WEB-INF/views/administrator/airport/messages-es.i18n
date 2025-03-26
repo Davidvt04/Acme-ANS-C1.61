@@ -28,3 +28,5 @@ administrator.airport.list.label.operationalScope = Alcance operacional
 administrator.airport.list.label.website = Sitio web  
 administrator.airport.list.label.email = Dirección de correo electrónico  
 administrator.airport.list.label.phoneNumber = Número de teléfono  
+
+administrator.airline.form.error.duplicateIata = Ese código IATA ya está en uso
