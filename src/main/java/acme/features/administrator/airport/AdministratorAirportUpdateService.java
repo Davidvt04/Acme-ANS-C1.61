@@ -42,9 +42,9 @@ public class AdministratorAirportUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void validate(final Airport airport) {
-
 		Airport existing = this.repository.findByIataCode(airport.getIataCode());
-		super.state(existing == null, "iataCode", "administrator.airline.form.error.duplicateIata");
+		boolean valid = existing == null || existing.getId() == airport.getId();
+		super.state(valid, "iataCode", "administrator.airline.form.error.duplicateIata");
 
 		boolean confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
