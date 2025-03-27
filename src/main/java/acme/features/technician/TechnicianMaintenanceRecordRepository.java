@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 
 @Repository
@@ -17,4 +18,7 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 
 	@Query("select m from MaintenanceRecord m where m.id = :id")
 	MaintenanceRecord findMaintenanceRecordById(int id);
+
+	@Query("select a from Aircraft a where a.registrationNumber = :aircraftRegistrationNumber")
+	Aircraft findAircraftByRegistrationNumber(String aircraftRegistrationNumber);
 }
