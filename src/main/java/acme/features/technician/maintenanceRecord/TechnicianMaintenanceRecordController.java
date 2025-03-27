@@ -10,7 +10,7 @@ import acme.client.services.GuiService;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.realms.Technician;
 
-@GuiService
+@GuiController
 public class TechnicianMaintenanceRecordController extends AbstractGuiController<Technician, MaintenanceRecord> {
 
 	@Autowired
