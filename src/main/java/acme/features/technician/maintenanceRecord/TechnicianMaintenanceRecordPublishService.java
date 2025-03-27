@@ -1,5 +1,5 @@
 
-package acme.features.technician;
+package acme.features.technician.maintenanceRecord;
 
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
