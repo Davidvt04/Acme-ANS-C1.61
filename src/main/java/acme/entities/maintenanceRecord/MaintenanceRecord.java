@@ -39,7 +39,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Mandatory
 	@Valid
 	@Automapped
-	private MaintenaceRecordStatus	status;
+	private MaintenanceRecordStatus	status;
 
 	@Mandatory
 	@ValidMoment
@@ -55,6 +55,10 @@ public class MaintenanceRecord extends AbstractEntity {
 	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String					notes;
+
+	@Mandatory
+	@Automapped
+	private boolean					draftMode;
 
 	@Mandatory
 	@Valid
