@@ -1,5 +1,5 @@
 
-package acme.features.technician;
+package acme.features.technician.maintenanceRecord;
 
 import javax.annotation.PostConstruct;
 
@@ -14,16 +14,16 @@ import acme.realms.Technician;
 public class TechnicianMaintenanceRecordController extends AbstractGuiController<Technician, MaintenanceRecord> {
 
 	@Autowired
-	TechnicianMaintenanceRecordListService		listService;
+	private TechnicianMaintenanceRecordListService		listService;
 
 	@Autowired
-	TechnicianMaintenanceRecordShowService		showService;
+	private TechnicianMaintenanceRecordShowService		showService;
 
 	@Autowired
-	TechnicianMaintenanceRecordUpdateService	updateService;
+	private TechnicianMaintenanceRecordUpdateService	updateService;
 
 	@Autowired
-	TechnicianMaintenanceRecordCreateService	createService;
+	private TechnicianMaintenanceRecordCreateService	createService;
 
 
 	@PostConstruct
