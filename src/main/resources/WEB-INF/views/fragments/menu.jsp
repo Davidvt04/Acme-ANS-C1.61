@@ -31,6 +31,9 @@
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.list-aircrafts" action="/administrator/aircraft/list"/>
+			<acme:menu-suboption code="master.menu.administrator.list-airports" action="/administrator/airport/list"/>
+			<acme:menu-separator/>
+
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
@@ -43,6 +46,10 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+			<acme:menu-suboption code="master.menu.technician.maintenance-records" action="/technician/maintenance-record/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

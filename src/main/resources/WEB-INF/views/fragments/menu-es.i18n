@@ -21,6 +21,7 @@ master.menu.anonymous.favourite-link.ivan = 77015962W: Fernandez Limarquez, Ivan
 
 master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
+master.menu.administrator.list-airports = Listar aeropuertos
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-system-down = Parar el sistema
@@ -35,6 +36,11 @@ master.menu.provider.favourite-link = Enlace favorito
 
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.technician ##########################################################
+
+master.menu.technician = Técnico
+master.menu.technician.maintenance-records = Listar registros de mantenimiento
 
 # master.menu.user-account ####################################################
 
