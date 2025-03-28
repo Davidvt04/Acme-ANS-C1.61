@@ -1,17 +1,17 @@
 
-package acme.features.authenticated.aircraft;
+package acme.features.administrator.aircraft;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
+import acme.entities.aircraft.AircraftStatus;
 
 @GuiService
-public class AircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
+public class AircraftDisableService extends AbstractGuiService<Administrator, Aircraft> {
 
 	@Autowired
 	private AircraftRepository repository;
@@ -24,10 +24,14 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void load() {
-		Aircraft aircraft = new Aircraft();
+		Aircraft aircraft;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		aircraft = (Aircraft) this.repository.findById(id).get();
+		aircraft.setStatus(AircraftStatus.MAINTENANCE);
 
 		super.getBuffer().addData(aircraft);
-
 	}
 
 	@Override
@@ -42,7 +46,6 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void perform(final Aircraft aircraft) {
-
 		this.repository.save(aircraft);
 	}
 
@@ -54,11 +57,4 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 		super.getResponse().addData(dataset);
 	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
-	}
-
 }

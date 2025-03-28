@@ -1,5 +1,7 @@
 
-package acme.features.authenticated.aircraft;
+package acme.features.administrator.aircraft;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +12,7 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 
 @GuiService
-public class AircraftShowService extends AbstractGuiService<Administrator, Aircraft> {
+public class AircraftListService extends AbstractGuiService<Administrator, Aircraft> {
 
 	@Autowired
 	private AircraftRepository repository;
@@ -22,18 +24,18 @@ public class AircraftShowService extends AbstractGuiService<Administrator, Aircr
 	}
 	@Override
 	public void load() {
-		Aircraft aircraft;
-		int id = super.getRequest().getData("id", int.class);
-		aircraft = (Aircraft) this.repository.findById(id).get();
-		super.getBuffer().addData(aircraft);
+		Collection<Aircraft> aircrafts;
+		aircrafts = this.repository.findAllAircrafts();
+		super.getBuffer().addData(aircrafts);
 	}
 
 	@Override
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
-
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "status", "cargoWeight", "details", "airline");
+		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "status");
+		//super.addPayload(dataset, aircraft, "cargoWeight", "details");
 
 		super.getResponse().addData(dataset);
 	}
+
 }
