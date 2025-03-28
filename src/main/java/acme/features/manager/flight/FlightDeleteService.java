@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.manager.flight;
+package acme.features.manager.flight;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

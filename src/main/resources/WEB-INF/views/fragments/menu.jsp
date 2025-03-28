@@ -30,8 +30,8 @@
 		</acme:menu-option>
 		
 	 <acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
-		<acme:menu-suboption code="master.menu.manager.flight.list" action="/authenticated/manager/flight/list"/>
-         <acme:menu-suboption code="master.menu.manager.leg.list" action="/authenticated/manager/leg/list"/>
+		<acme:menu-suboption code="master.menu.manager.flight.list" action="/manager/flight/list"/>
+         <acme:menu-suboption code="master.menu.manager.leg.list" action="/manager/leg/list"/>
     </acme:menu-option>
     
 

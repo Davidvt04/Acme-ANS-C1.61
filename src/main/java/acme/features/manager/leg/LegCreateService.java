@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.manager.leg;
+package acme.features.manager.leg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,7 +21,7 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	// Assumes a FlightRepository exists for manager flight operations.
 	@Autowired
-	private acme.features.authenticated.manager.flight.FlightRepository	flightRepository;
+	private acme.features.manager.flight.FlightRepository	flightRepository;
 
 
 	@Override

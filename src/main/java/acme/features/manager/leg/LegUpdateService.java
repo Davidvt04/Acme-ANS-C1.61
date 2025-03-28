@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.manager.leg;
+package acme.features.manager.leg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
