@@ -28,10 +28,18 @@
 		<acme:menu-option code="master.menu.consumer" access="hasRealm('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
-	
+		
+	 <acme:menu-option code="master.menu.manager" access="hasRealm('Manager')">
+		<acme:menu-suboption code="master.menu.manager.flight.list" action="/authenticated/manager/flight/list"/>
+         <acme:menu-suboption code="master.menu.manager.leg.list" action="/authenticated/manager/leg/list"/>
+    </acme:menu-option>
+    
 
 	</acme:menu-left>
 
+
+   
+    
 	<acme:menu-right>		
 		<acme:menu-option code="master.menu.user-account" access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.user-account.general-profile" action="/authenticated/user-account/update"/>

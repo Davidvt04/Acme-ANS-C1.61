@@ -13,7 +13,6 @@
 	   <acme:list-column path="website" code="administrator.airline.list.label.website" />
 	   <acme:list-column path="type" code="administrator.airline.list.label.type" />
 	   <acme:list-column path="foundationMoment" code="administrator.airline.list.label.foundationMoment"/>
-
     </acme:list>
     <acme:button code="button.create.airline" action="/administrator/airline/create" />
     

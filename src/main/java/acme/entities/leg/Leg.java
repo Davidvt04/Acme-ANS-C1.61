@@ -32,6 +32,9 @@ import lombok.Setter;
 public class Leg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	@Mandatory
 	@Column(unique = true)

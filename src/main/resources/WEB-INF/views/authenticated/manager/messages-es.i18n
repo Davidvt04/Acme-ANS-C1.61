@@ -1,0 +1,35 @@
+# messages-es.i18n
+#
+# Mensajes de vuelos para el ámbito de Manager
+
+authenticated.manager.flight.form.title = Formulario de Vuelo
+
+authenticated.manager.flight.form.label.tag = Etiqueta
+authenticated.manager.flight.form.label.requiresSelfTransfer = ¿Requiere autotransferencia?
+authenticated.manager.flight.form.label.cost = Costo
+authenticated.manager.flight.form.label.description = Descripción
+authenticated.manager.flight.form.label.scheduledDeparture = Salida programada
+authenticated.manager.flight.form.label.scheduledArrival = Llegada programada
+authenticated.manager.flight.form.label.draftMode = Modo borrador
+authenticated.manager.flight.form.label.confirmation = Confirmar
+
+authenticated.manager.flight.list.label.tag = Etiqueta
+authenticated.manager.flight.list.label.requiresSelfTransfer = ¿Autotransferencia?
+authenticated.manager.flight.list.label.cost = Costo
+authenticated.manager.flight.list.label.description = Descripción
+authenticated.manager.flight.list.label.scheduledDeparture = Salida
+authenticated.manager.flight.list.label.scheduledArrival = Llegada
+authenticated.manager.flight.list.label.draftMode = Borrador
+
+authenticated.manager.flight.list.title = Listado de Vuelos del Gestor
+master.menu.flight.list = Listar Vuelos
+master.menu.flight.create = Crear Vuelo
+master.menu.flight = Vuelos
+
+button.create.flight = Crear
+
+authenticated.manager.flight.form.button.create = Registrar
+authenticated.manager.flight.form.button.update = Actualizar
+
+authenticated.manager.flight.form.error.duplicateTag = La etiqueta ya existe
+authenticated.manager.flight.form.error.invalidCost = Costo no válido
