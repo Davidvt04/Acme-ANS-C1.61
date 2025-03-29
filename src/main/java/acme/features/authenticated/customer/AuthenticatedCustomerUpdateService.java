@@ -1,5 +1,5 @@
 /*
- * AuthenticatedCustomerCreateService.java
+ * AuthenticatedCustomerUpdateService.java
  *
  * Copyright (C) 2012-2025 Rafael Corchuelo.
  *
@@ -10,78 +10,77 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.authenticated.consumer;
+package acme.features.authenticated.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Authenticated;
-import acme.client.components.principals.UserAccount;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.realms.Consumer;
+import acme.realms.Customer;
 
 @GuiService
-public class AuthenticatedConsumerCreateService extends AbstractGuiService<Authenticated, Consumer> {
+public class AuthenticatedCustomerUpdateService extends AbstractGuiService<Authenticated, Customer> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedConsumerRepository repository;
+	private AuthenticatedCustomerRepository repository;
 
-	// AbstractService<Authenticated, Consumer> ---------------------------
+	// AbstractService interface ----------------------------------------------ç
 
 
 	@Override
 	public void authorise() {
 		boolean status;
 
-		status = !super.getRequest().getPrincipal().hasRealmOfType(Consumer.class);
+		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Consumer object;
+		Customer object;
 		int userAccountId;
-		UserAccount userAccount;
 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		userAccount = this.repository.findUserAccountById(userAccountId);
-
-		object = new Consumer();
-		object.setUserAccount(userAccount);
+		object = this.repository.findCustomerByUserAccountId(userAccountId);
 
 		super.getBuffer().addData(object);
 	}
 
 	@Override
-	public void bind(final Consumer object) {
+	public void bind(final Customer object) {
 		assert object != null;
 
-		super.bindObject(object, "company", "sector");
+		super.bindObject(object, "identifier", "phoneNumber", "address", "city", "country", "earnedPoints");
 	}
 
 	@Override
-	public void validate(final Consumer object) {
+	public void validate(final Customer object) {
 		assert object != null;
+		Customer existing = this.repository.findCustomerByIdentifier(object.getIdentifier());
+		boolean valid = existing == null || existing.getId() == object.getId();
+		super.state(valid, "identifier", "authenticated.customer.form.error.duplicateIdentifier");
 	}
 
 	@Override
-	public void perform(final Consumer object) {
+	public void perform(final Customer object) {
 		assert object != null;
 
 		this.repository.save(object);
 	}
 
 	@Override
-	public void unbind(final Consumer object) {
+	public void unbind(final Customer object) {
+		assert object != null;
+
 		Dataset dataset;
 
-		dataset = super.unbindObject(object, "company", "sector");
-
+		dataset = super.unbindObject(object, "identifier", "phoneNumber", "address", "city", "country", "earnedPoints");
 		super.getResponse().addData(dataset);
 	}
 
