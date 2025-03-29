@@ -37,10 +37,17 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+
+# master.menu.customer ##########################################################
+master.menu.customer = Customer
+master.menu.customer.list-bookings = List bookings
+master.menu.customer.list-passengers = List passengers
+
 # master.menu.technician ##########################################################
 
 master.menu.technician = Technician
 master.menu.technician.maintenance-records = List maintenance records
+
 
 # master.menu.user-account ####################################################
 

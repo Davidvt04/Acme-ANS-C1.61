@@ -1,0 +1,18 @@
+# defaults-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+customer.booking-record.form.title = Añadir nuevo pasajero a la reserva
+
+
+customer.bookingRecord.form.button.create = Añadir a la reserva
+customer.passenger.form.link.create = Crear nuevo pasajero
+
+customer.bookingRecord.list.label.passenger = Pasajero
+customer.bookingRecord.list.label.booking = Reserva
