@@ -8,19 +8,12 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotBlank;
 
-import org.hibernate.validator.constraints.Length;
-
-@Target(ElementType.FIELD)
+@Target({
+	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
+})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {})
-@ReportAsSingleViolation
-
-@NotBlank
-@Length(min = 1, max = 50)
-
+@Constraint(validatedBy = ShortTextValidator.class)
 public @interface ValidShortText {
 
 	// Standard validation properties -----------------------------------------
