@@ -19,7 +19,7 @@ public class LongTextValidator extends AbstractValidator<ValidLongText, String> 
 
 		assert context != null;
 
-		if (longText == null || longText.isBlank() || longText.length() <= 50 && longText.length() > 0)
+		if (longText == null || longText.isBlank() || longText.length() <= 255 && longText.length() > 0)
 			return true;
 		else
 			return false;
