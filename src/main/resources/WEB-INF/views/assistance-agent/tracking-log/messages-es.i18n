@@ -1,0 +1,30 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+assistance-agent.tracking-log.form.title = Detalles de los seguimientos de los registros
+assistance-agent.tracking-log.list.title = Listar seguimientos de los registro
+
+assistanceAgent.trackingLog.form.label.lastUpdateMoment = Última fecha de cambio:
+assistanceAgent.trackingLog.form.label.step = Paso:
+assistanceAgent.trackingLog.form.label.resolutionPercentage = Porcentaje de resolución:
+assistanceAgent.trackingLog.form.label.status = Estado:
+assistanceAgent.trackingLog.form.label.resolution = Resolucion:
+assistanceAgent.trackingLog.form.label.claim = Queja:
+assistanceAgent.trackingLog.form.label.confirmation = ¿Desea confirmar?
+
+assistanceAgent.trackingLog.form.button.create = Crear
+assistanceAgent.trackingLog.form.button.update = Actualizar
+assistanceAgent.trackingLog.form.button.delete = Borrar
+ 
+assistanceAgent.trackingLog.list.label.step = Paso
+assistanceAgent.trackingLog.list.label.resolutionPercentage = Porcentaje de resolución:
+assistanceAgent.trackingLog.list.label.Status = Estado:
+
+assistanceAgent.trackingLog.list.button.create = Crear
