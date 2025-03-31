@@ -21,6 +21,7 @@ master.menu.anonymous.favourite-link.ivan = 77015962W: Fernandez Limarquez, Ivan
 
 master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
+master.menu.administrator.list-airports = List airports
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down

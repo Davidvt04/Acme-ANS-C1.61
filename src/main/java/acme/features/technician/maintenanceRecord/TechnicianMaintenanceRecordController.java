@@ -28,7 +28,6 @@ public class TechnicianMaintenanceRecordController extends AbstractGuiController
 	@Autowired
 	private TechnicianMaintenanceRecordDeleteService	deleteService;
 
-
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);

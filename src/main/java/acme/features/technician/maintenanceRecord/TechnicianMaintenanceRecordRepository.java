@@ -25,4 +25,5 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 
 	@Query("select i from Involves i where i.maintenanceRecord.id = :id")
 	Collection<Involves> findInvolvesByMaintenanceRecordId(int id);
+
 }

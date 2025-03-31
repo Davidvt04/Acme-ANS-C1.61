@@ -49,7 +49,7 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		aircraftRegistrationNumber = super.getRequest().getData("aircraft", String.class);
 		aircraft = this.repository.findAircraftByRegistrationNumber(aircraftRegistrationNumber);
 		currentMoment = MomentHelper.getCurrentMoment();
-
+    
 		super.bindObject(maintenanceRecord, "ticker", "nextInspectionDueTime", "estimatedCost", "notes");
 		maintenanceRecord.setMoment(currentMoment);
 		maintenanceRecord.setStatus(MaintenanceRecordStatus.PENDING);
