@@ -1,53 +1,14 @@
 key,name,picture,averageDwellTime,promotionCode,discountMoney
 # base entity
-service-00,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AAAA-25,50.00
+service-00,"Lorem ipsum",https://i.imgur.com/8YcXhS0.png,50.00,AAAA-25,50.00
 # name - standard variations
-service-01,"L",http://www.lorem-ipsum.org,50.00,AAAB-25,50.00
-service-02,"Lo",http://www.lorem-ipsum.org,50.00,AAAC-25,50.00
-service-03,"Lorem ipsum dolor sit amet, consectetur adipiscing",http://www.lorem-ipsum.org,50.00,AAAD-25,50.00
-service-04,"Lorem ipsum dolor sit amet, consectetur adipiscis",http://www.lorem-ipsum.org,50.00,AAAE-25,50.00
-service-05,โลเร็ม อิปซัม,http://www.lorem-ipsum.org,50.00,AAAF-25,50.00
-service-06,"لوريم إيبسوم",http://www.lorem-ipsum.org,50.00,AAAG-25,50.00
-service-07,"洛伦·伊普森",http://www.lorem-ipsum.org,50.00,AAAH-25,50.00
-service-08,"<marquee>Hacked</marquee>",http://www.lorem-ipsum.org,50.00,AAAI-25,50.00
-service-09,"<script>alert(‘Hacked!’);</script>",http://www.lorem-ipsum.org,50.00,AAAJ-25,50.00
-service-10,"'' or 'A' = 'A ",http://www.lorem-ipsum.org,50.00,AAAK-25,50.00
-# picture - standard variations
-service-11,"Lorem ipsum",ftp://a,50.00,AAAL-25,50.00
-service-12,"Lorem ipsum",ftp://a.b,50.00,AAAM-25,50.00
-service-13,"Lorem ipsum","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",50.00,AAAN-25,50.00
-service-14,"Lorem ipsum","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",50.00,AAAO-25,50.00
-service-15,"Lorem ipsum",https://www.lorem-ipsum.org,50.00,AAAP-25,50.00
-service-16,"Lorem ipsum",ftp://www.lorem-ipsum.org,50.00,AAAQ-25,50.00
-service-17,"Lorem ipsum",http://www.lorem-ipsum.org/dolor/sit.html,50.00,AAAR-25,50.00
-service-18,"Lorem ipsum",http://www.lorem-ipsum.org/dolor/sit.html#dolor,50.00,AAAS-25,50.00
-service-19,"Lorem ipsum",http://example.org?a=1&b=2,50.00,AAAT-25,50.00
-service-20,"Lorem ipsum",http://example.org?,50.00,AAAU-25,50.00
-service-21,"Lorem ipsum",http://example.org?a,50.00,AAAV-25,50.00
-service-22,"Lorem ipsum",http://example.org?a&b,50.00,AAAW-25,50.00
-service-23,"Lorem ipsum",http://example.org/,50.00,AAAX-25,50.00
-service-24,"Lorem ipsum",http://example.org/a,50.00,AAAY-25,50.00
-service-25,"Lorem ipsum",http://example.org/a/b,50.00,AAAZ-25,50.00
-service-26,"Lorem ipsum",http://example.org/a/b?,50.00,AABA-25,50.00
-service-27,"Lorem ipsum",http://example.org/a/b?a&b,50.00,AABB-25,50.00
-# averageDwellTime - standard variations
-service-28,"Lorem ipsum",http://www.lorem-ipsum.org,1.00,AABC-25,50.00
-service-29,"Lorem ipsum",http://www.lorem-ipsum.org,1.01,AABD-25,50.00
-service-30,"Lorem ipsum",http://www.lorem-ipsum.org,99.99,AABE-25,50.00
-service-31,"Lorem ipsum",http://www.lorem-ipsum.org,100.00,AABF-25,50.00
-# promotionCode - standard variations
-service-32,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYZA-25,50.00
-service-33,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXB-25,50.00
-service-34,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXC-25,50.00
-service-35,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXD-25,50.00
-service-36,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXE-25,50.00
-service-37,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXF-25,50.00
-service-38,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXG-25,50.00
-service-39,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,XYXH-25,50.00
-service-40,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,null,50.00
-# discountMoney - standard variations
-service-41,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AABP-25,0.00
-service-42,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AABQ-25,0.01
-service-43,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AABR-25,99.99
-service-44,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AABS-25,100.00
-service-45,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AABT-25,null
+service-01,"L",https://i.imgur.com/8YcXhS0.png,50.00,AAAB-25,50.00
+service-02,"Lo",https://i.imgur.com/8YcXhS0.png,50.00,AAAC-25,50.00
+service-03,"Lorem ipsum dolor sit amet, consectetur adipiscing",https://i.imgur.com/8YcXhS0.png,50.00,AAAD-25,50.00
+service-04,"Lorem ipsum dolor sit amet, consectetur adipiscis",https://i.imgur.com/8YcXhS0.png,50.00,AAAE-25,50.00
+service-05,โลเร็ม อิปซัม,https://i.imgur.com/8YcXhS0.png,50.00,AAAF-25,50.00
+service-06,"لوريم إيبسوم",https://i.imgur.com/8YcXhS0.png,50.00,AAAG-25,50.00
+service-07,"洛伦·伊普森",https://i.imgur.com/8YcXhS0.png,50.00,AAAH-25,50.00
+service-08,"<marquee>Hacked</marquee>",https://i.imgur.com/8YcXhS0.png,50.00,AAAI-25,50.00
+service-09,"<script>alert(‘Hacked!’);</script>",https://i.imgur.com/8YcXhS0.png,50.00,AAAJ-25,50.00
+service-10,"'' or 'A' = 'A ",https://i.imgur.com/8YcXhS0.png,50.00,AAAK-25,50.00

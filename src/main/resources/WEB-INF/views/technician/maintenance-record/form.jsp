@@ -5,7 +5,8 @@
 
 <acme:form>
 	<acme:hidden-data path="maintenanceRecordId"/>
-
+	
+	<acme:input-textbox code="technician.maintenance-record.form.label.ticker" path="ticker"/>
 	<jstl:if test="${_command == 'show'}">
 		<acme:input-moment code="technician.maintenance-record.form.label.moment" path="moment" readonly="true"/>
 		<acme:input-select path="status" code="technician.maintenance-record.form.label.status" choices="${statuses}"/>
@@ -16,9 +17,10 @@
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>	
 	
 	<jstl:choose>	 
-		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
-			<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/task/list?masterId=${id}"/>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/involves/list?masterId=${id}"/>
 			<acme:submit code="technician.maintenance-record.form.button.update" action="/technician/maintenance-record/update"/>
+			<acme:submit code="technician.maintenance-record.form.button.delete" action="/technician/maintenance-record/delete"/>
 			<acme:submit code="technician.maintenance-record.form.button.publish" action="/technician/maintenance-record/publish"/>
 		</jstl:when>	
 		<jstl:when test="${_command == 'create'}">
