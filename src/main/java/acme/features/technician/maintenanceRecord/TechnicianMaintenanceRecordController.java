@@ -6,24 +6,27 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.controllers.AbstractGuiController;
-import acme.client.services.GuiService;
+import acme.client.controllers.GuiController;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.realms.Technician;
 
-@GuiService
+@GuiController
 public class TechnicianMaintenanceRecordController extends AbstractGuiController<Technician, MaintenanceRecord> {
 
 	@Autowired
-	TechnicianMaintenanceRecordListService		listService;
+	private TechnicianMaintenanceRecordListService		listService;
 
 	@Autowired
-	TechnicianMaintenanceRecordShowService		showService;
+	private TechnicianMaintenanceRecordShowService		showService;
 
 	@Autowired
-	TechnicianMaintenanceRecordUpdateService	updateService;
+	private TechnicianMaintenanceRecordUpdateService	updateService;
 
 	@Autowired
-	TechnicianMaintenanceRecordCreateService	createService;
+	private TechnicianMaintenanceRecordCreateService	createService;
+
+	@Autowired
+	private TechnicianMaintenanceRecordDeleteService	deleteService;
 
 
 	@PostConstruct
@@ -32,6 +35,7 @@ public class TechnicianMaintenanceRecordController extends AbstractGuiController
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
 	}
 
 }
