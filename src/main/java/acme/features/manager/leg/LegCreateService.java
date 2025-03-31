@@ -1,6 +1,8 @@
 
 package acme.features.manager.leg;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -11,75 +13,100 @@ import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegStatus;
+import acme.features.manager.flight.FlightRepository;
 import acme.realms.managers.Manager;
 
 @GuiService
 public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegRepository										repository;
+	private ManagerLegRepository	repository;
 
 	// Assumes a FlightRepository exists for manager flight operations.
 	@Autowired
-	private acme.features.manager.flight.FlightRepository	flightRepository;
+	private FlightRepository		flightRepository;
 
 
 	@Override
 	public void authorise() {
-		int flightId = super.getRequest().getData("flightId", int.class);
-		Flight flight = this.flightRepository.findById(flightId);
+		Integer flightId = super.getRequest().getData("flightId", Integer.class);
+		System.out.println("Authorise: flightId from request = " + flightId);
+		System.out.flush();
+		if (flightId == null) {
+			System.out.println("Authorise: flightId is null, denying authorisation.");
+			System.out.flush();
+			super.getResponse().setAuthorised(false);
+			return;
+		}
+		Flight flight = this.flightRepository.findFlightById(flightId);
+		System.out.println("Authorise: retrieved flight = " + flight);
+		System.out.flush();
 		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-		// Only authorise creation if the flight exists and belongs to the current manager.
-		boolean status = flight != null && flight.getManager().getId() == manager.getId();
+		boolean status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
+		System.out.println(
+			"Authorise: flight draft mode = " + (flight != null ? flight.isDraftMode() : "N/A") + ", flight manager id = " + (flight != null ? flight.getManager().getId() : "N/A") + ", current manager id = " + manager.getId() + ", authorised = " + status);
+		System.out.flush();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int flightId = super.getRequest().getData("flightId", int.class);
-		Flight flight = this.flightRepository.findById(flightId);
-		// Create a new Leg associated with the flight.
+		Integer flightId = super.getRequest().getData("flightId", Integer.class);
+		System.out.println("Load: flightId from request = " + flightId);
+		System.out.flush();
+		Flight flight = this.flightRepository.findFlightById(flightId);
+		System.out.println("Load: retrieved flight = " + flight);
+		System.out.flush();
 		Leg leg = new Leg();
 		leg.setFlight(flight);
-		// Set default values.
+		leg.setAirline(null);
 		leg.setDraftMode(true);
 		leg.setFlightNumber("");  // default empty flight number
 		leg.setScheduledDeparture(MomentHelper.getCurrentMoment());
-		leg.setScheduledArrival(MomentHelper.getCurrentMoment());
+		// Ensure arrival is after departure (e.g., one minute later)
+		leg.setScheduledArrival(new Date(MomentHelper.getCurrentMoment().getTime() + 60000));
 		leg.setDurationInHours(0.0);  // default duration
-		// Set default leg status. We choose ON_TIME as default.
 		leg.setStatus(LegStatus.ON_TIME);
-		// (Other fields like departureAirport, arrivalAirport, aircraft, airline can be bound from the form.)
 		super.getBuffer().addData(leg);
+		System.out.println("Load: new Leg created: " + leg);
+		System.out.flush();
+
 	}
 
 	@Override
 	public void bind(final Leg leg) {
-		// Bind user input for the leg. Adjust field names as needed.
+		System.out.println("Bind: before binding leg: " + leg);
+		System.out.flush();
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours");
-		// If your form includes airport/aircraft selections, bind them as well.
+		System.out.println("Bind: after binding leg: " + leg);
+		System.out.flush();
 	}
 
 	@Override
 	public void validate(final Leg leg) {
-		// Example validation: scheduledDeparture must be before scheduledArrival.
-		super.state(leg.getScheduledDeparture().before(leg.getScheduledArrival()), "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
+		boolean valid = leg.getScheduledDeparture().before(leg.getScheduledArrival());
+		System.out.println("Validate: scheduledDeparture = " + leg.getScheduledDeparture() + ", scheduledArrival = " + leg.getScheduledArrival() + ", valid = " + valid);
+		System.out.flush();
+		super.state(valid, "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
 	}
 
 	@Override
 	public void perform(final Leg leg) {
+		System.out.println("FLUSH PLEASE IT DOES ENTER THE PERFORM");
+		System.out.flush();
 		this.repository.save(leg);
 	}
 
 	@Override
 	public void unbind(final Leg leg) {
-		// Unbind key fields into a Dataset.
 		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "draftMode");
-		// Add the current leg status.
 		dataset.put("status", leg.getStatus());
-		// Create select choices for the LegStatus enum.
+		dataset.put("draftMode", leg.getFlight().isDraftMode());
 		SelectChoices choices = SelectChoices.from(LegStatus.class, leg.getStatus());
 		dataset.put("legStatuses", choices);
+		dataset.put("flightId", super.getRequest().getData("flightId", int.class));
 		super.getResponse().addData(dataset);
+		System.out.println("Unbind: dataset = " + dataset);
+		System.out.flush();
 	}
 }

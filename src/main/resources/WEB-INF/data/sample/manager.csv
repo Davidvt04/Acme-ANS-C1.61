@@ -1,4 +1,4 @@
 key,key:userAccount,identifier,yearsOfExperience,dateOfBirth,pictureLink
 manager-01,"user-account-manager-01","AFP000001",0,"2002/02/02 02:02","ftp://a"
-manager-02,"user-account-manager-01","AFP000002",25,"2003/03/03 03:03","ftp://a.b"
-manager-03,"user-account-manager-01","AFP000003",78,"2004/04/04 04:04","https://www.lorem-ipsum.org"
+manager-02,"user-account-manager-02","AFP000002",25,"2003/03/03 03:03","ftp://a.b"
+manager-03,"user-account-manager-03","AFP000003",78,"2004/04/04 04:04","https://www.lorem-ipsum.org"

@@ -1,19 +1,26 @@
 
 package acme.features.manager.flight;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
+import acme.entities.leg.Leg;
+import acme.features.manager.leg.ManagerLegRepository;
 import acme.realms.managers.Manager;
 
 @GuiService
 public class FlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
-	private FlightRepository repository;
+	private FlightRepository		repository;
+
+	@Autowired
+	private ManagerLegRepository	managerLegRepository;
 
 
 	@Override
@@ -56,6 +63,12 @@ public class FlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void perform(final Flight flight) {
+		// Retrieve all legs associated with this flight
+		Collection<Leg> legs = this.managerLegRepository.findLegsByflightId(flight.getId());
+		// Delete each leg first to avoid foreign key constraint violations
+		for (Leg leg : legs)
+			this.managerLegRepository.delete(leg);
+		// Now delete the flight itself
 		this.repository.delete(flight);
 	}
 

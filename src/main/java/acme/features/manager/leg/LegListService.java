@@ -20,27 +20,27 @@ public class LegListService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		// All managers are authorised to list the legs of their flights.
+		// All managers are authorised to list the legs of a flight.
 		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
 	public void load() {
-		// Retrieve the current manager from the principal
-		int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-		// Retrieve the legs associated with flights of this manager, ordered by the leg's moment.
-		Collection<Leg> legs = this.repository.findLegsByManagerIdOrderByMoment(managerId);
+		// Retrieve the masterId from the request parameters
+		int flightId = super.getRequest().getData("flightId", int.class);
+		// Retrieve the legs associated with the given flight, ordered by scheduledDeparture
+		Collection<Leg> legs = this.repository.findLegsByflightIdOrderByMoment(flightId);
 		super.getBuffer().addData(legs);
 	}
 
 	@Override
 	public void unbind(final Leg leg) {
-		// Unbind key fields of Leg into a Dataset.
-		// Adjust the field names as necessary based on your Leg entity.
-		Dataset dataset = super.unbindObject(leg, "moment", "originCity", "destinationCity");
-		// If you have additional leg fields (e.g., duration) add them here:
-		// super.addPayload(dataset, leg, "duration");
+		// Unbind key fields from Leg.
+		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
+		// Add computed origin and destination cities from the associated Airports.
+		dataset.put("originCity", leg.getDepartureAirport().getCity());
+		dataset.put("destinationCity", leg.getArrivalAirport().getCity());
+		dataset.put("flightId", super.getRequest().getData("flightId", int.class));
 
 		super.getResponse().addData(dataset);
 	}

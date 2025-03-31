@@ -10,51 +10,60 @@ import acme.entities.leg.Leg;
 import acme.realms.managers.Manager;
 
 @GuiService
-public class LegDeleteService extends AbstractGuiService<Manager, Leg> {
+public class LegPublishService extends AbstractGuiService<Manager, Leg> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ManagerLegRepository repository;
 
+	// AbstractGuiService interface -------------------------------------------
+
 
 	@Override
 	public void authorise() {
-		int legId = super.getRequest().getData("id", int.class);
-		Leg leg = this.repository.findLegById(legId);
-		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-		// Allow deletion only if the leg exists, is in draft mode, and belongs to the current manager.
-		boolean status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().getId() == manager.getId();
+		boolean status;
+		int legId;
+		Leg leg;
+		Manager manager;
+
+		legId = super.getRequest().getData("id", int.class);
+		leg = this.repository.findLegById(legId);
+		status = leg != null && leg.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		int legId = super.getRequest().getData("id", int.class);
-		Leg leg = this.repository.findLegById(legId);
+		Leg leg;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		leg = this.repository.findLegById(id);
 		super.getBuffer().addData(leg);
 	}
 
 	@Override
 	public void bind(final Leg leg) {
-		// Typically, for deletion, binding may not be necessary.
-		// However, to follow the template, bind any relevant fields.
+		// Bind the leg's attributes from the request.
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours");
 	}
 
 	@Override
 	public void validate(final Leg leg) {
-		// No extra validation is needed if authorisation ensures that only draft legs can be deleted.
+		// Insert any necessary validation logic here.
 	}
 
 	@Override
 	public void perform(final Leg leg) {
-		this.repository.delete(leg);
+		// Publish the leg by setting draftMode to false.
+		leg.setDraftMode(false);
+		this.repository.save(leg);
 	}
 
 	@Override
 	public void unbind(final Leg leg) {
 		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "draftMode");
-		dataset.put("status", leg.getStatus());
-
 		super.getResponse().addData(dataset);
 	}
 }

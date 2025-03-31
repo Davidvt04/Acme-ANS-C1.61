@@ -19,7 +19,10 @@ public interface ManagerLegRepository extends AbstractRepository {
 	Collection<Leg> findLegsByManagerId(int managerId);
 
 	@Query("SELECT l FROM Leg l WHERE l.flight.id = :flightId ORDER BY l.scheduledDeparture ASC")
-	Collection<Leg> findLegsByFlightId(int flightId);
+	Collection<Leg> findLegsByflightIdOrderByMoment(int flightId);
+
+	@Query("SELECT l FROM Leg l WHERE l.flight.id = :flightId ORDER BY l.scheduledDeparture ASC")
+	Collection<Leg> findLegsByflightId(int flightId);
 
 	@Query("SELECT l FROM Leg l WHERE l.flight.manager.id = :managerId ORDER BY l.scheduledDeparture ASC")
 	Collection<Leg> findLegsByManagerIdOrderByMoment(int managerId);

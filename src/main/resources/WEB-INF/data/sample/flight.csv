@@ -8,7 +8,7 @@ flight-02,manager-01,"Self-transfer flight",true,"USD 120.00","You must handle b
 
 # cost standard variations
 flight-03,manager-01,"Zero cost flight",true,"EUR 0.00","Promotional flight with no cost.",false
-flight-04,manager-02,"High cost flight",false,"EUR 999999.99","Luxury experience—near the maximum price.",false
+flight-04,manager-02,"High cost flight",false,"EUR 999999.99","Luxury experience—near the maximum price.",true
 
 # description standard variations
 flight-05,manager-01,"The cheapest flight",false,"GBP 10.00","",false

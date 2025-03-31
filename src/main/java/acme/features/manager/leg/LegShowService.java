@@ -33,8 +33,12 @@ public class LegShowService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void unbind(final Leg leg) {
-		// Unbind basic fields; adjust field names as per your Leg entity.
-		Dataset dataset = super.unbindObject(leg, "originCity", "destinationCity");
+		// Unbind basic properties that actually exist on Leg.
+		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "draftMode");
+
+		// Add derived fields for origin and destination cities.
+		dataset.put("originCity", leg.getDepartureAirport().getCity());
+		dataset.put("destinationCity", leg.getArrivalAirport().getCity());
 
 		// For date fields, wrap them in an Object array to support formatting in the JSP.
 		Object departure = leg.getScheduledDeparture();
@@ -46,16 +50,15 @@ public class LegShowService extends AbstractGuiService<Manager, Leg> {
 			arrival
 		});
 
-		// Unbind the status field directly.
+		// Add the leg status.
 		dataset.put("status", leg.getStatus());
 
-		// Create SelectChoices for the LegStatus enum, marking the current status as selected.
+		// Create select choices for the LegStatus enum.
 		SelectChoices choices = SelectChoices.from(LegStatus.class, leg.getStatus());
 		dataset.put("legStatuses", choices);
-
-		// Optionally, mark the dataset as read-only.
-		dataset.put("readonly", true);
+		dataset.put("flightId", leg.getFlight().getId());
 
 		super.getResponse().addData(dataset);
 	}
+
 }

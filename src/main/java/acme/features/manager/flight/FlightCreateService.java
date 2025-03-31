@@ -33,8 +33,10 @@ public class FlightCreateService extends AbstractGuiService<Manager, Flight> {
 		flight.setRequiresSelfTransfer(false);
 		// Create a default Money value, e.g. 0.0 USD (adjust as needed)
 		flight.setCost(new Money());
+		flight.getCost().setAmount(0.0);
+		flight.getCost().setCurrency("USD");
 		flight.setDescription("");
-
+		flight.setDraftMode(true);
 		// Associate the flight with the current manager.
 		flight.setManager(manager);
 
@@ -55,6 +57,7 @@ public class FlightCreateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void perform(final Flight flight) {
+
 		this.repository.save(flight);
 	}
 

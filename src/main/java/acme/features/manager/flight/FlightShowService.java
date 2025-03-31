@@ -67,6 +67,7 @@ public class FlightShowService extends AbstractGuiService<Manager, Flight> {
 		dataset.put("originCity", flight.getOriginCity());
 		dataset.put("destinationCity", flight.getDestinationCity());
 		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+		dataset.put("draftMode", flight.isDraftMode());
 
 		// 3. Add the dataset to the response
 		super.getResponse().addData(dataset);
