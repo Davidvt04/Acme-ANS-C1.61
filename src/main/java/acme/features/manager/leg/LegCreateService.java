@@ -16,6 +16,7 @@ import acme.entities.airport.Airport;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegStatus;
+import acme.features.administrator.aircraft.AircraftRepository;
 import acme.features.airport.AirportRepository;
 import acme.features.manager.flight.FlightRepository;
 import acme.realms.managers.Manager;

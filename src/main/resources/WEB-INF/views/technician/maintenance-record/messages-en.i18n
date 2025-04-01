@@ -2,12 +2,14 @@
 technician.maintenance-record.list.title = Maintenance records
 technician.maintenance-record.form.title = Maintenance record form
 
+technician.maintenance-record.list.label.ticker = Ticker
 technician.maintenance-record.list.label.moment = Moment
 technician.maintenance-record.list.label.status = Status
 technician.maintenance-record.list.label.next-inspection = Next inspection
 technician.maintenance-record.list.label.aircraft = Aircraft
 technician.maintenance-record.list.button.create = Create
 
+technician.maintenance-record.form.label.ticker = Ticker
 technician.maintenance-record.form.label.moment = Moment 
 technician.maintenance-record.form.label.status = Status
 technician.maintenance-record.form.label.next-inspection = Next inspection 

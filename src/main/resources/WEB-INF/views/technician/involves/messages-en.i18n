@@ -1,0 +1,14 @@
+
+technician.involves.list.title = Tasks involved in the previous maintenance record
+technician.involves.list.label.ticker = Ticker
+technician.involves.list.label.type = Type
+technician.involves.list.label.priority = Priority
+technician.involves.list.button.create = Add
+
+technician.involves.form.title = Involved task form
+technician.involves.form.label.task = Task
+technician.involves.form.placeholder.task = Ticker of the task
+technician.involves.form.label.technician = Technician associated to the task
+
+technician.involves.form.button.delete = Remove
+technician.involves.form.button.create = Add 
