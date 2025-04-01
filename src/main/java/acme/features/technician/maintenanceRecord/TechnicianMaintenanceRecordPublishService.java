@@ -34,7 +34,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 		masterId = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
-		publishedTasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId).stream().filter(Task::isDraftMode).toList();
+		publishedTasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId).stream().filter(t -> !t.isDraftMode()).toList();
 
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
 		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() //
