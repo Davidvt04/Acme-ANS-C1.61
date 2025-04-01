@@ -7,7 +7,7 @@
 	<acme:hidden-data path="taskId"/>
 	
 	<acme:input-textbox code="technician.task.form.label.ticker" path="ticker"/>
-	<acme:input-select path="status" code="technician.task.form.label.type" choices="${types}"/>
+	<acme:input-select path="type" code="technician.task.form.label.type" choices="${types}"/>
 	<acme:input-textarea code="technician.task.form.label.description" path="description"/>
 	<acme:input-integer code="technician.task.form.label.priority" path="priority"/>
 	<acme:input-integer code="technician.task.form.label.estimated-duration" path="estimatedDuration"/>
