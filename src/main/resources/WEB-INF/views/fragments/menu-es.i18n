@@ -50,6 +50,7 @@ master.menu.customer.list-passengers = Listar pasajeros
 
 master.menu.technician = Técnico
 master.menu.technician.maintenance-records = Listar registros de mantenimiento
+master.menu.technician.tasks = Listar tareas
 
 
 # master.menu.flight-crew-member ##########################################################
