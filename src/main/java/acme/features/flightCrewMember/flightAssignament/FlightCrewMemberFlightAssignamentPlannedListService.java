@@ -22,7 +22,11 @@ public class FlightCrewMemberFlightAssignamentPlannedListService extends Abstrac
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -30,8 +34,10 @@ public class FlightCrewMemberFlightAssignamentPlannedListService extends Abstrac
 		Collection<FlightAssignament> flightAssignaments;
 
 		Date currentMoment;
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
 		currentMoment = MomentHelper.getCurrentMoment();
-		flightAssignaments = this.repository.findAllFlightAssignamentByPlannedLeg(currentMoment);
+		flightAssignaments = this.repository.findAllFlightAssignamentByPlannedLeg(currentMoment, flightCrewMemberId);
 
 		super.getBuffer().addData(flightAssignaments);
 	}

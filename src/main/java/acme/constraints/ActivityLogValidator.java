@@ -33,7 +33,8 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 		Date activityLogMoment = activityLog.getRegistrationMoment();
 		Date scheduledArrival = leg.getScheduledArrival();
 		Boolean activityLogMomentIsAfterscheduledArrival = MomentHelper.isAfter(activityLogMoment, scheduledArrival);
-		super.state(context, activityLogMomentIsAfterscheduledArrival, "WrongActivityLogDate", "{acme.validation.activityLog.wrongMoment.message}");
+		if (!activityLog.isDraftMode()) //Hacemos que la comprobacion se efectue solo si se va a publicar
+			super.state(context, activityLogMomentIsAfterscheduledArrival, "WrongActivityLogDate", "{acme.validation.activityLog.wrongMoment.message}");
 
 		return !super.hasErrors(context);
 

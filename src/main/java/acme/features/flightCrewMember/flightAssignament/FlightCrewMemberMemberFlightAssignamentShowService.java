@@ -26,7 +26,11 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override

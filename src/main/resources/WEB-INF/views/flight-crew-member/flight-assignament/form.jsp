@@ -16,17 +16,23 @@
 		
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true && legIncompleted == true}">
 			<acme:submit code="flight-crew-member.flight-assignament.form.button.publish" action="/flight-crew-member/flight-assignament/publish"/>
-			<acme:button code="flight-crew-member.flight-assignament.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>
+			<jstl:if test="${_command == 'completed-list'}">
+				<acme:button code="flight-crew-member.flight-assignament.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>			
+			</jstl:if>
 			<acme:submit code="flight-crew-member.flight-assignament.form.button.update" action="/flight-crew-member/flight-assignament/update"/>
 			<acme:submit code="flight-crew-member.flight-assignament.form.button.delete" action="/flight-crew-member/flight-assignament/delete"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish') && draftMode == true}">
-			<acme:button code="flight-crew-member.flight-assignament.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>
+			<jstl:if test="${_command == 'completed-list'}">
+				<acme:button code="flight-crew-member.flight-assignament.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>			
+			</jstl:if>			
 			<acme:submit code="flight-crew-member.flight-assignament.form.button.update" action="/flight-crew-member/flight-assignament/update"/>
 			<acme:submit code="flight-crew-member.flight-assignament.form.button.delete" action="/flight-crew-member/flight-assignament/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="flight-crew-member.flight-assignament.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>			
+			<jstl:if test="${_command == 'completed-list'}">
+		<acme:button code="flight-crew-member.flight-assignament.form.button.activity-log" action="/flight-crew-member/activity-log/list?masterId=${id}"/>			
+	</jstl:if>		
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="flight-crew-member.flight-assignament.form.label.confirmation" path="confirmation"/>

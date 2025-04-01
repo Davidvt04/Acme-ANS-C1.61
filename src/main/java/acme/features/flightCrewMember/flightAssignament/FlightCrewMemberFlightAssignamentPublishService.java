@@ -26,12 +26,13 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 
 	@Override
 	public void authorise() {
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
 		boolean status;
-		int masterId;
 		FlightAssignament flightAssignament;
-		masterId = super.getRequest().getData("id", int.class);
-		flightAssignament = this.repository.findFlightAssignamentById(masterId);
-		status = flightAssignament.isDraftMode() && MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival());
+		flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
+		status = authorised && flightAssignament.isDraftMode() && MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival());
 		super.getResponse().setAuthorised(status);
 	}
 
