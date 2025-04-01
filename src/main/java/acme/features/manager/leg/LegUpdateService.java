@@ -97,7 +97,17 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 		// Bind the basic properties.
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours");
+		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
+
+		// Explicitly bind the status using a conversion from String to LegStatus.
+		String statusStr = super.getRequest().getData("status", String.class);
+		if (statusStr != null && !statusStr.isEmpty())
+			try {
+				LegStatus newStatus = LegStatus.valueOf(statusStr);
+				leg.setStatus(newStatus);
+			} catch (IllegalArgumentException ex) {
+				// Optionally, handle conversion error
+			}
 
 		// Bind the departure and arrival airports using their IATA codes.
 		String departureIata = super.getRequest().getData("departureAirport", String.class);
@@ -172,5 +182,4 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 		super.getResponse().addData(dataset);
 	}
-
 }

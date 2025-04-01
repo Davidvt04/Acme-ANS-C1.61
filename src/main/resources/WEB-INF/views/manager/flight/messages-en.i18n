@@ -2,7 +2,7 @@
 #
 # Flight messages for the Manager realm
 
-manager.flight.form.title = Flight form
+manager.flight.form.title = Flight Details
 
 manager.flight.form.label.tag = Tag
 manager.flight.form.label.requiresSelfTransfer = Requires Self-Transfer

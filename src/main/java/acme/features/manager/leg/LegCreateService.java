@@ -87,7 +87,7 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 		SelectChoices aircraftChoices = new SelectChoices();
 		aircraftChoices.add("0", "----", true);
 		for (Aircraft ac : aircrafts) {
-			// Use aircraft id as key (converted to String) and its registration as label.
+			// Use aircraft id as key (converted to String) and its registration number as label.
 			String key = Integer.toString(ac.getId());
 			String label = ac.getRegistrationNumber();
 			aircraftChoices.add(key, label, false);
@@ -99,8 +99,19 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		// Bind basic properties.
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours");
+		// Bind basic properties, including status.
+		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
+
+		// Explicitly bind status from the request.
+		String statusStr = super.getRequest().getData("status", String.class);
+		if (statusStr != null && !statusStr.isEmpty())
+			try {
+				LegStatus newStatus = LegStatus.valueOf(statusStr);
+				leg.setStatus(newStatus);
+			} catch (IllegalArgumentException ex) {
+				// Optionally log or handle the conversion error.
+			}
+
 		// Bind airport selections using IATA codes.
 		String departureIata = super.getRequest().getData("departureAirport", String.class);
 		String arrivalIata = super.getRequest().getData("arrivalAirport", String.class);
@@ -108,6 +119,7 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 		Airport arrivalAirport = this.airportRepository.findByIataCode(arrivalIata);
 		leg.setDepartureAirport(departureAirport);
 		leg.setArrivalAirport(arrivalAirport);
+
 		// Bind aircraft selection using aircraft id.
 		Integer aircraftId = super.getRequest().getData("aircraft", Integer.class);
 		if (aircraftId != null && aircraftId != 0) {
@@ -145,7 +157,6 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 			dataset.put("destinationCity", leg.getArrivalAirport().getCity());
 		}
 		if (leg.getAircraft() != null) {
-			// We use the aircraft id and its registration for display.
 			dataset.put("aircraft", leg.getAircraft().getId());
 			dataset.put("aircraftRegistration", leg.getAircraft().getRegistrationNumber());
 		}
@@ -162,5 +173,4 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("draftMode", leg.isDraftMode());
 		super.getResponse().addData(dataset);
 	}
-
 }

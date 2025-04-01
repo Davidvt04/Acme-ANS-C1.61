@@ -6,14 +6,13 @@
     <title>Flight Details</title>
 </head>
 <body>
-    <h1>Flight Details</h1>
     <acme:form readonly="false">
         <acme:input-textbox code="manager.flight.form.label.tag" path="tag" />
         <acme:input-checkbox code="manager.flight.form.label.requiresSelfTransfer" path="requiresSelfTransfer" />
         <acme:input-textbox code="manager.flight.form.label.cost" path="cost" />
         <acme:input-textbox code="manager.flight.form.label.description" path="description" />
-        <acme:input-moment code="manager.flight.form.label.scheduledDeparture" path="scheduledDeparture" />
-        <acme:input-moment code="manager.flight.form.label.scheduledArrival" path="scheduledArrival" />
+        <acme:input-moment code="manager.flight.form.label.scheduledDeparture" readonly="true"  path="scheduledDeparture" />
+        <acme:input-moment code="manager.flight.form.label.scheduledArrival" readonly="true" path="scheduledArrival" />
         
         <!-- Publish button, only visible if the flight is still in draft mode -->
         <c:if test="${draftMode == true}">

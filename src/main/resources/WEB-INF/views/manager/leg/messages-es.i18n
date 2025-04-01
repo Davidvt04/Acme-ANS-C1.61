@@ -19,7 +19,7 @@ manager.leg.form.label.confirmation = Confirmar
 manager.leg.form.label.arrivalAirport = Aeropuerto de llegada
 manager.leg.form.label.departureAirport = Aeropuerto de Salida
 manager.leg.form.label.aircraft = Aeronave
-
+manager.leg.form.label.status = Estado
 # Leg form buttons
 manager.leg.form.button.publish = Publicar tramo
 manager.leg.form.button.update = Actualizar tramo
@@ -30,3 +30,4 @@ manager.leg.form.button.delete = Borrar tramo
 manager.leg.error.sameAirport= Mismo aeropuerto de llegada y salida
 
 manager.leg.error.duplicateFlightNumber = Numero de vuelo duplicado
+manager.leg.error.departureBeforeArrival = La salida tiene que ser antes que la llegada

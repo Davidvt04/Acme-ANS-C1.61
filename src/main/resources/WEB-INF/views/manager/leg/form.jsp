@@ -12,6 +12,7 @@
         <acme:input-moment code="manager.leg.form.label.scheduledDeparture" path="scheduledDeparture" />
         <acme:input-moment code="manager.leg.form.label.scheduledArrival" path="scheduledArrival" />
         <acme:input-textbox code="manager.leg.form.label.durationInHours" path="durationInHours" />
+        <acme:input-select code="manager.leg.form.label.status" path="status"  choices="${legStatuses}" />
         
         <!-- Departure Airport -->
         <acme:input-select 

@@ -18,7 +18,7 @@ manager.leg.form.label.confirmation = Confirm
 manager.leg.form.label.arrivalAirport= Arrival Airport
 manager.leg.form.label.departureAirport= Departure Airport
 manager.leg.form.label.aircraft = Aircraft
-
+manager.leg.form.label.status = Status
 # Leg form buttons
 manager.leg.form.button.publish = Publish Leg
 manager.leg.form.button.update = Update Leg
@@ -29,4 +29,5 @@ manager.leg.form.button.delete = Delete Leg
 
 manager.leg.error.sameAirport= Departure and arrival airports are the same
 manager.leg.error.duplicateFlightNumber = Duplicated flight number
+manager.leg.error.departureBeforeArrival = Departure must be before arrival
 
