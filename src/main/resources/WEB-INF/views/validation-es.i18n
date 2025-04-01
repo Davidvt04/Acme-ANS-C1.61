@@ -1,0 +1,21 @@
+# validation-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.header.message  	= Debe tener entre 1 y 75 caracteres
+acme.validation.text.message   		= Debe tener entre 1 y 255 caracteres 
+acme.validation.phone.message       = Debe ser +código-país (código-área) número, donde sólo el número es obligatorio
+
+# Fight Assignaments
+acme.validation.FlightAssignament.havePilot.message= Ese tramo ya tiene un piloto asignado
+acme.validation.FlightAssignament.haveCopilot.message= Ese tramo ya tiene un copiloto asignado
+acme.validation.FlightAssignament.flightCrewMemberNotAvailable.message= Ese miembro de la tripulación no está disponible
+acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message= Ese miembro de la tripulación tiene tramos de vuelo incompatibles con ese
+acme.validation.FlightAssignament.LegAlreadyCompleted.message= El tramo al que esta asignacion de vuelo estaba asociado ya terminó, por lo que no podés publicarla
+acme.validation.flightAssignament.availableFlightCrewMember.message= La asignación de vuelo debe tener un miembro de la tripulación disponible asignado

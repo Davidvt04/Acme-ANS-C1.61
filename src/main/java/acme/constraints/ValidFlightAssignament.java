@@ -9,17 +9,12 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({
-	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
-})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PhoneNumberValidator.class)
-public @interface ValidPhoneNumber {
+@Constraint(validatedBy = FlightAssignamentValidator.class)
+public @interface ValidFlightAssignament {
 
-	// Standard validation properties -----------------------------------------
-
-	String message() default "{acme.validation.phone.message}";
-
+	String message() default "{acme.validation.flightAssignament.availableFlightCrewMember.message}";
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
 

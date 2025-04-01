@@ -51,6 +51,14 @@ master.menu.technician = Técnico
 master.menu.technician.maintenance-records = Listar registros de mantenimiento
 
 
+# master.menu.flight-crew-member ##########################################################
+
+master.menu.flight-crew-member = Miembro de la tripulación
+master.menu.flight-crew-member.flight-assignament.completedlist = Listar asignaciones de vuelo con tramos completados
+master.menu.flight-crew-member.flight-assignament.plannedlist = Listar asignaciones de vuelo con tramos planeados
+
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
