@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.task.Involves;
 import acme.realms.Technician;
 
@@ -39,8 +38,6 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 	public void unbind(final Involves involves) {
 		Dataset dataset;
 		int masterId;
-		final boolean showCreate;
-		MaintenanceRecord maintenanceRecord;
 
 		dataset = super.unbindObject(involves);
 		dataset.put("taskTicker", involves.getTask().getTicker());
@@ -48,12 +45,9 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 		dataset.put("taskPriority", involves.getTask().getPriority());
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		maintenanceRecord = involves.getMaintenanceRecord();
-		showCreate = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
 		super.getResponse().addGlobal("masterId", masterId);
 
 		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("showCreate", showCreate);
 		super.getResponse().addData(dataset);
 	}
 

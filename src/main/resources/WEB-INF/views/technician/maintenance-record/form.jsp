@@ -12,7 +12,7 @@
 		<acme:input-select path="status" code="technician.maintenance-record.form.label.status" choices="${statuses}"/>
 	</jstl:if>	
 	<acme:input-moment code="technician.maintenance-record.form.label.next-inspection" path="nextInspectionDueTime" placeholder="technician.maintenance-record.form.placeholder.next-inspection"/>
-	<acme:input-textbox code="technician.maintenance-record.form.label.aircraft" path="aircraft" placeholder="technician.maintenance-record.form.placeholder.aircraft"/>
+	<acme:input-select path="aircraft" code="technician.maintenance-record.form.label.status" choices="${aircrafts}"/>
 	<acme:input-money code="technician.maintenance-record.form.label.estimated-cost" path="estimatedCost" placeholder="technician.maintenance-record.form.placeholder.estimated-cost"/>
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>	
 	

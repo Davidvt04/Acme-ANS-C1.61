@@ -83,15 +83,20 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
-		SelectChoices choices;
 		Dataset dataset;
+		SelectChoices statusChoices;
+		SelectChoices aircraftChoices;
+		Collection<Aircraft> aircrafts;
 
-		choices = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getStatus());
+		statusChoices = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getStatus());
+		aircrafts = this.repository.findAllAircrafts();
+		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", maintenanceRecord.getAircraft());
 
 		dataset = super.unbindObject(maintenanceRecord, "ticker", "moment", "nextInspectionDueTime", "estimatedCost", "notes", "draftMode");
-		dataset.put("status", choices.getSelected().getKey());
-		dataset.put("statuses", choices);
-		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("statuses", statusChoices);
+		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
+		dataset.put("aircrafts", aircraftChoices);
 
 		super.getResponse().addData(dataset);
 	}
