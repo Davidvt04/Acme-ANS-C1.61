@@ -18,8 +18,8 @@ public class CustomerDashboard extends AbstractForm {
 	// Attributes -------------------------------------------------------------
 	List<String>				lastFiveDestinations;
 	Money						spentMoney;
-	Integer						economyBookings;
-	Integer						businessBookings;
+	long						economyBookings;
+	long						businessBookings;
 	Money						bookingTotalCost;
 	Money						bookingAverageCost;
 	Money						bookingMinimumCost;
