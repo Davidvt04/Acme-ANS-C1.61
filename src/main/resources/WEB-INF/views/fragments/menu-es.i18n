@@ -68,6 +68,10 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+master.menu.manager = Gerente
+master.menu.manager.flight.list = Listar Vuelos
+master.menu.manager.leg.list = Listar Tramos
+
 
 # mater.menu.assistance-agent ####################################################
 master.menu.assistanceAgent  = Asistente

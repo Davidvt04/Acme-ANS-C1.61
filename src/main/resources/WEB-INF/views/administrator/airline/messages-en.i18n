@@ -1,0 +1,38 @@
+administrator.airline.form.title = Airline form
+
+administrator.airline.form.label.name = Name
+administrator.airline.form.label.iataCode = IATA Code
+administrator.airline.form.label.website = Website
+administrator.airline.form.label.type = Type
+administrator.airline.form.label.foundationMoment = Foundation Date
+administrator.airline.form.label.email = Email
+administrator.airline.form.label.phoneNumber = Phone Number
+
+
+
+
+administrator.airline.list.label.name = Name
+administrator.airline.list.label.iataCode = IATA
+administrator.airline.list.label.website = Web
+administrator.airline.list.label.type = Type
+administrator.airline.list.label.foundationMoment = Foundation
+administrator.airline.list.label.email = Email 
+administrator.airline.list.label.phoneNumber = Phone
+
+
+
+
+administrator.airline.list.title = Administrator Listing
+master.menu.airline.list= List Airlines
+master.menu.airline.create= Create Airline
+master.menu.airline= Airlines
+
+button.create.airline= Create 
+
+administrator.airline.form.button.create = Register
+administrator.airline.form.button.update = Update
+
+
+administrator.airline.form.error.duplicateIata = IATA already exists
+administrator.airline.form.error.invalidPhoneNumber = Not a valid phone number
+administrator.airline.form.label.confirmation = Confirm
