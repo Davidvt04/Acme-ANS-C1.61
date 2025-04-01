@@ -35,4 +35,3 @@ assistanceAgent.trackingLog.form.error.badResolution =  Las resoluciones solo es
 assistanceAgent.trackingLog.form.error.badResolution2 = Debes introducir una resolución cuando el estado no es Pending y el porcentaje es del 100% 
 assistanceAgent.trackingLog.form.error.badPercentage = El porcentaje siempre debe ser mayor que el más alto registrado para esta queja  
 assistanceAgent.trackingLog.form.error.claimPublished = No se puede publicar el registro hasta que la queja asociada no sea publicada
-assistanceAgent.trackingLog.form.error.maxcompleted = Sólo puedes tener 2 registros al 100% para una misma queja, considerando que el primer registro haya sido publicado

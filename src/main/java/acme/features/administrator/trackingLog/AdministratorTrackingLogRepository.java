@@ -1,5 +1,5 @@
 
-package acme.features.assistanceAgent.trackingLog;
+package acme.features.administrator.trackingLog;
 
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +13,7 @@ import acme.entities.claim.Claim;
 import acme.entities.trackingLog.TrackingLog;
 
 @Repository
-public interface AssistanceAgentTrackingLogRepository extends AbstractRepository {
+public interface AdministratorTrackingLogRepository extends AbstractRepository {
 
 	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId")
 	Collection<TrackingLog> findTrackingLogsByClaimId(int claimId);

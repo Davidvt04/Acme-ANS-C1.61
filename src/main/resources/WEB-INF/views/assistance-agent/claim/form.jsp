@@ -16,7 +16,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="${false}">
-	<acme:input-moment code="assistanceAgent.claim.form.label.registrationMoment" path="registrationMoment"/>	
+	<acme:input-moment code="assistanceAgent.claim.form.label.registrationMoment" path="registrationMoment" readonly="true"/>	
 	<acme:input-textbox code="assistanceAgent.claim.form.label.passengerEmail" path="passengerEmail"/>	
 	<acme:input-textarea code="assistanceAgent.claim.form.label.description" path="description"/>	
 	<acme:input-select code="assistanceAgent.claim.form.label.type" path="type" choices="${types}"/>
@@ -38,4 +38,7 @@
 			<acme:submit code="assistanceAgent.claim.form.button.create" action="/assistance-agent/claim/create"/>
 		</jstl:when>		
 	</jstl:choose>	
+		<jstl:if test="${_command != 'create'}">
+		<acme:button code="assistanceAgent.claim.form.show.trackingLogs" action="/assistance-agent/tracking-log/list?claimId=${id}"/>
+	</jstl:if>
 </acme:form>

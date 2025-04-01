@@ -1,41 +1,30 @@
 
-package acme.features.assistanceAgent.claim;
+package acme.features.administrator.claim;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.claim.ClaimType;
 import acme.entities.leg.Leg;
-import acme.realms.AssistanceAgent;
+import acme.entities.trackingLog.ClaimStatus;
 
 @GuiService
-public class ClaimUpdateService extends AbstractGuiService<AssistanceAgent, Claim> {
-
-	// Internal state ---------------------------------------------------------
+public class AdministratorClaimShowService extends AbstractGuiService<Administrator, Claim> {
 
 	@Autowired
-	private ClaimRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
+	private AdministratorClaimRepository repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		Claim claim;
-		int id;
-		AssistanceAgent assistanceAgent;
-
-		id = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(id);
-		assistanceAgent = claim == null ? null : claim.getAssistanceAgent();
-		status = super.getRequest().getPrincipal().hasRealm(assistanceAgent) && (claim == null || claim.isDraftMode());
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -52,27 +41,14 @@ public class ClaimUpdateService extends AbstractGuiService<AssistanceAgent, Clai
 	}
 
 	@Override
-	public void bind(final Claim claim) {
-		super.bindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "id");
-	}
-
-	@Override
-	public void validate(final Claim claim) {
-		;
-	}
-
-	@Override
-	public void perform(final Claim claim) {
-		this.repository.save(claim);
-	}
-
-	@Override
 	public void unbind(final Claim claim) {
 		Collection<Leg> legs;
 		SelectChoices choices;
 		SelectChoices choices2;
 		Dataset dataset;
+		ClaimStatus indicator;
 
+		indicator = claim.getStatus();
 		choices = SelectChoices.from(ClaimType.class, claim.getType());
 		legs = this.repository.findAllLeg();
 		choices2 = SelectChoices.from(legs, "flightNumber", claim.getLeg());
@@ -81,6 +57,7 @@ public class ClaimUpdateService extends AbstractGuiService<AssistanceAgent, Clai
 		dataset.put("types", choices);
 		dataset.put("leg", choices2.getSelected().getKey());
 		dataset.put("legs", choices2);
+		dataset.put("indicator", indicator);
 
 		super.getResponse().addData(dataset);
 	}

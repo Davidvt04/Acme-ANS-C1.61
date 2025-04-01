@@ -1,0 +1,29 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.claim.form.title = Detalles de quejas
+administrator.claim.list.title = Lista de quejas
+
+administrator.claim.form.label.registrationMoment = Fecha de registro:
+administrator.claim.form.label.passengerEmail = Email del pasajero:
+administrator.claim.form.label.description = Descripcion:
+administrator.claim.form.label.type = Tipo:
+administrator.claim.form.label.leg = Tramo de vuelo
+administrator.claim.form.label.indicator = Indicador:
+administrator.claim.form.button.publish = Publicar
+
+
+ 
+administrator.claim.list.label.passengerEmail = Email de pasajero
+administrator.claim.list.label.type = Tipo:
+administrator.claim.list.label.indicator = Indicador:
+
+
+administrator.claim.form.show.trackingLogs = Ver los registros asociados

@@ -16,21 +16,21 @@ public class AssistanceAgentTrackingLogController extends AbstractGuiController<
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AssistanceAgentTrackingLogListService	listService;
+	private AssistanceAgentTrackingLogListService		listService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogShowService	showService;
+	private AssistanceAgentTrackingLogShowService		showService;
 	@Autowired
-	private AssistanceAgentTrackingLogCreateService	createService;
+	private AssistanceAgentTrackingLogCreateService		createService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogUpdateService	updateService;
+	private AssistanceAgentTrackingLogUpdateService		updateService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogUpdateService	publishService;
+	private AssistanceAgentTrackingLogPublishService	publishService;
 
 	@Autowired
-	private AssistanceAgentTrackingLogDeleteService	deleteService;
+	private AssistanceAgentTrackingLogDeleteService		deleteService;
 
 
 	// Constructors -----------------------------------------------------------

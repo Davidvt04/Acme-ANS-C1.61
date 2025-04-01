@@ -43,20 +43,23 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
+
 		Collection<Claim> claims;
-		SelectChoices choices;
-		SelectChoices choices2;
+		SelectChoices statusChoices;
+		SelectChoices claimChoices;
 		Dataset dataset;
 		int assistanceAgentId;
 		assistanceAgentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		choices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
-		claims = this.repository.findClaimsByAssistanceAgent(assistanceAgentId);
-		choices2 = SelectChoices.from(claims, "id", trackingLog.getClaim());
+		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode", "id");
-		dataset.put("status", choices);
+		claims = this.repository.findClaimsByAssistanceAgent(assistanceAgentId);
+		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
+
+		dataset = super.unbindObject(trackingLog, "claim", "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode", "id");
+		dataset.put("statusChoices", statusChoices);
 		//dataset.put("claim", choices2.getSelected().getKey());
-		dataset.put("claims", choices2);
+		dataset.put("claimChoices", claimChoices);
+
 		super.getResponse().addData(dataset);
 
 	}

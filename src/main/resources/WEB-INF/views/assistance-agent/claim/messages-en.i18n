@@ -28,3 +28,4 @@ assistanceAgent.claim.list.label.type = Type:
 assistanceAgent.claim.list.label.indicator = Indicator:
 
 assistanceAgent.claim.list.button.create = Create
+assistanceAgent.claim.form.show.trackingLogs = View Associated Tracking Logs
