@@ -19,7 +19,7 @@ import acme.realms.Technician;
 public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService<Technician, MaintenanceRecord> {
 
 	@Autowired
-	TechnicianMaintenanceRecordRepository repository;
+	private TechnicianMaintenanceRecordRepository repository;
 
 
 	@Override
