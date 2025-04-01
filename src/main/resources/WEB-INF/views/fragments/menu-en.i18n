@@ -25,6 +25,10 @@ master.menu.administrator.list-airports = List airports
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
+master.menu.administrator.list-aircrafts = List aircrafts
+master.menu.administrator.list-claims = List claims
+master.menu.administrator.list-bookings = List bookings
+
 
 # master.menu.provider ########################################################
 
@@ -36,11 +40,24 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+
+# master.menu.customer ##########################################################
+master.menu.customer = Customer
+master.menu.customer.list-bookings = List bookings
+master.menu.customer.list-passengers = List passengers
+
 # master.menu.technician ##########################################################
 
 master.menu.technician = Technician
 master.menu.technician.maintenance-records = List maintenance records
 master.menu.technician.tasks = List tasks
+
+# master.menu.flight-crew-member ##########################################################
+
+master.menu.flight-crew-member = Flight Crew Member
+master.menu.flight-crew-member.flight-assignament.completedlist = List Flight Assignaments with completed legs
+master.menu.flight-crew-member.flight-assignament.plannedlist = List Flight Assignaments with planned legs
+
 
 # master.menu.user-account ####################################################
 
@@ -50,5 +67,18 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+master.menu.manager = Manager
+master.menu.manager.flight.list = List Flights
+master.menu.manager.leg.list = List Legs
+master.menu.user-account.customer-profile = Customer profile
+master.menu.user-account.become-customer= Become a customer
+master.menu.user-account.become-assistance-agent = Become an assistance agent
+master.menu.user-account.assistance-agent-profile = Assistance agent profile
+
+# mater.menu.assistance-agent ####################################################
+master.menu.assistanceAgent  = Assistance Agent
+master.menu.assistanceAgent.list-claims = List completed claims
+master.menu.assistanceAgent.list-claims-pending = List undergoing claims
+master.menu.assistanceAgent.list-trackingLog = List all tracking logs
 
 

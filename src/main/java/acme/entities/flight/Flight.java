@@ -28,6 +28,10 @@ public class Flight extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	@Valid
 	@ManyToOne(optional = false)
 	@Mandatory

@@ -18,7 +18,7 @@ public @interface ValidPhoneNumber {
 
 	// Standard validation properties -----------------------------------------
 
-	String message() default "Bad format on phone number";
+	String message() default "{acme.validation.phone.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

@@ -1,0 +1,23 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+authenticated.assistance-agent.form.title = Assistance agent form
+
+authenticated.assistanceAgent.form.label.employeeCode= Employee Code
+authenticated.assistanceAgent.form.label.spokenLanguages= Spoken Languages
+authenticated.assistanceAgent.form.label.moment= Moment when agent started to work
+authenticated.assistanceAgent.form.label.briefBio= BriefBio
+authenticated.assistanceAgent.form.label.salary= Salary
+authenticated.assistanceAgent.form.label.photo= Photo
+authenticated.assistanceAgent.form.label.airline= Airline
+
+
+authenticated.assistanceAgent.form.button.create = Register
+authenticated.assistanceAgent.form.button.update = Update
