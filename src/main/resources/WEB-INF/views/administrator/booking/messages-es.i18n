@@ -1,0 +1,32 @@
+# defaults-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.booking.form.title = Detalles de la reserva
+administrator.booking.list.title = Listado de reservas
+
+administrator.booking.form.button.create = Crear
+administrator.booking.form.button.update = Actualizar
+administrator.booking.form.button.publish= Publicar
+administrator.booking.form.button.return = Volver
+administrator.booking.form.show.passengers = Mostrar pasajeros
+administrator.booking.form.add.passenger = Añadir Pasajero
+administrator.booking.list.button.create = Crear
+
+administrator.booking.list.label.flight=Vuelo
+administrator.booking.list.label.purchaseMoment=Momento de la compra
+administrator.booking.list.label.price=Precio
+administrator.booking.list.label.draftmode=Modo borrador
+
+administrator.booking.list.label.locatorCode= Localizador de vuelo
+administrator.booking.list.label.lastNibble= Últimos 4 dígitos de la tarjeta
+administrator.booking.list.label.travelClass= Clase de viaje
+
+acme.validation.lastNibble.message = Debe completar los dígitos de su tarjeta para confirmar
+administrator.booking.form.error.duplicateLocatorCode = El localizador de vuelo ya está en uso

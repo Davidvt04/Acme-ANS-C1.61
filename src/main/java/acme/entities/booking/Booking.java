@@ -62,6 +62,10 @@ public class Booking extends AbstractEntity {
 	@ValidString(min = 4, max = 4)
 	private String				lastNibble;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 
 	@Transient
 	public Money getPrice() {
