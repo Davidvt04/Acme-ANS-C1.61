@@ -42,6 +42,12 @@ master.menu.consumer.favourite-link = Favourite link
 master.menu.technician = Technician
 master.menu.technician.maintenance-records = List maintenance records
 
+# master.menu.flight-crew-member ##########################################################
+
+master.menu.flight-crew-member = Flight Crew Member
+master.menu.flight-crew-member.flight-assignament.completedlist = List Flight Assignaments with completed legs
+master.menu.flight-crew-member.flight-assignament.plannedlist = List Flight Assignaments with planned legs
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

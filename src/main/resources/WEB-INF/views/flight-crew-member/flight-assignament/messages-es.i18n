@@ -1,0 +1,26 @@
+# messages-es.i18n
+
+flight-crew-member.flight-assignament.list.title = Lista de Asignaciones de vuelo
+flight-crew-member.flight-assignament.form.title = Formulario de Asignaciones de vuelo
+
+
+flight-crew-member.flight-assignament.form.label.leg = Tramo:
+flight-crew-member.flight-assignament.form.label.flight-crew-member = Miembro de la tripulación:
+flight-crew-member.flight-assignament.form.label.confirmation = Confirme la Asignación de vuelo 
+flight-crew-member.flight-assignament.form.label.duty = Cargo:
+flight-crew-member.flight-assignament.form.label.moment = Momento: 
+flight-crew-member.flight-assignament.form.label.current-status = Estado actual:
+flight-crew-member.flight-assignament.form.label.remarks = Observaciones:
+
+		
+flight-crew-member.flight-assignament.form.button.delete = Borrar
+flight-crew-member.flight-assignament.form.button.create = Crear
+flight-crew-member.flight-assignament.form.button.update = Actualizar
+flight-crew-member.flight-assignament.form.button.publish = Publicar
+flight-crew-member.flight-assignament.form.button.activity-log = Registro de actividad
+
+flight-crew-member.flight-assignament.list.label.duty = Cargo
+flight-crew-member.flight-assignament.list.label.moment = Momento
+flight-crew-member.flight-assignament.list.label.current-status = Estado actual
+flight-crew-member.flight-assignament.list.label.remarks = Observaciones
+flight-crew-member.flight-assignament.list.button.create = Crear
