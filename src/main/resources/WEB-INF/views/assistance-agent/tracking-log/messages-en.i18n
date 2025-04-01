@@ -1,0 +1,38 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+assistance-agent.tracking-log.form.title = Tracking log form
+assistance-agent.tracking-log.list.title = Listing of Tracking logs
+
+assistanceAgent.trackingLog.form.label.lastUpdateMoment = Last update moment:
+assistanceAgent.trackingLog.form.label.step = Step:
+assistanceAgent.trackingLog.form.label.resolutionPercentage = Resolution percentage:
+assistanceAgent.trackingLog.form.label.status = Status:
+assistanceAgent.trackingLog.form.label.resolution = Resolution:
+assistanceAgent.trackingLog.form.label.claim = Claim:
+assistanceAgent.trackingLog.form.label.confirmation = Do you want to confirm?
+
+assistanceAgent.trackingLog.form.button.create = Create
+assistanceAgent.trackingLog.form.button.update = Update
+assistanceAgent.trackingLog.form.button.delete = Delete
+ 
+assistanceAgent.trackingLog.list.label.step = Step
+assistanceAgent.trackingLog.list.label.resolutionPercentage = Resolution percentage:
+assistanceAgent.trackingLog.list.label.status = Status:
+
+assistanceAgent.trackingLog.list.button.create = Create
+
+assistanceAgent.trackingLog.form.error.badStatus = Pending status must be under 100% percentage
+assistanceAgent.trackingLog.form.error.badStatus2 = Pending status is not allowed for 100% percentage  
+assistanceAgent.trackingLog.form.error.badResolution =Resolution are only available with 100% percentage and not pending status
+assistanceAgent.trackingLog.form.error.badResolution2 = You must introduce a resolution when status is not pending and percentage is 100%
+assistanceAgent.trackingLog.form.error.badPercentage = Percentage must always be higher than the highest recorded for this claim
+assistanceAgent.trackingLog.form.error.claimPublished = You can not publish a tracking log if its associated claim is not published
+assistanceAgent.trackingLog.form.error.maxcompleted = You can only have 2 tracking logs at 100% for a claim, given that the first one is already published

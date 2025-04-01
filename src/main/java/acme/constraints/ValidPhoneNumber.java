@@ -8,26 +8,17 @@ import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import javax.validation.ReportAsSingleViolation;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Length;
-
-@Target(ElementType.FIELD)
+@Target({
+	ElementType.FIELD, ElementType.PARAMETER, ElementType.ANNOTATION_TYPE, ElementType.METHOD
+})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {})
-@ReportAsSingleViolation
-
-@NotBlank
-@Length(min = 6, max = 16)
-@Pattern(regexp = "^\\+?\\d{6,15}$")
-
+@Constraint(validatedBy = PhoneNumberValidator.class)
 public @interface ValidPhoneNumber {
 
 	// Standard validation properties -----------------------------------------
 
-	String message() default "{acme.validation.header.message}";
+	String message() default "{acme.validation.phone.message}";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

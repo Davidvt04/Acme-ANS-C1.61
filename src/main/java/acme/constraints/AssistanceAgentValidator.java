@@ -59,7 +59,7 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 
 		if (!iniciales.equals(identifierInitials)) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("Identifier must start with initials of the user: Should be " + identifierInitials + " but is " + iniciales).addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("Identifier must start with initials of the user: Should be " + iniciales + " but is " + identifierInitials).addConstraintViolation();
 			return false;
 		}
 		return true;

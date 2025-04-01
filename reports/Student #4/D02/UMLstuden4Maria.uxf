@@ -63,18 +63,18 @@ bg=LIGHT_GRAY</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
+      <x>360</x>
       <y>144</y>
-      <w>171</w>
-      <h>126</h>
+      <w>342</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
-m1=*
+m1=1..*
 m2=1
 
 
 is made by</panel_attributes>
-    <additional_attributes>10.0;120.0;70.0;50.0;170.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;70.0;350.0;60.0;350.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -82,19 +82,19 @@ is made by</panel_attributes>
       <x>324</x>
       <y>387</y>
       <w>63</w>
-      <h>117</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=*
 tracks</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;20.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>36</x>
-      <y>135</y>
+      <x>27</x>
+      <y>54</y>
       <w>126</w>
       <h>45</h>
     </coordinates>
@@ -106,18 +106,18 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>81</x>
-      <y>45</y>
-      <w>234</w>
-      <h>108</h>
+      <x>144</x>
+      <y>54</y>
+      <w>189</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
-m1=*
+m1=1..*
 m2=1
 
 
 works in</panel_attributes>
-    <additional_attributes>240.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

@@ -67,10 +67,5 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 		}
 		return true;
 	}
-	/*
-	 * private String transliterate(final String input) {
-	 * String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
-	 * return normalized.replaceAll("[^\\p{ASCII}]", "");
-	 * }
-	 */
+
 }

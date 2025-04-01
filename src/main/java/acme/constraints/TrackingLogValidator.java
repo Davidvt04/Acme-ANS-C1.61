@@ -2,6 +2,7 @@
 package acme.constraints;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.ConstraintValidatorContext;
 
@@ -11,13 +12,13 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
-import acme.entities.trackingLog.TrackingLogRepository;
+import acme.features.assistanceAgent.trackingLog.AssistanceAgentTrackingLogRepository;
 
 @Validator
 public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, TrackingLog> {
 
 	@Autowired
-	private TrackingLogRepository repository;
+	private AssistanceAgentTrackingLogRepository repository;
 
 
 	@Override
@@ -41,16 +42,17 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 				super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "Status", "El estado debe ser PENDING");
 
 			if (trackingLog.getStatus().equals(ClaimStatus.PENDING))
-				super.state(context, trackingLog.getResolution() == null, "Resolution", "El campo resolucion es incorrecto");
+				super.state(context, trackingLog.getResolution() == null || trackingLog.getResolution().isBlank(), "Resolution", "El campo resolution debe quedar vacío hasta la finalización del tracking log");
 			else
-				super.state(context, trackingLog.getResolution() != null, "Resolution", "El campo resolucion es incorrecto");
+				super.state(context, trackingLog.getResolution() != null && !trackingLog.getResolution().isBlank(), "Resolution", "El campo resolucion es incorrecto");
 
-			List<TrackingLog> trackingLogs;
-			trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId()).get();
-			Integer pos = trackingLogs.indexOf(trackingLog);
-			if (trackingLogs.size() > 1 && pos < trackingLogs.size() - 1)
-				super.state(context, trackingLogs.get(pos + 1).getResolutionPercentage() < trackingLog.getResolutionPercentage(), "ResolutionPercentage", "Error el porcentaje debe ser mayor a:" + trackingLogs.get(pos + 1).getResolutionPercentage());
-
+			TrackingLog highestTrackingLog;
+			Optional<List<TrackingLog>> trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
+			if (trackingLogs.isPresent() && trackingLogs.get().size() > 0) {
+				highestTrackingLog = trackingLogs.get().get(0);
+				if (highestTrackingLog.getId() != trackingLog.getId() && !(highestTrackingLog.getResolutionPercentage() == 100 && trackingLog.getResolutionPercentage() == 100))
+					super.state(context, highestTrackingLog.getResolutionPercentage() < trackingLog.getResolutionPercentage(), "ResolutionPercentage", "Te equivocaste wey");
+			}
 		}
 		result = !super.hasErrors(context);
 		return result;

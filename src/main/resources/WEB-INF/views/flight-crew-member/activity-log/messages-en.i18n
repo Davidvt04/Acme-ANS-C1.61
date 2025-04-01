@@ -1,0 +1,19 @@
+# messages-en.i18n
+
+flight-crew-member.activity-log.list.title = List of Activity Logs
+flight-crew-member.activity-log.form.title = Activity Log Form
+
+flight-crew-member.activity-log.list.label.typeOfIncident = Type of Incident  
+flight-crew-member.activity-log.list.label.description = Description  
+flight-crew-member.activity-log.list.label.severityLevel = Severity Level  
+flight-crew-member.activity-log.list.label.registrationMoment = Registration Moment  
+flight-crew-member.activity-log.list.button.create = Create  
+flight-crew-member.activity-log.form.label.typeOfIncident = Type of Incident  
+flight-crew-member.activity-log.form.label.description = Description  
+flight-crew-member.activity-log.form.label.severityLevel = Severity Level  
+flight-crew-member.activity-log.form.label.registrationMoment = Registration Moment  
+flight-crew-member.activity-log.form.button.update = Update  
+flight-crew-member.activity-log.form.button.publish = Publish  
+flight-crew-member.activity-log.form.button.delete = Delete  
+flight-crew-member.activity-log.form.button.create = Create  
+flight-crew-member.activity-log.form.label.confirmation = Confirm that the Flight Assignment is correct  

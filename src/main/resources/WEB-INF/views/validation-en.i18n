@@ -1,0 +1,25 @@
+# validation-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+acme.validation.header.message  	= Must have from 1 to 75 characters
+acme.validation.text.message   		= Must have from 1 to 255 characters
+acme.validation.phone.message       = Must match +country-code (area-code) phone-number, where only the phone-number is mandatory 
+
+
+# Fight Assignaments
+acme.validation.FlightAssignament.havePilot.message= That leg already have a Pilot assigned
+acme.validation.FlightAssignament.haveCopilot.message= That leg already have a Copilot Assigned
+acme.validation.FlightAssignament.flightCrewMemberNotAvailable.message= That Flight Crew Member isn't available
+acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message= That Flight Crew Member has incompatible legs with that one
+acme.validation.FlightAssignament.LegAlreadyCompleted.message= The leg that is associated with this flight assignament has already finished, so you can't publish it
+acme.validation.flightAssignament.availableFlightCrewMember.message= The Flight Assignament must be associated with a available Flight Crew Member
+
+#Activity Log
+acme.validation.activityLog.wrongMoment.message = The Activity Log registration moment must be after the scheduled arrival of the Leg
