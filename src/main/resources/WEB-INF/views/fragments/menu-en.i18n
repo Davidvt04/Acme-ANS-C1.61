@@ -40,6 +40,7 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.technician = Technician
 master.menu.technician.maintenance-records = List maintenance records
+master.menu.technician.tasks = List tasks
 
 # master.menu.user-account ####################################################
 
