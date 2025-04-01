@@ -30,13 +30,13 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 			return false;
 		}
 
-		if (leg.getAirline() == null || leg.getAirline().getIataCode() == null || leg.getAirline().getIataCode().isBlank()) {
+		if (leg.getFlight().getManager().getAirline() == null || leg.getFlight().getManager().getAirline().getIataCode() == null || leg.getFlight().getManager().getAirline().getIataCode().isBlank()) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate("Airline and its IATA code must not be null or blank").addPropertyNode("airline").addConstraintViolation();
 			return false;
 		}
 
-		String airlineIata = leg.getAirline().getIataCode();
+		String airlineIata = leg.getFlight().getManager().getAirline().getIataCode();
 		String flightNumberPrefix = flightNumber.substring(0, 3);
 		if (!airlineIata.equals(flightNumberPrefix)) {
 			context.disableDefaultConstraintViolation();

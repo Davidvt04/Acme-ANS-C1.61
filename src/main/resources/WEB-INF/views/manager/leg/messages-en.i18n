@@ -15,6 +15,9 @@ manager.leg.form.label.scheduledDeparture = Scheduled Departure
 manager.leg.form.label.scheduledArrival = Scheduled Arrival
 manager.leg.form.label.durationInHours = Duration (hours)
 manager.leg.form.label.confirmation = Confirm
+manager.leg.form.label.arrivalAirport= Arrival Airport
+manager.leg.form.label.departureAirport= Departure Airport
+manager.leg.form.label.aircraft = Aircraft
 
 # Leg form buttons
 manager.leg.form.button.publish = Publish Leg
@@ -22,3 +25,8 @@ manager.leg.form.button.update = Update Leg
 manager.leg.form.button.create = Register Leg
 manager.leg.form.button.list = List Legs
 manager.leg.form.button.delete = Delete Leg
+
+
+manager.leg.error.sameAirport= Departure and arrival airports are the same
+manager.leg.error.duplicateFlightNumber = Duplicated flight number
+

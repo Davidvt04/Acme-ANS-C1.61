@@ -6,28 +6,38 @@
     <title>Leg Details</title>
 </head>
 <body>
-    <h1>Leg Details</h1>
-    <p>Flight ID: <c:out value="${param.flightId}" /></p>
     <acme:form readonly="false">
-        <!-- Hidden fields to ensure the required parameters are submitted -->
-        <input type="hidden" name="_command" value="create" />
-        <input type="hidden" name="flightId" value="${param.flightId}" />
-        
-        <!-- Leg basic details -->
+        <!-- Basic leg fields -->
         <acme:input-textbox code="manager.leg.form.label.flightNumber" path="flightNumber" />
         <acme:input-moment code="manager.leg.form.label.scheduledDeparture" path="scheduledDeparture" />
         <acme:input-moment code="manager.leg.form.label.scheduledArrival" path="scheduledArrival" />
         <acme:input-textbox code="manager.leg.form.label.durationInHours" path="durationInHours" />
         
-        <!-- Publish button: visible only if draftMode is true and command is not 'create' -->
+        <!-- Departure Airport -->
+        <acme:input-select 
+            code="manager.leg.form.label.departureAirport" 
+            path="departureAirport"
+            choices="${departureAirports}" />
+
+        <!-- Arrival Airport -->
+        <acme:input-select 
+            code="manager.leg.form.label.arrivalAirport" 
+            path="arrivalAirport"
+            choices="${arrivalAirports}" />
+            
+	  <acme:input-select 
+	        code="manager.leg.form.label.aircraft" 
+	        path="aircraft"
+	        choices="${aircraftChoices}" />
+	        
+        <!-- Additional buttons and logic -->
         <c:if test="${draftMode and _command != 'create'}">
             <acme:submit code="manager.leg.form.button.publish" action="/manager/leg/publish" />
         </c:if>
         
-        <!-- Conditional submit: create vs. update/delete -->
         <c:choose>
             <c:when test="${_command == 'create'}">
-                <acme:submit code="manager.leg.form.button.create" action="/manager/leg/create" />
+                <acme:submit code="manager.leg.form.button.create" action="/manager/leg/create?flightId=${param.flightId}" />
             </c:when>
             <c:otherwise>
                 <c:if test="${draftMode}">

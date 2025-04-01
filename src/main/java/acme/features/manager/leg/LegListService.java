@@ -9,13 +9,17 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.leg.Leg;
+import acme.features.manager.flight.FlightRepository;
 import acme.realms.managers.Manager;
 
 @GuiService
 public class LegListService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegRepository repository;
+	private ManagerLegRepository	repository;
+
+	@Autowired
+	private FlightRepository		flightRepository;
 
 
 	@Override
@@ -28,9 +32,13 @@ public class LegListService extends AbstractGuiService<Manager, Leg> {
 	public void load() {
 		// Retrieve the masterId from the request parameters
 		int flightId = super.getRequest().getData("flightId", int.class);
+		boolean flightDraftMode = this.flightRepository.findFlightById(flightId).isDraftMode();
+
 		// Retrieve the legs associated with the given flight, ordered by scheduledDeparture
 		Collection<Leg> legs = this.repository.findLegsByflightIdOrderByMoment(flightId);
 		super.getBuffer().addData(legs);
+		// Add the flightDraftMode flag to the response so the JSP can access it.
+		super.getResponse().addGlobal("flightDraftMode", flightDraftMode);
 	}
 
 	@Override
@@ -41,7 +49,7 @@ public class LegListService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("originCity", leg.getDepartureAirport().getCity());
 		dataset.put("destinationCity", leg.getArrivalAirport().getCity());
 		dataset.put("flightId", super.getRequest().getData("flightId", int.class));
-
 		super.getResponse().addData(dataset);
 	}
+
 }

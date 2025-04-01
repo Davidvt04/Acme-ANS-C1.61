@@ -16,6 +16,9 @@ manager.leg.form.label.scheduledDeparture = Salida programada
 manager.leg.form.label.scheduledArrival = Llegada programada
 manager.leg.form.label.durationInHours = Duración (horas)
 manager.leg.form.label.confirmation = Confirmar
+manager.leg.form.label.arrivalAirport = Aeropuerto de llegada
+manager.leg.form.label.departureAirport = Aeropuerto de Salida
+manager.leg.form.label.aircraft = Aeronave
 
 # Leg form buttons
 manager.leg.form.button.publish = Publicar tramo
@@ -23,3 +26,7 @@ manager.leg.form.button.update = Actualizar tramo
 manager.leg.form.button.create = Crear tramo
 manager.leg.form.button.list = Listar tramos
 manager.leg.form.button.delete = Borrar tramo
+
+manager.leg.error.sameAirport= Mismo aeropuerto de llegada y salida
+
+manager.leg.error.duplicateFlightNumber = Numero de vuelo duplicado

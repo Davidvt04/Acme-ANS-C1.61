@@ -31,8 +31,10 @@
                     action="/manager/flight/delete" />
             </c:when>
         </c:choose>
-        
+		<c:if test="${_command != 'create'}">
         <acme:button code="manager.flight.form.button.legs" action="/manager/leg/list?flightId=${id}" />
+		</c:if>
+        
     </acme:form>
 </body>
 </html>
