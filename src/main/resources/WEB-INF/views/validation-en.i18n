@@ -20,3 +20,6 @@ acme.validation.FlightAssignament.flightCrewMemberNotAvailable.message= That Fli
 acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message= That Flight Crew Member has incompatible legs with that one
 acme.validation.FlightAssignament.LegAlreadyCompleted.message= The leg that is associated with this flight assignament has already finished, so you can't publish it
 acme.validation.flightAssignament.availableFlightCrewMember.message= The Flight Assignament must be associated with a available Flight Crew Member
+
+#Activity Log
+acme.validation.activityLog.wrongMoment.message = The Activity Log registration moment must be after the scheduled arrival of the Leg
