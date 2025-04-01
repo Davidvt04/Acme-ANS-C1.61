@@ -21,11 +21,12 @@ master.menu.anonymous.favourite-link.ivan = 77015962W: Fernandez Limarquez, Ivan
 
 master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
-master.menu.administrator.list-airports = Listar aeropuertos
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-system-down = Parar el sistema
+master.menu.administrator.list-airports = Listado de aeropuertos
 master.menu.administrator.list-aircrafts = Listado de aviones
+master.menu.administrator.list-bookings = Listado de reservas
 
 # master.menu.provider ########################################################
 
@@ -37,16 +38,25 @@ master.menu.provider.favourite-link = Enlace favorito
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+
+# master.menu.customer ##########################################################
+
+master.menu.customer = Cliente
+master.menu.customer.list-bookings = Listar reservas
+master.menu.customer.list-passengers = Listar pasajeros
+
 # master.menu.technician ##########################################################
 
 master.menu.technician = Técnico
 master.menu.technician.maintenance-records = Listar registros de mantenimiento
+
 
 # master.menu.flight-crew-member ##########################################################
 
 master.menu.flight-crew-member = Miembro de la tripulación
 master.menu.flight-crew-member.flight-assignament.completedlist = Listar asignaciones de vuelo con tramos completados
 master.menu.flight-crew-member.flight-assignament.plannedlist = Listar asignaciones de vuelo con tramos planeados
+
 
 
 # master.menu.user-account ####################################################
@@ -57,3 +67,5 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+master.menu.user-account.customer-profile = Perfil de cliente
+master.menu.user-account.become-customer= Hazte cliente
