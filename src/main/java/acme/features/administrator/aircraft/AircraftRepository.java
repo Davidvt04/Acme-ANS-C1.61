@@ -25,4 +25,7 @@ public interface AircraftRepository extends AbstractRepository {
 
 	@Query("select a from Airline a where a.id = :id")
 	Airline findAirlineById(int id);
+
+	@Query("select a from Aircraft a where a.registrationNumber = :number")
+	Aircraft findAircraftByNumber(String number);
 }
