@@ -76,4 +76,7 @@ master.menu.assistanceAgent.list-claims-pending = Listar quejas en proceso
 master.menu.assistanceAgent.list-trackingLog = Listar todos los registros
 master.menu.user-account.customer-profile = Perfil de cliente
 master.menu.user-account.become-customer= Hazte cliente
+master.menu.user-account.become-assistance-agent = Hazte Asistente 
+master.menu.user-account.assistance-agent-profile = Perfil de Asistente
+
 
