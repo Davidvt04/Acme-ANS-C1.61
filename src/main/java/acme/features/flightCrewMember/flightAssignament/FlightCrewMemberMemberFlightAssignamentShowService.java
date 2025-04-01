@@ -55,6 +55,9 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		Dataset dataset;
 
 		SelectChoices currentStatus;
+		int flightAssignamentId;
+
+		flightAssignamentId = super.getRequest().getData("id", int.class);
 		SelectChoices duty;
 
 		legs = this.repository.findAllLegs();
@@ -74,8 +77,8 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
 
-		dataset.put("legIncompleted", MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival()));
-
+		dataset.put("isCompleted", this.repository.associatedWithCompletedLeg(flightAssignamentId, MomentHelper.getCurrentMoment()));
+		System.out.println(this.repository.associatedWithCompletedLeg(flightAssignamentId, MomentHelper.getCurrentMoment()));
 		super.getResponse().addData(dataset);
 	}
 

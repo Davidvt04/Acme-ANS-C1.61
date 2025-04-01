@@ -1,13 +1,17 @@
 
 package acme.features.flightCrewMember.activityLogRecords;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
 import acme.entities.flightAssignament.FlightAssignament;
+import acme.entities.leg.Leg;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
@@ -25,8 +29,10 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 		activityLogId = super.getRequest().getData("id", int.class);
 		activityLog = this.repository.findActivityLogById(activityLogId);
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean authorised = this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
 
-		status = activityLog != null && activityLog.isDraftMode();
+		status = authorised && activityLog != null && activityLog.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,10 +55,24 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	@Override
 	public void validate(final ActivityLog activityLog) {
 
+		if (activityLog == null)
+			return;
+		FlightAssignament flightAssignament = activityLog.getFlightAssignament();
+		if (activityLog.getRegistrationMoment() == null || flightAssignament == null)
+			return;
+		Leg leg = flightAssignament.getLeg();
+		if (leg == null || leg.getScheduledArrival() == null)
+			return;
+		Date activityLogMoment = activityLog.getRegistrationMoment();
+		Date scheduledArrival = leg.getScheduledArrival();
+		Boolean activityLogMomentIsAfterscheduledArrival = MomentHelper.isAfter(activityLogMoment, scheduledArrival);
+		super.state(activityLogMomentIsAfterscheduledArrival, "WrongActivityLogDate", "acme.validation.activityLog.wrongMoment.message");
+
 	}
 
 	@Override
 	public void perform(final ActivityLog activityLog) {
+		activityLog.setDraftMode(true);
 		this.repository.save(activityLog);
 	}
 

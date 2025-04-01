@@ -23,3 +23,4 @@ acme.validation.flightAssignament.availableFlightCrewMember.message= The Flight 
 
 #Activity Log
 acme.validation.activityLog.wrongMoment.message = The Activity Log registration moment must be after the scheduled arrival of the Leg
+acme.validation.ActivityLog.FlightAssignamentNotPublished.message = If the Flight Assignament which is associated with this Activity Log isn't published, you can't publish it

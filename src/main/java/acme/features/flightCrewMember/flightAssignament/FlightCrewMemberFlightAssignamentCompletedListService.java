@@ -24,8 +24,7 @@ public class FlightCrewMemberFlightAssignamentCompletedListService extends Abstr
 	public void authorise() {
 
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int flightAssignamentId = super.getRequest().getData("id", int.class);
-		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+		boolean authorised = this.repository.existsFlightCrewMember(flightCrewMemberId);
 		super.getResponse().setAuthorised(authorised);
 	}
 

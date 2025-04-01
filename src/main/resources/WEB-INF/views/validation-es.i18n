@@ -22,3 +22,4 @@ acme.validation.flightAssignament.availableFlightCrewMember.message= La asignaci
 
 #Activity Log
 acme.validation.activityLog.wrongMoment.message = El momento de registro del Registro de Actividad debe ser posterior a la fecha de llegada de la leg
+acme.validation.ActivityLog.FlightAssignamentNotPublished.message = No puede publicar el Registro de Actividad si la asignación de vuelo a la que está asociado no se publico

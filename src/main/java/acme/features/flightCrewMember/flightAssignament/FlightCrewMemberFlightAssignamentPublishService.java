@@ -110,6 +110,7 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 	@Override
 	public void perform(final FlightAssignament flightAssignament) {
 		flightAssignament.setDraftMode(false);
+		flightAssignament.setMoment(MomentHelper.getCurrentMoment());
 		this.repository.save(flightAssignament);
 	}
 

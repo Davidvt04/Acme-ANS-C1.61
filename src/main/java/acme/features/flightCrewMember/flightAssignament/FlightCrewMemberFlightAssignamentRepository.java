@@ -24,6 +24,9 @@ public interface FlightCrewMemberFlightAssignamentRepository extends AbstractRep
 	@Query("select fa from FlightAssignament fa where fa.leg.scheduledArrival < :currentMoment and fa.flightCrewMember.id = :flighCrewMemberId")
 	Collection<FlightAssignament> findAllFlightAssignamentByCompletedLeg(Date currentMoment, int flighCrewMemberId);
 
+	@Query("select case when count(fa) > 0 then true else false end from FlightAssignament fa where fa.id = :id and fa.leg.scheduledArrival < :currentMoment")
+	boolean associatedWithCompletedLeg(int id, Date currentMoment);
+
 	@Query("select fa from FlightAssignament fa where fa.leg.scheduledArrival >= :currentMoment and fa.flightCrewMember.id = :flighCrewMemberId")
 	Collection<FlightAssignament> findAllFlightAssignamentByPlannedLeg(Date currentMoment, int flighCrewMemberId);
 
@@ -65,5 +68,8 @@ public interface FlightCrewMemberFlightAssignamentRepository extends AbstractRep
 
 	@Query("select l from Leg l")
 	Collection<Leg> findAllLegs();
+
+	@Query("SELECT CASE WHEN COUNT(fcm) > 0 THEN true ELSE false END FROM FlightCrewMember fcm WHERE fcm.id = :id")
+	boolean existsFlightCrewMember(int id);
 
 }

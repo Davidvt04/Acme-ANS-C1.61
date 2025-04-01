@@ -19,7 +19,16 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int activityLogId;
+
+		ActivityLog activityLog;
+
+		activityLogId = super.getRequest().getData("id", int.class);
+		activityLog = this.repository.findActivityLogById(activityLogId);
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean authorised = this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
+		System.out.println("Es mia? " + authorised);
+		super.getResponse().setAuthorised(authorised && activityLog != null);
 	}
 
 	@Override

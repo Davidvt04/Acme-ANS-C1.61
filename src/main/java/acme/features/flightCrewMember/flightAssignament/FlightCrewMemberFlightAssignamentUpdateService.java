@@ -96,6 +96,7 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 
 	@Override
 	public void perform(final FlightAssignament flightAssignament) {
+		flightAssignament.setMoment(MomentHelper.getCurrentMoment());
 		this.repository.save(flightAssignament);
 	}
 
