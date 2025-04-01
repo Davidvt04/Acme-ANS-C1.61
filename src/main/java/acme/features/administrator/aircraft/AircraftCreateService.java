@@ -37,15 +37,8 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 	@Override
 	public void bind(final Aircraft aircraft) {
-		//super.bindObject(aircraft, "model", "registrationNumber", "capacity", "status", "cargoWeight", "details", "airline");
-		int airlineId;
-		Airline airline;
+		super.bindObject(aircraft, "model", "registrationNumber", "capacity", "status", "cargoWeight", "details", "airline");
 
-		airlineId = super.getRequest().getData("airline", int.class);
-		airline = this.repository.findAirlineById(airlineId);
-
-		super.bindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "status", "details");
-		aircraft.setAirline(airline);
 	}
 
 	@Override
@@ -54,7 +47,11 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-
+		super.state(aircraft.getCargoWeight() > 2000 && aircraft.getCargoWeight() < 50000, "cargoWeight", "acme.validation.cargoWeight.message");
+		super.state(aircraft.getCapacity() > 1 && aircraft.getCapacity() < 255, "capacity", "acme.validation.capacity.message");
+		Aircraft existing = this.repository.findAircraftByNumber(aircraft.getRegistrationNumber());
+		boolean valid = existing == null || existing.getId() == aircraft.getId();
+		super.state(valid, "registrationNumber", "administrator.aircraft.form.error.duplicateRegistrationNumber");
 	}
 
 	@Override

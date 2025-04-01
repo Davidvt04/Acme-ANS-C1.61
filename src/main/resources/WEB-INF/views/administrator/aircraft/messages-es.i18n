@@ -35,3 +35,7 @@ administrator.aircraft.form.button.create = Crear
 administrator.aircraft.form.button.duties = Deberes
 administrator.aircraft.form.button.update = Actualizar
 administrator.aircraft.form.button.delete = Eliminar
+
+acme.validation.capacity.message= La capacidad debe estar entre 1 y 255
+acme.validation.cargoWeight.message= El peso de la carga debe estar 2000 y 50000
+administrator.aircraft.form.error.duplicateRegistrationNumber= Ese número de registro ya está asignado 

@@ -26,7 +26,9 @@ master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.shut-system-down = Shut system down
 master.menu.administrator.list-aircrafts = List aircrafts
+master.menu.administrator.list-claims = List claims
 master.menu.administrator.list-bookings = List bookings
+
 
 # master.menu.provider ########################################################
 
@@ -68,5 +70,11 @@ master.menu.user-account.customer-profile = Customer profile
 master.menu.user-account.become-customer= Become a customer
 master.menu.user-account.become-assistance-agent = Become an assistance agent
 master.menu.user-account.assistance-agent-profile = Assistance agent profile
+
+# mater.menu.assistance-agent ####################################################
+master.menu.assistanceAgent  = Assistance Agent
+master.menu.assistanceAgent.list-claims = List completed claims
+master.menu.assistanceAgent.list-claims-pending = List undergoing claims
+master.menu.assistanceAgent.list-trackingLog = List all tracking logs
 
 
