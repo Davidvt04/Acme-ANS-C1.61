@@ -52,12 +52,15 @@ public class Claim extends AbstractEntity {
 	@Valid
 	private ClaimType			type;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 
 	@Transient
 	public ClaimStatus getStatus() {
 		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
-		TrackingLog tracking = repository.findOrderTrackingLog(this.getId()).get().get(0);
-		return tracking.getStatus();
+		return repository.findOrderTrackingLog(this.getId()).flatMap(list -> list.stream().findFirst()).map(TrackingLog::getStatus).orElse(ClaimStatus.PENDING);
 	}
 
 

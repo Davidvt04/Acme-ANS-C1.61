@@ -50,6 +50,10 @@ public class TrackingLog extends AbstractEntity {
 	@Valid
 	private ClaimStatus			status;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	@Optional
 	@Automapped
 	@ValidString(min = 1, max = 255)
