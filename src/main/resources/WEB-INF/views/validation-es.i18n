@@ -19,3 +19,6 @@ acme.validation.FlightAssignament.flightCrewMemberNotAvailable.message= Ese miem
 acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message= Ese miembro de la tripulación tiene tramos de vuelo incompatibles con ese
 acme.validation.FlightAssignament.LegAlreadyCompleted.message= El tramo al que esta asignacion de vuelo estaba asociado ya terminó, por lo que no podés publicarla
 acme.validation.flightAssignament.availableFlightCrewMember.message= La asignación de vuelo debe tener un miembro de la tripulación disponible asignado
+
+#Activity Log
+acme.validation.activityLog.wrongMoment.message = El momento de registro del Registro de Actividad debe ser posterior a la fecha de llegada de la leg
