@@ -83,5 +83,6 @@ master.menu.user-account.customer-profile = Perfil de cliente
 master.menu.user-account.become-customer= Hazte cliente
 master.menu.user-account.become-assistance-agent = Hazte Asistente 
 master.menu.user-account.assistance-agent-profile = Perfil de Asistente
+master.menu.assistanceAgent.show-dashboard= Ver dashboard
 
 
