@@ -17,7 +17,7 @@ import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegStatus;
 import acme.features.administrator.aircraft.AircraftRepository;
-import acme.features.administrator.airport.AdministratorAirportRepository;
+import acme.features.airport.AirportRepository;
 import acme.features.manager.flight.FlightRepository;
 import acme.realms.managers.Manager;
 
@@ -25,16 +25,16 @@ import acme.realms.managers.Manager;
 public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegRepository			repository;
+	private ManagerLegRepository	repository;
 
 	@Autowired
-	private FlightRepository				flightRepository;
+	private FlightRepository		flightRepository;
 
 	@Autowired
-	private AdministratorAirportRepository	airportRepository;
+	private AirportRepository		airportRepository;
 
 	@Autowired
-	private AircraftRepository				aircraftRepository;
+	private AircraftRepository		aircraftRepository;
 
 
 	@Override
