@@ -28,7 +28,10 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		masterId = super.getRequest().getData("masterId", int.class);
 		flightAssignament = this.repository.findFlightAssignamentById(masterId);
 
-		status = flightAssignament != null;
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean authorised = this.repository.existsFlightCrewMember(flightCrewMemberId);
+
+		status = authorised && flightAssignament != null;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -60,12 +63,14 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	public void unbind(final Collection<ActivityLog> activityLog) {
 		int masterId;
 
-		FlightAssignament flightAssignament;
 		final boolean showCreate;
 
 		masterId = super.getRequest().getData("masterId", int.class);
-		flightAssignament = this.repository.findFlightAssignamentById(masterId);
-		showCreate = flightAssignament.isDraftMode();
+
+		System.out.println("El masterId es: " + masterId + " de la assignament= " + this.repository.isFlightAssignamentAlreadyPublishedById(masterId));
+		System.out.flush();
+		showCreate = this.repository.isFlightAssignamentAlreadyPublishedById(masterId);
+
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 
