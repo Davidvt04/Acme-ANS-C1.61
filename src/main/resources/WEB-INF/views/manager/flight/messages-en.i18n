@@ -1,0 +1,43 @@
+# messages-en.i18n
+#
+# Flight messages for the Manager realm
+
+manager.flight.form.title = Flight Details
+
+manager.flight.form.label.tag = Tag
+manager.flight.form.label.requiresSelfTransfer = Requires Self-Transfer
+manager.flight.form.label.cost = Cost
+manager.flight.form.label.description = Description
+manager.flight.form.label.scheduledDeparture = Scheduled Departure
+manager.flight.form.label.scheduledArrival = Scheduled Arrival
+manager.flight.form.label.draftMode = Draft Mode
+manager.flight.form.label.confirmation = Confirm
+
+manager.flight.list.label.tag = Tag
+manager.flight.list.label.requiresSelfTransfer = Self-Transfer
+manager.flight.list.label.cost = Cost
+manager.flight.list.label.description = Description
+manager.flight.list.label.scheduledDeparture = Departure
+manager.flight.list.label.scheduledArrival = Arrival
+manager.flight.list.label.draftMode = Draft
+manager.flight.list.label.originCity = Origin 
+manager.flight.list.label.destinationCity= Destiny
+manager.flight.list.button.create = Create
+
+manager.flight.list.title = Manager Flight Listing
+master.menu.flight.list = List Flights
+master.menu.flight.create = Create Flight
+master.menu.flight = Flights
+
+button.create.flight = Create
+
+manager.flight.form.button.create = Register
+manager.flight.form.button.update = Update
+manager.flight.form.button.legs = Flight Legs
+manager.flight.form.button.publish = Publish
+manager.flight.form.button.delete = Delete 
+
+manager.flight.form.error.duplicateTag = Tag already exists
+manager.flight.form.error.invalidCost = Not a valid cost
+flight.publish.error.unpublishedLegs = This flight has unpublished legs
+flight.publish.error.noLegs = A flight needs legs to be published

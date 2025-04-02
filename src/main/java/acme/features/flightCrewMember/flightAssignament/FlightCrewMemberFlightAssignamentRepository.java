@@ -21,11 +21,14 @@ public interface FlightCrewMemberFlightAssignamentRepository extends AbstractRep
 	@Query("select fa from FlightAssignament fa where fa.id = :id")
 	FlightAssignament findFlightAssignamentById(int id);
 
-	@Query("select fa from FlightAssignament fa where fa.leg.scheduledArrival < :currentMoment")
-	Collection<FlightAssignament> findAllFlightAssignamentByCompletedLeg(Date currentMoment);
+	@Query("select fa from FlightAssignament fa where fa.leg.scheduledArrival < :currentMoment and fa.flightCrewMember.id = :flighCrewMemberId")
+	Collection<FlightAssignament> findAllFlightAssignamentByCompletedLeg(Date currentMoment, int flighCrewMemberId);
 
-	@Query("select fa from FlightAssignament fa where fa.leg.scheduledArrival >= :currentMoment")
-	Collection<FlightAssignament> findAllFlightAssignamentByPlannedLeg(Date currentMoment);
+	@Query("select case when count(fa) > 0 then true else false end from FlightAssignament fa where fa.id = :id and fa.leg.scheduledArrival < :currentMoment")
+	boolean associatedWithCompletedLeg(int id, Date currentMoment);
+
+	@Query("select fa from FlightAssignament fa where fa.leg.scheduledArrival >= :currentMoment and fa.flightCrewMember.id = :flighCrewMemberId")
+	Collection<FlightAssignament> findAllFlightAssignamentByPlannedLeg(Date currentMoment, int flighCrewMemberId);
 
 	@Query("select fa.leg from FlightAssignament fa where fa.id = :id")
 	Collection<Leg> findLegsByFlightAssignamentId(int id);
@@ -60,7 +63,13 @@ public interface FlightCrewMemberFlightAssignamentRepository extends AbstractRep
 	@Query("select case when count(fa) > 0 then true else false end " + "from FlightAssignament fa " + "where fa.id = :flightAssignamentId " + "and fa.leg.scheduledArrival < :currentMoment")
 	boolean areLegsCompletedByFlightAssignament(int flightAssignamentId, Date currentMoment);
 
+	@Query("select count(fa) > 0 from FlightAssignament fa where fa.id = :flightAssignamentId and fa.flightCrewMember.id = :flightCrewMemberId")
+	boolean thatFlightAssignamentIsOf(int flightAssignamentId, int flightCrewMemberId);
+
 	@Query("select l from Leg l")
 	Collection<Leg> findAllLegs();
+
+	@Query("SELECT CASE WHEN COUNT(fcm) > 0 THEN true ELSE false END FROM FlightCrewMember fcm WHERE fcm.id = :id")
+	boolean existsFlightCrewMember(int id);
 
 }

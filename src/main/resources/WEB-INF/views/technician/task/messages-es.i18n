@@ -1,0 +1,17 @@
+
+technician.task.list.title = Tareas
+technician.task.list.label.ticker = Ticker
+technician.task.list.label.type = Tipo
+technician.task.list.label.priority = Prioridad
+technician.task.list.button.create = Crear
+
+technician.task.form.title = Formulario de tarea
+technician.task.form.label.ticker = Ticker
+technician.task.form.label.type = Tipo
+technician.task.form.label.description = Descripción 
+technician.task.form.label.priority = Prioridad
+technician.task.form.label.estimated-duration = Duración estimada
+technician.task.form.button.update = Actualizar
+technician.task.form.button.delete = Borrar
+technician.task.form.button.publish = Publicar
+technician.task.form.button.create = Crear

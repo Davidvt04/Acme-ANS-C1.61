@@ -19,7 +19,6 @@ import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
-import acme.entities.airline.Airline;
 import acme.entities.airport.Airport;
 import acme.entities.flight.Flight;
 import lombok.Getter;
@@ -32,6 +31,9 @@ import lombok.Setter;
 public class Leg extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 	@Mandatory
 	@Column(unique = true)
@@ -80,11 +82,6 @@ public class Leg extends AbstractEntity {
 	@Mandatory // No sabemos si un aircraft tiene porque tener legs
 	@Valid
 	private Aircraft			aircraft;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Airline				airline;
 
 
 	@Transient

@@ -20,3 +20,49 @@ acme.validation.FlightAssignament.flightCrewMemberNotAvailable.message= That Fli
 acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message= That Flight Crew Member has incompatible legs with that one
 acme.validation.FlightAssignament.LegAlreadyCompleted.message= The leg that is associated with this flight assignament has already finished, so you can't publish it
 acme.validation.flightAssignament.availableFlightCrewMember.message= The Flight Assignament must be associated with a available Flight Crew Member
+
+#Activity Log
+acme.validation.activityLog.wrongMoment.message = The Activity Log registration moment must be after the scheduled arrival of the Leg
+acme.validation.ActivityLog.FlightAssignamentNotPublished.message = If the Flight Assignament which is associated with this Activity Log isn't published, you can't publish it
+
+#Acme:
+javax.validation.constraints.AssertFalse.message = Must be false
+javax.validation.constraints.AssertTrue.message = Must be true
+javax.validation.constraints.DecimalMax.message = Must be less than or equal to {value}
+javax.validation.constraints.DecimalMin.message = Must be greater than or equal to {value}
+javax.validation.constraints.Digits.message = Can have up to {integer} integer digits and {fraction} decimal digits
+javax.validation.constraints.Email.message = Not a well-formed email address
+javax.validation.constraints.Future.message = Must be in the future
+javax.validation.constraints.Max.message = Must be less than or equal to {value}
+javax.validation.constraints.Min.message = Must be greater than or equal to {value}
+javax.validation.constraints.NotBlank.message = Must not be blank
+javax.validation.constraints.NotEmpty.message = Must not be empty
+javax.validation.constraints.NotNull.message = May not be null
+javax.validation.constraints.Null.message = Must be null
+javax.validation.constraints.PastOrPresent.message = Must be in the past
+javax.validation.constraints.Past.message = Must be in the past
+javax.validation.constraints.Pattern.message = Must match pattern "{regexp}"
+javax.validation.constraints.Size.message = Must have between {min} and {max} items
+
+org.hibernate.validator.constraints.CreditCardNumber.message = Invalid credit card number
+org.hibernate.validator.constraints.Length.message = Length must be between {min} and {max}
+org.hibernate.validator.constraints.Range.message = Must be between {min} and {max}
+org.hibernate.validator.constraints.SafeHtml.message = The HTML contents may be unsafe
+org.hibernate.validator.constraints.ScriptAssert.message = Script expression "{script}" must return true
+org.hibernate.validator.constraints.URL.message = Not a well-formed URL
+
+acme.validation.object.message = Invalid value
+acme.validation.entity.message = Invalid entity
+acme.validation.uuid.message = Invalid UUID
+acme.validation.decimal-max.message = Must be less than or equal to {0}
+acme.validation.decimal-min.message = Must be greater than or equal to {0}
+acme.validation.digits.message = Must have a maximum of {0} digits and {1} decimals
+acme.validation.max.message = Must be less than or equal to {0}
+acme.validation.min.message = Must be greater than or equal to {0}
+acme.validation.score.message = Must be in interval 0.00 up to 1.00
+acme.validation.pattern.message = Must match pattern "{0}"
+acme.validation.length.message = Length must be between {0} and {1}
+acme.validation.range.message = Must be between {0} and {1}
+acme.validation.script.message = Script expression "{0}" must return true
+acme.validation.currency.message = Invalid currency
+acme.validation.confirmation.message = Must confirm this

@@ -1,6 +1,7 @@
 
-package acme.features.technician;
+package acme.features.technician.maintenanceRecord;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,16 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.maintenanceRecord.MaintenanceRecordStatus;
+import acme.entities.task.Involves;
 import acme.realms.Technician;
 
 @GuiService
-public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService<Technician, MaintenanceRecord> {
+public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService<Technician, MaintenanceRecord> {
 
 	@Autowired
-	TechnicianMaintenanceRecordRepository repository;
+	private TechnicianMaintenanceRecordRepository repository;
+
+	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
@@ -58,7 +62,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		aircraft = this.repository.findAircraftByRegistrationNumber(aircraftRegistrationNumber);
 		currentMoment = MomentHelper.getCurrentMoment();
 
-		super.bindObject(maintenanceRecord, "status", "nextInspectionDueTime", "estimatedCost", "notes");
+		super.bindObject(maintenanceRecord, "ticker", "status", "nextInspectionDueTime", "estimatedCost", "notes");
 		maintenanceRecord.setMoment(currentMoment);
 		maintenanceRecord.setAircraft(aircraft);
 	}
@@ -70,7 +74,11 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 	@Override
 	public void perform(final MaintenanceRecord maintenanceRecord) {
-		this.repository.save(maintenanceRecord);
+		Collection<Involves> involves;
+
+		involves = this.repository.findInvolvesByMaintenanceRecordId(maintenanceRecord.getId());
+		this.repository.deleteAll(involves);
+		this.repository.delete(maintenanceRecord);
 	}
 
 	@Override
@@ -80,12 +88,11 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 		choices = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getStatus());
 
-		dataset = super.unbindObject(maintenanceRecord, "moment", "nextInspectionDueTime", "estimatedCost", "notes", "draftMode");
+		dataset = super.unbindObject(maintenanceRecord, "ticker", "moment", "nextInspectionDueTime", "estimatedCost", "notes", "draftMode");
 		dataset.put("status", choices.getSelected().getKey());
 		dataset.put("statuses", choices);
 		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
 
 		super.getResponse().addData(dataset);
 	}
-
 }

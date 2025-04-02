@@ -28,9 +28,12 @@ public class FlightCrewMemberFlightAssignamentDeleteService extends AbstractGuiS
 	@Override
 	public void authorise() {
 		int flightAssignamentId = super.getRequest().getData("id", int.class);
-		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
 
-		super.getResponse().setAuthorised(flightAssignament != null && flightAssignament.isDraftMode());
+		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+		super.getResponse().setAuthorised(flightAssignament != null && flightAssignament.isDraftMode() && authorised);
 	}
 
 	@Override

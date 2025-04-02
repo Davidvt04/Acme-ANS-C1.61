@@ -45,14 +45,23 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 				super.state(context, trackingLog.getResolution() == null || trackingLog.getResolution().isBlank(), "Resolution", "El campo resolution debe quedar vacío hasta la finalización del tracking log");
 			else
 				super.state(context, trackingLog.getResolution() != null && !trackingLog.getResolution().isBlank(), "Resolution", "El campo resolucion es incorrecto");
+			Optional<List<TrackingLog>> trackingLogsOpt = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
+			if (trackingLogsOpt.isPresent()) {
+				List<TrackingLog> trackingLogs = trackingLogsOpt.get();
 
-			TrackingLog highestTrackingLog;
-			Optional<List<TrackingLog>> trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
-			if (trackingLogs.isPresent() && trackingLogs.get().size() > 0) {
-				highestTrackingLog = trackingLogs.get().get(0);
-				if (highestTrackingLog.getId() != trackingLog.getId() && !(highestTrackingLog.getResolutionPercentage() == 100 && trackingLog.getResolutionPercentage() == 100))
-					super.state(context, highestTrackingLog.getResolutionPercentage() < trackingLog.getResolutionPercentage(), "ResolutionPercentage", "Te equivocaste wey");
+				if (trackingLogs.contains(trackingLog)) {
+					int index = trackingLogs.indexOf(trackingLog);
+					trackingLogs.remove(trackingLog);
+
+					if (index < trackingLogs.size()) {
+						TrackingLog nextLog = trackingLogs.get(index);
+
+						if (nextLog.getResolutionPercentage() > trackingLog.getResolutionPercentage() && !(nextLog.getResolutionPercentage() == 100 && trackingLog.getResolutionPercentage() == 100))
+							super.state(context, false, "ResolutionPercentage", "El porcentaje debe ser superior a " + nextLog.getResolutionPercentage());
+					}
+				}
 			}
+
 		}
 		result = !super.hasErrors(context);
 		return result;
