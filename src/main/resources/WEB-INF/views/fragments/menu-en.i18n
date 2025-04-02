@@ -76,5 +76,5 @@ master.menu.assistanceAgent  = Assistance Agent
 master.menu.assistanceAgent.list-claims = List completed claims
 master.menu.assistanceAgent.list-claims-pending = List undergoing claims
 master.menu.assistanceAgent.list-trackingLog = List all tracking logs
-
+master.menu.assistanceAgent.show-dashboard = Show dashboard
 
