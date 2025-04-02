@@ -38,6 +38,7 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 	public void unbind(final Involves involves) {
 		Dataset dataset;
 		int masterId;
+		final boolean draft;
 
 		dataset = super.unbindObject(involves);
 		dataset.put("taskTicker", involves.getTask().getTicker());
@@ -47,7 +48,10 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 		masterId = super.getRequest().getData("masterId", int.class);
 		super.getResponse().addGlobal("masterId", masterId);
 
+		draft = this.repository.findMaintenanceRecordById(masterId).isDraftMode();
+
 		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("draft", draft);
 		super.getResponse().addData(dataset);
 	}
 

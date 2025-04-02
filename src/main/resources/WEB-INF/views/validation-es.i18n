@@ -22,3 +22,6 @@ acme.validation.flightAssignament.availableFlightCrewMember.message= La asignaci
 
 #Activity Log
 acme.validation.activityLog.wrongMoment.message = El momento de registro del Registro de Actividad debe ser posterior a la fecha de llegada de la leg
+
+#Maintenance Record and Task
+acme.validation.task-record.ticker.message = El ticker debe tener entre 5 y 15 caracteres y solo puede contener letras, números y guiones.

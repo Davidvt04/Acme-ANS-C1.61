@@ -12,6 +12,6 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list'}">
+<jstl:if test="${draft}">
 	<acme:button code="technician.involves.list.button.create" action="/technician/involves/create?masterId=${masterId}"/>
 </jstl:if>

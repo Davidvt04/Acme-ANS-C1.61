@@ -23,3 +23,6 @@ acme.validation.flightAssignament.availableFlightCrewMember.message= The Flight 
 
 #Activity Log
 acme.validation.activityLog.wrongMoment.message = The Activity Log registration moment must be after the scheduled arrival of the Leg
+
+#Maintenance Record and Task
+acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, and hyphens.
