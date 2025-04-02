@@ -13,12 +13,8 @@ import acme.realms.flightCrewMembers.FlightCrewMember;
 @GuiService
 public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService<FlightCrewMember, ActivityLog> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightCrewMemberActivityLogRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
@@ -32,7 +28,8 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 		activityLogId = super.getRequest().getData("id", int.class);
 		activityLog = this.repository.findActivityLogById(activityLogId);
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean authorised = this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
+		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+		boolean authorised = authorised1 && this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
 
 		status = authorised && activityLog != null && activityLog.isDraftMode();
 
@@ -57,7 +54,6 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 
 	@Override
 	public void validate(final ActivityLog activityLog) {
-
 	}
 
 	@Override
@@ -68,13 +64,13 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-		FlightAssignament flightAssignament = activityLog.getFlightAssignament();
-		if (activityLog.getFlightAssignament() == null)
-			flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
+		FlightAssignament flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "draftMode");
 		dataset.put("masterId", flightAssignament.getId());
-		dataset.put("draftMode", flightAssignament.isDraftMode());
+		dataset.put("draftMode", activityLog.isDraftMode());
+		dataset.put("readonly", false);
+		dataset.put("masterDraftMode", flightAssignament.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

@@ -23,6 +23,9 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 	@Query("select case when count(al) > 0 then true else false end from ActivityLog al where al.id = :id and al.flightAssignament.draftMode = false")
 	boolean isFlightAssignamentAlreadyPublishedByActivityLogId(int id);
 
+	@Query("select case when count(fa) > 0 then true else false end from FlightAssignament fa where fa.id = :id and fa.draftMode = false")
+	boolean isFlightAssignamentAlreadyPublishedById(int id);
+
 	@Query("select al from ActivityLog al where al.id = :id")
 	ActivityLog findActivityLogById(int id);
 

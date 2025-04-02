@@ -28,7 +28,8 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 		int flightAssignamentId = super.getRequest().getData("id", int.class);
 		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
 
 		super.getResponse().setAuthorised(authorised && flightAssignament != null && flightAssignament.isDraftMode());
 	}
@@ -113,7 +114,7 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 		Dataset dataset = super.unbindObject(flightAssignament, "duty", "moment", "currentStatus", "remarks", "draftMode");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
-		dataset.put("moment", MomentHelper.getBaseMoment());
+		dataset.put("moment", MomentHelper.getCurrentMoment());
 		dataset.put("currentStatus", currentStatus);
 		dataset.put("duty", duty);
 		dataset.put("leg", legChoices.getSelected().getKey());

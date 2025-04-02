@@ -1,8 +1,6 @@
 
 package acme.features.flightCrewMember.activityLogRecords;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -30,7 +28,8 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		activityLogId = super.getRequest().getData("id", int.class);
 		activityLog = this.repository.findActivityLogById(activityLogId);
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean authorised = this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
+		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+		boolean authorised = authorised1 && this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
 
 		status = authorised && activityLog != null && activityLog.isDraftMode();
 
@@ -57,21 +56,22 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 		if (activityLog == null)
 			return;
-		FlightAssignament flightAssignament = activityLog.getFlightAssignament();
+		FlightAssignament flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
 		if (activityLog.getRegistrationMoment() == null || flightAssignament == null)
 			return;
 		Leg leg = flightAssignament.getLeg();
 		if (leg == null || leg.getScheduledArrival() == null)
 			return;
-		Date activityLogMoment = activityLog.getRegistrationMoment();
-		Date scheduledArrival = leg.getScheduledArrival();
-		Boolean activityLogMomentIsAfterscheduledArrival = MomentHelper.isAfter(activityLogMoment, scheduledArrival);
+		boolean activityLogMomentIsAfterscheduledArrival = this.repository.associatedWithCompletedLeg(activityLog.getId(), MomentHelper.getCurrentMoment());
 		super.state(activityLogMomentIsAfterscheduledArrival, "WrongActivityLogDate", "acme.validation.activityLog.wrongMoment.message");
+		System.out.println("El moment está despues de la fecha de llegada (el flightAssignament se completo)? " + activityLogMomentIsAfterscheduledArrival);
 
 	}
 
 	@Override
 	public void perform(final ActivityLog activityLog) {
+
+		activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
 		activityLog.setDraftMode(true);
 		this.repository.save(activityLog);
 	}
@@ -79,14 +79,14 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-		FlightAssignament flightAssignament = activityLog.getFlightAssignament();
-		if (activityLog.getFlightAssignament() == null)
-			flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
+		FlightAssignament flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "draftMode");
 		dataset.put("masterId", flightAssignament.getId());
-		dataset.put("draftMode", flightAssignament.isDraftMode());
-
+		dataset.put("draftMode", activityLog.isDraftMode());
+		dataset.put("readonly", false);
+		System.out.println("Soy update, el activity log tiene draftMode? " + activityLog.isDraftMode() + " y el flightAssignament? " + flightAssignament.isDraftMode());
+		dataset.put("masterDraftMode", flightAssignament.isDraftMode());
 		super.getResponse().addData(dataset);
 	}
 
