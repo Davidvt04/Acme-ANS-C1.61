@@ -12,7 +12,7 @@ import acme.client.services.GuiService;
 import acme.entities.airport.Airport;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegStatus;
-import acme.features.aircraft.AircraftRepository;
+import acme.features.administrator.aircraft.AircraftRepository;
 import acme.features.airport.AirportRepository;
 import acme.realms.managers.Manager;
 
@@ -23,10 +23,10 @@ public class LegShowService extends AbstractGuiService<Manager, Leg> {
 	private ManagerLegRepository	repository;
 
 	@Autowired
-	private AirportRepository		airportRepository;
+	private AircraftRepository		aircraftRepository;
 
 	@Autowired
-	private AircraftRepository		aircraftRepository;
+	private AirportRepository		airportRepository;
 
 
 	@Override

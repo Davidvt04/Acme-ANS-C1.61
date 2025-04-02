@@ -28,6 +28,7 @@ public class LegController extends AbstractGuiController<Manager, Leg> {
 
 	@Autowired
 	private LegDeleteService	deleteService;
+
 	@Autowired
 	private LegPublishService	publishService;
 

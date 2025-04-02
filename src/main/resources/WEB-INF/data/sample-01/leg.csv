@@ -1,0 +1,18 @@
+key,flightNumber,scheduledDeparture,scheduledArrival,durationInHours,status,key:departureAirport,key:arrivalAirport,key:flight,key:aircraft,draftMode
+leg-12,"ALO1235","2024/01/01 00:00","2024/01/02 00:00",2.0,"ON_TIME","airport-00","airport-01","flight-00","aircraft-00",false
+
+leg-13,"ALO0012","2024/01/01 00:00","2024/01/02 00:00",2.0,"DELAYED","airport-00","airport-02","flight-01","aircraft-00",false
+leg-14,"ALO1015","2024/01/01 00:00","2024/01/02 00:00",1.0,"CANCELLED","airport-05","airport-01","flight-03","aircraft-01",false
+
+# durationInHours - mínimo (1 hora)
+leg-15,"ALO1012","2024/01/01 00:00","2024/01/02 00:00",1.0,"ON_TIME","airport-02","airport-03","flight-00","aircraft-01",false
+
+leg-16,"ALO2021","2024/01/01 00:00","2024/01/02 00:00",17.0,"ON_TIME","airport-02","airport-04","flight-01","aircraft-02",false
+
+leg-17,"ALO3051","2024/01/01 00:00","2024/01/02 00:00",3.0,"CANCELLED","airport-03","airport-01","flight-02","aircraft-01",false
+leg-18,"ALO3125","2024/01/01 00:00","2024/01/02 00:00",1.75,"DELAYED","airport-04","airport-00","flight-00","aircraft-02",false
+leg-19,"ALO3015","2024/01/01 00:00","2024/01/02 00:00",1.5,"LANDED","airport-00","airport-01","flight-02","aircraft-00",false
+
+leg-20,"ALO1061","2024/01/01 00:00","2024/01/02 00:00",1.0,"ON_TIME","airport-05","airport-06","flight-03","aircraft-02",false
+leg-21,"BOS1012","2024/01/01 00:00","2024/01/02 00:00",2.5,"DELAYED","airport-06","airport-07","flight-04","aircraft-00",true
+leg-22,"BOS1063","2024/01/01 00:00","2024/01/02 00:00",2.0,"DELAYED","airport-07","airport-13","flight-04","aircraft-00",false

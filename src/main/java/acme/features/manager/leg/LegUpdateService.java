@@ -13,7 +13,7 @@ import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.leg.Leg;
 import acme.entities.leg.LegStatus;
-import acme.features.aircraft.AircraftRepository;
+import acme.features.administrator.aircraft.AircraftRepository;
 import acme.features.airport.AirportRepository;
 import acme.realms.managers.Manager;
 

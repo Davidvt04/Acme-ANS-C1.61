@@ -75,7 +75,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 			super.state(valid, "resolution", "assistanceAgent.trackingLog.form.error.badResolution2");
 		}
 		TrackingLog highestTrackingLog;
-		Optional<List<TrackingLog>> trackingLogs = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
+		Optional<List<TrackingLog>> trackingLogs = this.repository.findOrderTrackingLogPublished(trackingLog.getClaim().getId());
 		if (trackingLogs.isPresent() && trackingLogs.get().size() > 0) {
 			highestTrackingLog = trackingLogs.get().get(0);
 			long completedTrackingLogs = trackingLogs.get().stream().filter(t -> t.getResolutionPercentage() == 100).count();

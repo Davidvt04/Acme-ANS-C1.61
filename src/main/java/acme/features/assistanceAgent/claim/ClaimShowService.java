@@ -24,17 +24,12 @@ public class ClaimShowService extends AbstractGuiService<AssistanceAgent, Claim>
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int masterId;
-		Claim claim;
-		AssistanceAgent assistanceAgent;
 
-		masterId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(masterId);
-		assistanceAgent = claim == null ? null : claim.getAssistanceAgent();
-		status = super.getRequest().getPrincipal().hasRealm(assistanceAgent) || claim != null;
+		int agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int claimId = super.getRequest().getData("id", int.class);
+		Claim claim = this.repository.findClaimById(claimId);
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(agentId == claim.getAssistanceAgent().getId());
 	}
 
 	@Override

@@ -27,7 +27,11 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int trackingLogId = super.getRequest().getData("id", int.class);
+		TrackingLog trackingLog = this.repository.findTrackingLogById(trackingLogId);
+
+		super.getResponse().setAuthorised(agentId == trackingLog.getClaim().getAssistanceAgent().getId());
 	}
 
 	@Override

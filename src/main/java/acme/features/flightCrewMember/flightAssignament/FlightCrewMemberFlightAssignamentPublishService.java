@@ -26,12 +26,14 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 
 	@Override
 	public void authorise() {
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
 		boolean status;
-		int masterId;
 		FlightAssignament flightAssignament;
-		masterId = super.getRequest().getData("id", int.class);
-		flightAssignament = this.repository.findFlightAssignamentById(masterId);
-		status = flightAssignament.isDraftMode() && MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival());
+		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+		flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
+		status = authorised1 && authorised && flightAssignament.isDraftMode() && MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival());
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -65,6 +67,7 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 		FlightAssignament original = this.repository.findFlightAssignamentById(flightAssignament.getId());
 		FlightCrewMember flightCrewMember = flightAssignament.getFlightCrewMember();
 		Leg leg = flightAssignament.getLeg();
+		boolean cambioFlightCrewMember = !original.getFlightCrewMember().equals(flightCrewMember);
 		boolean cambioDuty = !original.getDuty().equals(flightAssignament.getDuty());
 		boolean cambioLeg = !original.getLeg().equals(flightAssignament.getLeg());
 		boolean cambioMoment = !original.getMoment().equals(flightAssignament.getMoment());
@@ -76,7 +79,7 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 		if (flightCrewMember != null && leg != null && cambioLeg && !this.isLegCompatible(flightAssignament))
 			super.state(false, "flightCrewMember", "acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message");
 
-		if (leg != null && (cambioDuty || cambioLeg))
+		if (leg != null && (cambioDuty || cambioLeg || cambioFlightCrewMember))
 			this.checkPilotAndCopilotAssignment(flightAssignament);
 
 		boolean legCompleted = this.repository.areLegsCompletedByFlightAssignament(flightAssignament.getId(), MomentHelper.getCurrentMoment());
@@ -108,8 +111,28 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 
 	@Override
 	public void perform(final FlightAssignament flightAssignament) {
+		if (this.huboAlgunCambio(flightAssignament))
+			flightAssignament.setMoment(MomentHelper.getCurrentMoment());
 		flightAssignament.setDraftMode(false);
+
 		this.repository.save(flightAssignament);
+	}
+
+	private boolean huboAlgunCambio(final FlightAssignament flightAssignament) {
+		boolean cambio = false;
+		FlightAssignament original = this.repository.findFlightAssignamentById(flightAssignament.getId());
+		FlightCrewMember flightCrewMember = flightAssignament.getFlightCrewMember();
+		boolean cambioFlightCrewMember = !original.getFlightCrewMember().equals(flightCrewMember);
+		boolean cambioDuty = !original.getDuty().equals(flightAssignament.getDuty());
+		boolean cambioLeg = !original.getLeg().equals(flightAssignament.getLeg());
+		boolean cambioStatus = !original.getCurrentStatus().equals(flightAssignament.getCurrentStatus());
+		boolean cambioRemarks = false;
+		if (original.getRemarks() != null)
+			cambioRemarks = !original.equals(flightAssignament.getRemarks());
+		else if (flightAssignament.getRemarks() != null)
+			cambioRemarks = !flightAssignament.equals(original.getRemarks());
+		cambio = cambioDuty || cambioFlightCrewMember || cambioLeg || cambioStatus || cambioRemarks;
+		return cambio;
 	}
 
 	@Override
@@ -137,7 +160,7 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 		dataset = super.unbindObject(flightAssignament, "duty", "moment", "CurrentStatus", "remarks", "draftMode");
 		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
-		dataset.put("moment", MomentHelper.getBaseMoment());
+		dataset.put("moment", MomentHelper.getCurrentMoment());
 		dataset.put("currentStatus", currentStatus);
 		dataset.put("duty", duty);
 		dataset.put("leg", legChoices.getSelected().getKey());

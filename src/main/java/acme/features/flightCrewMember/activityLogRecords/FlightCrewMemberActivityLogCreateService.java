@@ -4,6 +4,7 @@ package acme.features.flightCrewMember.activityLogRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -24,9 +25,11 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		FlightAssignament flightAssignament;
 
 		masterId = super.getRequest().getData("masterId", int.class);
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean authorised = this.repository.existsFlightCrewMember(flightCrewMemberId);
 
 		flightAssignament = this.repository.findFlightAssignamentById(masterId);
-		status = flightAssignament != null;
+		status = authorised && flightAssignament != null;
 
 		super.getResponse().setAuthorised(status);
 
@@ -44,6 +47,10 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		activityLog = new ActivityLog();
 		activityLog.setFlightAssignament(flightAssignament);
 		activityLog.setDraftMode(true);
+		activityLog.setDescription("");
+		activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
+		activityLog.setSeverityLevel(0);
+		activityLog.setTypeOfIncident("");
 
 		super.getBuffer().addData(activityLog);
 
@@ -68,9 +75,16 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
+		int masterId;
+
+		masterId = super.getRequest().getData("masterId", int.class);
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "draftMode");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("masterId", masterId);
+
+		dataset.put("draftMode", activityLog.isDraftMode());
+		dataset.put("readonly", false);
+		dataset.put("masterDraftMode", !this.repository.isFlightAssignamentAlreadyPublishedById(masterId));
 		super.getResponse().addData(dataset);
 
 	}
