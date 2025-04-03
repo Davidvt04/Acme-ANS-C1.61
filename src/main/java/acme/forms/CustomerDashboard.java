@@ -1,7 +1,7 @@
 
 package acme.forms;
 
-import java.util.List;
+import java.util.Collection;
 
 import acme.client.components.basis.AbstractForm;
 import acme.client.components.datatypes.Money;
@@ -16,7 +16,7 @@ public class CustomerDashboard extends AbstractForm {
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
-	List<String>				lastFiveDestinations;
+	Collection<String>			lastFiveDestinations;
 	Money						spentMoney;
 	long						economyBookings;
 	long						businessBookings;
@@ -25,9 +25,9 @@ public class CustomerDashboard extends AbstractForm {
 	Money						bookingMinimumCost;
 	Money						bookingMaximumCost;
 	Money						bookingDeviationCost;
-	Integer						bookingTotalPassengers;
+	long						bookingTotalPassengers;
 	Double						bookingAveragePassengers;
-	Integer						bookingMinimumPassengers;
-	Integer						bookingMaximumPassengers;
+	long						bookingMinimumPassengers;
+	long						bookingMaximumPassengers;
 	Double						bookingDeviationPassengers;
 }
