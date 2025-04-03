@@ -6,10 +6,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="technician.involves.form.label.task" 
+	<acme:input-select code="technician.involves.form.label.task" 
 			path="task" 
 			readonly="${_command != 'create'}" 
-			placeholder="technician.involves.form.placeholder.task" />
+			choices="${tasks}" />
 	<jstl:if test="${_command == 'show'}">
 		<acme:input-textbox code="technician.involves.form.label.technician" path="taskTechnician" readonly="true" />
 	</jstl:if>

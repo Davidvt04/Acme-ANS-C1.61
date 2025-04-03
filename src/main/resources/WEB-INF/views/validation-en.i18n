@@ -26,7 +26,8 @@ acme.validation.activityLog.wrongMoment.message = The Activity Log registration 
 acme.validation.ActivityLog.FlightAssignamentNotPublished.message = If the Flight Assignament which is associated with this Activity Log isn't published, you can't publish it
 
 #Maintenance Record and Task
-acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, and hyphens.
+acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, underscores and hyphens
+acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
 
 #Acme:
 javax.validation.constraints.AssertFalse.message = Must be false

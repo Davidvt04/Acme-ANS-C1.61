@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.task.Involves;
 import acme.realms.Technician;
 
@@ -37,22 +38,28 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 	@Override
 	public void unbind(final Involves involves) {
 		Dataset dataset;
-		int masterId;
-		final boolean draft;
 
 		dataset = super.unbindObject(involves);
 		dataset.put("taskTicker", involves.getTask().getTicker());
 		dataset.put("taskType", involves.getTask().getType());
 		dataset.put("taskPriority", involves.getTask().getPriority());
+		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
+		super.addPayload(dataset, involves);
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		super.getResponse().addGlobal("masterId", masterId);
-
-		draft = this.repository.findMaintenanceRecordById(masterId).isDraftMode();
-
-		super.getResponse().addGlobal("masterId", masterId);
-		super.getResponse().addGlobal("draft", draft);
 		super.getResponse().addData(dataset);
 	}
 
+	@Override
+	public void unbind(final Collection<Involves> involves) {
+		int masterId;
+		final boolean draft;
+		MaintenanceRecord maintenanceRecord;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
+		draft = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
+
+		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("draft", draft);
+	}
 }

@@ -54,12 +54,10 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
-		String aircraftRegistrationNumber;
 		Aircraft aircraft;
 		Date currentMoment;
 
-		aircraftRegistrationNumber = super.getRequest().getData("aircraft", String.class);
-		aircraft = this.repository.findAircraftByRegistrationNumber(aircraftRegistrationNumber);
+		aircraft = super.getRequest().getData("aircraft", Aircraft.class);
 		currentMoment = MomentHelper.getCurrentMoment();
 
 		super.bindObject(maintenanceRecord, "ticker", "status", "nextInspectionDueTime", "estimatedCost", "notes");
