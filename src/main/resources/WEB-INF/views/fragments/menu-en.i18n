@@ -75,6 +75,7 @@ master.menu.user-account.customer-profile = Customer profile
 master.menu.user-account.become-customer= Become a customer
 master.menu.user-account.become-assistance-agent = Become an assistance agent
 master.menu.user-account.assistance-agent-profile = Assistance agent profile
+master.menu.user-account.become-technician = Become a technician
 
 # mater.menu.assistance-agent ####################################################
 master.menu.assistanceAgent  = Assistance Agent
