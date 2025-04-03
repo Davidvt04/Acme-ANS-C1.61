@@ -28,4 +28,10 @@ public interface TechnicianInvolvesRepository extends AbstractRepository {
 
 	@Query("select t from Task t where t.ticker = :taskTicker")
 	Task findTaskByTicker(String taskTicker);
+
+	@Query("select t from Task t")
+	Collection<Task> findAllTasks();
+
+	@Query("select i.maintenanceRecord from Involves i where i.id = :id")
+	MaintenanceRecord findMaintenanceRecordByInvolvesId(int id);
 }

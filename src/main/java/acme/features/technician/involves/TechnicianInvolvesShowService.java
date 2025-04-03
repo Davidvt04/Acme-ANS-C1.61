@@ -1,12 +1,16 @@
 
 package acme.features.technician.involves;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.task.Involves;
+import acme.entities.task.Task;
 import acme.realms.Technician;
 
 @GuiService
@@ -43,11 +47,16 @@ public class TechnicianInvolvesShowService extends AbstractGuiService<Technician
 	@Override
 	public void unbind(final Involves involves) {
 		Dataset dataset;
+		SelectChoices taskChoices;
+		Collection<Task> tasks;
 
-		dataset = super.unbindObject(involves);
-		dataset.put("id", involves.getId());
-		dataset.put("task", involves.getTask().getTicker());
-		dataset.put("masterId", involves.getMaintenanceRecord().getId());
+		tasks = this.repository.findAllTasks();
+		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
+
+		dataset = super.unbindObject(involves, "task");
+		dataset.put("maintenanceRecord", involves.getMaintenanceRecord().getId());
+		dataset.put("task", taskChoices.getSelected().getKey());
+		dataset.put("tasks", taskChoices);
 		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
 
 		super.getResponse().addData(dataset);
