@@ -15,7 +15,7 @@
 	</jstl:if>
 
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|delete') && draftRecord == true}">
 			<acme:submit code="technician.involves.form.button.delete"
 				action="/technician/involves/delete?masterId=${masterId}" />
 		</jstl:when>

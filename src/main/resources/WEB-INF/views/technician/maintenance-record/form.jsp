@@ -15,6 +15,9 @@
 	<acme:input-money code="technician.maintenance-record.form.label.estimated-cost" path="estimatedCost" placeholder="technician.maintenance-record.form.placeholder.estimated-cost"/>
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>	
 	
+	<jstl:if test="${_command != 'create'}">
+		<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/involves/list?masterId=${id}"/>
+	</jstl:if>
 	<jstl:choose>
 		<jstl:when test="${_command != 'create' && draftMode == true}">
 			<acme:submit code="technician.maintenance-record.form.button.update" action="/technician/maintenance-record/update"/>
@@ -25,7 +28,4 @@
 			<acme:submit code="technician.maintenance-record.form.button.create" action="/technician/maintenance-record/create"/>
 		</jstl:when>
 	</jstl:choose>
-	<jstl:if test="${_command != 'create'}">
-		<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/involves/list?masterId=${id}"/>
-	</jstl:if>
 </acme:form>

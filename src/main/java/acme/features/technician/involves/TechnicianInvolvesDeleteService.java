@@ -75,6 +75,7 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 		Dataset dataset;
 		SelectChoices taskChoices;
 		Collection<Task> tasks;
+		final boolean draftRecord;
 
 		tasks = this.repository.findAllTasks();
 		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
@@ -85,6 +86,9 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 		dataset.put("task", taskChoices.getSelected().getKey());
 		dataset.put("tasks", taskChoices);
 		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
+
+		draftRecord = involves.getMaintenanceRecord().isDraftMode();
+		super.getResponse().addGlobal("draftRecord", draftRecord);
 
 		super.getResponse().addData(dataset);
 	}
