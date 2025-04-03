@@ -28,6 +28,8 @@ acme.validation.ActivityLog.FlightAssignamentNotPublished.message = If the Fligh
 #Maintenance Record and Task
 acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, underscores and hyphens
 acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
+acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
+acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
 
 #Acme:
 javax.validation.constraints.AssertFalse.message = Must be false

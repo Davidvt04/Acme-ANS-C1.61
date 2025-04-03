@@ -46,7 +46,12 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 	@Override
 	public void validate(final Task task) {
-		;
+		Task existTask;
+		boolean validTicker;
+
+		existTask = this.repository.findTaskByTicker(task.getTicker());
+		validTicker = existTask == null || existTask.getId() == task.getId();
+		super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 	}
 
 	@Override

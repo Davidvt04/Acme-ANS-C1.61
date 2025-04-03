@@ -3,7 +3,6 @@ package acme.features.technician.maintenanceRecord;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,15 +30,11 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		int masterId;
 		MaintenanceRecord maintenanceRecord;
 		Technician technician;
-		List<Task> publishedTasks;
 
 		masterId = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
-		publishedTasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId).stream().filter(t -> !t.isDraftMode()).toList();
-
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
-		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() //
-			&& super.getRequest().getPrincipal().hasRealm(technician) && !publishedTasks.isEmpty();
+		status = maintenanceRecord != null && super.getRequest().getPrincipal().hasRealm(technician);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -70,7 +65,21 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		;
+		Collection<Task> tasks;
+		boolean allTasksNotDraft;
+		boolean tasksValid;
+		MaintenanceRecord existMaintenanceRecord;
+		boolean validTicker;
+
+		tasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(maintenanceRecord.getId());
+		allTasksNotDraft = tasks.stream().allMatch(task -> !task.isDraftMode());
+		tasksValid = !tasks.isEmpty() && allTasksNotDraft;
+		if (!tasksValid)
+			super.state(tasksValid, "*", "acme.validation.maintenance-record.tasks.not-draft.message");
+
+		existMaintenanceRecord = this.repository.findMaintenanceRecordByTicker(maintenanceRecord.getTicker());
+		validTicker = existMaintenanceRecord == null || existMaintenanceRecord.getId() == maintenanceRecord.getId();
+		super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 	}
 
 	@Override
