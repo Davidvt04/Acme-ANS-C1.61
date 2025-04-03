@@ -1,0 +1,27 @@
+# defaults-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes. The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+customer.customer-dashboard.form.title = Customer Dashboard
+
+customer.dashboard.list.label.lastFiveDestinations = Last Five Destinations
+customer.dashboard.list.label.spentMoney = Money Spent in bookings during the last year
+customer.dashboard.list.label.economyBookings = Economy Class Bookings
+customer.dashboard.list.label.businessBookings = Business Class Bookings
+customer.dashboard.list.label.bookingTotalCost = Total Booking Cost in the last five years
+customer.dashboard.list.label.bookingAverageCost = Average Booking Cost in the last five years
+customer.dashboard.list.label.bookingMinimumCost = Minimum Booking Cost in the last five years
+customer.dashboard.list.label.bookingMaximumCost = Maximum Booking Cost in the last five years
+customer.dashboard.list.label.bookingDeviationCost = Booking Cost Deviation in the last five years
+customer.dashboard.list.label.bookingTotalPassengers = Total Passengers
+customer.dashboard.list.label.bookingAveragePassengers = Average Passengers Per Booking
+customer.dashboard.list.label.bookingMinimumPassengers = Minimum Passengers Per Booking
+customer.dashboard.list.label.bookingMaximumPassengers = Maximum Passengers Per Booking
+customer.dashboard.list.label.bookingDeviationPassengers = Passenger Count Deviation
+

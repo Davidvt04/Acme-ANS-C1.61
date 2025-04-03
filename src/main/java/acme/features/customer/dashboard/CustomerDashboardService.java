@@ -2,8 +2,11 @@
 package acme.features.customer.dashboard;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +16,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.booking.TravelClass;
 import acme.forms.CustomerDashboard;
 import acme.realms.Customer;
@@ -43,9 +47,11 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 		List<Booking> lastFiveYearsBookings = bookings.stream().filter(booking -> booking.getPurchaseMoment().getYear() > thisYear - 5).toList();
 		long total5YearsBookings = lastFiveYearsBookings.size() > 1 ? lastFiveYearsBookings.size() : 1;
 		CustomerDashboard dashboard = new CustomerDashboard();
-		//----------
+		//Last 5 destinations
 		Collection<String> last5destinations = bookings.stream().sorted(Comparator.comparing(Booking::getPurchaseMoment).reversed()).map(b -> b.getFlight().getDestinationCity()).distinct().limit(5).toList();
-		dashboard.setLastFiveDestinations((List<String>) last5destinations);
+		dashboard.setLastFiveDestinations(last5destinations);
+		System.out.println(last5destinations.size());
+		last5destinations.stream().forEach(d -> System.out.println(d));
 		//--------------
 		Double totalMoney = bookings.stream().filter(booking -> booking.getPurchaseMoment().getYear() > thisYear - 1).map(Booking::getPrice).map(Money::getAmount).reduce(0.0, Double::sum);
 		Money spentMoney = new Money();
@@ -78,7 +84,7 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 		Money bookingMaximumCost = new Money();
 		bookingMaximumCost.setAmount(lastFiveYearsBookings.stream().map(Booking::getPrice).map(Money::getAmount).max(Double::compare).orElse(0.0));
 		bookingMaximumCost.setCurrency(currency);
-		dashboard.setBookingMinimumCost(bookingMaximumCost);
+		dashboard.setBookingMaximumCost(bookingMaximumCost);
 		//---------------------------------------
 		Money bookingDeviationCost = new Money();
 		double varianza = lastFiveYearsBookings.stream().map(Booking::getPrice).map(Money::getAmount).map(price -> Math.pow(price - bookingAverageCost.getAmount(), 2)).reduce(0.0, Double::sum) / total5YearsBookings;
@@ -86,6 +92,27 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 		bookingDeviationCost.setAmount(deviation);
 		bookingDeviationCost.setCurrency(currency);
 		dashboard.setBookingDeviationCost(bookingDeviationCost);
+		//---------------------------------------
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOd(customerId);
+		long passengerCount = bookingRecords.stream().map(BookingRecord::getPassenger).count();
+		dashboard.setBookingTotalPassengers(passengerCount);
+		//---------------------------------------
+		int numBookings = bookings.size();
+		double passengerAverage = (double) passengerCount / numBookings;
+		dashboard.setBookingAveragePassengers(passengerAverage);
+		//--------------------------------------
+		Map<Booking, Long> bookingPassengers = bookingRecords.stream().collect(Collectors.groupingBy(BookingRecord::getBooking, Collectors.counting()));
+		int minimumPassengers = bookingPassengers.isEmpty() ? 0 : Collections.min(bookingPassengers.values()).intValue();
+		dashboard.setBookingMinimumPassengers(minimumPassengers);
+		//-----------------------------------------
+		int maximumPassengers = bookingPassengers.isEmpty() ? 0 : Collections.max(bookingPassengers.values()).intValue();
+		dashboard.setBookingMaximumPassengers(maximumPassengers);
+		//-----------------------------------------
+		double variancePassengers = bookingPassengers.values().stream().mapToDouble(count -> Math.pow(count - passengerAverage, 2)).sum() / (numBookings - 1);
+		double standardDeviationPassengers = Math.sqrt(variancePassengers);
+		dashboard.setBookingDeviationPassengers(standardDeviationPassengers);
+		//--------------------------------------------
+		super.getBuffer().addData(dashboard);
 
 	}
 
