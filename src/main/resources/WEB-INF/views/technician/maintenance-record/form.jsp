@@ -6,7 +6,7 @@
 <acme:form>
 	
 	<acme:input-textbox code="technician.maintenance-record.form.label.ticker" path="ticker"/>
-	<jstl:if test="${_command == 'show'}">
+	<jstl:if test="${_command != 'create'}">
 		<acme:input-moment code="technician.maintenance-record.form.label.moment" path="moment" readonly="true"/>
 		<acme:input-select path="status" code="technician.maintenance-record.form.label.status" choices="${statuses}"/>
 	</jstl:if>	

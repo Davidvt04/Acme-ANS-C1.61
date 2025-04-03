@@ -13,7 +13,11 @@
 	<acme:input-textarea code="authenticated.technician.form.label.certifications" path="certifications"/>
 	
 	<jstl:if test="${_command == 'create'}">
-		<acme:submit code="authenticated.provider.form.button.create" action="/authenticated/technician/create"/>
+		<acme:submit code="authenticated.technician.form.button.create" action="/authenticated/technician/create"/>
+	</jstl:if>
+	
+	<jstl:if test="${_command == 'update'}">
+		<acme:submit code="authenticated.technician.form.button.update" action="/authenticated/technician/update"/>
 	</jstl:if>
 
 </acme:form>

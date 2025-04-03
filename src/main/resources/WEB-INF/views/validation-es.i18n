@@ -27,6 +27,8 @@ acme.validation.ActivityLog.FlightAssignamentNotPublished.message = No puede pub
 #Maintenance Record and Task
 acme.validation.task-record.ticker.message = El ticker debe tener entre 5 y 15 caracteres y solo puede contener letras, números, subrayados y guiones
 acme.validation.nextInspection.message = La fecha de la próxima inspección debe ser, al menos, una hora después del momento del registro de mantenimiento
+acme.validation.task-record.ticker.duplicated.message = El ticker ya existe, utilice uno distinto
+acme.validation.maintenance-record.tasks.not-draft.message = El registro de mantenimiento debe tener, al menos, una tarea publicada y no debe tener ni una tarea que no esté publicada
 
 #Acme:
 

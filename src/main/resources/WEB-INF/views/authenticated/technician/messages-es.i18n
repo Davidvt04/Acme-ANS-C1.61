@@ -7,4 +7,5 @@ authenticated.technician.form.label.passed-annual-health-test = Prueba médica a
 authenticated.technician.form.label.experience-years = Años de experiencia
 authenticated.technician.form.label.certifications = Certificaciones
  
-authenticated.provider.form.button.create = Registrar
+authenticated.technician.form.button.create = Registrar
+authenticated.technician.form.button.update = Actualizar
