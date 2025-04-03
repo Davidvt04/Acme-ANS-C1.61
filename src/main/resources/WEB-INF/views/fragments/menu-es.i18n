@@ -46,6 +46,7 @@ master.menu.customer = Cliente
 master.menu.customer.list-bookings = Listar reservas
 master.menu.customer.list-passengers = Listar pasajeros
 master.menu.customer.show-dashboard = Ver el dashboard
+master.menu.user-account.customer-profile = Perfil de cliente
 
 # master.menu.technician ##########################################################
 
@@ -74,7 +75,9 @@ master.menu.user-account.customer-profile = Perfil de cliente
 master.menu.user-account.become-customer= Hazte cliente
 master.menu.user-account.become-assistance-agent = Hazte Asistente 
 master.menu.user-account.assistance-agent-profile = Perfil de Asistente
-
+master.menu.user-account.become-customer= Hazte cliente
+master.menu.user-account.become-assistance-agent = Hazte Asistente 
+master.menu.user-account.assistance-agent-profile = Perfil de Asistente
 
 
 # mater.menu.assistance-agent ####################################################
@@ -82,6 +85,8 @@ master.menu.assistanceAgent  = Asistente
 master.menu.assistanceAgent.list-claims = Listar quejas completadas
 master.menu.assistanceAgent.list-claims-pending = Listar quejas en proceso
 master.menu.assistanceAgent.list-trackingLog = Listar todos los registros
+master.menu.assistanceAgent.show-dashboard= Ver dashboard
+
 
 # mater.menu.manager ####################################################
 master.menu.manager = Gerente

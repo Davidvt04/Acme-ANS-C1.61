@@ -1,7 +1,7 @@
 
 package acme.forms;
 
-import java.util.List;
+import java.util.Collection;
 
 import acme.client.components.basis.AbstractForm;
 import lombok.Getter;
@@ -17,10 +17,10 @@ public class AssistanceAgentDashboard extends AbstractForm {
 	// Attributes -------------------------------------------------------------
 	private Double				claimsResolvedRatio;
 	private Double				claimsRejectedRatio;
-	private List<String>		topThreeMonthsByClaims;
+	private Collection<String>	topThreeMonthsByClaims;
 	private Double				averageLogsPerClaim;
-	private Integer				minimumLogsPerClaim;
-	private Integer				maximumLogsPerClaim;
+	private Long				minimumLogsPerClaim;
+	private Long				maximumLogsPerClaim;
 	private Double				standardDeviationLogsPerClaim;
 	private Double				averageClaimsLastMonth;
 	private Integer				minimumClaimsLastMonth;

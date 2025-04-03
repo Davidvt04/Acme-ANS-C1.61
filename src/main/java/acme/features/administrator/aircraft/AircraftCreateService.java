@@ -47,11 +47,13 @@ public class AircraftCreateService extends AbstractGuiService<Administrator, Air
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-		super.state(aircraft.getCargoWeight() > 2000 && aircraft.getCargoWeight() < 50000, "cargoWeight", "acme.validation.cargoWeight.message");
-		super.state(aircraft.getCapacity() > 1 && aircraft.getCapacity() < 255, "capacity", "acme.validation.capacity.message");
-		Aircraft existing = this.repository.findAircraftByNumber(aircraft.getRegistrationNumber());
-		boolean valid = existing == null || existing.getId() == aircraft.getId();
-		super.state(valid, "registrationNumber", "administrator.aircraft.form.error.duplicateRegistrationNumber");
+		if (aircraft.getCargoWeight() != null && aircraft.getCapacity() != null && aircraft.getRegistrationNumber() != null) {
+			super.state(aircraft.getCargoWeight() > 2000 && aircraft.getCargoWeight() < 50000, "cargoWeight", "acme.validation.cargoWeight.message");
+			super.state(aircraft.getCapacity() > 1 && aircraft.getCapacity() < 255, "capacity", "acme.validation.capacity.message");
+			Aircraft existing = this.repository.findAircraftByNumber(aircraft.getRegistrationNumber());
+			boolean valid = existing == null || existing.getId() == aircraft.getId();
+			super.state(valid, "registrationNumber", "administrator.aircraft.form.error.duplicateRegistrationNumber");
+		}
 	}
 
 	@Override
