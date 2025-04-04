@@ -30,7 +30,7 @@ assistanceAgent.claim.list.label.indicator = Indicador:
 assistanceAgent.claim.list.button.create = Crear
 assistanceAgent.claim.form.show.trackingLogs = Ver los registros asociados
 
-
+assistance-agent.assistance-agent-dashboard.form.title= Panel de agente
 assistanceAgent.dashboard.form.label.claimsResolvedRatio = Ratio de quejas resueltas:
 assistanceAgent.dashboard.form.label.claimsRejectedRatio = Ratio de quejas rechazadas:
 assistanceAgent.dashboard.form.label.topThreeMonthsByClaims = Top 3 meses con más quejas:
