@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.airport.Airport;
 
 @Repository
 public interface LegRepository extends AbstractRepository {
@@ -27,19 +28,45 @@ public interface LegRepository extends AbstractRepository {
 	Optional<Date> findLastScheduledArrival(@Param("flightId") int flightId);
 
 	@Query("""
+<<<<<<< HEAD
+		SELECT l.departureAirport
+		FROM Leg l
+		WHERE l.flight.id = :flightId
+		  AND l.scheduledDeparture = (
+		      SELECT MIN(l2.scheduledDeparture)
+		      FROM Leg l2
+		      WHERE l2.flight.id = :flightId
+		  )
+		""")
+	Optional<Airport> findFirstOriginAirport(@Param("flightId") int flightId);
+=======
 			SELECT l.departureAirport.city
 			FROM Leg l
 			WHERE l.flight.id = :flightId
 			ORDER BY l.scheduledDeparture ASC
 		""")
 	List<String> findOrderedOriginCities(@Param("flightId") int flightId);
+>>>>>>> b911d1612a627f3e66fd314e90e678e3bb1ae788
 
 	@Query("""
+<<<<<<< HEAD
+		SELECT l.arrivalAirport
+		FROM Leg l
+		WHERE l.flight.id = :flightId
+		  AND l.scheduledArrival = (
+		      SELECT MAX(l2.scheduledArrival)
+		      FROM Leg l2
+		      WHERE l2.flight.id = :flightId
+		  )
+		""")
+	Optional<Airport> findLastDestinationAirport(@Param("flightId") int flightId);
+=======
 			SELECT l.arrivalAirport.city
 			FROM Leg l
 			WHERE l.flight.id = :flightId
 			ORDER BY l.scheduledArrival DESC
 		""")
 	List<String> findOrderedDestinationCities(@Param("flightId") int flightId);
+>>>>>>> b911d1612a627f3e66fd314e90e678e3bb1ae788
 
 }

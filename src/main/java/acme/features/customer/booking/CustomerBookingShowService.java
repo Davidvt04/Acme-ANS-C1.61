@@ -57,6 +57,8 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 		SelectChoices flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
 		dataset.put("flights", flightChoices);
+		dataset.put("city", booking.getFlight().getDestinationAirport().getCity());
+		dataset.put("country", booking.getFlight().getDestinationAirport().getCountry());
 
 		super.getResponse().addData(dataset);
 	}

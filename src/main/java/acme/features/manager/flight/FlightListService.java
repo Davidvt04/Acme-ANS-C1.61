@@ -39,8 +39,8 @@ public class FlightListService extends AbstractGuiService<Manager, Flight> {
 		// Add transient fields for the flight details
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("originCity", flight.getOriginCity());
-		dataset.put("destinationCity", flight.getDestinationCity());
+		dataset.put("originCity", flight.getOriginAirport().getCity());
+		dataset.put("destinationCity", flight.getDestinationAirport().getCity());
 		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
 		super.getResponse().addData(dataset);
 	}

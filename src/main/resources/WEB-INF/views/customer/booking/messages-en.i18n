@@ -30,5 +30,6 @@ customer.booking.list.label.travelClass= Travel Class
 
 acme.validation.lastNibble.message = You must complete the last digits of your card to publish
 customer.booking.form.error.duplicateLocatorCode = That locator Code is already in use
+customer.booking.form.show.recommendations = Show recommendations in destination
 
 

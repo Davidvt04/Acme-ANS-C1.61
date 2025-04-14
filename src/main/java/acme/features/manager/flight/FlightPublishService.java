@@ -76,8 +76,8 @@ public class FlightPublishService extends AbstractGuiService<Manager, Flight> {
 		// Include transient properties that might be of interest.
 		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("originCity", flight.getOriginCity());
-		dataset.put("destinationCity", flight.getDestinationCity());
+		dataset.put("originCity", flight.getOriginAirport().getCity());
+		dataset.put("destinationCity", flight.getDestinationAirport().getCity());
 		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
 		super.getResponse().addData(dataset);
 	}

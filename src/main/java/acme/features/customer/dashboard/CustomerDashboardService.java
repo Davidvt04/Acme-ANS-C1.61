@@ -42,6 +42,60 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 	public void load() {
 		int customerId = this.getRequest().getPrincipal().getActiveRealm().getId();
 		Collection<Booking> bookings = this.repository.findAllBookingsOf(customerId);
+<<<<<<< HEAD
+		String currency = bookings.stream().findFirst().get().getPrice().getCurrency();
+		int thisYear = MomentHelper.getCurrentMoment().getYear();
+		List<Booking> lastFiveYearsBookings = bookings.stream().filter(booking -> booking.getPurchaseMoment().getYear() > thisYear - 5).toList();
+		long total5YearsBookings = lastFiveYearsBookings.size() > 1 ? lastFiveYearsBookings.size() : 1;
+		CustomerDashboard dashboard = new CustomerDashboard();
+		//Last 5 destinations
+		Collection<String> last5destinations = bookings.stream().sorted(Comparator.comparing(Booking::getPurchaseMoment).reversed()).map(b -> b.getFlight().getDestinationAirport().getCity()).distinct().limit(5).toList();
+		dashboard.setLastFiveDestinations(last5destinations);
+		System.out.println(last5destinations.size());
+		last5destinations.stream().forEach(d -> System.out.println(d));
+		//--------------
+		Double totalMoney = bookings.stream().filter(booking -> booking.getPurchaseMoment().getYear() > thisYear - 1).map(Booking::getPrice).map(Money::getAmount).reduce(0.0, Double::sum);
+		Money spentMoney = new Money();
+		spentMoney.setAmount(totalMoney);
+
+		spentMoney.setCurrency(currency);
+		dashboard.setSpentMoney(spentMoney);
+		//---------------------
+		long economyBookings = bookings.stream().filter(b -> b.getTravelClass().equals(TravelClass.ECONOMY)).count();
+		dashboard.setEconomyBookings(economyBookings);
+		//--------------------
+		long businessBookings = bookings.stream().filter(b -> b.getTravelClass().equals(TravelClass.BUSINESS)).count();
+		dashboard.setBusinessBookings(businessBookings);
+		//-----------------
+		Money bookingTotalCost = new Money();
+		bookingTotalCost.setAmount(lastFiveYearsBookings.stream().map(Booking::getPrice).map(Money::getAmount).reduce(0.0, Double::sum));
+		bookingTotalCost.setCurrency(currency);
+		dashboard.setBookingTotalCost(bookingTotalCost);
+		//---------------------------------------------------
+		Money bookingAverageCost = new Money();
+		bookingAverageCost.setAmount(bookingTotalCost.getAmount() / total5YearsBookings);
+		bookingAverageCost.setCurrency(currency);
+		dashboard.setBookingAverageCost(bookingAverageCost);
+		//-----------------------------------
+		Money bookingMinimumCost = new Money();
+		bookingMinimumCost.setAmount(lastFiveYearsBookings.stream().map(Booking::getPrice).map(Money::getAmount).min(Double::compare).orElse(0.0));
+		bookingMinimumCost.setCurrency(currency);
+		dashboard.setBookingMinimumCost(bookingMinimumCost);
+		//--------------------------------------
+		Money bookingMaximumCost = new Money();
+		bookingMaximumCost.setAmount(lastFiveYearsBookings.stream().map(Booking::getPrice).map(Money::getAmount).max(Double::compare).orElse(0.0));
+		bookingMaximumCost.setCurrency(currency);
+		dashboard.setBookingMaximumCost(bookingMaximumCost);
+		//---------------------------------------
+		Money bookingDeviationCost = new Money();
+		double varianza = lastFiveYearsBookings.stream().map(Booking::getPrice).map(Money::getAmount).map(price -> Math.pow(price - bookingAverageCost.getAmount(), 2)).reduce(0.0, Double::sum) / total5YearsBookings;
+		double deviation = Math.sqrt(varianza);
+		bookingDeviationCost.setAmount(deviation);
+		bookingDeviationCost.setCurrency(currency);
+		dashboard.setBookingDeviationCost(bookingDeviationCost);
+		//---------------------------------------
+=======
+>>>>>>> b911d1612a627f3e66fd314e90e678e3bb1ae788
 		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOd(customerId);
 
 		CustomerDashboard dashboard = new CustomerDashboard();

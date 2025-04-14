@@ -1,0 +1,16 @@
+# messages-es.i18n
+
+customer.recommendation-dashboard.list.title = Panel de recomendaciones
+customer.recommendation-dashboard.form.title = Panel de recomendaciones
+
+customer.recommendation-dashboard.list.label.city = Ciudad
+customer.recommendation-dashboard.list.label.country = País
+customer.recommendation-dashboard.list.label.name = Nombre de Actividad
+customer.recommendation-dashboard.list.label.description = Descripción
+customer.recommendation-dashboard.list.label.recommendationType = Tipo de Recomendación
+
+customer.recommendation-dashboard.form.label.city = Ciudad
+customer.recommendation-dashboard.form.label.country = País
+customer.recommendation-dashboard.form.label.name = Nombre de Actividad
+customer.recommendation-dashboard.form.label.description = Descripción
+customer.recommendation-dashboard.form.label.recommendationType = Tipo de Recomendación
