@@ -46,16 +46,18 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking booking) {
-		super.bindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble");
+		super.bindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble");
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		if (booking.getLastNibble() == null || booking.getLastNibble().isBlank())
-			super.state(false, "lastNibble", "acme.validation.lastNibble.message");
 		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
 		boolean valid = existing == null || existing.getId() == booking.getId();
 		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
+
+		//		Flight associatedFlight = booking.getFlight();
+		//		valid = associatedFlight != null && !associatedFlight.isDraftMode();
+		//		super.state(valid, "flight", "customer.booking.form.error.notavailableflight");
 	}
 
 	@Override
@@ -72,11 +74,11 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		Collection<Flight> flights = this.repository.findAllFlights();
-		SelectChoices flightChoices = SelectChoices.from(flights, "id", booking.getFlight());
+		Collection<Flight> flights = this.repository.findAllPublishedFlights();
 
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
+		SelectChoices flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
 		dataset.put("flights", flightChoices);
 		super.getResponse().addData(dataset);
 	}

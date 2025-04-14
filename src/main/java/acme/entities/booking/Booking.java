@@ -69,13 +69,20 @@ public class Booking extends AbstractEntity {
 
 	@Transient
 	public Money getPrice() {
-		Money flightCost = this.getFlight().getCost();
-		BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
-		Integer numberOfPassengers = bookingRepository.getNumberPassengersOfBooking(this.getId());
 		Money res = new Money();
-		res.setCurrency(flightCost.getCurrency());
-		res.setAmount(flightCost.getAmount() * numberOfPassengers);
+		if (this.getFlight() != null) {
+			Money flightCost = this.getFlight().getCost();
+			BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
+			Integer numberOfPassengers = bookingRepository.getNumberPassengersOfBooking(this.getId());
+
+			res.setCurrency(flightCost.getCurrency());
+			res.setAmount(flightCost.getAmount() * numberOfPassengers);
+			return res;
+		}
+		res.setAmount(0.0);
+		res.setCurrency("EUR");
 		return res;
+
 	}
 
 }

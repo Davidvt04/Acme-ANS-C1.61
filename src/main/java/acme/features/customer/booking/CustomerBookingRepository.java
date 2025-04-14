@@ -25,4 +25,7 @@ public interface CustomerBookingRepository extends AbstractRepository {
 	@Query("select b from Booking b where b.locatorCode= :locatorCode")
 	Booking findBookingByLocator(String locatorCode);
 
+	@Query("select f from Flight f where f.draftMode = false")
+	Collection<Flight> findAllPublishedFlights();
+
 }
