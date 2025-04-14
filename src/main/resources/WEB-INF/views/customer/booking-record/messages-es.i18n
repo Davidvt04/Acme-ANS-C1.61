@@ -16,3 +16,4 @@ customer.passenger.form.link.create = Crear nuevo pasajero
 
 customer.bookingRecord.list.label.passenger = Pasajero
 customer.bookingRecord.list.label.booking = Reserva
+customer.bookingrecord.form.error.invalidPassenger = El pasajero seleccionado no está disponible
