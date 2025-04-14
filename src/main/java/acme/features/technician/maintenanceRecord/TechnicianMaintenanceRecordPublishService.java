@@ -1,8 +1,8 @@
 
 package acme.features.technician.maintenanceRecord;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,15 +30,11 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		int masterId;
 		MaintenanceRecord maintenanceRecord;
 		Technician technician;
-		List<Task> publishedTasks;
 
 		masterId = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
-		publishedTasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId).stream().filter(t -> !t.isDraftMode()).toList();
-
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
-		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() //
-			&& super.getRequest().getPrincipal().hasRealm(technician) && !publishedTasks.isEmpty();
+		status = maintenanceRecord != null && super.getRequest().getPrincipal().hasRealm(technician);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -56,12 +52,10 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void bind(final MaintenanceRecord maintenanceRecord) {
-		String aircraftRegistrationNumber;
 		Aircraft aircraft;
 		Date currentMoment;
 
-		aircraftRegistrationNumber = super.getRequest().getData("aircraft", String.class);
-		aircraft = this.repository.findAircraftByRegistrationNumber(aircraftRegistrationNumber);
+		aircraft = super.getRequest().getData("aircraft", Aircraft.class);
 		currentMoment = MomentHelper.getCurrentMoment();
 
 		super.bindObject(maintenanceRecord, "ticker", "status", "nextInspectionDueTime", "estimatedCost", "notes");
@@ -71,7 +65,21 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		;
+		Collection<Task> tasks;
+		boolean allTasksNotDraft;
+		boolean tasksValid;
+		MaintenanceRecord existMaintenanceRecord;
+		boolean validTicker;
+
+		tasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(maintenanceRecord.getId());
+		allTasksNotDraft = tasks.stream().allMatch(task -> !task.isDraftMode());
+		tasksValid = !tasks.isEmpty() && allTasksNotDraft;
+		if (!tasksValid)
+			super.state(tasksValid, "*", "acme.validation.maintenance-record.tasks.not-draft.message");
+
+		existMaintenanceRecord = this.repository.findMaintenanceRecordByTicker(maintenanceRecord.getTicker());
+		validTicker = existMaintenanceRecord == null || existMaintenanceRecord.getId() == maintenanceRecord.getId();
+		super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 	}
 
 	@Override
@@ -82,15 +90,20 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 	@Override
 	public void unbind(final MaintenanceRecord maintenanceRecord) {
-		SelectChoices choices;
 		Dataset dataset;
+		SelectChoices statusChoices;
+		SelectChoices aircraftChoices;
+		Collection<Aircraft> aircrafts;
 
-		choices = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getStatus());
+		statusChoices = SelectChoices.from(MaintenanceRecordStatus.class, maintenanceRecord.getStatus());
+		aircrafts = this.repository.findAllAircrafts();
+		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", maintenanceRecord.getAircraft());
 
 		dataset = super.unbindObject(maintenanceRecord, "ticker", "moment", "nextInspectionDueTime", "estimatedCost", "notes", "draftMode");
-		dataset.put("status", choices.getSelected().getKey());
-		dataset.put("statuses", choices);
-		dataset.put("aircraft", maintenanceRecord.getAircraft().getRegistrationNumber());
+		dataset.put("status", statusChoices.getSelected().getKey());
+		dataset.put("statuses", statusChoices);
+		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
+		dataset.put("aircrafts", aircraftChoices);
 
 		super.getResponse().addData(dataset);
 	}

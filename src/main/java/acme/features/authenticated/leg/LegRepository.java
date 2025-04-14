@@ -2,6 +2,7 @@
 package acme.features.authenticated.leg;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
@@ -26,8 +27,8 @@ public interface LegRepository extends AbstractRepository {
 	@Query("SELECT MAX(l.scheduledArrival) FROM Leg l WHERE l.flight.id = :flightId")
 	Optional<Date> findLastScheduledArrival(@Param("flightId") int flightId);
 
-	// The city of the departure airport that has the earliest scheduled departure
 	@Query("""
+<<<<<<< HEAD
 		SELECT l.departureAirport
 		FROM Leg l
 		WHERE l.flight.id = :flightId
@@ -38,9 +39,17 @@ public interface LegRepository extends AbstractRepository {
 		  )
 		""")
 	Optional<Airport> findFirstOriginAirport(@Param("flightId") int flightId);
+=======
+			SELECT l.departureAirport.city
+			FROM Leg l
+			WHERE l.flight.id = :flightId
+			ORDER BY l.scheduledDeparture ASC
+		""")
+	List<String> findOrderedOriginCities(@Param("flightId") int flightId);
+>>>>>>> b911d1612a627f3e66fd314e90e678e3bb1ae788
 
-	// The city of the arrival airport that has the latest scheduled arrival
 	@Query("""
+<<<<<<< HEAD
 		SELECT l.arrivalAirport
 		FROM Leg l
 		WHERE l.flight.id = :flightId
@@ -51,5 +60,13 @@ public interface LegRepository extends AbstractRepository {
 		  )
 		""")
 	Optional<Airport> findLastDestinationAirport(@Param("flightId") int flightId);
+=======
+			SELECT l.arrivalAirport.city
+			FROM Leg l
+			WHERE l.flight.id = :flightId
+			ORDER BY l.scheduledArrival DESC
+		""")
+	List<String> findOrderedDestinationCities(@Param("flightId") int flightId);
+>>>>>>> b911d1612a627f3e66fd314e90e678e3bb1ae788
 
 }

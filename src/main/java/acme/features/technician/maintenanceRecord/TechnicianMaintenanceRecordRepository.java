@@ -21,12 +21,15 @@ public interface TechnicianMaintenanceRecordRepository extends AbstractRepositor
 	@Query("select m from MaintenanceRecord m where m.id = :id")
 	MaintenanceRecord findMaintenanceRecordById(int id);
 
-	@Query("select a from Aircraft a where a.registrationNumber = :aircraftRegistrationNumber")
-	Aircraft findAircraftByRegistrationNumber(String aircraftRegistrationNumber);
-
 	@Query("select i from Involves i where i.maintenanceRecord.id = :id")
 	Collection<Involves> findInvolvesByMaintenanceRecordId(int id);
 
 	@Query("select t from Task t join Involves i on t.id = i.task.id WHERE i.maintenanceRecord.id = :masterId")
 	Collection<Task> findTasksAssociatedWithMaintenanceRecordById(int masterId);
+
+	@Query("select a from Aircraft a")
+	Collection<Aircraft> findAllAircrafts();
+
+	@Query("select m from MaintenanceRecord m where m.ticker = :ticker")
+	MaintenanceRecord findMaintenanceRecordByTicker(String ticker);
 }
