@@ -16,4 +16,5 @@ customer.passenger.form.link.create = Create new passenger
 
 customer.bookingRecord.list.label.passenger = Passenger
 customer.bookingRecord.list.label.booking = Booking
+customer.bookingrecord.form.error.invalidPassenger = This passenger is not available
 

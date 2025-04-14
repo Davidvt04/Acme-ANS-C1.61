@@ -78,7 +78,8 @@ master.menu.user-account.assistance-agent-profile = Perfil de Asistente
 master.menu.user-account.become-customer= Hazte cliente
 master.menu.user-account.become-assistance-agent = Hazte Asistente 
 master.menu.user-account.assistance-agent-profile = Perfil de Asistente
-
+master.menu.user-account.become-technician = Hazte técnico
+master.menu.user-account.technician-profile = Perfil de técnico
 
 # mater.menu.assistance-agent ####################################################
 master.menu.assistanceAgent  = Asistente

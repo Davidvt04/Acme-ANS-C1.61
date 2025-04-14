@@ -42,11 +42,16 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void bind(final BookingRecord bookingRecord) {
-		super.bindObject(bookingRecord, "passenger", "booking");
+		super.bindObject(bookingRecord, "passenger");
 	}
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
+		if (bookingRecord.getPassenger() != null) {
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			boolean status = bookingRecord.getPassenger().getCustomer().getId() == customerId && !bookingRecord.getPassenger().isDraftMode();
+			super.state(status, "passenger", "customer.bookingrecord.form.error.invalidPassenger");
+		}
 
 	}
 
@@ -66,7 +71,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Collection<Passenger> addedPassengers = this.repository.getPassengersInBooking(bookingId);
 
-		Collection<Passenger> passengers = this.repository.getAllPassengersOf(customerId).stream().filter(p -> !addedPassengers.contains(p)).toList();
+		Collection<Passenger> passengers = this.repository.getAllPublisedPassengersOf(customerId).stream().filter(p -> !addedPassengers.contains(p)).toList();
 		SelectChoices passengerChoices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
 		dataset.put("passengers", passengerChoices);
 

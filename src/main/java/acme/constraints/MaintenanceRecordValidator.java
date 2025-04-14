@@ -35,10 +35,12 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 
 			boolean correctNextInspection;
 
-			minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
-			correctNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+			if (maintenanceRecord.isDraftMode() && maintenanceRecord.getNextInspectionDueTime() != null) {
+				minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
+				correctNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
 
-			super.state(context, correctNextInspection, "*", "acme.validation.nextInspection.message");
+				super.state(context, correctNextInspection, "nextInspectionDueTime", "acme.validation.nextInspection.message");
+			}
 		}
 
 		result = !super.hasErrors(context);

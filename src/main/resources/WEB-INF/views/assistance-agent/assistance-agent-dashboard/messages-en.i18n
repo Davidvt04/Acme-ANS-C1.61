@@ -30,6 +30,7 @@ assistanceAgent.claim.list.label.indicator = Indicator:
 assistanceAgent.claim.list.button.create = Create
 assistanceAgent.claim.form.show.trackingLogs = View Associated Tracking Logs
 
+assistance-agent.assistance-agent-dashboard.form.title = Assistance agent dashboard
 assistanceAgent.dashboard.form.label.claimsResolvedRatio = Claims Resolved Ratio:
 assistanceAgent.dashboard.form.label.claimsRejectedRatio = Claims Rejected Ratio:
 assistanceAgent.dashboard.form.label.topThreeMonthsByClaims = Top 3 Months by Claims:

@@ -25,6 +25,12 @@ acme.validation.flightAssignament.availableFlightCrewMember.message= The Flight 
 acme.validation.activityLog.wrongMoment.message = The Activity Log registration moment must be after the scheduled arrival of the Leg
 acme.validation.ActivityLog.FlightAssignamentNotPublished.message = If the Flight Assignament which is associated with this Activity Log isn't published, you can't publish it
 
+#Maintenance Record and Task
+acme.validation.task-record.ticker.message = The ticker must be between 5 and 15 characters long and can only contain letters, numbers, underscores and hyphens
+acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
+acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
+acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
+
 #Acme:
 javax.validation.constraints.AssertFalse.message = Must be false
 javax.validation.constraints.AssertTrue.message = Must be true

@@ -1,9 +1,12 @@
 
 package acme.features.technician.involves;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
@@ -49,15 +52,13 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void bind(final Involves involves) {
-		String taskTicker;
 		int masterId;
 		Task task;
 		MaintenanceRecord maintenanceRecord;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
-		taskTicker = super.getRequest().getData("task", String.class);
-		task = this.repository.findTaskByTicker(taskTicker);
+		task = super.getRequest().getData("task", Task.class);
 
 		super.bindObject(involves);
 		involves.setTask(task);
@@ -77,10 +78,17 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 	@Override
 	public void unbind(final Involves involves) {
 		Dataset dataset;
+		SelectChoices taskChoices;
+		Collection<Task> tasks;
+
+		tasks = this.repository.findAllTasks();
+		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
 
 		dataset = super.unbindObject(involves, "task");
 		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 		dataset.put("maintenanceRecord", involves.getMaintenanceRecord().getId());
+		dataset.put("task", taskChoices.getSelected().getKey());
+		dataset.put("tasks", taskChoices);
 
 		super.getResponse().addData(dataset);
 	}
