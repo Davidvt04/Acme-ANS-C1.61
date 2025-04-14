@@ -16,6 +16,7 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.entities.airport.Airport;
 import acme.features.authenticated.leg.LegRepository;
 import acme.realms.managers.Manager;
 import lombok.Getter;
@@ -71,15 +72,15 @@ public class Flight extends AbstractEntity {
 	}
 
 	@Transient
-	public String getOriginCity() {
+	public Airport getOriginAirport() {
 		LegRepository repository = SpringHelper.getBean(LegRepository.class);
-		return repository.findFirstOriginCity(this.getId()).orElse("");
+		return repository.findFirstOriginAirport(this.getId()).orElse(null);
 	}
 
 	@Transient
-	public String getDestinationCity() {
+	public Airport getDestinationAirport() {
 		LegRepository repository = SpringHelper.getBean(LegRepository.class);
-		return repository.findLastDestinationCity(this.getId()).orElse("");
+		return repository.findLastDestinationAirport(this.getId()).orElse(null);
 	}
 
 	@Transient

@@ -48,7 +48,7 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 		long total5YearsBookings = lastFiveYearsBookings.size() > 1 ? lastFiveYearsBookings.size() : 1;
 		CustomerDashboard dashboard = new CustomerDashboard();
 		//Last 5 destinations
-		Collection<String> last5destinations = bookings.stream().sorted(Comparator.comparing(Booking::getPurchaseMoment).reversed()).map(b -> b.getFlight().getDestinationCity()).distinct().limit(5).toList();
+		Collection<String> last5destinations = bookings.stream().sorted(Comparator.comparing(Booking::getPurchaseMoment).reversed()).map(b -> b.getFlight().getDestinationAirport().getCity()).distinct().limit(5).toList();
 		dashboard.setLastFiveDestinations(last5destinations);
 		System.out.println(last5destinations.size());
 		last5destinations.stream().forEach(d -> System.out.println(d));

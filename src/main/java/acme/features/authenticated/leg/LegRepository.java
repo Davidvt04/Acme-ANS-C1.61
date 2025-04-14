@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.airport.Airport;
 
 @Repository
 public interface LegRepository extends AbstractRepository {
@@ -27,7 +28,7 @@ public interface LegRepository extends AbstractRepository {
 
 	// The city of the departure airport that has the earliest scheduled departure
 	@Query("""
-		SELECT l.departureAirport.city
+		SELECT l.departureAirport
 		FROM Leg l
 		WHERE l.flight.id = :flightId
 		  AND l.scheduledDeparture = (
@@ -36,11 +37,11 @@ public interface LegRepository extends AbstractRepository {
 		      WHERE l2.flight.id = :flightId
 		  )
 		""")
-	Optional<String> findFirstOriginCity(@Param("flightId") int flightId);
+	Optional<Airport> findFirstOriginAirport(@Param("flightId") int flightId);
 
 	// The city of the arrival airport that has the latest scheduled arrival
 	@Query("""
-		SELECT l.arrivalAirport.city
+		SELECT l.arrivalAirport
 		FROM Leg l
 		WHERE l.flight.id = :flightId
 		  AND l.scheduledArrival = (
@@ -49,6 +50,6 @@ public interface LegRepository extends AbstractRepository {
 		      WHERE l2.flight.id = :flightId
 		  )
 		""")
-	Optional<String> findLastDestinationCity(@Param("flightId") int flightId);
+	Optional<Airport> findLastDestinationAirport(@Param("flightId") int flightId);
 
 }
