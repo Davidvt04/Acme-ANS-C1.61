@@ -27,7 +27,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Booking booking = this.repository.getBookingById(bookingId);
 
-		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
+		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId() && booking.isDraftMode());
 
 	}
 

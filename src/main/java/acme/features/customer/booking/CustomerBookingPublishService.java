@@ -11,6 +11,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
 import acme.realms.Customer;
@@ -55,9 +56,9 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		boolean valid = existing == null || existing.getId() == booking.getId();
 		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
 
-		//		Flight associatedFlight = booking.getFlight();
-		//		valid = associatedFlight != null && !associatedFlight.isDraftMode();
-		//		super.state(valid, "flight", "customer.booking.form.error.notavailableflight");
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(booking.getId());
+		valid = !bookingRecords.isEmpty();
+		super.state(valid, "price", "customer.booking.form.error.noPassengers");
 	}
 
 	@Override
