@@ -72,27 +72,27 @@ public class Flight extends AbstractEntity {
 	}
 
 	@Transient
-	public Airport getOriginAirport() {
-		LegRepository repository = SpringHelper.getBean(LegRepository.class);
-		return repository.findFirstOriginAirport(this.getId()).orElse(null);
-
-	}
-
-	@Transient
-	public Airport getDestinationAirport() {
-		LegRepository repository = SpringHelper.getBean(LegRepository.class);
-		return repository.findLastDestinationAirport(this.getId()).orElse(null);
-	}
-
-	@Transient
 	public Integer getNumberOfLayovers() {
 		LegRepository repository = SpringHelper.getBean(LegRepository.class);
 		return repository.numberOfLayovers(this.getId());
 	}
 
 	@Transient
+	public Airport getOriginAirport() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findOrderedOriginAirport(this.getId()).getFirst();
+
+	}
+
+	@Transient
+	public Airport getDestinationAirport() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findOrderedDestinationAirport(this.getId()).getFirst();
+	}
+
+	@Transient
 	public String getFlightSummary() {
-		return "Flight: " + this.getOriginAirport().getCity() + " --> " + this.getDestinationAirport().getCity() + " Departure Date: " + this.getScheduledDeparture();
+		return "Flight: " + this.getOriginAirport().getCity() + " --> " + this.getDestinationAirport().getCity();
 	}
 
 }

@@ -28,6 +28,16 @@ public interface LegRepository extends AbstractRepository {
 	Optional<Date> findLastScheduledArrival(@Param("flightId") int flightId);
 
 	@Query("""
+		SELECT l.
+		departureAirport.city	FROM
+		Leg l
+		WHERE l.flight.id=:
+		flightId				ORDER
+		BY l.scheduledDeparture ASC""")
+
+	List<String> findOrderedOriginCities(@Param("flightId") int flightId);
+
+	@Query("""
 		SELECT l.departureAirport
 		FROM Leg l
 		WHERE l.flight.id = :flightId
@@ -37,17 +47,7 @@ public interface LegRepository extends AbstractRepository {
 		      WHERE l2.flight.id = :flightId
 		  )
 		""")
-	Optional<Airport> findFirstOriginAirport(@Param("flightId") int flightId);
-
-	@Query("""
-		SELECT l.
-		departureAirport.city	FROM
-		Leg l
-		WHERE l.flight.id=:
-		flightId				ORDER
-		BY l.scheduledDeparture ASC""")
-
-	List<String> findOrderedOriginCities(@Param("flightId") int flightId);
+	List<Airport> findOrderedOriginAirport(@Param("flightId") int flightId);
 
 	@Query("""
 		SELECT l.arrivalAirport
@@ -59,7 +59,7 @@ public interface LegRepository extends AbstractRepository {
 		      WHERE l2.flight.id = :flightId
 		  )
 		""")
-	Optional<Airport> findLastDestinationAirport(@Param("flightId") int flightId);
+	List<Airport> findOrderedDestinationAirport(@Param("flightId") int flightId);
 
 	@Query("""
 			SELECT l.arrivalAirport.city

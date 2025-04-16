@@ -24,3 +24,12 @@ leg-08,"ALO1001","2025/01/06 00:00","2025/01/06 01:00",1.0,"ON_TIME","airport-05
 leg-09,"BOS1002","2025/01/06 00:01","2025/01/06 02:31",2.5,"DELAYED","airport-06","airport-07","flight-04","aircraft-00",true
 leg-10,"BOS1003","2025/01/07 00:00","2025/01/07 02:00",2.0,"DELAYED","airport-07","airport-13","flight-04","aircraft-00",false
 leg-11,"ALO1003","2200/12/31 16:59","2200/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-03","aircraft-01",false
+
+leg-23,"ALO1004","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-05","aircraft-01",false
+leg-24,"ALO1005","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-06","aircraft-01",false
+leg-25,"ALO1006","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-07","aircraft-01",false
+leg-26,"ALO1007","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-08","aircraft-01",false
+leg-27,"ALO1008","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-09","aircraft-01",false
+leg-28,"ALO1009","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-10","aircraft-01",false
+leg-29,"ALO1010","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-11","aircraft-01",false
+leg-30,"ALO1011","2025/12/31 16:59","2025/01/01 23:59",1.0,"CANCELLED","airport-05","airport-01","flight-12","aircraft-01",false
