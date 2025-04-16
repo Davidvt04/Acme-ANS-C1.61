@@ -32,4 +32,5 @@ acme.validation.lastNibble.message = You must complete the last digits of your c
 customer.booking.form.error.duplicateLocatorCode = That locator Code is already in use
 customer.booking.form.show.recommendations = Show recommendations in destination
 customer.booking.form.error.noPassengers = You should add any passengers before publishing
+customer.booking.form.error.invalidFlight = The flight selected is not available
 

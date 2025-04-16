@@ -54,9 +54,8 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		boolean valid = existing == null || existing.getId() == booking.getId();
 		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
 
-		//		Flight associatedFlight = booking.getFlight();
-		//		valid = associatedFlight != null && !associatedFlight.isDraftMode();
-		//		super.state(valid, "flight", "customer.booking.form.error.notavailableflight");
+		valid = booking.getFlight() != null && !booking.getFlight().isDraftMode();
+		super.state(valid, "flight", "customer.booking.form.error.invalidFlight");
 	}
 
 	@Override

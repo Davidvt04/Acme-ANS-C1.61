@@ -32,3 +32,4 @@ acme.validation.lastNibble.message = Debe completar los dígitos de su tarjeta p
 customer.booking.form.error.duplicateLocatorCode = El localizador de vuelo ya está en uso
 customer.booking.form.show.recommendations = Mostrar recomendaciones en el destino
 customer.booking.form.error.noPassengers = Debes añadir algún pasajero antes de publicar la reserva
+customer.booking.form.error.invalidFlight = El vuelo seleccionado no está disponible
