@@ -1,0 +1,23 @@
+
+technician.technician-dashboard.form.title = Dashboard de técnico
+technician.dashboard.form.title.general-indicators = Indicadores generales
+technician.dashboard.form.title.estimated-cost-stats = Indicadores de coste estimado
+technician.dashboard.form.title.top-five-aircrafts-more-tasks = Top 5 aviones con más tareas
+technician.dashboard.form.title.maintenance-records-per-status = Cantidad de registros de mantenimiento por cada estado 
+
+technician.dashboard.form.label.nearest-maintenance-record = Registro de mantenimiento más cercano
+technician.dashboard.form.label.estimated-cost-currency = Moneda
+technician.dashboard.form.label.estimated-cost-avg = Media
+technician.dashboard.form.label.estimated-cost-min = Mínimo
+technician.dashboard.form.label.estimated-cost-max = Máximo
+technician.dashboard.form.label.estimated-cost-stddev = Desviación estándar
+technician.dashboard.form.label.estimated-duration-avg = Duración estimada media
+technician.dashboard.form.label.estimated-duration-min = Duración estimada mínima
+technician.dashboard.form.label.estimated-duration-max = Duración estimada máxima
+technician.dashboard.form.label.estimated-duration-stddev = Desviación estándar de la duración estimada
+
+technician.dashboard.form.label.aircrafts-more-tasks-first = 1º
+technician.dashboard.form.label.aircrafts-more-tasks-second = 2º
+technician.dashboard.form.label.aircrafts-more-tasks-third = 3º
+technician.dashboard.form.label.aircrafts-more-tasks-fourth = 4º
+technician.dashboard.form.label.aircrafts-more-tasks-fifth = 5º

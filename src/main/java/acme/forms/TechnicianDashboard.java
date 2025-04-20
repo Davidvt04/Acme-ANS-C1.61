@@ -1,11 +1,10 @@
 
 package acme.forms;
 
+import java.util.Collection;
 import java.util.List;
 
 import acme.client.components.basis.AbstractForm;
-import acme.client.components.datatypes.Money;
-import acme.entities.maintenanceRecord.MaintenanceRecord;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,14 +18,12 @@ public class TechnicianDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	List<Integer>				numberOfMaintenanceRecordsPerStatus;
-	List<String>				statusOfMaintenanceRecordsOrderByNumber;
-	List<MaintenanceRecord>		nearestMaintenanceRecord;				// podria haber mas de un record con esa fecha
+	Integer						numberOfPendingMaintenanceRecords;
+	Integer						numberOfInProgressMaintenanceRecords;
+	Integer						numberOfCompletedMaintenanceRecords;
+	String						nearestMaintenanceRecord;
 	List<String>				topFiveAircraftsWithMoreTasks;
-	Money						averageNumberOfEstimatedCost;
-	Money						minimumNumberOfEstimatedCost;
-	Money						maximumNumberOfEstimatedCost;
-	Money						standardDeviationOfEstimatedCost;
+	Collection<Object[]>		averageMinMaxStdDevOfEstimatedCost;
 	Double						averageNumberOfEstimatedDuration;
 	Integer						minimumNumberOfEstimatedDuration;
 	Integer						maximumNumberOfEstimatedDuration;

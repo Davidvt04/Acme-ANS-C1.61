@@ -52,6 +52,7 @@ master.menu.customer.show-dashboard = Show Dashboard
 master.menu.technician = Technician
 master.menu.technician.maintenance-records = List maintenance records
 master.menu.technician.tasks = List tasks
+master.menu.technician.show-dashboard = Show dashboard
 
 # master.menu.flight-crew-member ##########################################################
 
