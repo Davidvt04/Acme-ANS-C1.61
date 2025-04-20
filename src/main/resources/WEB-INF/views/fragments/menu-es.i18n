@@ -54,7 +54,7 @@ master.menu.user-account.customer-profile = Perfil de cliente
 master.menu.technician = Técnico
 master.menu.technician.maintenance-records = Listar registros de mantenimiento
 master.menu.technician.tasks = Listar tareas
-
+master.menu.technician.show-dashboard = Mostrar dashboard
 
 # master.menu.flight-crew-member ##########################################################
 
