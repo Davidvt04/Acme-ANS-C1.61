@@ -1,0 +1,12 @@
+
+administrator.task.list.title = Tareas
+administrator.task.list.label.ticker = Ticker
+administrator.task.list.label.type = Tipo
+administrator.task.list.label.priority = Prioridad
+
+administrator.task.form.title = Formulario de tarea
+administrator.task.form.label.ticker = Ticker
+administrator.task.form.label.type = Tipo
+technician.task.form.label.description = Descripción 
+administrator.task.form.label.priority = Prioridad
+administrator.task.form.label.estimated-duration = Duración estimada

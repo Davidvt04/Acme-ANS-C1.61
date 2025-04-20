@@ -1,0 +1,12 @@
+
+administrator.task.list.title = Tasks
+administrator.task.list.label.ticker = Ticker
+administrator.task.list.label.type = Type
+administrator.task.list.label.priority = Priority
+
+administrator.task.form.title = Task form
+administrator.task.form.label.ticker = Ticker
+administrator.task.form.label.type = Type
+administrator.task.form.label.description = Description 
+administrator.task.form.label.priority = Priority
+administrator.task.form.label.estimated-duration = Estimated duration 

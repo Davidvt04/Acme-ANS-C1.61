@@ -28,6 +28,7 @@ master.menu.administrator.list-airports = Listado de aeropuertos
 master.menu.administrator.list-aircrafts = Listado de aviones
 master.menu.administrator.list-claims = Listado de quejas
 master.menu.administrator.list-bookings = Listado de reservas
+master.menu.administrator.list-maintenance-records = Listado de registros de mantenimiento
 
 # master.menu.provider ########################################################
 
