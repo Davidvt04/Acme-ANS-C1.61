@@ -1,26 +1,26 @@
 
-package acme.features.technician.maintenanceRecord;
+package acme.features.administrator.maintenanceRecord;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Administrator;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
-import acme.realms.Technician;
 
 @GuiService
-public class TechnicianMaintenanceRecordListService extends AbstractGuiService<Technician, MaintenanceRecord> {
+public class AdministratorMaintenanceRecordListService extends AbstractGuiService<Administrator, MaintenanceRecord> {
 
 	@Autowired
-	private TechnicianMaintenanceRecordRepository repository;
+	private AdministratorMaintenanceRecordRepository repository;
 
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -28,10 +28,8 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 	@Override
 	public void load() {
 		Collection<MaintenanceRecord> object;
-		int technicianId;
 
-		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		object = this.repository.findMainteanceRecordsByTechnicianId(technicianId);
+		object = this.repository.findPublishedMainteanceRecords();
 
 		super.getBuffer().addData(object);
 	}

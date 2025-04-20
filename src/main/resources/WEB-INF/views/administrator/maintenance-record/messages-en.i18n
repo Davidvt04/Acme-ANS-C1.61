@@ -1,0 +1,19 @@
+
+administrator.maintenance-record.list.title = Published maintenance records
+administrator.maintenance-record.form.title = Maintenance record form
+
+administrator.maintenance-record.list.label.ticker = Ticker
+administrator.maintenance-record.list.label.moment = Moment
+administrator.maintenance-record.list.label.status = Status
+administrator.maintenance-record.list.label.next-inspection = Next inspection
+administrator.maintenance-record.list.label.aircraft = Aircraft
+administrator.maintenance-record.list.button.create = Create
+
+administrator.maintenance-record.form.label.ticker = Ticker
+administrator.maintenance-record.form.label.moment = Moment 
+administrator.maintenance-record.form.label.status = Status
+administrator.maintenance-record.form.label.next-inspection = Next inspection 
+administrator.maintenance-record.form.label.aircraft = Aircraft
+administrator.maintenance-record.form.label.estimated-cost = Estimated cost
+administrator.maintenance-record.form.label.notes = Notes
+administrator.maintenance-record.form.button.tasks = Tasks
