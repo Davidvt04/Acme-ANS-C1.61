@@ -31,8 +31,33 @@ public class LegShowService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		// For simplicity, we authorize all managers. Adjust as needed.
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int legId;
+		Leg leg;
+
+		// 1. Retrieve the leg id from the request
+		legId = super.getRequest().getData("id", int.class);
+
+		// 2. Retrieve the leg from the repository
+		leg = this.repository.findLegById(legId);
+
+		if (leg != null) {
+			// 3a. Get the flight behind the leg
+			var flight = leg.getFlight();
+
+			if (flight != null) {
+				// 3b. Fetch the current manager’s id
+				int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+				// 3c. Authorise only if this manager owns that flight
+				status = flight.getManager().getId() == managerId;
+			} else
+				status = false;
+		} else
+			status = false;
+
+		// 4. Set the response accordingly
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

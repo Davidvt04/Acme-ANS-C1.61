@@ -10,6 +10,10 @@ manager.flight.form.label.cost = Cost
 manager.flight.form.label.description = Description
 manager.flight.form.label.scheduledDeparture = Scheduled Departure
 manager.flight.form.label.scheduledArrival = Scheduled Arrival
+manager.flight.form.label.originCity = Origin City
+manager.flight.form.label.destinationCity = Destination City
+manager.flight.form.label.numberOfLayovers = Number of Layovers
+
 manager.flight.form.label.draftMode = Draft Mode
 manager.flight.form.label.confirmation = Confirm
 

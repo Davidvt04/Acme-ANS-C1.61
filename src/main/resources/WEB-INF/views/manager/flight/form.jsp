@@ -13,6 +13,9 @@
         <acme:input-textbox code="manager.flight.form.label.description" path="description" />
         <acme:input-moment code="manager.flight.form.label.scheduledDeparture" readonly="true"  path="scheduledDeparture" />
         <acme:input-moment code="manager.flight.form.label.scheduledArrival" readonly="true" path="scheduledArrival" />
+        <acme:input-textbox code="manager.flight.form.label.originCity" path="originCity" readonly="true" />
+		<acme:input-textbox code="manager.flight.form.label.destinationCity" path="destinationCity" readonly="true" />
+		<acme:input-integer code="manager.flight.form.label.numberOfLayovers" path="numberOfLayovers" readonly="true" />
         
         <!-- Publish button, only visible if the flight is still in draft mode -->
         <c:if test="${draftMode == true}">
