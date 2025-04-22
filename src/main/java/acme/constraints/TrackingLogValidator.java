@@ -34,9 +34,9 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		if (trackingLog == null)
 			super.state(context, false, "TrackingLog", "No hay trackingLogs");
-		else {
+		else if (trackingLog.getStatus() != null && trackingLog.getResolution() != null && trackingLog.getClaim() != null) {
 
-			if (trackingLog.getResolutionPercentage() == 100.0)
+			if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() == 100.0)
 				super.state(context, !trackingLog.getStatus().equals(ClaimStatus.PENDING), "Status", "El estado no puede ser PENDING");
 			else
 				super.state(context, trackingLog.getStatus().equals(ClaimStatus.PENDING), "Status", "El estado debe ser PENDING");
@@ -46,7 +46,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			else
 				super.state(context, trackingLog.getResolution() != null && !trackingLog.getResolution().isBlank(), "Resolution", "El campo resolucion es incorrecto");
 			Optional<List<TrackingLog>> trackingLogsOpt = this.repository.findOrderTrackingLog(trackingLog.getClaim().getId());
-			if (trackingLogsOpt.isPresent()) {
+			if (trackingLogsOpt.isPresent() && trackingLog.getResolutionPercentage() != null) {
 				List<TrackingLog> trackingLogs = trackingLogsOpt.get();
 
 				if (trackingLogs.contains(trackingLog)) {
@@ -55,13 +55,13 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 					if (index < trackingLogs.size()) {
 						TrackingLog nextLog = trackingLogs.get(index);
-
-						if (nextLog.getResolutionPercentage() > trackingLog.getResolutionPercentage() && !(nextLog.getResolutionPercentage() == 100 && trackingLog.getResolutionPercentage() == 100))
-							super.state(context, false, "ResolutionPercentage", "El porcentaje debe ser superior a " + nextLog.getResolutionPercentage());
+						Double nextPercentage = nextLog.getResolutionPercentage();
+						if (nextPercentage != null)
+							if (nextLog.getResolutionPercentage() > trackingLog.getResolutionPercentage() && !(nextLog.getResolutionPercentage() == 100 && trackingLog.getResolutionPercentage() == 100))
+								super.state(context, false, "ResolutionPercentage", "El porcentaje debe ser superior a " + nextLog.getResolutionPercentage());
 					}
 				}
 			}
-
 		}
 		result = !super.hasErrors(context);
 		return result;

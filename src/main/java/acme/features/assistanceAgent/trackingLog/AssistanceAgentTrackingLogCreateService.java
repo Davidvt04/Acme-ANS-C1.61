@@ -50,8 +50,8 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		boolean valid;
-		valid = trackingLog.getResolutionPercentage() != null;
-		super.state(valid, "ResolutionPercentage", "assistanceAgent.trackingLog.form.error.cantBeNull");
+		//valid = trackingLog.getResolutionPercentage() != null;
+		//super.state(valid, "ResolutionPercentage", "assistanceAgent.trackingLog.form.error.cantBeNull");
 
 		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() < 100.0) {
 			valid = trackingLog.getStatus().equals(ClaimStatus.PENDING);
