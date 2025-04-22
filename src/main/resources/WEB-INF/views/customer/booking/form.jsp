@@ -10,8 +10,9 @@
     <acme:input-textbox code="customer.booking.list.label.locatorCode" path="locatorCode"/>
     <acme:input-textbox code="customer.booking.list.label.lastNibble" path="lastNibble"/>
     <acme:input-select code="customer.booking.list.label.travelClass" path="travelClass" choices="${travelClasses}"/>
-    <acme:input-double code="customer.booking.list.label.price" path="price" readonly="true"/>
-
+   	<jstl:if test="${_command != 'create'}">
+   		<acme:input-double code="customer.booking.list.label.price" path="price" readonly="true"/>
+	</jstl:if>
 	
 	
 	<jstl:choose>
@@ -21,6 +22,7 @@
 			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
 			<jstl:if test="${_command != 'create'}">
 				<acme:button code="customer.booking.form.add.passenger" action="/customer/booking-record/create?bookingId=${id}"/>
+				<acme:button code="customer.booking.form.delete.passenger" action="/customer/booking-record/delete?bookingId=${id}"/>
 			</jstl:if>
 		</jstl:if>
 

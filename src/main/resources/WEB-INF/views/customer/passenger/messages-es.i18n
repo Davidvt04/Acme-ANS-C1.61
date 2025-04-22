@@ -14,6 +14,7 @@ customer.passenger.list.title = Lista de pasajeros
 customer.passenger.form.button.create = Crear 
 customer.passenger.form.button.update = Actualizar
 customer.passenger.form.button.publish = Publicar
+customer.passenger.form.button.delete = Eliminar
 customer.passenger.form.button.return = Volver
 
 customer.passenger.list.button.create = Crear
@@ -25,3 +26,5 @@ customer.passenger.list.label.draftmode=Modo borrador
 
 customer.passenger.list.label.email= Correo electrónico
 customer.passenger.list.label.specialNeeds= Necesidades especiales
+
+customer.passenger.form.error.associatedBookings = Este pasajero está asociado a alguna reserva

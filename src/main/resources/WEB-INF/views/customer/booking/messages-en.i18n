@@ -16,7 +16,8 @@ customer.booking.form.button.update = Update
 customer.booking.form.button.publish= Publish
 customer.booking.form.button.return = Return
 customer.booking.form.show.passengers = Show passengers
-customer.booking.form.add.passenger = Add Passenger
+customer.booking.form.add.passenger = Add Passenger to booking
+customer.booking.form.delete.passenger = Delete Passenger from booking
 customer.booking.list.button.create = Create
 
 customer.booking.list.label.flight=Flight
@@ -28,9 +29,10 @@ customer.booking.list.label.locatorCode= Locator Code
 customer.booking.list.label.lastNibble= Last 4 digits of payment card
 customer.booking.list.label.travelClass= Travel Class
 
-acme.validation.lastNibble.message = You must complete the last digits of your card to publish
+customer.booking.form.error.lastNibbleNeeded = You must complete the last digits of your card to publish
 customer.booking.form.error.duplicateLocatorCode = That locator Code is already in use
 customer.booking.form.show.recommendations = Show recommendations in destination
 customer.booking.form.error.noPassengers = You should add any passengers before publishing
 customer.booking.form.error.invalidFlight = The flight selected is not available
+customer.booking.form.error.publishPassengers = All included passengers must be published before publishing the booking
 

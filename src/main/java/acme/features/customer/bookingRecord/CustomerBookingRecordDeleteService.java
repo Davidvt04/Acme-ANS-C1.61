@@ -15,7 +15,7 @@ import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingRecordCreateService extends AbstractGuiService<Customer, BookingRecord> {
+public class CustomerBookingRecordDeleteService extends AbstractGuiService<Customer, BookingRecord> {
 
 	@Autowired
 	private CustomerBookingRecordRepository repository;
@@ -43,22 +43,19 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 	@Override
 	public void bind(final BookingRecord bookingRecord) {
 		super.bindObject(bookingRecord, "passenger");
+
 	}
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
-		if (bookingRecord.getPassenger() != null) {
-			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			Collection<Passenger> includedPassengers = this.repository.getPassengersInBooking(bookingRecord.getBooking().getId());
-			boolean status = bookingRecord.getPassenger().getCustomer().getId() == customerId && !includedPassengers.contains(bookingRecord.getPassenger());
-			super.state(status, "passenger", "customer.bookingrecord.form.error.invalidPassenger");
-		}
-
+		;
 	}
 
 	@Override
 	public void perform(final BookingRecord bookingRecord) {
-		this.repository.save(bookingRecord);
+		BookingRecord realBookingRecord = this.repository.findBookingRecordBy(bookingRecord.getBooking().getId(), bookingRecord.getPassenger().getId());
+
+		this.repository.delete(realBookingRecord);
 	}
 
 	@Override
@@ -71,11 +68,9 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Collection<Passenger> addedPassengers = this.repository.getPassengersInBooking(bookingId);
-
-		Collection<Passenger> passengers = this.repository.getAllPassengersOf(customerId).stream().filter(p -> !addedPassengers.contains(p)).toList();
 		SelectChoices passengerChoices;
 		try {
-			passengerChoices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
+			passengerChoices = SelectChoices.from(addedPassengers, "fullName", bookingRecord.getPassenger());
 		} catch (NullPointerException e) {
 			throw new IllegalArgumentException("The selected passenger is not available");
 		}

@@ -2,12 +2,14 @@
 package acme.features.customer.passenger;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.passenger.Passenger;
 
 @Repository
@@ -24,5 +26,8 @@ public interface CustomerPassengerRepository extends AbstractRepository {
 
 	@Query("select b from Booking b where b.id=:bookingId")
 	Booking getBookingById(int bookingId);
+
+	@Query("select br from BookingRecord br where br.passenger.id =:passengerId")
+	List<BookingRecord> getAllBookingsRecordsWith(int passengerId);
 
 }

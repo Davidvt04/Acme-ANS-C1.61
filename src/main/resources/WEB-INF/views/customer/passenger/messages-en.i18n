@@ -14,6 +14,7 @@ customer.passenger.list.title = List of Passengers
 customer.passenger.form.button.create = Create 
 customer.passenger.form.button.update = Update
 customer.passenger.form.button.publish = Publish
+customer.passenger.form.button.delete = Delete
 customer.passenger.form.button.return = Return
 
 customer.passenger.list.button.create = Create
@@ -25,6 +26,8 @@ customer.passenger.list.label.draftmode=Draft Mode
 
 customer.passenger.list.label.email= Email
 customer.passenger.list.label.specialNeeds= Special Needs
+
+customer.passenger.form.error.associatedBookings = This passenger is still included in a booking
 
 
 

@@ -59,10 +59,10 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 		dashboard.setBookingMaximumCost(noMoney);
 		dashboard.setBookingDeviationCost(noMoney);
 		dashboard.setBookingTotalPassengers(0);
-		dashboard.setBookingAveragePassengers(0.0);
+		dashboard.setBookingAveragePassengers(Double.NaN);
 		dashboard.setBookingMinimumPassengers(0);
 		dashboard.setBookingMaximumPassengers(0);
-		dashboard.setBookingDeviationPassengers(0.0);
+		dashboard.setBookingDeviationPassengers(Double.NaN);
 
 		if (bookings.size() > 0 && bookingRecords.size() > 0) {
 			String currency = bookings.stream().findFirst().get().getPrice().getCurrency();

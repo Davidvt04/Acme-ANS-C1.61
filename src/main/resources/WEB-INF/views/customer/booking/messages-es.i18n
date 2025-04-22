@@ -16,7 +16,8 @@ customer.booking.form.button.update = Actualizar
 customer.booking.form.button.publish= Publicar
 customer.booking.form.button.return = Volver
 customer.booking.form.show.passengers = Mostrar pasajeros
-customer.booking.form.add.passenger = Añadir Pasajero
+customer.booking.form.add.passenger = Añadir Pasajero a la reserva
+customer.booking.form.delete.passenger = Eliminar Pasajero de la reserva
 customer.booking.list.button.create = Crear
 
 customer.booking.list.label.flight=Vuelo
@@ -28,8 +29,9 @@ customer.booking.list.label.locatorCode= Localizador de vuelo
 customer.booking.list.label.lastNibble= Últimos 4 dígitos de la tarjeta
 customer.booking.list.label.travelClass= Clase de viaje
 
-acme.validation.lastNibble.message = Debe completar los dígitos de su tarjeta para confirmar
+customer.booking.form.error.lastNibbleNeeded= Debe completar los dígitos de su tarjeta para confirmar
 customer.booking.form.error.duplicateLocatorCode = El localizador de vuelo ya está en uso
 customer.booking.form.show.recommendations = Mostrar recomendaciones en el destino
 customer.booking.form.error.noPassengers = Debes añadir algún pasajero antes de publicar la reserva
 customer.booking.form.error.invalidFlight = El vuelo seleccionado no está disponible
+customer.booking.form.error.publishPassengers = Todos los pasajeros asociados deben estar publicados para publicar la reserva
