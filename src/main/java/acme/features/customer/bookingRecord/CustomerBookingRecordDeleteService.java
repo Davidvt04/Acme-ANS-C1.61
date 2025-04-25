@@ -75,6 +75,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 			throw new IllegalArgumentException("The selected passenger is not available");
 		}
 		dataset.put("passengers", passengerChoices);
+		dataset.put("locatorCode", bookingRecord.getBooking().getLocatorCode());
 
 		super.getResponse().addData(dataset);
 
