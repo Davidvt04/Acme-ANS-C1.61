@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -69,7 +70,7 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 
 		System.out.println("El masterId es: " + masterId + " de la assignament= " + this.repository.isFlightAssignamentAlreadyPublishedById(masterId));
 		System.out.flush();
-		showCreate = this.repository.isFlightAssignamentAlreadyPublishedById(masterId);
+		showCreate = this.repository.associatedWithCompletedLeg(masterId, MomentHelper.getCurrentMoment());
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);

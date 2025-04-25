@@ -7,6 +7,7 @@
 	<acme:list-column code="flight-crew-member.flight-assignament.list.label.duty" path="duty" width="25%"/>
 	<acme:list-column code="flight-crew-member.flight-assignament.list.label.moment" path="moment" width="25%"/>
 	<acme:list-column code="flight-crew-member.flight-assignament.list.label.current-status" path="currentStatus" width="25%"/>	
+	<acme:list-column code="flight-crew-member.flight-assignament.list.label.draft-mode" path="draftMode" width="25%"/>	
 	<acme:list-payload path="payload"/>
 </acme:list>	
 	

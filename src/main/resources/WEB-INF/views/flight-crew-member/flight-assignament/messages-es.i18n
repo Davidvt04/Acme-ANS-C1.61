@@ -23,4 +23,5 @@ flight-crew-member.flight-assignament.list.label.duty = Cargo
 flight-crew-member.flight-assignament.list.label.moment = Momento
 flight-crew-member.flight-assignament.list.label.current-status = Estado actual
 flight-crew-member.flight-assignament.list.label.remarks = Observaciones
+flight-crew-member.flight-assignament.list.label.draft-mode = ¿Modo borrador?
 flight-crew-member.flight-assignament.list.button.create = Crear
