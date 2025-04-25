@@ -60,8 +60,16 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		valid = !bookingRecords.isEmpty();
 		super.state(valid, "price", "customer.booking.form.error.noPassengers");
 
-		valid = booking.getFlight() != null && !booking.getFlight().isDraftMode();
+		valid = bookingRecords.stream().filter(br -> br.getPassenger().isDraftMode()).findFirst().isEmpty();
+		super.state(valid, "price", "customer.booking.form.error.publishPassengers");
+
+		valid = booking.getFlight() != null;
 		super.state(valid, "flight", "customer.booking.form.error.invalidFlight");
+		if (booking.getFlight() != null && booking.getFlight().isDraftMode())
+			throw new IllegalArgumentException("The selected flight is not available");
+
+		valid = booking.getLastNibble() != null && !booking.getLastNibble().isBlank();
+		super.state(valid, "lastNibble", "customer.booking.form.error.lastNibbleNeeded");
 	}
 
 	@Override
@@ -82,7 +90,12 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
-		SelectChoices flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
+		SelectChoices flightChoices;
+		try {
+			flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
+		} catch (NullPointerException e) {
+			throw new IllegalArgumentException("Selected flight is not available");
+		}
 		dataset.put("flights", flightChoices);
 		super.getResponse().addData(dataset);
 	}

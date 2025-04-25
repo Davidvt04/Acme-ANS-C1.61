@@ -27,7 +27,7 @@
 	<acme:submit code="authenticated.customer.form.button.create" action="/authenticated/customer/create"/>
 	</jstl:if>
 	
-	<jstl:if test="${_command == 'create'}">
+	<jstl:if test="${_command == 'update'}">
 	<acme:submit code="authenticated.customer.form.button.update" action="/authenticated/customer/update"/>
 	</jstl:if>
 

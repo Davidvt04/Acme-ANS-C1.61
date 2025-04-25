@@ -51,10 +51,10 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	public void validate(final Booking booking) {
 		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
 		boolean valid = existing == null || existing.getId() == booking.getId();
-		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
-
-		valid = booking.getFlight() != null && !booking.getFlight().isDraftMode();
+		valid = booking.getFlight() != null;
 		super.state(valid, "flight", "customer.booking.form.error.invalidFlight");
+		if (booking.getFlight() != null && booking.getFlight().isDraftMode())
+			throw new IllegalArgumentException("The selected flight is not available");
 
 	}
 
@@ -74,7 +74,13 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
-		SelectChoices flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
+		SelectChoices flightChoices;
+		try {
+			flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
+		} catch (NullPointerException e) {
+			throw new IllegalArgumentException("Selected flight is not available");
+		}
+
 		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);
