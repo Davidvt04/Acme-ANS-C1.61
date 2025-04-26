@@ -17,3 +17,4 @@ flight-crew-member.activity-log.form.button.publish = Publicar
 flight-crew-member.activity-log.form.button.delete = Borrar  
 flight-crew-member.activity-log.form.button.create = Crear  
 flight-crew-member.activity-log.form.label.confirmation = Confirme que la Asignación de Vuelo es correcta  
+flight-crew-member.activity-log.list.label.draftMode = ¿Modo borrador?

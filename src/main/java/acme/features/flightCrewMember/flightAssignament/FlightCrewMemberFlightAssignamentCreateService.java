@@ -29,6 +29,7 @@ public class FlightCrewMemberFlightAssignamentCreateService extends AbstractGuiS
 
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		boolean authorised = this.repository.existsFlightCrewMember(flightCrewMemberId);
+
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -72,8 +73,6 @@ public class FlightCrewMemberFlightAssignamentCreateService extends AbstractGuiS
 
 		FlightCrewMember flightCrewMember = flightAssignament.getFlightCrewMember();
 		Leg leg = flightAssignament.getLeg();
-		Boolean confirmation = super.getRequest().getData("confirmation", Boolean.class);
-		super.state(confirmation != null && confirmation, "confirmation", "flight-crew-member.flight-assignament.form.label.confirmation");
 		if (flightCrewMember != null && leg != null && this.isLegCompatible(flightAssignament)) {
 			super.state(false, "flightCrewMember", "acme.validation.FlightAssignament.FlightCrewMemberIncompatibleLegs.message");
 			return;

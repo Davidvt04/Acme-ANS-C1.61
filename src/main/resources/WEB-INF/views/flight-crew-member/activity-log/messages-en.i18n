@@ -16,4 +16,5 @@ flight-crew-member.activity-log.form.button.update = Update
 flight-crew-member.activity-log.form.button.publish = Publish  
 flight-crew-member.activity-log.form.button.delete = Delete  
 flight-crew-member.activity-log.form.button.create = Create  
-flight-crew-member.activity-log.form.label.confirmation = Confirm that the Flight Assignment is correct  
+flight-crew-member.activity-log.form.label.confirmation = Confirm that the Flight Assignment is correct 
+flight-crew-member.activity-log.list.label.draftMode = Draft Mode?

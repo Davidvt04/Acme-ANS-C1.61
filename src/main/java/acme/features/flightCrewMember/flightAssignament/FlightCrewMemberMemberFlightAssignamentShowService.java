@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignament;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,9 +30,11 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
 		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
 		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
-		super.getResponse().setAuthorised(authorised);
+		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		super.getResponse().setAuthorised(authorised && isHis);
 	}
 
 	@Override
@@ -60,7 +63,7 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 
 		flightAssignamentId = super.getRequest().getData("id", int.class);
 		SelectChoices duty;
-
+		boolean isCompleted;
 		legs = this.repository.findAllLegs();
 		flightCrewMembers = this.repository.findFlightCrewMembersByAvailability(AvailabilityStatus.AVAILABLE);
 
@@ -69,7 +72,9 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignament.getLeg());
 		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "employeeCode", flightAssignament.getFlightCrewMember());
-
+		Date currentMoment;
+		currentMoment = MomentHelper.getCurrentMoment();
+		isCompleted = this.repository.areLegsCompletedByFlightAssignament(flightAssignamentId, currentMoment);
 		dataset = super.unbindObject(flightAssignament, "duty", "moment", "currentStatus", "remarks", "draftMode");
 		dataset.put("currentStatus", currentStatus);
 		dataset.put("duty", duty);
@@ -77,9 +82,7 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		dataset.put("legs", legChoices);
 		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
-
-		dataset.put("isCompleted", this.repository.associatedWithCompletedLeg(flightAssignamentId, MomentHelper.getCurrentMoment()));
-		System.out.println(this.repository.associatedWithCompletedLeg(flightAssignamentId, MomentHelper.getCurrentMoment()));
+		dataset.put("isCompleted", isCompleted);
 		super.getResponse().addData(dataset);
 	}
 

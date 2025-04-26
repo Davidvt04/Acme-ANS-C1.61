@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -32,7 +33,9 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		boolean authorised = this.repository.existsFlightCrewMember(flightCrewMemberId);
 
 		status = authorised && flightAssignament != null;
-		super.getResponse().setAuthorised(status);
+		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+
+		super.getResponse().setAuthorised(status && isHis);
 	}
 
 	@Override
@@ -55,24 +58,17 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
 		super.addPayload(dataset, activityLog, "registrationMoment", "typeOfIncident");
 
-		super.getResponse().addData(dataset);
-
-	}
-
-	@Override
-	public void unbind(final Collection<ActivityLog> activityLog) {
 		int masterId;
 
-		final boolean showCreate;
+		boolean showCreate;
 
 		masterId = super.getRequest().getData("masterId", int.class);
 
-		System.out.println("El masterId es: " + masterId + " de la assignament= " + this.repository.isFlightAssignamentAlreadyPublishedById(masterId));
-		System.out.flush();
-		showCreate = this.repository.isFlightAssignamentAlreadyPublishedById(masterId);
+		showCreate = this.repository.flightAssignamentAssociatedWithCompletedLeg(masterId, MomentHelper.getCurrentMoment());
 
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getResponse().addGlobal("showCreate", showCreate);
+		super.getResponse().addData(dataset);
 
 	}
 

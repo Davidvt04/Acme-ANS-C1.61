@@ -91,15 +91,12 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-		FlightAssignament flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "draftMode");
-		dataset.put("masterId", flightAssignament.getId());
+
 		dataset.put("draftMode", activityLog.isDraftMode());
-		System.out.println("Soy publish, el activity log tiene draftMode? " + activityLog.isDraftMode() + " y el flightAssignament? " + flightAssignament.isDraftMode());
 
 		dataset.put("readonly", false);
-		dataset.put("masterDraftMode", flightAssignament.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
