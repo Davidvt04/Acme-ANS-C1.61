@@ -30,8 +30,9 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 		flightAssignament = this.repository.findFlightAssignamentById(masterId);
 		status = authorised && flightAssignament != null;
+		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && isHis);
 
 	}
 

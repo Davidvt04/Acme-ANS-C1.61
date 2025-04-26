@@ -30,9 +30,11 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
 		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
 		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
-		super.getResponse().setAuthorised(authorised);
+		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		super.getResponse().setAuthorised(authorised && isHis);
 	}
 
 	@Override
@@ -81,7 +83,6 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
 		dataset.put("isCompleted", isCompleted);
-		System.out.println("estoy dando que soy completa? " + this.repository.areLegsCompletedByFlightAssignament(flightAssignamentId, MomentHelper.getCurrentMoment()));
 		super.getResponse().addData(dataset);
 	}
 

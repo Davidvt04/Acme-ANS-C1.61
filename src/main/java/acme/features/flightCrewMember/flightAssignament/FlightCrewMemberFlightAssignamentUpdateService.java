@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignament;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,8 +31,9 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
 		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
 
-		super.getResponse().setAuthorised(authorised && flightAssignament != null && flightAssignament.isDraftMode());
+		super.getResponse().setAuthorised(authorised && flightAssignament != null && flightAssignament.isDraftMode() && isHis);
 	}
 
 	@Override
@@ -105,7 +107,14 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 	public void unbind(final FlightAssignament flightAssignament) {
 		Collection<Leg> legs = this.repository.findAllLegs();
 		Collection<FlightCrewMember> flightCrewMembers = this.repository.findFlightCrewMembersByAvailability(AvailabilityStatus.AVAILABLE);
+		boolean isCompleted;
+		int flightAssignamentId;
 
+		flightAssignamentId = super.getRequest().getData("id", int.class);
+
+		Date currentMoment;
+		currentMoment = MomentHelper.getCurrentMoment();
+		isCompleted = this.repository.areLegsCompletedByFlightAssignament(flightAssignamentId, currentMoment);
 		SelectChoices legChoices = SelectChoices.from(legs, "flightNumber", flightAssignament.getLeg());
 		SelectChoices flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "employeeCode", flightAssignament.getFlightCrewMember());
 		SelectChoices currentStatus = SelectChoices.from(acme.entities.flightAssignament.CurrentStatus.class, flightAssignament.getCurrentStatus());
@@ -121,6 +130,7 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 		dataset.put("legs", legChoices);
 		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
+		dataset.put("isCompleted", isCompleted);
 
 		super.getResponse().addData(dataset);
 	}
