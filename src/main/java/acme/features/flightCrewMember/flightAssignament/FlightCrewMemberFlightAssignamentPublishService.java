@@ -168,7 +168,6 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 		duty = SelectChoices.from(Duty.class, flightAssignament.getDuty());
 
 		dataset = super.unbindObject(flightAssignament, "duty", "moment", "CurrentStatus", "remarks", "draftMode");
-		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
 		dataset.put("moment", MomentHelper.getCurrentMoment());
 		dataset.put("currentStatus", currentStatus);
@@ -178,6 +177,7 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
 		dataset.put("isCompleted", isCompleted);
+		dataset.put("draftMode", flightAssignament.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

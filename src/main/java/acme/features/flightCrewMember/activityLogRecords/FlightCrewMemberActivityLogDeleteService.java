@@ -7,7 +7,6 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
-import acme.entities.flightAssignament.FlightAssignament;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
@@ -33,15 +32,7 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 
 		status = authorised && activityLog != null && activityLog.isDraftMode();
 
-		int masterId;
-		FlightAssignament flightAssignament;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		flightAssignament = this.repository.findFlightAssignamentById(masterId);
-
-		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
-
-		super.getResponse().setAuthorised(status && isHis);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -72,13 +63,11 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-		FlightAssignament flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLog.getId());
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "draftMode");
-		dataset.put("masterId", flightAssignament.getId());
+
 		dataset.put("draftMode", activityLog.isDraftMode());
 		dataset.put("readonly", false);
-		dataset.put("masterDraftMode", flightAssignament.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
