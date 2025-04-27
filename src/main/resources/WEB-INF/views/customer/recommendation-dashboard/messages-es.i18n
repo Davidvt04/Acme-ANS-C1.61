@@ -14,3 +14,4 @@ customer.recommendation-dashboard.form.label.country = País
 customer.recommendation-dashboard.form.label.name = Nombre de Actividad
 customer.recommendation-dashboard.form.label.description = Descripción
 customer.recommendation-dashboard.form.label.recommendationType = Tipo de Recomendación
+customer.recommendation-dashboard.list.label.rating = Puntuación
