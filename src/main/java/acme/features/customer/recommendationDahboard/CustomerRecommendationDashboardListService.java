@@ -1,19 +1,16 @@
 
 package acme.features.customer.recommendationDahboard;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.recommendation.Recommendation;
 import acme.forms.recommendations.RecommendationDashboard;
 import acme.realms.Customer;
 
@@ -34,54 +31,23 @@ public class CustomerRecommendationDashboardListService extends AbstractGuiServi
 		super.getResponse().setAuthorised(status);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void load() {
 
-		List<RecommendationDashboard> recommendationDashboards = new ArrayList<>();
+		List<RecommendationDashboard> recommendationDashboards = new LinkedList<>();
 
 		String city = super.getRequest().getData("city", String.class);
 		String country = super.getRequest().getData("country", String.class);
-		String apiKey = "";
-		String term = "tourist";
-		Integer count = 5;
 
-		try {
-			String urlString = String.format("https://api.yelp.com/v3/businesses/search?location=%s&term=%s&limit=%d", city, term, count);
-			URL url = new URL(urlString);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Authorization", "Bearer " + apiKey);
+		Collection<Recommendation> recommendations = this.repository.getRecommendationsOf(city, country);
 
-			int responseCode = conn.getResponseCode();
-
-			if (responseCode == 200) {
-				InputStream contStream = conn.getInputStream();
-				byte[] contBytes = contStream.readAllBytes();
-				String contString = "";
-
-				for (byte bytte : contBytes)
-					contString += (char) bytte;
-
-				JSONObject contJSON = new JSONObject(contString);
-				JSONArray businesses = (JSONArray) contJSON.get("businesses");
-
-				for (int i = 0; i < count; i++) {
-					JSONObject iObj = (JSONObject) businesses.get(i);
-					RecommendationDashboard recommendationDashboard = new RecommendationDashboard();
-					recommendationDashboard.setCity(city);
-					recommendationDashboard.setCountry(country);
-					recommendationDashboard.setName(iObj.get("name").toString());
-					JSONArray categoryArray = (JSONArray) iObj.get("categories");
-					recommendationDashboard.setType(((JSONObject) categoryArray.get(0)).get("title").toString());
-					recommendationDashboards.add(recommendationDashboard);
-				}
-
-			} else
-				System.out.println("Request Error: Code " + responseCode);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
+		for (Recommendation recommendation : recommendations) {
+			RecommendationDashboard dashboard = new RecommendationDashboard();
+			dashboard.setCity(recommendation.getCity());
+			dashboard.setCountry(recommendation.getCountry());
+			dashboard.setName(recommendation.getName());
+			dashboard.setRating(recommendation.getRating());
+			recommendationDashboards.add(dashboard);
 		}
 
 		super.getBuffer().addData(recommendationDashboards);
@@ -89,7 +55,7 @@ public class CustomerRecommendationDashboardListService extends AbstractGuiServi
 
 	@Override
 	public void unbind(final RecommendationDashboard recommendationsDashboard) {
-		Dataset dataset = super.unbindObject(recommendationsDashboard, "city", "country", "name", "description", "type");
+		Dataset dataset = super.unbindObject(recommendationsDashboard, "city", "country", "name", "rating", "type");
 		super.getResponse().addData(dataset);
 	}
 

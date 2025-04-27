@@ -14,7 +14,7 @@ public class RecommendationDashboard extends AbstractForm {
 	private String				city;
 	private String				country;
 	private String				name;
-	private String				description;
+	private Double				rating;
 	private String				type;
 
 }

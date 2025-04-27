@@ -3,11 +3,11 @@ key,name,iataCode,operationalScope,city,country,website,email,phoneNumber
 airport-00,Aeropuerto Sevilla,AAA,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 
 #name - variations
-airport-01,L,AAB,INTERNATIONAL,Miami,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
-airport-02,Lorem ipsum dolor sit amet. consectetur adipiscin,AAC,INTERNATIONAL,Michigan,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
-airport-03,Lorem ipsum dolor sit amet. consectetur adipiscing,AAD,INTERNATIONAL,New York,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-01,L,AAB,INTERNATIONAL,Miami,Estados Unidos,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-02,Lorem ipsum dolor sit amet. consectetur adipiscin,AAC,INTERNATIONAL,Michigan,Estados Unidos,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-03,Lorem ipsum dolor sit amet. consectetur adipiscing,AAD,INTERNATIONAL,New York,Estados Unidos,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 airport-04,โลเร็ม อิปซัม,AAE,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
-airport-05,لوريم إيبسوم,AAF,INTERNATIONAL,Londres,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
+airport-05,لوريم إيبسوم,AAF,INTERNATIONAL,Londres,Reino Unido,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 airport-06,洛伦·伊普森,AAG,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 airport-07,<marquee>Hacked</marquee>,AAH,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019
 airport-08,<script>alert(‘Hacked!’);</script>,AAI,INTERNATIONAL,Sevilla,España,https://www.aena.es/es/sevilla.html,aenasevilla@aenacorp.es,+633921019

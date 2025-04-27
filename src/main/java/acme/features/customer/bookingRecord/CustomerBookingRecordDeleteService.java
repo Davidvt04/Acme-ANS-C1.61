@@ -23,11 +23,25 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
+		Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Booking booking = this.repository.getBookingById(bookingId);
+		status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
 
-		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId() && booking.isDraftMode());
+		if (super.getRequest().hasData("id")) {
+			String locatorCode = super.getRequest().getData("locatorCode", String.class);
+			status = status && booking.getLocatorCode().equals(locatorCode);
+
+			Integer passengerId = super.getRequest().getData("passenger", int.class);
+			Passenger passenger = this.repository.getPassengerById(passengerId);
+			status = status && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
+
+			Collection<Passenger> alreadyAddedPassengers = this.repository.getPassengersInBooking(bookingId);
+			status = status && (alreadyAddedPassengers.stream().anyMatch(p -> p.getId() == passengerId) || passengerId == 0);
+		}
+
+		super.getResponse().setAuthorised(status);
 
 	}
 
@@ -48,6 +62,8 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void validate(final BookingRecord bookingRecord) {
+		boolean status = bookingRecord.getPassenger() != null;
+		super.state(status, "passenger", "customer.bookingrecord.form.error.invalidPassenger");
 		;
 	}
 
