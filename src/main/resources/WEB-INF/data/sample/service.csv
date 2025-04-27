@@ -13,12 +13,12 @@ service-08,"<marquee>Hacked</marquee>",http://www.lorem-ipsum.org,50.00,AAAI-25,
 service-09,"<script>alert(‘Hacked!’);</script>",http://www.lorem-ipsum.org,50.00,AAAJ-25,50.00
 service-10,"'' or 'A' = 'A ",http://www.lorem-ipsum.org,50.00,AAAK-25,50.00
 # picture - standard variations
-service-11,"Lorem ipsum",ftp://a,50.00,AAAL-25,50.00
-service-12,"Lorem ipsum",ftp://a.b,50.00,AAAM-25,50.00
+service-11,"Lorem ipsum",http://a.b,50.00,AAAL-25,50.00
+service-12,"Lorem ipsum",http://a.b,50.00,AAAM-25,50.00
 service-13,"Lorem ipsum","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",50.00,AAAN-25,50.00
 service-14,"Lorem ipsum","http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",50.00,AAAO-25,50.00
 service-15,"Lorem ipsum",https://www.lorem-ipsum.org,50.00,AAAP-25,50.00
-service-16,"Lorem ipsum",ftp://www.lorem-ipsum.org,50.00,AAAQ-25,50.00
+service-16,"Lorem ipsum",http://www.lorem-ipsum.org,50.00,AAAQ-25,50.00
 service-17,"Lorem ipsum",http://www.lorem-ipsum.org/dolor/sit.html,50.00,AAAR-25,50.00
 service-18,"Lorem ipsum",http://www.lorem-ipsum.org/dolor/sit.html#dolor,50.00,AAAS-25,50.00
 service-19,"Lorem ipsum",http://example.org?a=1&b=2,50.00,AAAT-25,50.00

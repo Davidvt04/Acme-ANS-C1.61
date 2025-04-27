@@ -1,4 +1,4 @@
 key,key:userAccount,identifier,yearsOfExperience,dateOfBirth,pictureLink,key:airline
-manager-01,"user-account-manager-01","AFP000001",0,"2002/02/02 02:02","ftp://a","airline-00"
-manager-02,"user-account-manager-02","AFP000002",25,"2003/03/03 03:03","ftp://a.b","airline-01"
+manager-01,"user-account-manager-01","AFP000001",0,"2002/02/02 02:02","http://a.b","airline-00"
+manager-02,"user-account-manager-02","AFP000002",25,"2003/03/03 03:03","https://www.lorem-ipsum.org","airline-01"
 manager-03,"user-account-manager-03","AFP000003",78,"2004/04/04 04:04","https://www.lorem-ipsum.org","airline-03"
