@@ -44,7 +44,7 @@ public class AdministratorRecommendationCreateService extends AbstractGuiService
 				String url = "https://api.yelp.com/v3/businesses/search?location=" + airport.getCity() + "&term=tourist&limit=5";
 
 				HttpHeaders headers = new HttpHeaders();
-				headers.set("Authorization", "Bearer " + "sGqp41nq1GURFR3yOm1m6crqmPIGGddSjVOkisOpl2y2hOfSNfTPa9b-mxeW_Sq4uSN6bvexh3hpXom_ZpMXm3Z0F-hASob2E0xkCN1KNv3U5PiBInosNcUZ10_9Z3Yx");
+				headers.set("Authorization", "Bearer " + "");
 				HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
 				RestTemplate restTemplate = new RestTemplate();
