@@ -69,4 +69,4 @@ airline-45,"URL Test 15","AAO","http://example.org/a","LUXURY","2016/01/15 00:00
 airline-46,"URL Test 16","AAP","http://example.org/a/b","STANDARD","2016/01/16 00:00","url16@air.com","+460000000"
 airline-47,"URL Test 17","AAQ","http://example.org/a/b?","LOW_COST","2016/01/17 00:00","url17@air.com","+470000000"
 airline-48,"URL Test 18","AAR","http://example.org/a/b?a&b","LUXURY","2016/01/18 00:00","url18@air.com","+480000000"
-airline-49,"URL Test 19","AAS","http://a.b ","STANDARD","2016/01/19 00:00","url19@air.com","+490000000"
+airline-49,"URL Test 19","AAS","http://example.org/a","STANDARD","2016/01/19 00:00","url19@air.com","+490000000"
