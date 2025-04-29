@@ -9,13 +9,13 @@ user-account-provider-02,true,"UserIdentity{name: 'Martina', surname: 'коза 
 user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטיח Æløzå', email: 'antonia@acme.com'}",provider3,provider3
 user-account-manager-01,true,"UserIdentity{name: 'Antonio', surname: 'Fernandez Perez', email: 'antonio@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Alejandro', surname: 'Fergo Pololo', email: 'lol@acme.esx'}",manager2,manager2
-user-account-manager-03,true,"UserIdentity{name: 'Alfonso', surname: 'Ferrero Pengoa', email: 'a@pochoclo.arg'}",manager4,manager4
+user-account-manager-03,true,"UserIdentity{name: 'Alfonso', surname: 'Ferrero Pengoa', email: 'a@pochoclo.arg'}",manager3,manager3
 user-account-customer-01,true,"UserIdentity{name: 'David', surname: 'Alioli', email: 'davali@acme.com'}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: 'Jason', surname: 'Momoa', email: 'jason@acme.com'}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: 'Manolo', surname: 'Ornitorrinco', email: 'manolo@acme.com'}",customer3,customer3
 user-account-assistanceAgent-01,true,"UserIdentity{name: 'Maria', surname: 'Marquez', email: 'maria@acme.com'}",agent1,agent1
 user-account-assistanceAgent-02,true,"UserIdentity{name: 'Manuel', surname: 'Maria', email: 'manuel@acme.com'}",agent2,agent2
-user-account-assistanceAgent-03,true,"UserIdentity{name: 'Marco', surname: 'Parra', email: 'marco@acme.com'}",manager3,manager3
+user-account-assistanceAgent-03,true,"UserIdentity{name: 'Marco', surname: 'Parra', email: 'marco@acme.com'}",agent3,agent3
 user-account-technician-01,true,"UserIdentity{name: 'Tecnico', surname: 'Tecniquez', email: 'tecnico@acme.com'}",technician1,technician1
 user-account-technician-02,true,"UserIdentity{name: 'Pepe', surname: 'Proton', email: 'proton@acme.com'}",technician2,technician2
 user-account-technician-03,true,"UserIdentity{name: 'Chino', surname: 'Chinaceo', email: 'chingchong@acme.com'}",technician3,technician3
