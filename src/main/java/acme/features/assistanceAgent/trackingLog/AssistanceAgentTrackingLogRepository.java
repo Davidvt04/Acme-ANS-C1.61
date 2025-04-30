@@ -33,4 +33,7 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 	@Query("select t from TrackingLog t where t.claim.id = :claimId and t.draftMode = false order by t.resolutionPercentage desc")
 	Optional<List<TrackingLog>> findOrderTrackingLogPublished(Integer claimId);
 
+	@Query("select b from Claim b where b.id=:claimId")
+	Claim getClaimById(int claimId);
+
 }

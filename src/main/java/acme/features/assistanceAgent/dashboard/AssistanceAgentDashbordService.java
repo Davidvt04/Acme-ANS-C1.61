@@ -43,80 +43,94 @@ public class AssistanceAgentDashbordService extends AbstractGuiService<Assistanc
 		Integer userAccountId = this.getRequest().getPrincipal().getAccountId();
 		int assistantAgentId = this.getRequest().getPrincipal().getActiveRealm().getId();
 		AssistanceAgentDashboard dashboard = new AssistanceAgentDashboard();
-		//claimsResolvedRatio
-		Long claimsResueltas = claims.stream().filter(x -> x.getStatus() == ClaimStatus.ACCEPTED).count();
-		Double claimsResolvedRatio = (double) claimsResueltas / this.repository.findAllClaims().stream().count();
-		dashboard.setClaimsResolvedRatio(claimsResolvedRatio);
-		//claimsResolvedRatio
-		Long claimsRejected = claims.stream().filter(x -> x.getStatus() == ClaimStatus.REJECTED).count();
-		Double claimsRejectedRatio = (double) claimsRejected / this.repository.findAllClaims().stream().count();
-		dashboard.setClaimsRejectedRatio(claimsRejectedRatio);
+		//initial data
+		dashboard.setClaimsResolvedRatio(Double.NaN);
+		dashboard.setClaimsRejectedRatio(Double.NaN);
+		dashboard.setAverageLogsPerClaim(Double.NaN);
+		dashboard.setMaximumClaimsLastMonth(0);
+		dashboard.setMaximumLogsPerClaim(0L);
+		dashboard.setMinimumClaimsLastMonth(0);
+		dashboard.setMinimumLogsPerClaim(0L);
+		dashboard.setStandardDeviationClaimsLastMonth(Double.NaN);
+		dashboard.setStandardDeviationLogsPerClaim(Double.NaN);
+		dashboard.setAverageClaimsLastMonth(Double.NaN);
 
-		//topThreeMonthsByClaims
-		SimpleDateFormat monthFormat = new SimpleDateFormat("yyyy-MM");
-		Map<String, Long> claimsByMonth = claims.stream().filter(claim -> claim.getRegistrationMoment() != null).collect(Collectors.groupingBy(claim -> monthFormat.format(claim.getRegistrationMoment()), Collectors.counting()));
+		if (!claims.isEmpty()) {
+			//claimsResolvedRatio
+			Long claimsResueltas = claims.stream().filter(x -> x.getStatus() == ClaimStatus.ACCEPTED).count();
+			Double claimsResolvedRatio = (double) claimsResueltas / this.repository.findAllClaims().stream().count();
+			dashboard.setClaimsResolvedRatio(claimsResolvedRatio);
+			//claimsRejectedRatio
+			Long claimsRejected = claims.stream().filter(x -> x.getStatus() == ClaimStatus.REJECTED).count();
+			Double claimsRejectedRatio = (double) claimsRejected / this.repository.findAllClaims().stream().count();
+			dashboard.setClaimsRejectedRatio(claimsRejectedRatio);
 
-		Collection<String> topThreeMonths = claimsByMonth.entrySet().stream().sorted((a, b) -> Long.compare(b.getValue(), a.getValue())).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
+			//topThreeMonthsByClaims
+			SimpleDateFormat monthFormat = new SimpleDateFormat("yyyy-MM");
+			Map<String, Long> claimsByMonth = claims.stream().filter(claim -> claim.getRegistrationMoment() != null).collect(Collectors.groupingBy(claim -> monthFormat.format(claim.getRegistrationMoment()), Collectors.counting()));
 
-		dashboard.setTopThreeMonthsByClaims(topThreeMonths);
+			Collection<String> topThreeMonths = claimsByMonth.entrySet().stream().sorted((a, b) -> Long.compare(b.getValue(), a.getValue())).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
 
-		//averageLogsPerClaim
-		long totalLogs = claims.stream().mapToLong(claim -> this.repository.countLogsByClaimId(claim.getId())).sum();
+			dashboard.setTopThreeMonthsByClaims(topThreeMonths);
 
-		double averageLogsPerClaim = claims.size() > 0 ? (double) totalLogs / claims.size() : 0.0;
-		dashboard.setAverageLogsPerClaim(averageLogsPerClaim);
+			//averageLogsPerClaim
+			long totalLogs = claims.stream().mapToLong(claim -> this.repository.countLogsByClaimId(claim.getId())).sum();
 
-		// minimumLogsPerClaim
+			double averageLogsPerClaim = claims.size() > 0 ? (double) totalLogs / claims.size() : 0.0;
+			dashboard.setAverageLogsPerClaim(averageLogsPerClaim);
 
-		Long minLogs = claims.stream().mapToLong(claim -> this.repository.countLogsByClaimId(claim.getId())).min().orElse(0);
-		dashboard.setMinimumLogsPerClaim(minLogs);
+			// minimumLogsPerClaim
 
-		// minimumLogsPerClaim
-		Long maxLogs = claims.stream().mapToLong(claim -> this.repository.countLogsByClaimId(claim.getId())).max().orElse(0);
-		dashboard.setMaximumLogsPerClaim(maxLogs);
+			Long minLogs = claims.stream().mapToLong(claim -> this.repository.countLogsByClaimId(claim.getId())).min().orElse(0);
+			dashboard.setMinimumLogsPerClaim(minLogs);
 
-		//standardDeviationLogsPerClaim
-		List<Long> logsPerClaim = claims.stream().map(claim -> this.repository.countLogsByClaimId(claim.getId())).collect(Collectors.toList());
+			// maximumLogsPerClaim
+			Long maxLogs = claims.stream().mapToLong(claim -> this.repository.countLogsByClaimId(claim.getId())).max().orElse(0);
+			dashboard.setMaximumLogsPerClaim(maxLogs);
 
-		double mean = logsPerClaim.stream().mapToDouble(Long::doubleValue).average().orElse(0.0);
+			//standardDeviationLogsPerClaim
+			List<Long> logsPerClaim = claims.stream().map(claim -> this.repository.countLogsByClaimId(claim.getId())).collect(Collectors.toList());
 
-		double variance = logsPerClaim.stream().mapToDouble(logs -> Math.pow(logs - mean, 2)).average().orElse(0.0);
+			double mean = logsPerClaim.stream().mapToDouble(Long::doubleValue).average().orElse(0.0);
 
-		double standardDeviationLogsPerClaim = Math.sqrt(variance);
-		dashboard.setStandardDeviationLogsPerClaim(standardDeviationLogsPerClaim);
+			double variance = logsPerClaim.stream().mapToDouble(logs -> Math.pow(logs - mean, 2)).average().orElse(0.0);
 
-		// averageClaimsLastMonth
-		int thisMonth = MomentHelper.getCurrentMoment().getMonth();
-		int pastMonth = thisMonth - 1;
-		int year = MomentHelper.getCurrentMoment().getYear();
-		if (thisMonth == 1) {
-			pastMonth = 12;
-			year -= 1;
+			double standardDeviationLogsPerClaim = Math.sqrt(variance);
+			dashboard.setStandardDeviationLogsPerClaim(standardDeviationLogsPerClaim);
+
+			// averageClaimsLastMonth
+			int thisMonth = MomentHelper.getCurrentMoment().getMonth();
+			int pastMonth = thisMonth - 1;
+			int year = MomentHelper.getCurrentMoment().getYear();
+			if (thisMonth == 1) {
+				pastMonth = 12;
+				year -= 1;
+			}
+			Date fecha = MomentHelper.getCurrentMoment();
+			fecha.setYear(year);
+			fecha.setMonth(pastMonth);
+			List<Claim> lastMonthClaims = claims.stream().filter(c -> c.getRegistrationMoment().after(fecha)).toList();
+			int totalMonthClaims = lastMonthClaims.size();
+			int numAgents = this.repository.findAllAssistanceAgent().size();
+			double average = (double) totalMonthClaims / numAgents;
+			dashboard.setAverageClaimsLastMonth(average);
+
+			//minimumClaimsLastMonth
+			Map<AssistanceAgent, Long> claimsPerAgent = lastMonthClaims.stream().collect(Collectors.groupingBy(Claim::getAssistanceAgent, Collectors.counting()));
+			int minimumClaimsLastMonth = claimsPerAgent.isEmpty() ? 0 : Collections.min(claimsPerAgent.values()).intValue();
+			dashboard.setMinimumClaimsLastMonth(minimumClaimsLastMonth);
+
+			//maximumClaimsLastMonth
+			int maximumClaimsLastMonth = claimsPerAgent.isEmpty() ? 0 : Collections.max(claimsPerAgent.values()).intValue();
+			dashboard.setMaximumClaimsLastMonth(maximumClaimsLastMonth);
+
+			//standardDeviationClaimsLastMonth
+			double varianceLastMonth = claimsPerAgent.values().stream().mapToDouble(count -> Math.pow(count - average, 2)).sum() / (numAgents - 1);
+
+			double standardDeviationClaimsLastMonth = Math.sqrt(variance);
+
+			dashboard.setStandardDeviationClaimsLastMonth(standardDeviationClaimsLastMonth);
 		}
-		Date fecha = MomentHelper.getCurrentMoment();
-		fecha.setYear(year);
-		fecha.setMonth(pastMonth);
-		List<Claim> lastMonthClaims = claims.stream().filter(c -> c.getRegistrationMoment().after(fecha)).toList();
-		int totalMonthClaims = lastMonthClaims.size();
-		int numAgents = this.repository.findAllAssistanceAgent().size();
-		double average = (double) totalMonthClaims / numAgents;
-		dashboard.setAverageClaimsLastMonth(average);
-
-		//minimumClaimsLastMonth
-		Map<AssistanceAgent, Long> claimsPerAgent = lastMonthClaims.stream().collect(Collectors.groupingBy(Claim::getAssistanceAgent, Collectors.counting()));
-		int minimumClaimsLastMonth = claimsPerAgent.isEmpty() ? 0 : Collections.min(claimsPerAgent.values()).intValue();
-		dashboard.setMinimumClaimsLastMonth(minimumClaimsLastMonth);
-
-		//maximumClaimsLastMonth
-		int maximumClaimsLastMonth = claimsPerAgent.isEmpty() ? 0 : Collections.max(claimsPerAgent.values()).intValue();
-		dashboard.setMaximumClaimsLastMonth(maximumClaimsLastMonth);
-
-		//standardDeviationClaimsLastMonth
-		double varianceLastMonth = claimsPerAgent.values().stream().mapToDouble(count -> Math.pow(count - average, 2)).sum() / (numAgents - 1);
-
-		double standardDeviationClaimsLastMonth = Math.sqrt(variance);
-
-		dashboard.setStandardDeviationClaimsLastMonth(standardDeviationClaimsLastMonth);
 
 		super.getBuffer().addData(dashboard);
 
