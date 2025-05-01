@@ -130,6 +130,7 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
 		dataset.put("flightCrewMembers", flightCrewMemberChoices);
 		dataset.put("isCompleted", isCompleted);
+		dataset.put("draftMode", flightAssignament.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
