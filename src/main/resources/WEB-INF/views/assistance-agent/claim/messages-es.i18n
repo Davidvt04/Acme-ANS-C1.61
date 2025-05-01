@@ -29,3 +29,4 @@ assistanceAgent.claim.list.label.indicator = Indicador:
 
 assistanceAgent.claim.list.button.create = Crear
 assistanceAgent.claim.form.show.trackingLogs = Ver los registros asociados
+assistanceAgent.claim.form.create.trackingLog = Añadir un nuevo registro

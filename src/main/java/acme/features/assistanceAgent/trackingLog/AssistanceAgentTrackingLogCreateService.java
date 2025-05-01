@@ -1,7 +1,6 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +25,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
+
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		super.getResponse().setAuthorised(status);
 
@@ -33,9 +33,12 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void load() {
 		TrackingLog trackingLog;
+		int claimId = super.getRequest().getData("claimId", int.class);
+		Claim claim = this.repository.getClaimById(claimId);
 
 		trackingLog = new TrackingLog();
 		trackingLog.setDraftMode(true);
+		trackingLog.setClaim(claim);
 		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(trackingLog);
@@ -43,7 +46,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "claim");
+		super.bindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution");
 
 	}
 
@@ -95,20 +98,16 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
 
-		Collection<Claim> claims;
 		SelectChoices statusChoices;
-		SelectChoices claimChoices;
+
 		Dataset dataset;
-		int assistanceAgentId;
-		assistanceAgentId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 
-		claims = this.repository.findClaimsByAssistanceAgent(assistanceAgentId);
-		claimChoices = SelectChoices.from(claims, "id", trackingLog.getClaim());
-
-		dataset = super.unbindObject(trackingLog, "claim", "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode", "id");
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode", "id");
 		dataset.put("statusChoices", statusChoices);
-		dataset.put("claimChoices", claimChoices);
+
+		int claimId = super.getRequest().getData("claimId", int.class);
+		dataset.put("claimId", claimId);
 
 		super.getResponse().addData(dataset);
 

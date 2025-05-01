@@ -22,7 +22,7 @@
 	<acme:input-select code="assistanceAgent.claim.form.label.type" path="type" choices="${types}"/>
 	<acme:input-select code="assistanceAgent.claim.form.label.leg" path="leg" choices="${legs}"/>
 	<acme:input-textbox code="assistanceAgent.claim.form.label.indicator" path="indicator" readonly="true"/>
-		
+	
 
 	
 	<jstl:choose>
@@ -40,5 +40,6 @@
 	</jstl:choose>	
 		<jstl:if test="${_command != 'create'}">
 		<acme:button code="assistanceAgent.claim.form.show.trackingLogs" action="/assistance-agent/tracking-log/list?claimId=${id}"/>
+		<acme:button code="assistanceAgent.claim.form.create.trackingLog" action="/assistance-agent/tracking-log/create?claimId=${id}"/>
 	</jstl:if>
 </acme:form>
