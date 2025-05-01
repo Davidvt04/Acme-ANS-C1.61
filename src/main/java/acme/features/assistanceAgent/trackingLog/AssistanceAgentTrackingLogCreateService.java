@@ -25,6 +25,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
+
 		boolean status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		super.getResponse().setAuthorised(status);
 
@@ -32,17 +33,13 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void load() {
 		TrackingLog trackingLog;
+		int claimId = super.getRequest().getData("claimId", int.class);
+		Claim claim = this.repository.getClaimById(claimId);
 
 		trackingLog = new TrackingLog();
 		trackingLog.setDraftMode(true);
-		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
-
-		int masterId;
-		Claim claim;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.getClaimById(masterId);
 		trackingLog.setClaim(claim);
+		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
 
 		super.getBuffer().addData(trackingLog);
 	}
@@ -104,15 +101,13 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		SelectChoices statusChoices;
 
 		Dataset dataset;
-
-		int masterId;
-		masterId = super.getRequest().getData("masterId", int.class);
-
 		statusChoices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode");
-		dataset.put("masterId", masterId);
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode", "id");
 		dataset.put("statusChoices", statusChoices);
+
+		int claimId = super.getRequest().getData("claimId", int.class);
+		dataset.put("claimId", claimId);
 
 		super.getResponse().addData(dataset);
 
