@@ -31,7 +31,7 @@
 			<acme:submit code="assistanceAgent.claim.form.button.update" action="/assistance-agent/claim/update"/>
 			<acme:submit code="assistanceAgent.claim.form.button.publish" action="/assistance-agent/claim/publish"/>
 			<acme:submit code="assistanceAgent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>
-			<acme:button code="assistanceAgent.claim.form.show.trackingLogs" action="/assistance-agent/tracking-log/list?claimId=${id}"/>
+			<acme:button code="assistanceAgent.claim.form.show.trackingLogs" action="/assistance-agent/tracking-log/list?masterId=${id}"/>
 		</jstl:if>
 
 		</jstl:when>
