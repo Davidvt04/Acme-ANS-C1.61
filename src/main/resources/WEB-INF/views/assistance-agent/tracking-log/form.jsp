@@ -21,7 +21,7 @@
 	<acme:input-textbox code="assistanceAgent.trackingLog.form.label.resolutionPercentage" path="resolutionPercentage"/>	
 	<acme:input-select code="assistanceAgent.trackingLog.form.label.status" path="status" choices="${statusChoices}"/>
 	<acme:input-textbox code="assistanceAgent.trackingLog.form.label.resolution" path="resolution"/>
-	<acme:input-select code="assistanceAgent.trackingLog.form.label.claim" path="claim" choices="${claimChoices}"/>	
+	<acme:input-textbox readonly="true" code="assistanceAgent.trackingLog.form.label.claim" path="claim"/>	
 
 	
 	
