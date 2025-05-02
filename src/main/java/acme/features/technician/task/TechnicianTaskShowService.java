@@ -54,6 +54,7 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 		dataset = super.unbindObject(task, "ticker", "description", "priority", "estimatedDuration", "draftMode");
 		dataset.put("type", choices.getSelected().getKey());
 		dataset.put("types", choices);
+		dataset.put("redirect", false);
 
 		super.getResponse().addData(dataset);
 	}

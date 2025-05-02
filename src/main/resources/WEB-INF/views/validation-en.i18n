@@ -31,6 +31,9 @@ acme.validation.nextInspection.message = The next inspection due date must be at
 acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
 acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
 
+acme.validation.involves.published-task.message = Published task. Published entities, such as tasks, must not be modified, including their relations with other entities 
+acme.validation.involves.published-record.message = Published maintenance record. Published entities, such as maintenance records, must not be modified, including their relations with other entities
+
 #Acme:
 javax.validation.constraints.AssertFalse.message = Must be false
 javax.validation.constraints.AssertTrue.message = Must be true
