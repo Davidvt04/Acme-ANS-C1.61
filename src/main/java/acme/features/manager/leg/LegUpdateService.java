@@ -33,108 +33,74 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		int legId = super.getRequest().getData("id", int.class);
-		Leg leg = this.repository.findLegById(legId);
-		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-		// Allow update only if the leg exists, is in draft mode, and belongs to the current manager.
-		boolean status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().getId() == manager.getId();
+		Leg leg = this.repository.findOneLegByIdAndManager(legId, super.getRequest().getPrincipal().getActiveRealm().getId());
+		boolean status = leg != null && leg.isDraftMode();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		int legId = super.getRequest().getData("id", int.class);
-		Leg leg = this.repository.findLegById(legId);
+		Leg leg = this.repository.findOneLegByIdAndManager(legId, super.getRequest().getPrincipal().getActiveRealm().getId());
 		super.getBuffer().addData(leg);
 
-		// Fetch all airports.
 		Collection<Airport> airports = this.airportRepository.getAllAirports();
-
-		// Build departure airport choices.
 		SelectChoices departureChoices = new SelectChoices();
-		if (leg.getDepartureAirport() == null)
-			departureChoices.add("0", "----", true);
-		else
-			departureChoices.add("0", "----", false);
-		for (Airport airport : airports) {
-			String iata = airport.getIataCode();
-			boolean selected = leg.getDepartureAirport() != null && iata.equals(leg.getDepartureAirport().getIataCode());
-			departureChoices.add(iata, iata, selected);
+		SelectChoices arrivalChoices = new SelectChoices();
+		departureChoices.add(leg.getDepartureAirport() == null ? "0" : "0", "----", leg.getDepartureAirport() == null);
+		arrivalChoices.add(leg.getArrivalAirport() == null ? "0" : "0", "----", leg.getArrivalAirport() == null);
+		for (Airport ap : airports) {
+			String iata = ap.getIataCode();
+			departureChoices.add(iata, iata, leg.getDepartureAirport() != null && iata.equals(leg.getDepartureAirport().getIataCode()));
+			arrivalChoices.add(iata, iata, leg.getArrivalAirport() != null && iata.equals(leg.getArrivalAirport().getIataCode()));
 		}
 		super.getResponse().addGlobal("departureAirports", departureChoices);
-
-		// Build arrival airport choices.
-		SelectChoices arrivalChoices = new SelectChoices();
-		if (leg.getArrivalAirport() == null)
-			arrivalChoices.add("0", "----", true);
-		else
-			arrivalChoices.add("0", "----", false);
-		for (Airport airport : airports) {
-			String iata = airport.getIataCode();
-			boolean selected = leg.getArrivalAirport() != null && iata.equals(leg.getArrivalAirport().getIataCode());
-			arrivalChoices.add(iata, iata, selected);
-		}
 		super.getResponse().addGlobal("arrivalAirports", arrivalChoices);
 
-		// Build aircraft choices.
 		Collection<Aircraft> aircrafts = this.aircraftRepository.findAllAircrafts();
 		SelectChoices aircraftChoices = new SelectChoices();
-		if (leg.getAircraft() == null)
-			aircraftChoices.add("0", "----", true);
-		else
-			aircraftChoices.add("0", "----", false);
+		aircraftChoices.add(leg.getAircraft() == null ? "0" : "0", "----", leg.getAircraft() == null);
 		for (Aircraft ac : aircrafts) {
-			String key = Integer.toString(ac.getId());
-			String label = ac.getRegistrationNumber();
-			boolean selected = leg.getAircraft() != null && key.equals(Integer.toString(leg.getAircraft().getId()));
-			aircraftChoices.add(key, label, selected);
+			String key = String.valueOf(ac.getId());
+			aircraftChoices.add(key, ac.getRegistrationNumber(), leg.getAircraft() != null && key.equals(String.valueOf(leg.getAircraft().getId())));
 		}
 		super.getResponse().addGlobal("aircraftChoices", aircraftChoices);
-
-		// Optionally, add the leg again to the buffer.
-		super.getBuffer().addData(leg);
 	}
 
 	@Override
 	public void bind(final Leg leg) {
-		// Bind the basic properties.
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
 
-		// Explicitly bind the status using a conversion from String to LegStatus.
+		String dep = super.getRequest().getData("departureAirport", String.class);
+		String arr = super.getRequest().getData("arrivalAirport", String.class);
+		leg.setDepartureAirport("0".equals(dep) ? null : this.airportRepository.findByIataCode(dep));
+		leg.setArrivalAirport("0".equals(arr) ? null : this.airportRepository.findByIataCode(arr));
+
+		Integer acId = super.getRequest().getData("aircraft", Integer.class);
+		leg.setAircraft(acId == null || acId == 0 ? null : this.aircraftRepository.findAircraftById(acId));
+
 		String statusStr = super.getRequest().getData("status", String.class);
-		if (statusStr != null && !statusStr.isEmpty())
+		if (statusStr != null && !statusStr.isBlank())
 			try {
-				LegStatus newStatus = LegStatus.valueOf(statusStr);
-				leg.setStatus(newStatus);
-			} catch (IllegalArgumentException ex) {
-				// Optionally, handle conversion error
+				leg.setStatus(LegStatus.valueOf(statusStr));
+			} catch (Exception e) {
 			}
-
-		// Bind the departure and arrival airports using their IATA codes.
-		String departureIata = super.getRequest().getData("departureAirport", String.class);
-		String arrivalIata = super.getRequest().getData("arrivalAirport", String.class);
-		Airport departureAirport = this.airportRepository.findByIataCode(departureIata);
-		Airport arrivalAirport = this.airportRepository.findByIataCode(arrivalIata);
-		leg.setDepartureAirport(departureAirport);
-		leg.setArrivalAirport(arrivalAirport);
-
-		// Bind the aircraft using its id.
-		Integer aircraftId = super.getRequest().getData("aircraft", Integer.class);
-		if (aircraftId != null && aircraftId != 0) {
-			Aircraft aircraft = this.aircraftRepository.findAircraftById(aircraftId);
-			leg.setAircraft(aircraft);
-		} else
-			leg.setAircraft(null);
 	}
 
 	@Override
 	public void validate(final Leg leg) {
-		// Validate that scheduledDeparture is before scheduledArrival.
-		super.state(leg.getScheduledDeparture().before(leg.getScheduledArrival()), "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
+		// Required dates
+		super.state(leg.getScheduledDeparture() != null, "scheduledDeparture", "manager.leg.error.required.date");
+		super.state(leg.getScheduledArrival() != null, "scheduledArrival", "manager.leg.error.required.date");
 
-		// Validate that no other leg has the same flight number.
+		// Chronology
+		if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null)
+			super.state(leg.getScheduledDeparture().before(leg.getScheduledArrival()), "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
+
+		// Unique flight number
 		Leg existing = this.repository.findLegByFlightNumber(leg.getFlightNumber());
-		boolean validFlightNumber = existing == null || existing.getId() == leg.getId();
-		super.state(validFlightNumber, "flightNumber", "manager.leg.error.duplicateFlightNumber");
+		boolean ok = existing == null || existing.getId() == leg.getId();
+		super.state(ok, "flightNumber", "manager.leg.error.duplicateFlightNumber");
 	}
 
 	@Override
@@ -144,42 +110,33 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void unbind(final Leg leg) {
-		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "draftMode");
+		Dataset ds = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "draftMode");
 
-		// Include selected departure and arrival airports by IATA codes and cities.
 		if (leg.getDepartureAirport() != null) {
-			dataset.put("departureAirport", leg.getDepartureAirport().getIataCode());
-			dataset.put("originCity", leg.getDepartureAirport().getCity());
+			ds.put("departureAirport", leg.getDepartureAirport().getIataCode());
+			ds.put("originCity", leg.getDepartureAirport().getCity());
 		}
 		if (leg.getArrivalAirport() != null) {
-			dataset.put("arrivalAirport", leg.getArrivalAirport().getIataCode());
-			dataset.put("destinationCity", leg.getArrivalAirport().getCity());
+			ds.put("arrivalAirport", leg.getArrivalAirport().getIataCode());
+			ds.put("destinationCity", leg.getArrivalAirport().getCity());
 		}
 
-		// Include aircraft information.
 		if (leg.getAircraft() != null) {
-			dataset.put("aircraft", leg.getAircraft().getId());
-			dataset.put("aircraftRegistration", leg.getAircraft().getRegistrationNumber());
+			ds.put("aircraft", leg.getAircraft().getId());
+			ds.put("aircraftRegistration", leg.getAircraft().getRegistrationNumber());
 		}
 
-		// Wrap date fields for proper formatting.
-		dataset.put("scheduledDeparture", new Object[] {
+		ds.put("scheduledDeparture", new Object[] {
 			leg.getScheduledDeparture()
 		});
-		dataset.put("scheduledArrival", new Object[] {
+		ds.put("scheduledArrival", new Object[] {
 			leg.getScheduledArrival()
 		});
 
-		// Add leg status and create select choices for LegStatus.
-		dataset.put("status", leg.getStatus());
-		SelectChoices choices = SelectChoices.from(LegStatus.class, leg.getStatus());
-		dataset.put("legStatuses", choices);
+		ds.put("status", leg.getStatus());
+		ds.put("legStatuses", SelectChoices.from(LegStatus.class, leg.getStatus()));
+		ds.put("flightId", leg.getFlight().getId());
 
-		// Set flightId using the flight's own id.
-		dataset.put("flightId", leg.getFlight().getId());
-		// Ensure draftMode is correctly set.
-		dataset.put("draftMode", leg.isDraftMode());
-
-		super.getResponse().addData(dataset);
+		super.getResponse().addData(ds);
 	}
 }
