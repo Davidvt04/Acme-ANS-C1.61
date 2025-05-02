@@ -26,10 +26,11 @@
 
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|publish')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete')}">
 		<jstl:if test="${draftMode}">
 			<acme:submit code="assistanceAgent.claim.form.button.update" action="/assistance-agent/claim/update"/>
 			<acme:submit code="assistanceAgent.claim.form.button.publish" action="/assistance-agent/claim/publish"/>
+			<acme:submit code="assistanceAgent.claim.form.button.delete" action="/assistance-agent/claim/delete"/>
 			
 		</jstl:if>
 

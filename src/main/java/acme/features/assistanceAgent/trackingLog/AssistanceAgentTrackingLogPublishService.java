@@ -57,7 +57,12 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		boolean valid;
+		// Verificar si la Claim asociada está publicada
+		valid = trackingLog.getClaim() != null && !trackingLog.getClaim().isDraftMode();
+		super.state(valid, "*", "assistanceAgent.trackingLog.form.error.claimNotPublished");
 
+		if (!valid)
+			return; // Si la Claim no está publicada, no continuar con otras validaciones
 		if (trackingLog.getResolutionPercentage() < 100.0) {
 			valid = trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus");

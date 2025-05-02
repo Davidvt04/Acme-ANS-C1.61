@@ -29,6 +29,7 @@ assistanceAgent.trackingLog.list.label.status = Status:
 
 assistanceAgent.trackingLog.list.button.create = Create
 
+assistanceAgent.trackingLog.form.error.claimNotPublished = You can not publish a tracking log if its associated claim is not published
 assistanceAgent.trackingLog.form.error.badStatus = Pending status must be under 100% percentage
 assistanceAgent.trackingLog.form.error.badStatus2 = Pending status is not allowed for 100% percentage  
 assistanceAgent.trackingLog.form.error.badResolution =Resolution are only available with 100% percentage and not pending status
