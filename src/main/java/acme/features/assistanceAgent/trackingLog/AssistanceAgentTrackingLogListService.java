@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
 
@@ -24,7 +25,15 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int claimId;
+		Claim claim;
+
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.getClaimById(claimId);
+		status = claim != null && super.getRequest().getPrincipal().hasRealm(claim.getAssistanceAgent());
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -49,7 +58,7 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 		int claimId = super.getRequest().getData("claimId", int.class);
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "resolutionPercentage", "status", "step", "resolution");
-		super.getResponse().addGlobal("masterId", claimId);
+		super.getResponse().addGlobal("claimId", claimId);
 
 		super.getResponse().addData(dataset);
 	}

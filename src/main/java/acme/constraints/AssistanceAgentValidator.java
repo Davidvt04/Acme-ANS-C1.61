@@ -19,7 +19,7 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 	@Override
 	public boolean isValid(final AssistanceAgent assistanceAgent, final ConstraintValidatorContext context) {
 
-		if (assistanceAgent.getEmployeeCode() == null || assistanceAgent.getEmployeeCode().isBlank() || assistanceAgent.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$")) {
+		if (assistanceAgent.getEmployeeCode() == null || assistanceAgent.getEmployeeCode().isBlank() || !assistanceAgent.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$")) {
 			context.disableDefaultConstraintViolation();
 			context.buildConstraintViolationWithTemplate("The employee code must not be null or blank and must follow the pattern").addConstraintViolation();
 			return false;
@@ -64,5 +64,4 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 		}
 		return true;
 	}
-
 }

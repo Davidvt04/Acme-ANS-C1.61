@@ -25,8 +25,14 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
+		boolean status;
+		int claimId;
+		Claim claim;
 
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		claimId = super.getRequest().getData("claimId", int.class);
+		claim = this.repository.getClaimById(claimId);
+		status = claim != null && super.getRequest().getPrincipal().hasRealm(claim.getAssistanceAgent());
+
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -52,6 +58,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void validate(final TrackingLog trackingLog) {
+
 		boolean valid;
 		//valid = trackingLog.getResolutionPercentage() != null;
 		//super.state(valid, "ResolutionPercentage", "assistanceAgent.trackingLog.form.error.cantBeNull");

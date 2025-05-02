@@ -29,7 +29,7 @@
 	<acme:submit code="authenticated.assistanceAgent.form.button.create" action="/authenticated/assistance-agent/create"/>
 	</jstl:if>
 	
-	<jstl:if test="${_command == 'create'}">
+	<jstl:if test="${_command == 'update'}">
 	<acme:submit code="authenticated.assistanceAgent.form.button.update" action="/authenticated/assistance-agent/update"/>
 	</jstl:if>
 

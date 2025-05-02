@@ -1,15 +1,12 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.claim.Claim;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
@@ -48,7 +45,7 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	}
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "claim");
+		super.bindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution");
 	}
 
 	@Override
@@ -63,19 +60,15 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 	}
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
-		Collection<Claim> claims;
-		SelectChoices choices;
-		SelectChoices choices2;
-		Dataset dataset;
-		int assistanceAgentId;
-		assistanceAgentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		choices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
-		claims = this.repository.findClaimsByAssistanceAgent(assistanceAgentId);
-		choices2 = SelectChoices.from(claims, "id", trackingLog.getClaim());
 
-		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "claim");
+		SelectChoices choices;
+
+		Dataset dataset;
+
+		choices = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
+
+		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution");
 		dataset.put("status", choices);
-		//dataset.put("claim", choices2.getSelected().getKey());
-		dataset.put("claims", choices2);
+
 	}
 }

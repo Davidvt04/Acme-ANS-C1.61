@@ -20,4 +20,6 @@
 	<acme:list-column code="assistanceAgent.trackingLog.list.label.resolutionPercentage" path="resolutionPercentage" />
 	<acme:list-column code="assistanceAgent.trackingLog.list.label.status" path="status" />
 	<acme:list-payload path="payload"/>
+	
+	
 </acme:list>
