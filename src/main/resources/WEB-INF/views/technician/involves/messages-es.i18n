@@ -1,14 +1,17 @@
 
-technician.involves.list.title = Tareas involucradas en el registro de mantenimiento anterior
-technician.involves.list.label.ticker = Ticker
-technician.involves.list.label.type = Tipo
-technician.involves.list.label.priority = Prioridad
-technician.involves.list.label.technician = Técnico
-technician.involves.list.button.create = Añadir
+technician.involves.list.title = Involucramientos
+technician.involves.list.label.task-ticker = Ticker de la tarea
+technician.involves.list.label.task-technician = Técnico de la tarea
+technician.involves.list.label.record-ticker = Ticker del registro de mantenimiento
+technician.involves.list.label.record-technician = Técnico del registro de mantenimiento
+technician.involves.list.button.create = Crear
 
-technician.involves.form.title = Formulario de la tarea involucrada
+technician.involves.form.title = Formulario de involucramiento
 technician.involves.form.label.task = Tarea
-technician.involves.form.label.technician = Técnico asociado a la tarea
+technician.involves.form.label.maintenance-record = Registro de mantenimiento
+technician.involves.form.label.task-technician = Técnico asociado a la tarea
+technician.involves.form.label.record-technician = Técnico asociado al registro de mantenimiento
+
 
 technician.involves.form.button.delete = Borrar
-technician.involves.form.button.create = Añadir 
+technician.involves.form.button.create = Crear 
