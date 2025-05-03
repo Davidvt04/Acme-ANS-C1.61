@@ -48,11 +48,9 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 	@Override
 	public void bind(final Involves involves) {
 		Task task;
-		int id;
 		MaintenanceRecord maintenanceRecord;
 
-		id = super.getRequest().getData("id", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordByInvolvesId(id);
+		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
 		task = super.getRequest().getData("task", Task.class);
 
 		super.bindObject(involves);
@@ -62,7 +60,20 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
-		;
+		boolean taskInDraft;
+		boolean recordInDraft;
+		Task task;
+		MaintenanceRecord maintenanceRecord;
+
+		task = super.getRequest().getData("task", Task.class);
+		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
+
+		taskInDraft = task.isDraftMode();
+		if (!taskInDraft)
+			super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
+
+		recordInDraft = maintenanceRecord.isDraftMode();
+		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");
 	}
 
 	@Override
@@ -74,18 +85,31 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 	public void unbind(final Involves involves) {
 		Dataset dataset;
 		SelectChoices taskChoices;
+		SelectChoices maintenanceRecordChoices;
 		Collection<Task> tasks;
+		Collection<MaintenanceRecord> maintenanceRecords;
+		final boolean draftTask;
 		final boolean draftRecord;
 
 		tasks = this.repository.findAllTasks();
 		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
 
-		dataset = super.unbindObject(involves, "task");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
-		dataset.put("maintenanceRecord", involves.getMaintenanceRecord().getId());
+		maintenanceRecords = this.repository.findAllMaintenanceRecords();
+		maintenanceRecordChoices = SelectChoices.from(maintenanceRecords, "ticker", involves.getMaintenanceRecord());
+
+		dataset = super.unbindObject(involves);
+
 		dataset.put("task", taskChoices.getSelected().getKey());
 		dataset.put("tasks", taskChoices);
 		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
+		dataset.put("taskId", involves.getTask().getId());
+
+		dataset.put("maintenanceRecord", maintenanceRecordChoices.getSelected().getKey());
+		dataset.put("maintenanceRecords", maintenanceRecordChoices);
+		dataset.put("maintenanceRecordTechnician", involves.getTask().getTechnician().getLicenseNumber());
+
+		draftTask = involves.getTask().isDraftMode();
+		super.getResponse().addGlobal("draftTask", draftTask);
 
 		draftRecord = involves.getMaintenanceRecord().isDraftMode();
 		super.getResponse().addGlobal("draftRecord", draftRecord);
