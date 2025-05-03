@@ -69,13 +69,13 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
 		int masterId;
-		boolean anyPublishedTask;
+		boolean noPublishedTasks;
 		Collection<Task> tasks;
 
 		masterId = super.getRequest().getData("id", int.class);
 		tasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId);
-		anyPublishedTask = tasks.stream().anyMatch(task -> !task.isDraftMode());
-		super.state(anyPublishedTask, "*", "acme.validation.maintenance-record.published-tasks.delete.message");
+		noPublishedTasks = !tasks.stream().anyMatch(task -> !task.isDraftMode());
+		super.state(noPublishedTasks, "*", "acme.validation.maintenance-record.published-tasks.delete.message");
 	}
 
 	@Override
