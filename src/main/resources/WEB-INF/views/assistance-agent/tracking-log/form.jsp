@@ -21,7 +21,12 @@
 	<acme:input-textbox code="assistanceAgent.trackingLog.form.label.resolutionPercentage" path="resolutionPercentage"/>	
 	<acme:input-select code="assistanceAgent.trackingLog.form.label.status" path="status" choices="${statusChoices}"/>
 	<acme:input-textbox code="assistanceAgent.trackingLog.form.label.resolution" path="resolution"/>
-	<acme:input-integer code="assistanceAgent.trackingLog.form.label.claim" path="claimId" readonly="true"/>	
+	
+	<jstl:if test="${_command != 'create'}">
+    <acme:input-integer code="assistanceAgent.trackingLog.form.label.claim" path="id" readonly="true"/>	
+	</jstl:if>
+	<jstl:if test="${_command == 'create'}">
+	</jstl:if>
 
 	
 	

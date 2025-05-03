@@ -21,8 +21,11 @@
 	<acme:input-textarea code="assistanceAgent.claim.form.label.description" path="description"/>	
 	<acme:input-select code="assistanceAgent.claim.form.label.type" path="type" choices="${types}"/>
 	<acme:input-select code="assistanceAgent.claim.form.label.leg" path="leg" choices="${legs}"/>
-	<acme:input-textbox code="assistanceAgent.claim.form.label.indicator" path="indicator" readonly="true"/>
-	
+	<jstl:if test="${_command != 'create'}">
+    <acme:input-textbox code="assistanceAgent.claim.form.label.indicator" path="indicator" readonly="true"/>
+	</jstl:if>
+	<jstl:if test="${_command == 'create'}">
+	</jstl:if>
 
 	
 	<jstl:choose>
