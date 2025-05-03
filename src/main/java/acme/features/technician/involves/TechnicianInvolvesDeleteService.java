@@ -63,9 +63,10 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
 
 		taskInDraft = task.isDraftMode();
-		recordInDraft = maintenanceRecord.isDraftMode();
+		if (!taskInDraft)
+			super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
 
-		super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
+		recordInDraft = maintenanceRecord.isDraftMode();
 		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");
 	}
 

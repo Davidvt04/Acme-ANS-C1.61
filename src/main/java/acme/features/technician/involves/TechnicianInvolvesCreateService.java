@@ -61,9 +61,10 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
 
 		taskInDraft = task.isDraftMode();
-		recordInDraft = maintenanceRecord.isDraftMode();
+		if (!taskInDraft)
+			super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
 
-		super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
+		recordInDraft = maintenanceRecord.isDraftMode();
 		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");
 	}
 
@@ -79,8 +80,6 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		SelectChoices maintenanceRecordChoices;
 		Collection<Task> tasks;
 		Collection<MaintenanceRecord> maintenanceRecords;
-		final boolean draftTask;
-		final boolean draftRecord;
 
 		tasks = this.repository.findAllTasks();
 		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
