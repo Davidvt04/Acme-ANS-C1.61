@@ -30,4 +30,4 @@ manager.leg.form.button.delete = Delete Leg
 manager.leg.error.sameAirport= Departure and arrival airports are the same
 manager.leg.error.duplicateFlightNumber = Duplicated flight number
 manager.leg.error.departureBeforeArrival = Departure must be before arrival
-
+manager.leg.error.required.date = Date must not be null
