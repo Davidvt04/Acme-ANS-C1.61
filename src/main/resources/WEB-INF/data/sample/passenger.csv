@@ -1,7 +1,7 @@
 key,fullName,email,passportNumber,dateOfBirth,specialNeeds,draftMode,key:customer
 
 # base entity
-passenger-00,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind,true,customer-01
+passenger-00,Marco Polo,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind,false,customer-01
 
 # fullName - variations
 passenger-01,L,marco@gmail.com,AAAA1234,2004/02/24 06:54,Is blind,false,customer-01

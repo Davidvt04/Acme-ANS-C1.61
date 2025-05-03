@@ -42,8 +42,8 @@ public class CustomerDashboardService extends AbstractGuiService<Customer, Custo
 	@Override
 	public void load() {
 		int customerId = this.getRequest().getPrincipal().getActiveRealm().getId();
-		Collection<Booking> bookings = this.repository.findAllBookingsOf(customerId);
-		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOd(customerId);
+		Collection<Booking> bookings = this.repository.findAllPublishedBookingsOf(customerId);
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(customerId);
 		List<String> currencies = bookings.stream().map(b -> b.getPrice().getCurrency()).distinct().toList();
 
 		CustomerDashboard dashboard = new CustomerDashboard();
