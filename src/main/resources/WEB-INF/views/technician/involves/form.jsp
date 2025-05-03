@@ -22,11 +22,11 @@
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|delete') && draftRecord == true && draftTask == true}">
 			<acme:submit code="technician.involves.form.button.delete"
-				action="/technician/involves/delete?masterId=${masterId}" />
+				action="/technician/involves/delete" />
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="technician.involves.form.button.create"
-				action="/technician/involves/create?masterId=${masterId}" />
+				action="/technician/involves/create" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

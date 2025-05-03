@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.task.Task;
 import acme.realms.Technician;
 
@@ -20,7 +21,13 @@ public class TechnicianTaskListFromRecordService extends AbstractGuiService<Tech
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		boolean status;
+		MaintenanceRecord maintenanceRecord;
+		int masterId;
+
+		masterId = super.getRequest().getData("masterId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
+		status = super.getRequest().getPrincipal().getActiveRealm().getId() == maintenanceRecord.getTechnician().getId();
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -23,13 +23,7 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		MaintenanceRecord maintenanceRecord;
-
-		id = super.getRequest().getData("masterId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(id);
-		status = maintenanceRecord != null && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -37,15 +31,8 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 	@Override
 	public void load() {
 		Involves object;
-		int masterId;
-		MaintenanceRecord maintenanceRecord;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
 
 		object = new Involves();
-		object.setTask(null);
-		object.setMaintenanceRecord(maintenanceRecord);
 
 		super.getBuffer().addData(object);
 	}
@@ -65,20 +52,19 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
-		boolean publishedTask;
-		boolean publishedRecord;
+		boolean taskInDraft;
+		boolean recordInDraft;
 		Task task;
 		MaintenanceRecord maintenanceRecord;
 
-		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
 		task = super.getRequest().getData("task", Task.class);
+		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
 
-		publishedTask = !task.isDraftMode();
-		if (publishedTask)
-			super.state(publishedTask, "*", "acme.validation.involves.published-task.message");
+		taskInDraft = task.isDraftMode();
+		recordInDraft = maintenanceRecord.isDraftMode();
 
-		publishedRecord = !maintenanceRecord.isDraftMode();
-		super.state(publishedRecord, "", "acme.validation.involves.published-record.message");
+		super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
+		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");
 	}
 
 	@Override
@@ -106,18 +92,9 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 		dataset.put("task", taskChoices.getSelected().getKey());
 		dataset.put("tasks", taskChoices);
-		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
-		dataset.put("taskId", involves.getTask().getId());
 
 		dataset.put("maintenanceRecord", maintenanceRecordChoices.getSelected().getKey());
 		dataset.put("maintenanceRecords", maintenanceRecordChoices);
-		dataset.put("maintenanceRecordTechnician", involves.getTask().getTechnician().getLicenseNumber());
-
-		draftTask = involves.getTask().isDraftMode();
-		super.getResponse().addGlobal("draftTask", draftTask);
-
-		draftRecord = involves.getMaintenanceRecord().isDraftMode();
-		super.getResponse().addGlobal("draftRecord", draftRecord);
 
 		super.getResponse().addData(dataset);
 	}

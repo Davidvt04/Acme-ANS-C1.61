@@ -15,6 +15,7 @@ import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenanceRecord.MaintenanceRecord;
 import acme.entities.maintenanceRecord.MaintenanceRecordStatus;
 import acme.entities.task.Involves;
+import acme.entities.task.Task;
 import acme.realms.Technician;
 
 @GuiService
@@ -67,7 +68,14 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		;
+		int masterId;
+		boolean anyPublishedTask;
+		Collection<Task> tasks;
+
+		masterId = super.getRequest().getData("id", int.class);
+		tasks = this.repository.findTasksAssociatedWithMaintenanceRecordById(masterId);
+		anyPublishedTask = tasks.stream().anyMatch(task -> !task.isDraftMode());
+		super.state(anyPublishedTask, "*", "acme.validation.maintenance-record.published-tasks.delete.message");
 	}
 
 	@Override
