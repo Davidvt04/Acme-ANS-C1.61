@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
+import acme.entities.booking.BookingRecord;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingCreateService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingDeleteService extends AbstractGuiService<Customer, Booking> {
 
 	@Autowired
 	private CustomerBookingRepository repository;
@@ -24,27 +24,22 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int bookingId = super.getRequest().getData("bookingId", int.class);
+		Booking booking = this.repository.getBookingById(bookingId);
+
+		status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
+
 		super.getResponse().setAuthorised(status);
-		if (super.getRequest().hasData("id")) {
-			Integer flightId = super.getRequest().getData("flight", Integer.class);
-			if (flightId == null || flightId != 0) {
-				Flight flight = this.repository.getFlightById(flightId);
-				status = status && flight != null && !flight.isDraftMode();
-			}
-		}
-		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
-		Customer customer = (Customer) super.getRequest().getPrincipal().getActiveRealm();
-		Booking booking;
-
-		booking = new Booking();
-		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
-		booking.setDraftMode(true);
-		booking.setCustomer(customer);
+		int bookingId = super.getRequest().getData("bookingId", int.class);
+		Booking booking = this.repository.getBookingById(bookingId);
 
 		super.getBuffer().addData(booking);
 	}
@@ -56,20 +51,16 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void validate(final Booking booking) {
-		Booking existing = this.repository.findBookingByLocator(booking.getLocatorCode());
-		boolean valid = existing == null || existing.getId() == booking.getId();
-		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
-		valid = booking.getFlight() != null;
-		super.state(valid, "flight", "customer.booking.form.error.invalidFlight");
-		if (booking.getFlight() != null && booking.getFlight().isDraftMode())
-			throw new IllegalArgumentException("The selected flight is not available");
 
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(booking.getId());
+		boolean valid = bookingRecords.isEmpty();
+		super.state(valid, "*", "customer.booking.form.error.stillPassengers");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
-		booking.setDraftMode(true);
-		this.repository.save(booking);
+
+		this.repository.delete(booking);
 	}
 
 	@Override
@@ -80,7 +71,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		Collection<Flight> flights = this.repository.findAllPublishedFlights();
 
-		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id");
+		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id", "price");
 		dataset.put("travelClasses", travelClasses);
 		SelectChoices flightChoices;
 		try {
@@ -94,4 +85,5 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		super.getResponse().addData(dataset);
 
 	}
+
 }

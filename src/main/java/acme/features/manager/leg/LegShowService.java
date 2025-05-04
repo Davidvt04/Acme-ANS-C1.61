@@ -31,8 +31,10 @@ public class LegShowService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		// For simplicity, we authorize all managers. Adjust as needed.
-		super.getResponse().setAuthorised(true);
+		int legId = super.getRequest().getData("id", int.class);
+		int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean status = this.repository.findOneLegByIdAndManager(legId, managerId) != null;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

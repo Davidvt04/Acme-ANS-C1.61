@@ -31,3 +31,4 @@ manager.leg.error.sameAirport= Mismo aeropuerto de llegada y salida
 
 manager.leg.error.duplicateFlightNumber = Numero de vuelo duplicado
 manager.leg.error.departureBeforeArrival = La salida tiene que ser antes que la llegada
+manager.leg.error.required.date = La fecha no puede ser nula

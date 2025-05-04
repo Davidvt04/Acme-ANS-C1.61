@@ -20,13 +20,14 @@ public class FlightListService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void authorise() {
-		// All managers are authorised to list their own flights.
-		super.getResponse().setAuthorised(true);
+		// Only the manager may list their own flights
+		int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		boolean status = !this.repository.findFlightsByManagerId(managerId).isEmpty();
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		// Get the manager's id from the current principal
 		int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Collection<Flight> flights = this.repository.findFlightsByManagerId(managerId);
 		super.getBuffer().addData(flights);
@@ -34,13 +35,24 @@ public class FlightListService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void unbind(final Flight flight) {
-		// Unbind the main attributes of the flight. These keys will be used in the view.
 		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
-		// Add transient fields for the flight details
-		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
-		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("originCity", flight.getOriginAirport().getCity());
-		dataset.put("destinationCity", flight.getDestinationAirport().getCity());
+
+		// Safely add transient fields
+		if (flight.getScheduledDeparture() != null)
+			dataset.put("scheduledDeparture", flight.getScheduledDeparture());
+		if (flight.getScheduledArrival() != null)
+			dataset.put("scheduledArrival", flight.getScheduledArrival());
+
+		// Handle possible null airports
+		if (flight.getOriginAirport() != null)
+			dataset.put("originCity", flight.getOriginAirport().getCity());
+		else
+			dataset.put("originCity", "");
+		if (flight.getDestinationAirport() != null)
+			dataset.put("destinationCity", flight.getDestinationAirport().getCity());
+		else
+			dataset.put("destinationCity", "");
+
 		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
 		super.getResponse().addData(dataset);
 	}

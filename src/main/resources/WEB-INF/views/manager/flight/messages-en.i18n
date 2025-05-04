@@ -23,7 +23,9 @@ manager.flight.list.label.draftMode = Draft
 manager.flight.list.label.originCity = Origin 
 manager.flight.list.label.destinationCity= Destiny
 manager.flight.list.button.create = Create
-
+manager.flight.form.label.originCity = Origin City
+manager.flight.form.label.destinationCity = Destination City
+manager.flight.form.label.numberOfLayovers = Number of Layovers
 manager.flight.list.title = Manager Flight Listing
 master.menu.flight.list = List Flights
 master.menu.flight.create = Create Flight

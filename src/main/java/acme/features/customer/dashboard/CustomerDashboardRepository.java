@@ -13,10 +13,10 @@ import acme.entities.booking.BookingRecord;
 @Repository
 public interface CustomerDashboardRepository extends AbstractRepository {
 
-	@Query("select b from Booking b where b.customer.id =:customerId")
-	Collection<Booking> findAllBookingsOf(int customerId);
+	@Query("select b from Booking b where b.customer.id =:customerId and b.draftMode= false")
+	Collection<Booking> findAllPublishedBookingsOf(int customerId);
 
-	@Query("select br from BookingRecord br where br.booking.customer.id =:customerId")
-	Collection<BookingRecord> findAllBookingRecordsOd(int customerId);
+	@Query("select br from BookingRecord br where br.booking.customer.id =:customerId and br.booking.draftMode= false")
+	Collection<BookingRecord> findAllBookingRecordsOf(int customerId);
 
 }

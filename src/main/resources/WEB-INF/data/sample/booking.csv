@@ -1,7 +1,7 @@
 key,key:customer,locatorCode,purchaseMoment,travelClass,lastNibble,key:flight,draftMode
 
 # base entity
-booking-00,customer-01,AAA000,2024/03/06 10:00,ECONOMY,1111,flight-00,true
+booking-00,customer-01,AAA000,2024/03/06 10:00,ECONOMY,1111,flight-00,false
 
 # locatorCode - variations
 booking-01,customer-01,WE34A1,2024/03/06 10:00,ECONOMY,1111,flight-00,true
@@ -11,17 +11,17 @@ booking-04,customer-02,AAAAAAAA,2024/03/06 10:00,ECONOMY,1111,flight-00,true
 booking-05,customer-01,11AA2D,2024/03/06 10:00,ECONOMY,1111,flight-00,true
 
 # purchaseMoment - variations
-booking-06,customer-01,AAA001,2024/03/06 10:00,ECONOMY,1111,flight-00,false
-booking-07,customer-02,AAA002,2000/01/01 00:00,ECONOMY,1111,flight-00,false
-booking-08,customer-02,AAA003,2012/12/12 10:00,ECONOMY,1111,flight-00,false
+booking-06,customer-01,AAA001,2024/03/06 10:00,ECONOMY,1111,flight-00,true
+booking-07,customer-02,AAA002,2000/01/01 00:00,ECONOMY,1111,flight-00,true
+booking-08,customer-02,AAA003,2012/12/12 10:00,ECONOMY,1111,flight-00,true
 
 
 # travelClass - variations
-booking-09,customer-02,AAA004,2024/03/06 10:00,ECONOMY,1111,flight-00,false
-booking-10,customer-01,AAA005,2024/03/06 10:00,BUSINESS,1111,flight-00,false
+booking-09,customer-02,AAA004,2024/03/06 10:00,ECONOMY,1111,flight-00,true
+booking-10,customer-01,AAA005,2024/03/06 10:00,BUSINESS,1111,flight-00,true
 
 
 # lastNibble - variations
-booking-11,customer-01,AAA010,2024/03/06 10:00,ECONOMY,,flight-00,false
-booking-12,customer-02,AAA011,2024/03/06 10:00,ECONOMY,0000,flight-00,false
-booking-13,customer-01,AAA012,2024/03/06 10:00,ECONOMY,1234,flight-00,false
+booking-11,customer-01,AAA010,2024/03/06 10:00,ECONOMY,,flight-00,true
+booking-12,customer-02,AAA011,2024/03/06 10:00,ECONOMY,0000,flight-00,true
+booking-13,customer-01,AAA012,2024/03/06 10:00,ECONOMY,1234,flight-00,true
