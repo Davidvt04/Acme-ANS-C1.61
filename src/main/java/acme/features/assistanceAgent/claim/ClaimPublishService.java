@@ -37,6 +37,13 @@ public class ClaimPublishService extends AbstractGuiService<AssistanceAgent, Cla
 		assistanceAgent = claim == null ? null : claim.getAssistanceAgent();
 		status = super.getRequest().getPrincipal().hasRealm(assistanceAgent);
 
+		if (super.getRequest().hasData("id")) {
+			Integer legId = super.getRequest().getData("leg", Integer.class);
+			if (legId == null || legId != 0) {
+				Leg leg = this.repository.getLegById(legId);
+				status = status && leg != null && !leg.isDraftMode();
+			}
+		}
 		super.getResponse().setAuthorised(status);
 	}
 
