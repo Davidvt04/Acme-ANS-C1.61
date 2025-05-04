@@ -32,8 +32,16 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("id", int.class);
 		Booking booking = this.repository.getBookingById(bookingId);
-
 		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
+
+		if (super.getRequest().hasData("id")) {
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
+			if (flightId == null || flightId != 0) {
+				Flight flight = this.repository.getFlightById(flightId);
+				status = status && flight != null && !flight.isDraftMode();
+			}
+		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
