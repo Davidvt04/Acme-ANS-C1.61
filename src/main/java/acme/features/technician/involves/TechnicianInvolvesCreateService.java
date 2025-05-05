@@ -52,17 +52,10 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
-		boolean taskInDraft;
 		boolean recordInDraft;
-		Task task;
 		MaintenanceRecord maintenanceRecord;
 
-		task = super.getRequest().getData("task", Task.class);
 		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
-
-		taskInDraft = task.isDraftMode();
-		if (!taskInDraft)
-			super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
 
 		recordInDraft = maintenanceRecord.isDraftMode();
 		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");
