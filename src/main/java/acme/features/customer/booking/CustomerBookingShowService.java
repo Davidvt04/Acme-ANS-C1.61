@@ -29,7 +29,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		Booking booking = this.repository.findBookingById(bookingId);
 
 		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
 	}
@@ -39,7 +39,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		Booking booking;
 		int id = super.getRequest().getData("id", int.class);
 
-		booking = this.repository.getBookingById(id);
+		booking = this.repository.findBookingById(id);
 		super.getBuffer().addData(booking);
 	}
 
@@ -58,7 +58,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		SelectChoices flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
 		dataset.put("flights", flightChoices);
 		dataset.put("city", booking.getFlight().getDestinationAirport().getCity());
-		dataset.put("country", booking.getFlight().getDestinationAirport().getCountry());
+		dataset.put("country", this.repository.findDestinationAirportByFlightId(booking.getFlight().getId()).getCountry());
 
 		super.getResponse().addData(dataset);
 	}

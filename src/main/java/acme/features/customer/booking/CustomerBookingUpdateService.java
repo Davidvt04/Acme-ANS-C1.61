@@ -29,7 +29,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		Booking booking = this.repository.findBookingById(bookingId);
 
 		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
 
@@ -47,7 +47,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(id);
+		Booking booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
 	}

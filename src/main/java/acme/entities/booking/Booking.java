@@ -28,6 +28,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
+//@Table(indexes = {
+//	@Index(columnList = "customer_id"), @Index(columnList = "locator_code")
+//})
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -73,7 +77,7 @@ public class Booking extends AbstractEntity {
 		if (this.getFlight() != null) {
 			Money flightCost = this.getFlight().getCost();
 			BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
-			Integer numberOfPassengers = bookingRepository.getNumberPassengersOfBooking(this.getId());
+			Integer numberOfPassengers = bookingRepository.findAllPassengersByBookingId(this.getId());
 
 			res.setCurrency(flightCost.getCurrency());
 			res.setAmount(flightCost.getAmount() * numberOfPassengers);

@@ -28,7 +28,7 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		Booking booking = this.repository.findBookingById(bookingId);
 
 		status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
 
@@ -39,7 +39,7 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 	@Override
 	public void load() {
 		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		Booking booking = this.repository.findBookingById(bookingId);
 
 		super.getBuffer().addData(booking);
 	}
@@ -52,7 +52,7 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 	@Override
 	public void validate(final Booking booking) {
 
-		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(booking.getId());
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsByBookingId(booking.getId());
 		boolean valid = bookingRecords.isEmpty();
 		super.state(valid, "*", "customer.booking.form.error.stillPassengers");
 	}

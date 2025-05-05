@@ -31,7 +31,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		Booking booking = this.repository.findBookingById(bookingId);
 		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
 
 		if (super.getRequest().hasData("id")) {
@@ -48,7 +48,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(id);
+		Booking booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
 	}
@@ -64,7 +64,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		boolean valid = existing == null || existing.getId() == booking.getId();
 		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
 
-		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(booking.getId());
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsByBookingId(booking.getId());
 		valid = !bookingRecords.isEmpty();
 		super.state(valid, "*", "customer.booking.form.error.noPassengers");
 

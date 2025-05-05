@@ -30,7 +30,7 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 		Collection<Booking> bookings;
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		bookings = this.repository.getAllBookingOf(customerId);
+		bookings = this.repository.findAllBookingsByCustomerId(customerId);
 
 		super.getBuffer().addData(bookings);
 	}
