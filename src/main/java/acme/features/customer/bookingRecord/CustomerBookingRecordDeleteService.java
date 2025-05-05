@@ -23,6 +23,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
+
 		Boolean status;
 		try {
 			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
@@ -54,7 +55,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 	@Override
 	public void load() {
 		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
+		Booking booking = this.repository.findBookingById(bookingId);
 		BookingRecord bookingRecord = new BookingRecord();
 		bookingRecord.setBooking(booking);
 		super.getBuffer().addData(bookingRecord);
@@ -75,7 +76,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void perform(final BookingRecord bookingRecord) {
-		BookingRecord realBookingRecord = this.repository.findBookingRecordBy(bookingRecord.getBooking().getId(), bookingRecord.getPassenger().getId());
+		BookingRecord realBookingRecord = this.repository.findBookingRecordByBothIds(bookingRecord.getBooking().getId(), bookingRecord.getPassenger().getId());
 
 		this.repository.delete(realBookingRecord);
 	}
@@ -86,10 +87,10 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 		Dataset dataset;
 
 		dataset = super.unbindObject(bookingRecord, "passenger", "booking", "id");
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		//int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Collection<Passenger> addedPassengers = this.repository.getPassengersInBooking(bookingId);
+		Collection<Passenger> addedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
 		SelectChoices passengerChoices;
 		try {
 			passengerChoices = SelectChoices.from(addedPassengers, "fullName", bookingRecord.getPassenger());

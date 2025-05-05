@@ -34,7 +34,7 @@ public class AdministratorTrackingLogListService extends AbstractGuiService<Admi
 		Collection<TrackingLog> trackingLogs;
 
 		int claimId = super.getRequest().getData("claimId", int.class);
-		trackingLogs = this.repository.findTrackingLogsByClaimId(claimId);
+		trackingLogs = this.repository.findTrackingLogsPublishedByClaimId(claimId);
 
 		super.getBuffer().addData(trackingLogs);
 	}

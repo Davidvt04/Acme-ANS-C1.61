@@ -14,6 +14,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+//@Table(indexes = {
+//@Index(columnList = "booking_id"), @Index(columnList = "passenger_id"), @Index(columnList = "booking_id,passenger_id")
+//})
 public class BookingRecord extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

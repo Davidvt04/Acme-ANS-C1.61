@@ -30,10 +30,8 @@ acme.validation.task-record.ticker.message = The ticker must be between 5 and 15
 acme.validation.nextInspection.message = The next inspection due date must be at least one hour later than the moment of the maintenance record
 acme.validation.task-record.ticker.duplicated.message = The ticker already exists, use a different one
 acme.validation.maintenance-record.tasks.not-draft.message = The maintenance record must have at least one published task and cannot have any unpublished task
-acme.validation.maintenance-record.published-tasks.delete.message = Unable to delete this maintenance record. It is involved in, at least, one published task
 acme.validation.maintenance-record.moment-next-inspection.update.messsage = When updating this maintenance record, the moment will be set to the current date and hour. This value for next inspection is not at least one hour later than the current date and hour
 acme.validation.maintenance-record.moment-next-inspection.publish.messsage = When publishing this maintenance record, the moment will be set to the current date and hour. This value for next inspection is not at least one hour later than the current date and hour  
-acme.validation.involves.draft-task.message = Published task. The involvements in maintenance records of a published task must not be modified
 acme.validation.involves.draft-record.message = Published maintenance record. The involvements in tasks of a published maintenance record must not be modified
 
 #Acme:

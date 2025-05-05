@@ -15,8 +15,8 @@ import acme.entities.trackingLog.TrackingLog;
 @Repository
 public interface AdministratorTrackingLogRepository extends AbstractRepository {
 
-	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId")
-	Collection<TrackingLog> findTrackingLogsByClaimId(int claimId);
+	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId and t.draftMode=false")
+	Collection<TrackingLog> findTrackingLogsPublishedByClaimId(int claimId);
 
 	@Query("SELECT t FROM TrackingLog t WHERE t.id = :trackingLogId")
 	TrackingLog findTrackingLogById(int trackingLogId);

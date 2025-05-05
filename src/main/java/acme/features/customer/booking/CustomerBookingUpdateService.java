@@ -46,13 +46,14 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		}
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(id);
+		Booking booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
 	}
