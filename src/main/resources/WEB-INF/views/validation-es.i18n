@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-acme.validation.header.message  	= Debe tener entre 1 y 75 caracteres
+acme.validation.header.message  	= Debe tener entre 1 y 50 caracteres
 acme.validation.text.message   		= Debe tener entre 1 y 255 caracteres 
 acme.validation.phone.message       = Debe ser +código-país (código-área) número, donde sólo el número es obligatorio
 

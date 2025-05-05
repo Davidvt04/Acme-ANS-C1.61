@@ -23,15 +23,17 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void authorise() {
-		Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.findBookingById(bookingId);
-		status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
+		Boolean status;
+		try {
+			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			int bookingId = super.getRequest().getData("bookingId", Integer.class);
+			Booking booking = this.repository.getBookingById(bookingId);
+			status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
 
-		if (super.getRequest().hasData("id")) {
-			String locatorCode = super.getRequest().getData("locatorCode", String.class);
-			status = status && booking.getLocatorCode().equals(locatorCode);
+			if (super.getRequest().hasData("id")) {
+				String locatorCode = super.getRequest().getData("locatorCode", String.class);
+				status = status && booking.getLocatorCode().equals(locatorCode);
 
 			Integer passengerId = super.getRequest().getData("passenger", int.class);
 			Passenger passenger = this.repository.findPassengerById(passengerId);
@@ -41,6 +43,9 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 			status = status && alreadyAddedPassengers.stream().noneMatch(p -> p.getId() == passengerId);
 		}
 
+		} catch (Exception e) {
+			status = false;
+		}
 		super.getResponse().setAuthorised(status);
 
 	}
