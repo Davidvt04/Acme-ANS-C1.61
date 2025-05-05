@@ -29,8 +29,10 @@ acme.validation.task-record.ticker.message = El ticker debe tener entre 5 y 15 c
 acme.validation.nextInspection.message = La fecha de la próxima inspección debe ser, al menos, una hora después del momento del registro de mantenimiento
 acme.validation.task-record.ticker.duplicated.message = El ticker ya existe, utilice uno distinto
 acme.validation.maintenance-record.tasks.not-draft.message = El registro de mantenimiento debe tener, al menos, una tarea publicada y no debe tener ni una tarea que no esté publicada
+acme.validation.maintenance-record.published-tasks.delete.message = No es posible borrar este registro de mantenimiento. Está involucrado en, al menos, una tarea publicada
 acme.validation.maintenance-record.moment-next-inspection.update.messsage = Al actualizar este registro de mantenimiento, el momento será la fecha y hora actuales. El valor actual de la fecha de la próxima inspección no es al menos una hora después que la fecha y hora actuales
 acme.validation.maintenance-record.moment-next-inspection.publish.messsage = Al publicar este registro de mantenimiento, el momento será la fecha y hora actuales. El valor actual de la fecha de la próxima inspección no es al menos una hora después que la fecha y hora actuales
+acme.validation.involves.draft-task.message = Tarea publicada. El involucramiento en registros de mantenimiento de una tarea publicada no debe ser modificado
 acme.validation.involves.draft-record.message = Registro de mantenimiento publicado. El involucramiento en tareas de un registro de mantenimiento publicado no debe ser modificado
 
 #Acme:
