@@ -137,6 +137,14 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 			Leg existing = this.repository.findLegByFlightNumber(leg.getFlightNumber());
 			boolean validFlightNumber = existing == null || existing.getId() == leg.getId();
 			super.state(validFlightNumber, "flightNumber", "manager.leg.error.duplicateFlightNumber");
+
+			super.state(leg.getScheduledDeparture() != null, "scheduledDeparture", "manager.leg.error.required.date");
+			super.state(leg.getScheduledArrival() != null, "scheduledArrival", "manager.leg.error.required.date");
+
+			// Chronology
+			if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null)
+				super.state(leg.getScheduledDeparture().before(leg.getScheduledArrival()), "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
+
 		}
 	}
 

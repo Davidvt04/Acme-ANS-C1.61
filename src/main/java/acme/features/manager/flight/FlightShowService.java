@@ -43,20 +43,24 @@ public class FlightShowService extends AbstractGuiService<Manager, Flight> {
 
 		// Origin and destination cities
 		if (flight.getOriginAirport() != null)
-			dataset.put("originCity", flight.getOriginAirport().getCity());
+			dataset.put("originAirport", flight.getOriginAirport().getName());
 		else
-			dataset.put("originCity", "");
+			dataset.put("originAirport", "");
 		if (flight.getDestinationAirport() != null)
-			dataset.put("destinationCity", flight.getDestinationAirport().getCity());
+			dataset.put("destinationAirport", flight.getDestinationAirport().getName());
 		else
-			dataset.put("destinationCity", "");
+			dataset.put("destinationAirport", "");
 
 		// Layovers and draft
 		if (flight.getNumberOfLayovers() == -1)
 			dataset.put("numberOfLayovers", 0);
 		else
-		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+			dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
 		dataset.put("draftMode", flight.isDraftMode());
+		if (flight.getFlightSummary().equals("Flight: " + "" + " --> " + ""))
+			dataset.put("flightSummary", "");
+		else
+			dataset.put("flightSummary", flight.getFlightSummary());
 
 		super.getResponse().addData(dataset);
 	}

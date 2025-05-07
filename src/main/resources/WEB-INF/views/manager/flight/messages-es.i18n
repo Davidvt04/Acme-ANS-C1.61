@@ -2,7 +2,7 @@
 #
 # Mensajes de vuelos para el ámbito de Manager
 
-manager.flight.form.title = Formulario de Vuelo
+manager.flight.form.title = Detalles del Vuelo
 
 manager.flight.form.label.tag = Etiqueta
 manager.flight.form.label.requiresSelfTransfer = Requiere autotransferencia
@@ -11,11 +11,14 @@ manager.flight.form.label.description = Descripción
 manager.flight.form.label.scheduledDeparture = Salida programada
 manager.flight.form.label.scheduledArrival = Llegada programada
 manager.flight.form.label.draftMode = Modo borrador
+manager.flight.form.label.originAirport = Aeropuerto de Origen
+manager.flight.form.label.destinationAirport = Aeropuerto de Destino
+manager.flight.form.label.numberOfLayovers = Número de Escalas
+manager.flight.form.label.flightSummary = Resumen del Vuelo
 manager.flight.form.label.confirmation = Confirmar
-manager.flight.form.label.originCity = Ciudad origen
- manager.flight.form.label.destinationCity = Ciudad destino
- manager.flight.form.label.numberOfLayovers = Numero de tramos
- 
+
+manager.flight.list.title = Listado de Vuelos del Gestor
+
 manager.flight.list.label.tag = Etiqueta
 manager.flight.list.label.requiresSelfTransfer = Autotransferencia
 manager.flight.list.label.cost = Costo
@@ -23,23 +26,26 @@ manager.flight.list.label.description = Descripción
 manager.flight.list.label.scheduledDeparture = Salida
 manager.flight.list.label.scheduledArrival = Llegada
 manager.flight.list.label.draftMode = Borrador
-manager.flight.list.label.originCity = Origen 
-manager.flight.list.label.destinationCity= Destino
-manager.flight.list.title = Listado de Vuelos del Gestor
+manager.flight.list.label.originAirport = Aeropuerto de Origen
+manager.flight.list.label.destinationAirport = Aeropuerto de Destino
+manager.flight.list.label.numberOfLayovers = Escalas
+
+manager.flight.list.button.create = Crear Vuelo
+
+master.menu.flight = Vuelos
 master.menu.flight.list = Listar Vuelos
 master.menu.flight.create = Crear Vuelo
-master.menu.flight = Vuelos
-manager.flight.list.button.create = Crear vuelo
 
 button.create.flight = Crear
 
-manager.flight.form.button.publish = Publicar
 manager.flight.form.button.create = Registrar
 manager.flight.form.button.update = Actualizar
-manager.flight.form.button.legs = Tramos del vuelo
-manager.flight.form.button.delete = Borrar 
+manager.flight.form.button.publish = Publicar
+manager.flight.form.button.delete = Borrar
+manager.flight.form.button.legs = Tramos del Vuelo
 
 manager.flight.form.error.duplicateTag = La etiqueta ya existe
 manager.flight.form.error.invalidCost = Costo no válido
+
+flight.publish.error.noLegs = Un vuelo debe tener al menos un tramo para publicarse
 flight.publish.error.unpublishedLegs = El vuelo tiene tramos no publicados
-flight.publish.error.noLegs = Un vuelo tiene que tener al menos un tramo para publicarse

@@ -89,7 +89,12 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void validate(final Leg leg) {
-		// Required dates
+
+		if (leg.getDepartureAirport() != null && leg.getArrivalAirport() != null) {
+			boolean valid = !(leg.getDepartureAirport().getId() == leg.getArrivalAirport().getId());
+			super.state(valid, "arrivalAirport", "manager.leg.error.sameAirport");
+		}
+
 		super.state(leg.getScheduledDeparture() != null, "scheduledDeparture", "manager.leg.error.required.date");
 		super.state(leg.getScheduledArrival() != null, "scheduledArrival", "manager.leg.error.required.date");
 

@@ -9,15 +9,15 @@
     <h1>Flight List</h1>
     <acme:list navigable="true" show="show">
         <acme:list-column path="tag" code="manager.flight.list.label.tag" />
-         <acme:list-column path="originCity" code="manager.flight.list.label.originCity" />
-        <acme:list-column path="destinationCity" code="manager.flight.list.label.destinationCity" />
+        <acme:list-column path="originAirport" code="manager.flight.list.label.originAirport" />
+        <acme:list-column path="destinationAirport" code="manager.flight.list.label.destinationAirport" />
         <acme:list-column path="requiresSelfTransfer" code="manager.flight.list.label.requiresSelfTransfer" />
         <acme:list-column path="cost" code="manager.flight.list.label.cost" />
         <acme:list-column path="description" code="manager.flight.list.label.description" />
+        <acme:list-column path="scheduledDeparture" code="manager.flight.list.label.scheduledDeparture" />
+        <acme:list-column path="scheduledArrival" code="manager.flight.list.label.scheduledArrival" />
+        <acme:list-column path="numberOfLayovers" code="manager.flight.list.label.numberOfLayovers" />
     </acme:list>
     <acme:button code="manager.flight.list.button.create" action="/manager/flight/create" />
 </body>
 </html>
-
-
-

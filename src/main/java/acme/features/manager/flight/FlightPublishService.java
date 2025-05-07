@@ -16,37 +16,36 @@ import acme.realms.managers.Manager;
 @GuiService
 public class FlightPublishService extends AbstractGuiService<Manager, Flight> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	private FlightRepository		repository;
 
 	@Autowired
 	private ManagerLegRepository	managerLegRepository;
 
-	// AbstractGuiService interface -------------------------------------------
-
 
 	@Override
 	public void authorise() {
 		int flightId = super.getRequest().getData("id", int.class);
-		Flight flight = this.repository.findFlightById(flightId);
-		Manager manager = flight == null ? null : flight.getManager();
-		// Authorise if the flight exists, is in draft mode and the current principal is the flight manager.
-		boolean status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+		Flight flight = this.repository.findById(flightId);
+		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+
+		boolean status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		int id = super.getRequest().getData("id", int.class);
-		Flight flight = this.repository.findFlightById(id);
+		Flight flight = this.repository.findById(id);
 		super.getBuffer().addData(flight);
 	}
 
 	@Override
 	public void bind(final Flight flight) {
-		// No additional binding is required for publishing.
+		// now also bind the date fields so they survive validation errors
+		super.bindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "scheduledDeparture",    // ← added
+			"scheduledArrival"       // ← added
+		);
 	}
 
 	@Override
@@ -65,20 +64,37 @@ public class FlightPublishService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void perform(final Flight flight) {
-		// Publish the flight by setting its draft mode to false.
 		flight.setDraftMode(false);
 		this.repository.save(flight);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
-		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
-		// Include transient properties that might be of interest.
-		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
-		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("originCity", flight.getOriginAirport().getCity());
-		dataset.put("destinationCity", flight.getDestinationAirport().getCity());
-		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
+
+		// Transient dates (only put if non-null)
+		if (flight.getScheduledDeparture() != null)
+			dataset.put("scheduledDeparture", flight.getScheduledDeparture());
+		if (flight.getScheduledArrival() != null)
+			dataset.put("scheduledArrival", flight.getScheduledArrival());
+
+		// Origin / destination
+		if (flight.getOriginAirport() != null)
+			dataset.put("originAirport", flight.getOriginAirport().getCity());
+		else
+			dataset.put("originAirport", "");
+		if (flight.getDestinationAirport() != null)
+			dataset.put("destinationAirport", flight.getDestinationAirport().getCity());
+		else
+			dataset.put("destinationAirport", "");
+
+		// Layovers
+		Integer layovers = flight.getNumberOfLayovers();
+		if (layovers == -1)
+			dataset.put("numberOfLayovers", 0);
+		else
+			dataset.put("numberOfLayovers", layovers != null ? layovers : 0);
+		dataset.put("flightSummary", flight.getFlightSummary());
 		super.getResponse().addData(dataset);
 	}
 }
