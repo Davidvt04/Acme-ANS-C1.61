@@ -29,6 +29,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAssistanceAgent
+//@Table(indexes = {
+//@Index(columnList = "user_account_id")
+//})
 public class AssistanceAgent extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;

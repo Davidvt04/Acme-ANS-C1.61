@@ -30,6 +30,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidClaim
+
+//@Table(indexes = {
+//	@Index(columnList = "claim_id"), @Index(columnList = "locator_code")
+//})
 public class Claim extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

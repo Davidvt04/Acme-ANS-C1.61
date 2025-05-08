@@ -1,8 +1,9 @@
 
 package acme.features.assistanceAgent.claim;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,14 +26,19 @@ public class ClaimCreateService extends AbstractGuiService<AssistanceAgent, Clai
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		boolean status;
+		try {
+			status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 
-		if (super.getRequest().hasData("id")) {
-			Integer legId = super.getRequest().getData("leg", Integer.class);
-			if (legId == null || legId != 0) {
-				Leg leg = this.repository.getLegById(legId);
-				status = status && leg != null && !leg.isDraftMode();
+			if (super.getRequest().hasData("id")) {
+				Integer legId = super.getRequest().getData("leg", Integer.class);
+				if (legId == null || legId != 0) {
+					Leg leg = this.repository.getLegById(legId);
+					status = status && leg != null && !leg.isDraftMode();
+				}
 			}
+		} catch (Exception e) {
+			status = false;
 		}
 		super.getResponse().setAuthorised(status);
 	}
@@ -83,13 +89,15 @@ public class ClaimCreateService extends AbstractGuiService<AssistanceAgent, Clai
 
 	@Override
 	public void unbind(final Claim claim) {
-		Collection<Leg> legs;
+		List<Leg> legs = new ArrayList<>();
 		SelectChoices choices;
 		SelectChoices choices2;
 		Dataset dataset;
 
 		choices = SelectChoices.from(ClaimType.class, claim.getType());
-		legs = this.repository.findAllLegPublish();
+		for (Leg leg : this.repository.findAllLegPublish())
+			if (leg.getScheduledArrival().before(claim.getRegistrationMoment()))
+				legs.add(leg);
 		choices2 = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "type", "leg", "id");
