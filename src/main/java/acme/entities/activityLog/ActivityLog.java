@@ -28,8 +28,13 @@ import lombok.Setter;
 @Setter
 @ValidActivityLog
 @Table(indexes = {
-	@Index(columnList = "draftMode")
+    @Index(columnList = "draftMode"),
+    @Index(columnList = "flight_assignament_id"), 
+    @Index(columnList = "registrationMoment"),
+    @Index(columnList = "typeOfIncident"), 
+    @Index(columnList = "severityLevel") 
 })
+
 public class ActivityLog extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
