@@ -65,7 +65,11 @@ public class ClaimPublishService extends AbstractGuiService<AssistanceAgent, Cla
 
 	@Override
 	public void validate(final Claim claim) {
-		;
+		boolean valid;
+		if (claim.getLeg() != null && claim.getRegistrationMoment() != null) {
+			valid = claim.getRegistrationMoment().after(claim.getLeg().getScheduledArrival());
+			super.state(valid, "leg", "assistanceAgent.claim.form.error.badLeg");
+		}
 	}
 
 	@Override

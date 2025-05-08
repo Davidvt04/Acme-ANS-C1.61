@@ -4,8 +4,8 @@ trackingLog-01,2012/07/02 0:00,Lorem ipsum dolor sit ame,02.00,PENDING,null,true
 #lastUpdateMoment - variations,"","",""
 trackingLog-02,2000/01/01 0:00,Lorem ipsum dolor sit ame,00.00,PENDING,null,true,claim-01
 trackingLog-03,2000/02/01 0:01,Lorem ipsum dolor sit ame,01.00,PENDING,null,true,claim-01
-trackingLog-05,2024/12/31 23:59,Lorem ipsum dolor sit ame,98.00,PENDING,null,true,claim-01
-trackingLog-06,2025/01/01 0:00,Lorem ipsum dolor sit ame,99.00,PENDING,null,true,claim-01
+trackingLog-05,2024/12/31 23:58,Lorem ipsum dolor sit ame,98.00,PENDING,null,true,claim-01
+trackingLog-06,2024/12/31 23:59,Lorem ipsum dolor sit ame,99.00,PENDING,null,true,claim-01
 #step - variations
 trackingLog-07,2012/07/02 0:01,L,03.00,PENDING,null,true,claim-01
 trackingLog-08,2012/07/02 0:04,Lo,04.00,PENDING,null,true,claim-01
