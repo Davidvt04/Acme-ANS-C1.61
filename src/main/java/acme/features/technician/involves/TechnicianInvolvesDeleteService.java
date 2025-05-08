@@ -23,13 +23,7 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int id;
-		Involves involves;
-
-		id = super.getRequest().getData("id", int.class);
-		involves = this.repository.findInvolvesById(id);
-		status = involves != null && super.getRequest().getPrincipal().hasRealm(involves.getMaintenanceRecord().getTechnician());
+		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -60,17 +54,10 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
-		boolean taskInDraft;
 		boolean recordInDraft;
-		Task task;
 		MaintenanceRecord maintenanceRecord;
 
-		task = super.getRequest().getData("task", Task.class);
 		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
-
-		taskInDraft = task.isDraftMode();
-		if (!taskInDraft)
-			super.state(taskInDraft, "*", "acme.validation.involves.draft-task.message");
 
 		recordInDraft = maintenanceRecord.isDraftMode();
 		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");

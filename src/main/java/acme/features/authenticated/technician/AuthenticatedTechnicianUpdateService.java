@@ -46,7 +46,18 @@ public class AuthenticatedTechnicianUpdateService extends AbstractGuiService<Aut
 
 	@Override
 	public void validate(final Technician object) {
-		assert object != null;
+		Technician existTechnician;
+		boolean validLicenseNumber;
+		boolean validPhoneNumber;
+
+		existTechnician = this.repository.findTechnicianByLicenseNumber(object.getLicenseNumber());
+		validLicenseNumber = existTechnician == null || existTechnician.getId() == object.getId();
+		if (!validLicenseNumber)
+			super.state(validLicenseNumber, "licenseNumber", "acme.validation.technician.license-number.duplicated.message");
+
+		existTechnician = this.repository.findTechnicianByPhoneNumber(object.getPhoneNumber());
+		validPhoneNumber = existTechnician == null || existTechnician.getId() == object.getId();
+		super.state(validPhoneNumber, "phoneNumber", "acme.validation.technician.phone-number.duplicated.message");
 	}
 
 	@Override

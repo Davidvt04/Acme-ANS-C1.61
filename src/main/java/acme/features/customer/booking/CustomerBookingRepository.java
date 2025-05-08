@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.airport.Airport;
 import acme.entities.booking.Booking;
 import acme.entities.booking.BookingRecord;
 import acme.entities.flight.Flight;
@@ -15,10 +16,10 @@ import acme.entities.flight.Flight;
 public interface CustomerBookingRepository extends AbstractRepository {
 
 	@Query("select b from Booking b where b.customer.id = :customerId")
-	Collection<Booking> getAllBookingOf(int customerId);
+	Collection<Booking> findAllBookingsByCustomerId(int customerId);
 
 	@Query("select b from Booking b where b.id = :id")
-	Booking getBookingById(int id);
+	Booking findBookingById(int id);
 
 	@Query("select f from Flight f")
 	Collection<Flight> findAllFlights();
@@ -30,9 +31,12 @@ public interface CustomerBookingRepository extends AbstractRepository {
 	Collection<Flight> findAllPublishedFlights();
 
 	@Query("select br from BookingRecord br where br.booking.id = :bookingId")
-	Collection<BookingRecord> findAllBookingRecordsOf(int bookingId);
+	Collection<BookingRecord> findAllBookingRecordsByBookingId(int bookingId);
 
 	@Query("select f from Flight f where f.id =:id")
 	Flight getFlightById(int id);
+
+	@Query("SELECT l.arrivalAirport FROM Leg l WHERE l.flight.id = :flightId ORDER BY l.scheduledDeparture ASC")
+	Airport findDestinationAirportByFlightId(Integer flightId);
 
 }

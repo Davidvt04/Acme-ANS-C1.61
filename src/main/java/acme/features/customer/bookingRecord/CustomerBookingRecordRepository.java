@@ -15,21 +15,21 @@ import acme.entities.passenger.Passenger;
 public interface CustomerBookingRecordRepository extends AbstractRepository {
 
 	@Query("select b from Booking b where b.id=:bookingId")
-	Booking getBookingById(int bookingId);
+	Booking findBookingById(int bookingId);
 
 	@Query("select p from Passenger p where p.customer.id=:customerId")
-	Collection<Passenger> getAllPassengersOf(int customerId);
+	Collection<Passenger> findAllPassengersByCustomerId(int customerId);
 
 	@Query("select br.passenger from BookingRecord br where br.booking.id=:bookingId")
-	Collection<Passenger> getPassengersInBooking(int bookingId);
+	Collection<Passenger> findAllPassengersByBookingId(int bookingId);
 
 	@Query("select br from BookingRecord br where br.id =:bookingRecordId")
 	BookingRecord getBookingRecordById(int bookingRecordId);
 
 	@Query("select br from BookingRecord br where br.booking.id =:bookingId and br.passenger.id =:passengerId")
-	BookingRecord findBookingRecordBy(int bookingId, int passengerId);
+	BookingRecord findBookingRecordByBothIds(Integer bookingId, Integer passengerId);
 
 	@Query("select p from Passenger p where p.id =:id")
-	Passenger getPassengerById(int id);
+	Passenger findPassengerById(int id);
 
 }
