@@ -75,3 +75,4 @@ acme.validation.range.message = Debe estar entre {0} y {1}
 acme.validation.script.message = El script "{0}" debe devolver true
 acme.validation.currency.message = Moneda incorrecta
 acme.validation.confirmation.message = Debe confirmar
+acme.validation.lastNibble.notPattern.message = Los 4 últimos digitos deben ser numéricos

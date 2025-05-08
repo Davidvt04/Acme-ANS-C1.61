@@ -28,20 +28,20 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			int bookingId = super.getRequest().getData("bookingId", Integer.class);
-			Booking booking = this.repository.getBookingById(bookingId);
+			Booking booking = this.repository.findBookingById(bookingId);
 			status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
 
 			if (super.getRequest().hasData("id")) {
 				String locatorCode = super.getRequest().getData("locatorCode", String.class);
 				status = status && booking.getLocatorCode().equals(locatorCode);
 
-			Integer passengerId = super.getRequest().getData("passenger", int.class);
-			Passenger passenger = this.repository.findPassengerById(passengerId);
-			status = status && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
+				Integer passengerId = super.getRequest().getData("passenger", int.class);
+				Passenger passenger = this.repository.findPassengerById(passengerId);
+				status = status && (passenger != null && customerId == passenger.getCustomer().getId() || passengerId == 0);
 
-			Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
-			status = status && alreadyAddedPassengers.stream().noneMatch(p -> p.getId() == passengerId);
-		}
+				Collection<Passenger> alreadyAddedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
+				status = status && alreadyAddedPassengers.stream().noneMatch(p -> p.getId() == passengerId);
+			}
 
 		} catch (Exception e) {
 			status = false;
