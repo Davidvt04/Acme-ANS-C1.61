@@ -32,3 +32,4 @@ assistanceAgent.claim.form.show.trackingLogs = View Associated Tracking Logs
 assistanceAgent.claim.form.create.trackingLog = Add new tracking Log
 
 assistanceAgent.claim.form.error.stillTrackingLogs = There are still tracking logs linked to this claim
+assistanceAgent.claim.form.error.badLeg = The selected leg must have a date earlier than the registration date
