@@ -77,3 +77,4 @@ acme.validation.range.message = Must be between {0} and {1}
 acme.validation.script.message = Script expression "{0}" must return true
 acme.validation.currency.message = Invalid currency
 acme.validation.confirmation.message = Must confirm this
+acme.validation.lastNibble.notPattern.message = Last nibble must be 4 digits
