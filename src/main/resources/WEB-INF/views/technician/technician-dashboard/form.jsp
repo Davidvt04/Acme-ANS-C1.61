@@ -78,11 +78,11 @@
      <tbody>
         <jstl:forEach var="row" items="${averageMinMaxStdDevOfEstimatedCost}">
 		  <tr>
-		    <td>${row[0]}</td> <!-- Currency -->
-		    <td>${row[1]}</td> <!-- Average -->
-		    <td>${row[2]}</td> <!-- Min -->
-		    <td>${row[3]}</td> <!-- Max -->
-		    <td>${row[4]}</td> <!-- StdDev -->
+		    <td><acme:print value="${row[0]}"/></td> <!-- Currency -->
+		    <td><acme:print value="${row[1]}"/></td> <!-- Average -->
+		    <td><acme:print value="${row[2]}"/></td> <!-- Min -->
+		    <td><acme:print value="${row[3]}"/></td> <!-- Max -->
+		    <td><acme:print value="${row[4]}"/></td> <!-- StdDev -->
 		  </tr>
 		</jstl:forEach>          
     </tbody>
