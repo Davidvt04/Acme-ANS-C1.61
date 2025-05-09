@@ -63,14 +63,14 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 		if (!valid)
 			return; // Si la Claim no está publicada, no continuar con otras validaciones
-		if (trackingLog.getResolutionPercentage() < 100.0) {
+		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() != null && trackingLog.getStatus() != null && trackingLog.getResolutionPercentage() < 100.0) {
 			valid = trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus");
-		} else {
+		} else if (trackingLog.getStatus() != null) {
 			valid = !trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus2");
 		}
-		if (trackingLog.getStatus().equals(ClaimStatus.PENDING)) {
+		if (trackingLog.getStatus() != null && trackingLog.getStatus().equals(ClaimStatus.PENDING)) {
 			valid = trackingLog.getResolution() == null || trackingLog.getResolution().isBlank();
 			super.state(valid, "resolution", "assistanceAgent.trackingLog.form.error.badResolution");
 		} else {
