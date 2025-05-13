@@ -36,7 +36,6 @@ public class LegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 		// For deletion, binding is usually minimal.
-		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
 	}
 
 	@Override
@@ -46,7 +45,7 @@ public class LegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void perform(final Leg leg) {
-		this.repository.delete(leg);
+		this.repository.delete(this.repository.findLegById(leg.getId()));
 	}
 
 	@Override

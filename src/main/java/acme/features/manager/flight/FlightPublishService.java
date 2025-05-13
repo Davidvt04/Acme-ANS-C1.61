@@ -70,7 +70,7 @@ public class FlightPublishService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void unbind(final Flight flight) {
-		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
+		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 
 		// Transient dates (only put if non-null)
 		if (flight.getScheduledDeparture() != null)

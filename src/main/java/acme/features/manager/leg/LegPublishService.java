@@ -76,19 +76,45 @@ public class LegPublishService extends AbstractGuiService<Manager, Leg> {
 	public void bind(final Leg leg) {
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
 
+		// --- Tamper-proof departure airport ---
 		String dep = super.getRequest().getData("departureAirport", String.class);
-		String arr = super.getRequest().getData("arrivalAirport", String.class);
-		leg.setDepartureAirport("0".equals(dep) ? null : this.airportRepository.findByIataCode(dep));
-		leg.setArrivalAirport("0".equals(arr) ? null : this.airportRepository.findByIataCode(arr));
+		if ("0".equals(dep))
+			leg.setDepartureAirport(null);
+		else {
+			Airport departure = this.airportRepository.findByIataCode(dep);
+			if (departure == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setDepartureAirport(departure);
+		}
 
+		// --- Tamper-proof arrival airport ---
+		String arr = super.getRequest().getData("arrivalAirport", String.class);
+		if ("0".equals(arr))
+			leg.setArrivalAirport(null);
+		else {
+			Airport arrival = this.airportRepository.findByIataCode(arr);
+			if (arrival == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setArrivalAirport(arrival);
+		}
+
+		// --- Tamper-proof aircraft binding ---
 		Integer acId = super.getRequest().getData("aircraft", Integer.class);
-		leg.setAircraft(acId == null || acId == 0 ? null : this.aircraftRepository.findAircraftById(acId));
+		if (acId == null || acId == 0)
+			leg.setAircraft(null);
+		else {
+			Aircraft aircraft = this.aircraftRepository.findAircraftById(acId);
+			if (aircraft == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setAircraft(aircraft);
+		}
 
 		String statusStr = super.getRequest().getData("status", String.class);
 		if (statusStr != null && !statusStr.isBlank())
 			try {
 				leg.setStatus(LegStatus.valueOf(statusStr));
-			} catch (Exception e) {
+			} catch (IllegalArgumentException e) {
+				// ignore invalid
 			}
 	}
 

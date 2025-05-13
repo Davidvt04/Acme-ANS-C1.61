@@ -47,8 +47,8 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 		Collection<Airport> airports = this.airportRepository.getAllAirports();
 		SelectChoices departureChoices = new SelectChoices();
 		SelectChoices arrivalChoices = new SelectChoices();
-		departureChoices.add(leg.getDepartureAirport() == null ? "0" : "0", "----", leg.getDepartureAirport() == null);
-		arrivalChoices.add(leg.getArrivalAirport() == null ? "0" : "0", "----", leg.getArrivalAirport() == null);
+		departureChoices.add("0", "----", leg.getDepartureAirport() == null);
+		arrivalChoices.add("0", "----", leg.getArrivalAirport() == null);
 		for (Airport ap : airports) {
 			String iata = ap.getIataCode();
 			departureChoices.add(iata, iata, leg.getDepartureAirport() != null && iata.equals(leg.getDepartureAirport().getIataCode()));
@@ -59,7 +59,7 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 		Collection<Aircraft> aircrafts = this.aircraftRepository.findAllAircrafts();
 		SelectChoices aircraftChoices = new SelectChoices();
-		aircraftChoices.add(leg.getAircraft() == null ? "0" : "0", "----", leg.getAircraft() == null);
+		aircraftChoices.add("0", "----", leg.getAircraft() == null);
 		for (Aircraft ac : aircrafts) {
 			String key = String.valueOf(ac.getId());
 			aircraftChoices.add(key, ac.getRegistrationNumber(), leg.getAircraft() != null && key.equals(String.valueOf(leg.getAircraft().getId())));
@@ -72,18 +72,48 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "status");
 
 		String dep = super.getRequest().getData("departureAirport", String.class);
-		String arr = super.getRequest().getData("arrivalAirport", String.class);
 		leg.setDepartureAirport("0".equals(dep) ? null : this.airportRepository.findByIataCode(dep));
+
+		String arr = super.getRequest().getData("arrivalAirport", String.class);
 		leg.setArrivalAirport("0".equals(arr) ? null : this.airportRepository.findByIataCode(arr));
 
+		String departureIata = super.getRequest().getData("departureAirport", String.class);
+		if ("0".equals(departureIata))
+			leg.setDepartureAirport(null);
+		else {
+			Airport departureAirport = this.airportRepository.findByIataCode(departureIata);
+			if (departureAirport == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setDepartureAirport(departureAirport);
+		}
+
+		String arrivalIata = super.getRequest().getData("arrivalAirport", String.class);
+		if ("0".equals(arrivalIata))
+			leg.setArrivalAirport(null);
+		else {
+			Airport arrivalAirport = this.airportRepository.findByIataCode(arrivalIata);
+			if (arrivalAirport == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setArrivalAirport(arrivalAirport);
+		}
+
+		// Tamper-proof aircraft binding:
 		Integer acId = super.getRequest().getData("aircraft", Integer.class);
-		leg.setAircraft(acId == null || acId == 0 ? null : this.aircraftRepository.findAircraftById(acId));
+		if (acId == null || acId == 0)
+			leg.setAircraft(null);
+		else {
+			Aircraft aircraft = this.aircraftRepository.findAircraftById(acId);
+			if (aircraft == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setAircraft(aircraft);
+		}
 
 		String statusStr = super.getRequest().getData("status", String.class);
 		if (statusStr != null && !statusStr.isBlank())
 			try {
 				leg.setStatus(LegStatus.valueOf(statusStr));
 			} catch (Exception e) {
+				// ignore invalid
 			}
 	}
 
@@ -98,11 +128,9 @@ public class LegUpdateService extends AbstractGuiService<Manager, Leg> {
 		super.state(leg.getScheduledDeparture() != null, "scheduledDeparture", "manager.leg.error.required.date");
 		super.state(leg.getScheduledArrival() != null, "scheduledArrival", "manager.leg.error.required.date");
 
-		// Chronology
 		if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null)
 			super.state(leg.getScheduledDeparture().before(leg.getScheduledArrival()), "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
 
-		// Unique flight number
 		Leg existing = this.repository.findLegByFlightNumber(leg.getFlightNumber());
 		boolean ok = existing == null || existing.getId() == leg.getId();
 		super.state(ok, "flightNumber", "manager.leg.error.duplicateFlightNumber");

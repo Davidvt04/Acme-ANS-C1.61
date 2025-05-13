@@ -52,8 +52,7 @@ public class FlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void bind(final Flight flight) {
-		// Bind the fields; for deletion, this may not be strictly necessary, but we follow the template.
-		super.bindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
+
 	}
 
 	@Override
@@ -63,21 +62,19 @@ public class FlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void perform(final Flight flight) {
-		// Retrieve all legs associated with this flight
+		Integer flightId = flight.getId();
 		Collection<Leg> legs = this.managerLegRepository.findLegsByflightId(flight.getId());
-		// Delete each leg first to avoid foreign key constraint violations
+		if (legs == null)
+			throw new IllegalStateException("managerLegRepository.findLegsByflightId(" + flight.getId() + ") returned NULL");
 		for (Leg leg : legs)
 			this.managerLegRepository.delete(leg);
-		// Now delete the flight itself
-		this.repository.delete(flight);
+		this.repository.deleteById(flightId);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
-		dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
-		// Optionally add the draftMode flag for informational purposes.
-		dataset.put("draftMode", flight.isDraftMode());
+		dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 		super.getResponse().addData(dataset);
 	}
 }
