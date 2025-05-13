@@ -1,0 +1,21 @@
+key,ticker,type,description,priority,estimated-duration,draft-mode,key:technician
+# tasks for aircraft-01 (maintenance-record-49)
+task-28,TICKER-28,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-29,TICKER-29,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-30,TICKER-30,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-31,TICKER-31,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-32,TICKER-32,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+# tasks for aircraft-02 (maintenance-record-50)
+task-33,TICKER-33,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-34,TICKER-34,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-35,TICKER-35,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-36,TICKER-36,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+# tasks for aircraft-03 (maintenance-record-51)
+task-37,TICKER-37,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-38,TICKER-38,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-39,TICKER-39,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+# tasks for aircraft-04 (maintenance-record-52)
+task-40,TICKER-40,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+task-41,TICKER-41,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
+# tasks for aircraft-05 (maintenance-record-53)
+task-42,TICKER-42,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",5,20,TRUE,technician-02
