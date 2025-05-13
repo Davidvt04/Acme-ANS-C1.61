@@ -23,7 +23,27 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		boolean status;
+		String method;
+		int taskId;
+		int maintenanceRecordId;
+		Task task;
+		MaintenanceRecord maintenanceRecord;
+
+		method = super.getRequest().getMethod();
+
+		if (method.equals("GET"))
+			status = true;
+		else {
+			taskId = super.getRequest().getData("task", int.class);
+			maintenanceRecordId = super.getRequest().getData("maintenanceRecord", int.class);
+			task = this.repository.findTaskById(taskId);
+			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+			status = task != null && maintenanceRecord != null && maintenanceRecord.isDraftMode() && //
+				super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		}
+
+		super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -39,11 +59,15 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void bind(final Involves involves) {
+		int taskId;
+		int maintenanceRecordId;
 		Task task;
 		MaintenanceRecord maintenanceRecord;
 
-		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
-		task = super.getRequest().getData("task", Task.class);
+		taskId = super.getRequest().getData("task", int.class);
+		maintenanceRecordId = super.getRequest().getData("maintenanceRecord", int.class);
+		task = this.repository.findTaskById(taskId);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
 		super.bindObject(involves);
 		involves.setTask(task);
@@ -52,13 +76,7 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
-		boolean recordInDraft;
-		MaintenanceRecord maintenanceRecord;
-
-		maintenanceRecord = super.getRequest().getData("maintenanceRecord", MaintenanceRecord.class);
-
-		recordInDraft = maintenanceRecord.isDraftMode();
-		super.state(recordInDraft, "*", "acme.validation.involves.draft-record.message");
+		;
 	}
 
 	@Override
@@ -77,7 +95,7 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		tasks = this.repository.findAllTasks();
 		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
 
-		maintenanceRecords = this.repository.findAllMaintenanceRecords();
+		maintenanceRecords = this.repository.findAllDraftMaintenanceRecords();
 		maintenanceRecordChoices = SelectChoices.from(maintenanceRecords, "ticker", involves.getMaintenanceRecord());
 
 		dataset = super.unbindObject(involves);
