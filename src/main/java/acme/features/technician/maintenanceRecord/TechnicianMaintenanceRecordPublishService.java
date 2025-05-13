@@ -43,7 +43,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		if (status) {
 			String method;
 			int aircraftId;
-			Aircraft aircraft;
+			//Aircraft aircraft;
 
 			method = super.getRequest().getMethod();
 
@@ -51,8 +51,8 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 				status = true;
 			else {
 				aircraftId = super.getRequest().getData("aircraft", int.class);
-				aircraft = this.repository.findAircraftById(aircraftId);
-				status = aircraft != null;
+				//aircraft = this.repository.findAircraftById(aircraftId);
+				status = aircraftId == 0;
 			}
 		}
 
@@ -107,7 +107,10 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 
 		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
-		validNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+		validNextInspection = maintenanceRecord.getNextInspectionDueTime() == null ? //
+			false : //
+			MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+
 		super.state(validNextInspection, "nextInspectionDueTime", "acme.validation.maintenance-record.moment-next-inspection.publish.messsage");
 	}
 

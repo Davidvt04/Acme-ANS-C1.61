@@ -35,14 +35,12 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
 		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && // 
-			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId() && //
-			(maintenanceRecord.getStatus() == MaintenanceRecordStatus.PENDING || maintenanceRecord.getStatus() == MaintenanceRecordStatus.IN_PROGRESS //
-				|| maintenanceRecord.getStatus() == MaintenanceRecordStatus.COMPLETED);
+			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId();
 
 		if (status) {
 			String method;
 			int aircraftId;
-			Aircraft aircraft;
+			//Aircraft aircraft;
 
 			method = super.getRequest().getMethod();
 
@@ -50,8 +48,8 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 				status = true;
 			else {
 				aircraftId = super.getRequest().getData("aircraft", int.class);
-				aircraft = this.repository.findAircraftById(aircraftId);
-				status = aircraft != null;
+				//aircraft = this.repository.findAircraftById(aircraftId);
+				status = aircraftId == 0;
 			}
 		}
 
@@ -97,7 +95,9 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 
 		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
-		validNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+		validNextInspection = maintenanceRecord.getNextInspectionDueTime() == null ? //
+			false : //
+			MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
 
 		super.state(validNextInspection, "nextInspectionDueTime", "acme.validation.maintenance-record.moment-next-inspection.update.messsage");
 	}

@@ -29,7 +29,7 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		boolean status;
 		String method;
 		int aircraftId;
-		Aircraft aircraft;
+		//Aircraft aircraft;
 
 		method = super.getRequest().getMethod();
 
@@ -37,8 +37,8 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 			status = true;
 		else {
 			aircraftId = super.getRequest().getData("aircraft", int.class);
-			aircraft = this.repository.findAircraftById(aircraftId);
-			status = aircraft != null && super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+			//aircraft = this.repository.findAircraftById(aircraftId);
+			status = aircraftId == 0 || super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
 		}
 
 		super.getResponse().setAuthorised(status);
@@ -87,9 +87,11 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 
 		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
-		validNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+		validNextInspection = maintenanceRecord.getNextInspectionDueTime() == null ? //
+			false : //
+			MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
 
-		super.state(validNextInspection, "nextInspectionDueTime", "acme.validation.maintenance-record.moment-next-inspection.update.messsage");
+		super.state(validNextInspection, "nextInspectionDueTime", "acme.validation.maintenance-record.moment-next-inspection.create.messsage");
 	}
 
 	@Override
