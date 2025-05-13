@@ -26,6 +26,7 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 
 	@Override
 	public void authorise() {
+
 		int flightAssignamentId = super.getRequest().getData("id", int.class);
 		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
@@ -51,7 +52,7 @@ public class FlightCrewMemberFlightAssignamentUpdateService extends AbstractGuiS
 		Integer flightCrewMemberId = super.getRequest().getData("flightCrewMember", int.class);
 		FlightCrewMember flightCrewMember = this.repository.findFlightCrewMemberById(flightCrewMemberId);
 
-		super.bindObject(flightAssignament, "duty", "moment", "currentStatus", "remarks");
+		super.bindObject(flightAssignament, "duty", "currentStatus", "remarks");
 		flightAssignament.setLeg(leg);
 		flightAssignament.setFlightCrewMember(flightCrewMember);
 	}

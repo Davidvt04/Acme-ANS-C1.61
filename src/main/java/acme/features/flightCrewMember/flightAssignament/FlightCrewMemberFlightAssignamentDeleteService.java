@@ -53,7 +53,7 @@ public class FlightCrewMemberFlightAssignamentDeleteService extends AbstractGuiS
 		int flightCrewMemberId = super.getRequest().getData("flightCrewMember", int.class);
 		FlightCrewMember flightCrewMember = this.repository.findFlightCrewMemberById(flightCrewMemberId);
 
-		super.bindObject(flightAssignament, "duty", "moment", "currentStatus", "remarks");
+		super.bindObject(flightAssignament, "duty", "currentStatus", "remarks");
 		flightAssignament.setLeg(leg);
 		flightAssignament.setFlightCrewMember(flightCrewMember);
 	}
