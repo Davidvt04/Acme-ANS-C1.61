@@ -1,19 +1,23 @@
 
-package acme.forms.delays;
+package acme.entities.delay;
 
 import java.util.Date;
 
-import acme.client.components.basis.AbstractForm;
+import javax.persistence.Entity;
+
+import acme.client.components.basis.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-public class DelayDashboard extends AbstractForm {
+public class Delay extends AbstractEntity {
+	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	private int					id;
+	// Attributes -------------------------------------------------------------
 	private String				departureAirport;
 	private String				arrivalAirport;
 	private String				airline;
@@ -22,4 +26,5 @@ public class DelayDashboard extends AbstractForm {
 	private Date				departureActualDateTime;
 	private Date				arrivalActualDateTime;
 	private String				status;
+
 }

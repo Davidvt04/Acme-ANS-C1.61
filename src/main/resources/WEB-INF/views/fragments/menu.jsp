@@ -27,7 +27,8 @@
 			
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>
-			<acme:menu-suboption code="master.menu.administrator.populate-db-recommendations" action="/administrator/recommendation/populate"/>				
+			<acme:menu-suboption code="master.menu.administrator.populate-db-recommendations" action="/administrator/recommendation/populate"/>	
+			<acme:menu-suboption code="master.menu.administrator.populate-db-delays" action="/administrator/delay/populate"/>					
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.shut-system-down" action="/administrator/system/shut-down"/>
 			<acme:menu-separator/>
@@ -53,6 +54,8 @@
 			<acme:menu-suboption code="master.menu.assistanceAgent.list-claims" action="/assistance-agent/claim/list"/>			
 			<acme:menu-suboption code="master.menu.assistanceAgent.list-claims-pending" action="/assistance-agent/claim/pending"/>	
 			<acme:menu-suboption code="master.menu.assistanceAgent.show-dashboard" action="/assistance-agent/assistance-agent-dashboard/show"/>	
+			<acme:menu-suboption code="master.menu.assistanceAgent.delay" action="/assistance-agent/delay/list"/>	
+			
 				
 			
 		</acme:menu-option>
