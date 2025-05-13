@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -28,6 +30,10 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
+@Table(indexes = {
+	@Index(columnList = "customer_id"), @Index(columnList = "locatorCode")
+})
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -59,7 +65,7 @@ public class Booking extends AbstractEntity {
 
 	@Optional
 	@Automapped
-	@ValidString(min = 4, max = 4)
+	@ValidString(min = 4, max = 4, pattern = "[0-9]{4}", message = "{acme.validation.lastNibble.notPattern.message}")
 	private String				lastNibble;
 
 	@Mandatory
@@ -73,7 +79,7 @@ public class Booking extends AbstractEntity {
 		if (this.getFlight() != null) {
 			Money flightCost = this.getFlight().getCost();
 			BookingRepository bookingRepository = SpringHelper.getBean(BookingRepository.class);
-			Integer numberOfPassengers = bookingRepository.getNumberPassengersOfBooking(this.getId());
+			Integer numberOfPassengers = bookingRepository.findAllPassengersByBookingId(this.getId());
 
 			res.setCurrency(flightCost.getCurrency());
 			res.setAmount(flightCost.getAmount() * numberOfPassengers);

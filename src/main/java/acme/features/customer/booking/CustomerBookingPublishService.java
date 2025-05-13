@@ -25,22 +25,36 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		boolean status;
+		try {
+			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+
+			super.getResponse().setAuthorised(status);
+
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			int bookingId = super.getRequest().getData("id", int.class);
+			Booking booking = this.repository.findBookingById(bookingId);
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
+			if (flightId == null)
+				status = false;
+			else if (flightId != 0) {
+				Flight flight = this.repository.getFlightById(flightId);
+				status = status && flight != null && !flight.isDraftMode();
+			}
+
+			status = status && customerId == booking.getCustomer().getId();
+		} catch (Exception e) {
+			status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
-
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(bookingId);
-
-		super.getResponse().setAuthorised(customerId == booking.getCustomer().getId());
 	}
 
 	@Override
 	public void load() {
 
 		int id = super.getRequest().getData("id", int.class);
-		Booking booking = this.repository.getBookingById(id);
+		Booking booking = this.repository.findBookingById(id);
 
 		super.getBuffer().addData(booking);
 	}
@@ -56,7 +70,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		boolean valid = existing == null || existing.getId() == booking.getId();
 		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
 
-		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsOf(booking.getId());
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsByBookingId(booking.getId());
 		valid = !bookingRecords.isEmpty();
 		super.state(valid, "*", "customer.booking.form.error.noPassengers");
 

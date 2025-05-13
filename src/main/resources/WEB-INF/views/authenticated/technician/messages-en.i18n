@@ -5,7 +5,7 @@ authenticated.technician.form.label.phone-number = Phone number
 authenticated.technician.form.label.specialisation = Specialisation
 authenticated.technician.form.label.passed-annual-health-test = Passed annual health test
 authenticated.technician.form.label.experience-years = Experience years
-authenticated.technician.form.label.certifications = Certifications
+authenticated.technician.form.label.certifications = Certifications (optional)
  
 authenticated.technician.form.button.create = Register
 authenticated.technician.form.button.update = Update

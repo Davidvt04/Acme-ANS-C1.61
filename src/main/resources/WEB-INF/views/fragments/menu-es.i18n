@@ -24,6 +24,7 @@ master.menu.administrator.list-user-accounts = Ver cuentas de usuario
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)
 master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
 master.menu.administrator.populate-db-recommendations = Poblar recomendaciones
+master.menu.administrator.populate-db-delays= Poblar estado vuelos
 master.menu.administrator.shut-system-down = Parar el sistema
 master.menu.administrator.list-airports = Listado de aeropuertos
 master.menu.administrator.list-aircrafts = Listado de aviones
@@ -54,6 +55,7 @@ master.menu.user-account.customer-profile = Perfil de cliente
 
 master.menu.technician = Técnico
 master.menu.technician.maintenance-records = Listar registros de mantenimiento
+master.menu.technician.involves = Listar involucramientos
 master.menu.technician.tasks = Listar tareas
 master.menu.technician.show-dashboard = Mostrar dashboard
 
@@ -88,7 +90,8 @@ master.menu.assistanceAgent  = Asistente
 master.menu.assistanceAgent.list-claims = Listar quejas completadas
 master.menu.assistanceAgent.list-claims-pending = Listar quejas en proceso
 master.menu.assistanceAgent.list-trackingLog = Listar todos los registros
-master.menu.assistanceAgent.show-dashboard= Ver dashboard
+master.menu.assistanceAgent.show-dashboard= Ver panel
+master.menu.assistanceAgent.delay-dashboard= Ver panel de estado de vuelos
 
 
 # mater.menu.manager ####################################################

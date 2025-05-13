@@ -30,3 +30,6 @@ assistanceAgent.claim.list.label.indicator = Indicador:
 assistanceAgent.claim.list.button.create = Crear
 assistanceAgent.claim.form.show.trackingLogs = Ver los registros asociados
 assistanceAgent.claim.form.create.trackingLog = Añadir un nuevo registro
+
+assistanceAgent.claim.form.error.stillTrackingLogs = Todavía hay registros asociados a esta queja
+assistanceAgent.claim.form.error.badLeg= El tramo seleccionado debe tener una fecha anterior a la fecha de registro

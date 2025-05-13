@@ -8,7 +8,7 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-acme.validation.header.message  	= Debe tener entre 1 y 75 caracteres
+acme.validation.header.message  	= Debe tener entre 1 y 50 caracteres
 acme.validation.text.message   		= Debe tener entre 1 y 255 caracteres 
 acme.validation.phone.message       = Debe ser +código-país (código-área) número, donde sólo el número es obligatorio
 
@@ -24,11 +24,16 @@ acme.validation.flightAssignament.availableFlightCrewMember.message= La asignaci
 acme.validation.activityLog.wrongMoment.message = El momento de registro del Registro de Actividad debe ser posterior a la fecha de llegada de la leg
 acme.validation.ActivityLog.FlightAssignamentNotPublished.message = No puede publicar el Registro de Actividad si la asignación de vuelo a la que está asociado no se publico
 
-#Maintenance Record and Task
+#Technician
 acme.validation.task-record.ticker.message = El ticker debe tener entre 5 y 15 caracteres y solo puede contener letras, números, subrayados y guiones
 acme.validation.nextInspection.message = La fecha de la próxima inspección debe ser, al menos, una hora después del momento del registro de mantenimiento
 acme.validation.task-record.ticker.duplicated.message = El ticker ya existe, utilice uno distinto
 acme.validation.maintenance-record.tasks.not-draft.message = El registro de mantenimiento debe tener, al menos, una tarea publicada y no debe tener ni una tarea que no esté publicada
+acme.validation.maintenance-record.moment-next-inspection.update.messsage = Al actualizar este registro de mantenimiento, el momento será la fecha y hora actuales. El valor actual de la fecha de la próxima inspección no es al menos una hora después que la fecha y hora actuales
+acme.validation.maintenance-record.moment-next-inspection.publish.messsage = Al publicar este registro de mantenimiento, el momento será la fecha y hora actuales. El valor actual de la fecha de la próxima inspección no es al menos una hora después que la fecha y hora actuales
+acme.validation.involves.draft-record.message = Registro de mantenimiento publicado. El involucramiento en tareas de un registro de mantenimiento publicado no debe ser modificado
+acme.validation.technician.license-number.duplicated.message = El número de licencia ya está en uso
+acme.validation.technician.phone-number.duplicated.message = El número de teléfono ya está en uso
 
 #Acme:
 
@@ -72,3 +77,4 @@ acme.validation.range.message = Debe estar entre {0} y {1}
 acme.validation.script.message = El script "{0}" debe devolver true
 acme.validation.currency.message = Moneda incorrecta
 acme.validation.confirmation.message = Debe confirmar
+acme.validation.lastNibble.notPattern.message = Los 4 últimos digitos deben ser numéricos

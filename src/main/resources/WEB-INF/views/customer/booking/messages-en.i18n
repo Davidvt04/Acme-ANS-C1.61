@@ -14,11 +14,13 @@ customer.booking.list.title = List of bookings
 customer.booking.form.button.create = Create 
 customer.booking.form.button.update = Update
 customer.booking.form.button.publish= Publish
+customer.booking.form.button.delete = Delete
 customer.booking.form.button.return = Return
 customer.booking.form.show.passengers = Show passengers
 customer.booking.form.add.passenger = Add Passenger to booking
 customer.booking.form.delete.passenger = Delete Passenger from booking
 customer.booking.list.button.create = Create
+
 
 customer.booking.list.label.flight=Flight
 customer.booking.list.label.purchaseMoment=Purchase Moment
@@ -35,4 +37,5 @@ customer.booking.form.show.recommendations = Show recommendations in destination
 customer.booking.form.error.noPassengers = You should add any passengers before publishing
 customer.booking.form.error.invalidFlight = The flight selected is not available
 customer.booking.form.error.publishPassengers = All included passengers must be published before publishing the booking
+customer.booking.form.error.stillPassengers = There are still passengers linked to this booking
 

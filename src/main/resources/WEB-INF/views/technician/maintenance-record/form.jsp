@@ -16,7 +16,7 @@
 	<acme:input-textarea code="technician.maintenance-record.form.label.notes" path="notes"/>	
 	
 	<jstl:if test="${_command != 'create'}">
-		<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/involves/list?masterId=${id}"/>
+		<acme:button code="technician.maintenance-record.form.button.tasks" action="/technician/task/list-from-record?masterId=${id}"/>
 	</jstl:if>
 	<jstl:choose>
 		<jstl:when test="${_command != 'create' && draftMode == true}">

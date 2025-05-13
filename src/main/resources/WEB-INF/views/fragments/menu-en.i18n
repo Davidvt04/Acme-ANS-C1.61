@@ -25,6 +25,7 @@ master.menu.administrator.list-airports = List airports
 master.menu.administrator.populate-db-initial = Populate DB (initial)
 master.menu.administrator.populate-db-sample = Populate DB (samples)
 master.menu.administrator.populate-db-recommendations = Populate Recommendations
+master.menu.administrator.populate-db-delays= Populate Flight status
 master.menu.administrator.shut-system-down = Shut system down
 master.menu.administrator.list-aircrafts = List aircrafts
 master.menu.administrator.list-claims = List claims
@@ -52,6 +53,7 @@ master.menu.customer.show-dashboard = Show Dashboard
 
 master.menu.technician = Technician
 master.menu.technician.maintenance-records = List maintenance records
+master.menu.technician.involves = List involvements
 master.menu.technician.tasks = List tasks
 master.menu.technician.show-dashboard = Show dashboard
 
@@ -86,4 +88,5 @@ master.menu.assistanceAgent.list-claims = List completed claims
 master.menu.assistanceAgent.list-claims-pending = List undergoing claims
 master.menu.assistanceAgent.list-trackingLog = List all tracking logs
 master.menu.assistanceAgent.show-dashboard = Show dashboard
+master.menu.assistanceAgent.delay= Show Flight Status dashboard
 

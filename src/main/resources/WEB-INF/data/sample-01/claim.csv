@@ -1,0 +1,47 @@
+key,registrationMoment,passengerEmail,description,type,draftMode,key:assistanceAgent,key:leg
+#base entity
+claim-01,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+
+#registrationMoment - variations
+ 
+claim-02,2024/01/21 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-03,2024/03/01 0:01,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-04,2024/12/31 23:59,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-05,2025/01/01 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+
+#passengerEmail - variations
+claim-06,2024/02/02 0:00,password@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-07,2024/02/02 0:00,a@b.e,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-08,2024/02/02 0:00,a@b.es,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-02,leg-15
+claim-09,2024/02/02 0:00,a@b.esx,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-02,leg-15
+claim-10,2024/02/02 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-11,2024/02/02 0:00,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+
+#description - variations 
+claim-12,2024/02/02 0:00,acme@lorem-ipsum.org,L,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-13,2024/02/02 0:00,acme@lorem-ipsum.org,Lo,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-14,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-15,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-16,2024/02/02 0:00,acme@lorem-ipsum.org,โลเร็ม อิปซัม,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-17,2024/02/02 0:00,acme@lorem-ipsum.org,لوريم إيبسوم,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-18,2024/02/02 0:00,acme@lorem-ipsum.org,洛伦·伊普森,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-19,2024/02/02 0:00,acme@lorem-ipsum.org,Hacked,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-20,2024/02/02 0:00,acme@lorem-ipsum.org,alert(‘Hacked!’);,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-21,2024/02/02 0:00,acme@lorem-ipsum.org,' or 'A' = 'A,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+
+#type - variations
+claim-22,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-23,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,LUGGAGE_ISSUES,true,assistanceAgent-01,leg-15
+claim-24,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,SECURITY_INCIDENT,true,assistanceAgent-01,leg-15
+claim-25,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,OTHER_ISSUES,true,assistanceAgent-01,leg-15
+
+#indicator - variations
+claim-26,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-27,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+claim-28,2024/02/02 0:00,acme@lorem-ipsum.org,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,FLIGHT_ISSUES,true,assistanceAgent-01,leg-15
+
+
+
+
+
+
