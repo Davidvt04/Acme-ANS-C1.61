@@ -46,13 +46,12 @@ public class TechnicianInvolvesShowService extends AbstractGuiService<Technician
 		SelectChoices maintenanceRecordChoices;
 		Collection<Task> tasks;
 		Collection<MaintenanceRecord> maintenanceRecords;
-		final boolean draftTask;
 		final boolean draftRecord;
 
 		tasks = this.repository.findAllTasks();
 		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
 
-		maintenanceRecords = this.repository.findAllMaintenanceRecords();
+		maintenanceRecords = this.repository.findAllDraftMaintenanceRecords();
 		maintenanceRecordChoices = SelectChoices.from(maintenanceRecords, "ticker", involves.getMaintenanceRecord());
 
 		dataset = super.unbindObject(involves);
@@ -60,14 +59,10 @@ public class TechnicianInvolvesShowService extends AbstractGuiService<Technician
 		dataset.put("task", taskChoices.getSelected().getKey());
 		dataset.put("tasks", taskChoices);
 		dataset.put("taskTechnician", involves.getTask().getTechnician().getLicenseNumber());
-		dataset.put("taskId", involves.getTask().getId());
 
 		dataset.put("maintenanceRecord", maintenanceRecordChoices.getSelected().getKey());
 		dataset.put("maintenanceRecords", maintenanceRecordChoices);
 		dataset.put("maintenanceRecordTechnician", involves.getTask().getTechnician().getLicenseNumber());
-
-		draftTask = involves.getTask().isDraftMode();
-		super.getResponse().addGlobal("draftTask", draftTask);
 
 		draftRecord = involves.getMaintenanceRecord().isDraftMode();
 		super.getResponse().addGlobal("draftRecord", draftRecord);

@@ -1,0 +1,19 @@
+# messages-es.i18n
+
+assistance-agent.delay.list.title = Panel de Estado de Vuelos
+assistance-agent.delay.form.title = Panel de Estado de Vuelos
+
+assistaceAgent.delay-dashboard.list.label.airline = Aerolínea
+assistaceAgent.delay-dashboard.list.label.departureAirport = Aeropuerto de Salida
+assistaceAgent.delay-dashboard.list.label.arrivalAirport = Aeropuerto de Llegada
+assistaceAgent.delay-dashboard.list.label.status = Estado
+
+assistaceAgent.delay-dashboard.form.label.airline = Aerolínea
+assistaceAgent.delay-dashboard.form.label.departureAirport = Aeropuerto de Salida
+assistaceAgent.delay-dashboard.form.label.arrivalAirport = Aeropuerto de Llegada
+assistaceAgent.delay-dashboard.form.label.status = Estado
+
+assistaceAgent.delay-dashboard.list.label.departureScheduledDateTime = Fecha Programada de Salida
+assistaceAgent.delay-dashboard.list.label.arrivalScheduledDateTime = Fecha Programada de Llegada
+assistaceAgent.delay-dashboard.list.label.departureActualDateTime = Fecha Real de Salida
+assistaceAgent.delay-dashboard.list.label.arrivalActualDateTime = Fecha Real de Llegada

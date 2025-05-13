@@ -5,7 +5,7 @@ authenticated.technician.form.label.phone-number = Número de teléfono
 authenticated.technician.form.label.specialisation = Especialización
 authenticated.technician.form.label.passed-annual-health-test = Prueba médica anual superada
 authenticated.technician.form.label.experience-years = Años de experiencia
-authenticated.technician.form.label.certifications = Certificaciones
+authenticated.technician.form.label.certifications = Certificaciones (opcional)
  
 authenticated.technician.form.button.create = Registrar
 authenticated.technician.form.button.update = Actualizar
