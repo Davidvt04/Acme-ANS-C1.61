@@ -65,9 +65,11 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 		flightCrewMember = this.repository.findFlightCrewMemberById(flightCrewMemberId);
 
 		super.bindObject(flightAssignament, "duty", "currentStatus", "remarks");
+		FlightAssignament original = this.repository.findFlightAssignamentById(flightAssignament.getId());
 
 		flightAssignament.setLeg(leg);
 		flightAssignament.setFlightCrewMember(flightCrewMember);
+		flightAssignament.setMoment(original.getMoment());
 	}
 
 	@Override
