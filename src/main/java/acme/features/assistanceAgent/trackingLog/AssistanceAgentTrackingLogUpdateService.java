@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.trackingLog.ClaimStatus;
@@ -49,7 +50,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	}
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution");
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "status", "resolution");
 
 	}
 
@@ -94,7 +95,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 	@Override
 	public void perform(final TrackingLog trackingLog) {
-
+		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
 		this.repository.save(trackingLog);
 	}
 
