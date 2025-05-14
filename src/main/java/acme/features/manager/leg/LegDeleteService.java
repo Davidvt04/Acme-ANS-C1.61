@@ -3,7 +3,6 @@ package acme.features.manager.leg;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.leg.Leg;
@@ -50,42 +49,7 @@ public class LegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void unbind(final Leg leg) {
-		Dataset dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "durationInHours", "draftMode");
 
-		// Include selected departure airport details.
-		if (leg.getDepartureAirport() != null) {
-			dataset.put("departureAirport", leg.getDepartureAirport().getIataCode());
-			dataset.put("originCity", leg.getDepartureAirport().getCity());
-		}
-
-		// Include selected arrival airport details.
-		if (leg.getArrivalAirport() != null) {
-			dataset.put("arrivalAirport", leg.getArrivalAirport().getIataCode());
-			dataset.put("destinationCity", leg.getArrivalAirport().getCity());
-		}
-
-		// Include aircraft information.
-		if (leg.getAircraft() != null) {
-			dataset.put("aircraft", leg.getAircraft().getId());
-			dataset.put("aircraftRegistration", leg.getAircraft().getRegistrationNumber());
-		}
-
-		// Wrap date fields in an Object array for proper formatting.
-		dataset.put("scheduledDeparture", new Object[] {
-			leg.getScheduledDeparture()
-		});
-		dataset.put("scheduledArrival", new Object[] {
-			leg.getScheduledArrival()
-		});
-
-		// Add the leg status.
-		dataset.put("status", leg.getStatus());
-
-		// Include flight id and draftMode.
-		dataset.put("flightId", leg.getFlight().getId());
-		dataset.put("draftMode", leg.isDraftMode());
-
-		super.getResponse().addData(dataset);
 	}
 
 }
