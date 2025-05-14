@@ -65,9 +65,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		Date activityLogMoment = activityLog.getRegistrationMoment();
 		boolean activityLogMomentIsAfterscheduledArrival = this.repository.associatedWithCompletedLeg(activityLogId, activityLogMoment);
 		super.state(activityLogMomentIsAfterscheduledArrival, "WrongActivityLogDate", "acme.validation.activityLog.wrongMoment.message");
-		System.out.println("El moment está despues de la fecha de llegada (el flightAssignament se completo)? " + activityLogMomentIsAfterscheduledArrival);
 		boolean flightAssignamentIsPublished = this.repository.isFlightAssignamentAlreadyPublishedByActivityLogId(activityLogId);
-		System.out.println("Se publico el flightAssignament? " + flightAssignament.isDraftMode() + " lo que devuelve la llamada a db es: " + flightAssignamentIsPublished);
 		super.state(flightAssignamentIsPublished, "activityLog", "acme.validation.ActivityLog.FlightAssignamentNotPublished.message");
 	}
 

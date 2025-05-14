@@ -22,14 +22,20 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		int activityLogId;
 
 		ActivityLog activityLog;
-
+		boolean authorised = false;
+		boolean isHis = false;
 		activityLogId = super.getRequest().getData("id", int.class);
 		activityLog = this.repository.findActivityLogById(activityLogId);
+		boolean authorised3 = this.repository.existsActivityLog(activityLogId);
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		FlightAssignament flightAssignament = this.repository.findFlightAssignamentByActivityLogId(activityLogId);
-		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
-		boolean authorised = authorised1 && this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
-		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		if (flightAssignament != null) {
+			boolean authorised2 = this.repository.existsFlightAssignament(flightAssignament.getId());
+
+			boolean authorised1 = authorised3 && authorised2 && this.repository.existsFlightCrewMember(flightCrewMemberId);
+			authorised = authorised1 && this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
+			isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		}
 
 		super.getResponse().setAuthorised(authorised && activityLog != null && isHis);
 	}
