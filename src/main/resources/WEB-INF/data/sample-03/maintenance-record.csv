@@ -1,7 +1,0 @@
-key,ticker,moment,status,next-inspection-due-time,estimated-cost,notes,draft-mode,key:aircraft,key:technician
-# aircraft - variations
-maintenance-record-49,TICKER-49,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",TRUE,aircraft-01,technician-02
-maintenance-record-50,TICKER-50,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",TRUE,aircraft-02,technician-02
-maintenance-record-51,TICKER-51,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",TRUE,aircraft-03,technician-02
-maintenance-record-52,TICKER-52,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",TRUE,aircraft-04,technician-02
-maintenance-record-53,TICKER-53,2024/12/28 12:00,PENDING,2030/01/01 00:00,EUR 2000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod",TRUE,aircraft-05,technician-02

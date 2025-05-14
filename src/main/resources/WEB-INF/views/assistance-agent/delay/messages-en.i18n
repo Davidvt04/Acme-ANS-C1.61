@@ -1,0 +1,23 @@
+# messages-en.i18n
+
+assistance-agent.delay.form.title = Flight Status Dashboard
+assistance-agent.delay.list.title = Flight Status Dashboard
+
+
+assistaceAgent.delay-dashboard.list.label.airline = Airline
+assistaceAgent.delay-dashboard.list.label.departureAirport = Departure Airport
+assistaceAgent.delay-dashboard.list.label.arrivalAirport = Arrival Airport
+assistaceAgent.delay-dashboard.list.label.status = Status
+
+assistaceAgent.delay-dashboard.form.label.airline = Airline
+assistaceAgent.delay-dashboard.form.label.departureAirport = Departure Airport
+assistaceAgent.delay-dashboard.form.label.arrivalAirport = Arrival Airport
+assistaceAgent.delay-dashboard.form.label.status = Status
+
+	
+assistaceAgent.delay-dashboard.list.label.departureScheduledDateTime = Departure Scheduled Date
+assistaceAgent.delay-dashboard.list.label.arrivalScheduledDateTime= Arrival Scheduled Date
+assistaceAgent.delay-dashboard.list.label.departureActualDateTime= Departure Actual Date
+assistaceAgent.delay-dashboard.list.label.arrivalActualDateTime= Arrival Actual Date 
+	
+	

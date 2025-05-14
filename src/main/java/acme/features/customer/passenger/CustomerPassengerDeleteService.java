@@ -1,7 +1,7 @@
 
 package acme.features.customer.passenger;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,7 +34,8 @@ public class CustomerPassengerDeleteService extends AbstractGuiService<Customer,
 
 	@Override
 	public void load() {
-		Passenger passenger = new Passenger();
+		int passengerId = super.getRequest().getData("id", int.class);
+		Passenger passenger = this.repository.findPassengerById(passengerId);
 		super.getBuffer().addData(passenger);
 	}
 
@@ -45,24 +46,25 @@ public class CustomerPassengerDeleteService extends AbstractGuiService<Customer,
 
 	@Override
 	public void validate(final Passenger passenger) {
-		List<BookingRecord> associations = this.repository.findAllBookingRecordsByPassengerId(passenger.getId());
-		super.state(associations.isEmpty(), "passenger", "customer.passenger.form.error.associatedBookings");
-
+		;
 	}
 
 	@Override
 	public void perform(final Passenger passenger) {
+		Collection<BookingRecord> associatedBookings = this.repository.findAllBookingRecordsByPassengerId(passenger.getId());
+		if (!associatedBookings.isEmpty())
+			this.repository.deleteAll(associatedBookings);
 
-		this.repository.delete(passenger);
+		Passenger deletedPassenger = this.repository.findPassengerById(passenger.getId());
+		this.repository.delete(deletedPassenger);
 	}
 
 	@Override
 	public void unbind(final Passenger passenger) {
-		assert passenger != null;
 		Dataset dataset;
 		dataset = super.unbindObject(passenger, "fullName", "email", "passportNumber", "dateOfBirth", "specialNeeds", "draftMode");
-		super.getResponse().addData(dataset);
 
+		super.getResponse().addData(dataset);
 	}
 
 }

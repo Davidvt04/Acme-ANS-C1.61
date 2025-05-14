@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.trackingLog.ClaimStatus;
@@ -50,7 +51,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution");
+		super.bindObject(trackingLog, "step", "resolutionPercentage", "status", "resolution");
 
 	}
 
@@ -63,14 +64,14 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 		if (!valid)
 			return; // Si la Claim no está publicada, no continuar con otras validaciones
-		if (trackingLog.getResolutionPercentage() < 100.0) {
+		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() != null && trackingLog.getStatus() != null && trackingLog.getResolutionPercentage() < 100.0) {
 			valid = trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus");
-		} else {
+		} else if (trackingLog.getStatus() != null) {
 			valid = !trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus2");
 		}
-		if (trackingLog.getStatus().equals(ClaimStatus.PENDING)) {
+		if (trackingLog.getStatus() != null && trackingLog.getStatus().equals(ClaimStatus.PENDING)) {
 			valid = trackingLog.getResolution() == null || trackingLog.getResolution().isBlank();
 			super.state(valid, "resolution", "assistanceAgent.trackingLog.form.error.badResolution");
 		} else {
@@ -82,7 +83,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		if (trackingLogs.isPresent() && trackingLogs.get().size() > 0) {
 			highestTrackingLog = trackingLogs.get().get(0);
 			long completedTrackingLogs = trackingLogs.get().stream().filter(t -> t.getResolutionPercentage() == 100).count();
-			if (highestTrackingLog.getId() != trackingLog.getId())
+			if (highestTrackingLog.getId() != trackingLog.getId() && trackingLog.getResolutionPercentage() != null)
 				if (highestTrackingLog.getResolutionPercentage() == 100 && trackingLog.getResolutionPercentage() == 100) {
 					valid = !highestTrackingLog.isDraftMode() && completedTrackingLogs < 2;
 					super.state(valid, "resolutionPercentage", "assistanceAgent.trackingLog.form.error.maxcompleted");
@@ -97,6 +98,7 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Override
 	public void perform(final TrackingLog trackingLog) {
 		trackingLog.setDraftMode(false);
+		trackingLog.setLastUpdateMoment(MomentHelper.getCurrentMoment());
 		this.repository.save(trackingLog);
 	}
 
