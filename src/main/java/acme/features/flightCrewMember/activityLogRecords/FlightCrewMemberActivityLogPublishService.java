@@ -49,7 +49,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void bind(final ActivityLog activityLog) {
-		super.bindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
 	}
 
 	@Override
@@ -65,27 +65,16 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		Date activityLogMoment = activityLog.getRegistrationMoment();
 		boolean activityLogMomentIsAfterscheduledArrival = this.repository.associatedWithCompletedLeg(activityLogId, activityLogMoment);
 		super.state(activityLogMomentIsAfterscheduledArrival, "WrongActivityLogDate", "acme.validation.activityLog.wrongMoment.message");
-		System.out.println("El moment está despues de la fecha de llegada (el flightAssignament se completo)? " + activityLogMomentIsAfterscheduledArrival);
 		boolean flightAssignamentIsPublished = this.repository.isFlightAssignamentAlreadyPublishedByActivityLogId(activityLogId);
-		System.out.println("Se publico el flightAssignament? " + flightAssignament.isDraftMode() + " lo que devuelve la llamada a db es: " + flightAssignamentIsPublished);
 		super.state(flightAssignamentIsPublished, "activityLog", "acme.validation.ActivityLog.FlightAssignamentNotPublished.message");
 	}
 
 	@Override
 	public void perform(final ActivityLog activityLog) {
 
-		if (this.huboAlgunCambio(activityLog))
-			activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
+		activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
 		activityLog.setDraftMode(false);
 		this.repository.save(activityLog);
-	}
-
-	private boolean huboAlgunCambio(final ActivityLog activityLogNuevo) {
-		ActivityLog activityLogViejo = this.repository.findActivityLogById(activityLogNuevo.getId());
-		boolean cambio = false;
-		cambio = !activityLogViejo.getDescription().equals(activityLogNuevo.getDescription()) || activityLogViejo.getSeverityLevel() != activityLogNuevo.getSeverityLevel() || activityLogViejo.getTypeOfIncident() != activityLogNuevo.getTypeOfIncident();
-
-		return cambio;
 	}
 
 	@Override
