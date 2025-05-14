@@ -35,15 +35,13 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		masterId = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
-		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && //
-			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId() && //
-			(maintenanceRecord.getStatus() == MaintenanceRecordStatus.PENDING || maintenanceRecord.getStatus() == MaintenanceRecordStatus.IN_PROGRESS //
-				|| maintenanceRecord.getStatus() == MaintenanceRecordStatus.COMPLETED);
+		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && // 
+			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId();
 
 		if (status) {
 			String method;
 			int aircraftId;
-			//Aircraft aircraft;
+			Aircraft aircraft;
 
 			method = super.getRequest().getMethod();
 
@@ -51,8 +49,8 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 				status = true;
 			else {
 				aircraftId = super.getRequest().getData("aircraft", int.class);
-				//aircraft = this.repository.findAircraftById(aircraftId);
-				status = aircraftId == 0;
+				aircraft = this.repository.findAircraftById(aircraftId);
+				status = aircraftId == 0 || aircraft != null;
 			}
 		}
 

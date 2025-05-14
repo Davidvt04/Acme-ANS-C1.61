@@ -39,11 +39,12 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 			maintenanceRecordId = super.getRequest().getData("maintenanceRecord", int.class);
 			task = this.repository.findTaskById(taskId);
 			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-			status = task != null && maintenanceRecord != null && maintenanceRecord.isDraftMode() && //
-				super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+			status = (taskId == 0 && maintenanceRecordId == 0 || task != null && maintenanceRecord != null) //
+				&& maintenanceRecord.isDraftMode() && //
+				super.getRequest().getPrincipal().getActiveRealm().getId() == maintenanceRecord.getTechnician().getId();
 		}
 
-		super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		//super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
 
 		super.getResponse().setAuthorised(status);
 	}

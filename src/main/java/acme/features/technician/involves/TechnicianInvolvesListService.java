@@ -28,8 +28,11 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 	@Override
 	public void load() {
 		Collection<Involves> involves;
+		int technicianId;
 
-		involves = this.repository.findAllInvolves();
+		technicianId = super.getRequest().getPrincipal().getRealmOfType(Technician.class).getId();
+
+		involves = this.repository.findInvolvesByTechnicianId(technicianId);
 
 		super.getBuffer().addData(involves);
 	}
