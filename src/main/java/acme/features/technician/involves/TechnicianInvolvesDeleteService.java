@@ -24,27 +24,22 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 	@Override
 	public void authorise() {
 		boolean status;
-		String method;
 		int taskId;
 		int maintenanceRecordId;
+		int masterId;
 		Task task;
 		MaintenanceRecord maintenanceRecord;
+		Involves involves;
 
-		method = super.getRequest().getMethod();
-
-		if (method.equals("GET"))
-			status = true;
-		else {
-			taskId = super.getRequest().getData("task", int.class);
-			maintenanceRecordId = super.getRequest().getData("maintenanceRecord", int.class);
-			task = this.repository.findTaskById(taskId);
-			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-			status = (taskId == 0 && maintenanceRecordId == 0 || task != null && maintenanceRecord != null) //
-				&& maintenanceRecord.isDraftMode() && //
-				super.getRequest().getPrincipal().getActiveRealm().getId() == maintenanceRecord.getTechnician().getId();
-		}
-
-		//super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		masterId = super.getRequest().getData("id", int.class);
+		involves = this.repository.findInvolvesById(masterId);
+		taskId = involves.getTask().getId();
+		maintenanceRecordId = involves.getMaintenanceRecord().getId();
+		task = this.repository.findTaskById(taskId);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		status = (taskId == 0 && maintenanceRecordId == 0 || task != null && maintenanceRecord != null) //
+			&& maintenanceRecord.isDraftMode() && //
+			super.getRequest().getPrincipal().getActiveRealm().getId() == maintenanceRecord.getTechnician().getId();
 
 		super.getResponse().setAuthorised(status);
 	}
