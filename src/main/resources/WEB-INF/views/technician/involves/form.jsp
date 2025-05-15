@@ -14,7 +14,7 @@
 			path="maintenanceRecord" 
 			readonly="${_command != 'create'}" 
 			choices="${maintenanceRecords}" />
-	<jstl:if test="${_command == 'show'}">
+	<jstl:if test="${_command != 'create'}">
 		<acme:input-textbox code="technician.involves.form.label.task-technician" path="taskTechnician" readonly="true" />
 		<acme:input-textbox code="technician.involves.form.label.record-technician" path="maintenanceRecordTechnician" readonly="true" />
 	</jstl:if>
