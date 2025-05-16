@@ -35,10 +35,8 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		masterId = super.getRequest().getData("id", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(masterId);
 		technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
-		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && //
-			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId() && //
-			(maintenanceRecord.getStatus() == MaintenanceRecordStatus.PENDING || maintenanceRecord.getStatus() == MaintenanceRecordStatus.IN_PROGRESS //
-				|| maintenanceRecord.getStatus() == MaintenanceRecordStatus.COMPLETED);
+		status = maintenanceRecord != null && maintenanceRecord.isDraftMode() && // 
+			super.getRequest().getPrincipal().getActiveRealm().getId() == technician.getId();
 
 		if (status) {
 			String method;
@@ -52,7 +50,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 			else {
 				aircraftId = super.getRequest().getData("aircraft", int.class);
 				aircraft = this.repository.findAircraftById(aircraftId);
-				status = aircraft != null;
+				status = aircraftId == 0 || aircraft != null;
 			}
 		}
 
@@ -107,7 +105,10 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 			super.state(validTicker, "ticker", "acme.validation.task-record.ticker.duplicated.message");
 
 		minimumNextInspection = MomentHelper.deltaFromMoment(maintenanceRecord.getMoment(), 1L, ChronoUnit.HOURS);
-		validNextInspection = MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+		validNextInspection = maintenanceRecord.getNextInspectionDueTime() == null ? //
+			false : //
+			MomentHelper.isAfterOrEqual(maintenanceRecord.getNextInspectionDueTime(), minimumNextInspection);
+
 		super.state(validNextInspection, "nextInspectionDueTime", "acme.validation.maintenance-record.moment-next-inspection.publish.messsage");
 	}
 

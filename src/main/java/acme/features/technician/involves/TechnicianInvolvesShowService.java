@@ -23,7 +23,14 @@ public class TechnicianInvolvesShowService extends AbstractGuiService<Technician
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Technician.class);
+		boolean status;
+		int id;
+		Involves involves;
+
+		id = super.getRequest().getData("id", int.class);
+		involves = this.repository.findInvolvesById(id);
+		status = involves != null && super.getRequest().getPrincipal().getActiveRealm().getId() == //
+			involves.getMaintenanceRecord().getTechnician().getId();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -51,7 +58,7 @@ public class TechnicianInvolvesShowService extends AbstractGuiService<Technician
 		tasks = this.repository.findAllTasks();
 		taskChoices = SelectChoices.from(tasks, "ticker", involves.getTask());
 
-		maintenanceRecords = this.repository.findAllDraftMaintenanceRecords();
+		maintenanceRecords = this.repository.findAllMaintenanceRecords();
 		maintenanceRecordChoices = SelectChoices.from(maintenanceRecords, "ticker", involves.getMaintenanceRecord());
 
 		dataset = super.unbindObject(involves);
