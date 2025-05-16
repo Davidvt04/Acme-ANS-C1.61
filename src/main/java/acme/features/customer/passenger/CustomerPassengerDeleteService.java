@@ -46,7 +46,8 @@ public class CustomerPassengerDeleteService extends AbstractGuiService<Customer,
 
 	@Override
 	public void validate(final Passenger passenger) {
-		;
+		Collection<BookingRecord> bookingRecords = this.repository.findAllBookingRecordsByPassengerId(passenger.getId());
+		super.state(bookingRecords.isEmpty(), "*", "customer.passenger.form.error.associatedBookings");
 	}
 
 	@Override

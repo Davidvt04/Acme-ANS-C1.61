@@ -13,7 +13,7 @@
     <acme:input-textarea code="customer.passenger.list.label.specialNeeds" path="specialNeeds"/>
 
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|publish')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete')}">
 		<jstl:if test="${draftMode}">
 			<acme:submit code="customer.passenger.form.button.update" action="/customer/passenger/update"/>
 			<acme:submit code="customer.passenger.form.button.publish" action="/customer/passenger/publish"/>
