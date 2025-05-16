@@ -15,7 +15,6 @@ import acme.entities.flightAssignament.CurrentStatus;
 import acme.entities.flightAssignament.Duty;
 import acme.entities.flightAssignament.FlightAssignament;
 import acme.entities.leg.Leg;
-import acme.realms.flightCrewMembers.AvailabilityStatus;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
@@ -27,13 +26,17 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 
 	@Override
 	public void authorise() {
-
+		boolean authorised = false;
+		boolean isHis = false;
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int flightAssignamentId = super.getRequest().getData("id", int.class);
 		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
-		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
-		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
-		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		if (flightAssignament != null) {
+			boolean authorised2 = this.repository.existsFlightAssignament(flightAssignamentId);
+			boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+			authorised = authorised2 && authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+			isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		}
 		super.getResponse().setAuthorised(authorised && isHis);
 	}
 
@@ -53,9 +56,6 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		Collection<Leg> legs;
 		SelectChoices legChoices;
 
-		Collection<FlightCrewMember> flightCrewMembers;
-		SelectChoices flightCrewMemberChoices;
-
 		Dataset dataset;
 
 		SelectChoices currentStatus;
@@ -65,13 +65,14 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		SelectChoices duty;
 		boolean isCompleted;
 		legs = this.repository.findAllLegs();
-		flightCrewMembers = this.repository.findFlightCrewMembersByAvailability(AvailabilityStatus.AVAILABLE);
 
 		currentStatus = SelectChoices.from(CurrentStatus.class, flightAssignament.getCurrentStatus());
 		duty = SelectChoices.from(Duty.class, flightAssignament.getDuty());
 
+		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember flightCrewMember = this.repository.findFlightCrewMemberById(flightCrewMemberId);
+
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignament.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "employeeCode", flightAssignament.getFlightCrewMember());
 		Date currentMoment;
 		currentMoment = MomentHelper.getCurrentMoment();
 		isCompleted = this.repository.areLegsCompletedByFlightAssignament(flightAssignamentId, currentMoment);
@@ -80,8 +81,7 @@ public class FlightCrewMemberMemberFlightAssignamentShowService extends Abstract
 		dataset.put("duty", duty);
 		dataset.put("leg", legChoices.getSelected().getKey());
 		dataset.put("legs", legChoices);
-		dataset.put("flightCrewMember", flightCrewMemberChoices.getSelected().getKey());
-		dataset.put("flightCrewMembers", flightCrewMemberChoices);
+		dataset.put("flightCrewMember", flightCrewMember.getEmployeeCode());
 		dataset.put("isCompleted", isCompleted);
 		super.getResponse().addData(dataset);
 	}
