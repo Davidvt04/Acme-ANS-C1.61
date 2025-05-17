@@ -24,15 +24,23 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		try {
+			Boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+			if (!super.getRequest().getMethod().equals("POST"))
+				super.getResponse().setAuthorised(false);
+			else {
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.findBookingById(bookingId);
+				int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				int bookingId = super.getRequest().getData("bookingId", int.class);
+				Booking booking = this.repository.findBookingById(bookingId);
 
-		status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
+				status = status && booking != null && customerId == booking.getCustomer().getId() && booking.isDraftMode();
 
-		super.getResponse().setAuthorised(status);
+				super.getResponse().setAuthorised(status);
+			}
+		} catch (Throwable t) {
+			super.getResponse().setAuthorised(false);
+		}
 
 	}
 
@@ -65,7 +73,6 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking booking) {
-		assert booking != null;
 		Dataset dataset;
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
@@ -74,11 +81,8 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id", "price");
 		dataset.put("travelClasses", travelClasses);
 		SelectChoices flightChoices;
-		try {
-			flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
-		} catch (NullPointerException e) {
-			throw new IllegalArgumentException("Selected flight is not available");
-		}
+		Flight selectedFlight = this.repository.findBookingById(booking.getId()).getFlight();
+		flightChoices = SelectChoices.from(flights, "flightSummary", selectedFlight);
 
 		dataset.put("flights", flightChoices);
 

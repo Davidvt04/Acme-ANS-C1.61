@@ -30,24 +30,28 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
 			super.getResponse().setAuthorised(status);
+			if (!super.getRequest().getMethod().equals("POST"))
+				super.getResponse().setAuthorised(false);
+			else {
 
-			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			int bookingId = super.getRequest().getData("id", int.class);
-			Booking booking = this.repository.findBookingById(bookingId);
-			Integer flightId = super.getRequest().getData("flight", Integer.class);
-			if (flightId == null)
-				status = false;
-			else if (flightId != 0) {
-				Flight flight = this.repository.getFlightById(flightId);
-				status = status && flight != null && !flight.isDraftMode();
+				int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				int bookingId = super.getRequest().getData("id", int.class);
+				Booking booking = this.repository.findBookingById(bookingId);
+				Integer flightId = super.getRequest().getData("flight", Integer.class);
+				if (flightId == null)
+					status = false;
+				else if (flightId != 0) {
+					Flight flight = this.repository.getFlightById(flightId);
+					status = status && flight != null && !flight.isDraftMode();
+				}
+
+				status = status && customerId == booking.getCustomer().getId();
+				super.getResponse().setAuthorised(status);
 			}
-
-			status = status && customerId == booking.getCustomer().getId();
-		} catch (Exception e) {
-			status = false;
+		} catch (Throwable t) {
+			super.getResponse().setAuthorised(false);
 		}
 
-		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -79,8 +83,6 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		valid = booking.getFlight() != null;
 		super.state(valid, "flight", "customer.booking.form.error.invalidFlight");
-		if (booking.getFlight() != null && booking.getFlight().isDraftMode())
-			throw new IllegalArgumentException("The selected flight is not available");
 
 		valid = booking.getLastNibble() != null && !booking.getLastNibble().isBlank();
 		super.state(valid, "lastNibble", "customer.booking.form.error.lastNibbleNeeded");
@@ -105,11 +107,9 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "price", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
 		SelectChoices flightChoices;
-		try {
-			flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
-		} catch (NullPointerException e) {
-			throw new IllegalArgumentException("Selected flight is not available");
-		}
+
+		flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
+
 		dataset.put("flights", flightChoices);
 		super.getResponse().addData(dataset);
 	}

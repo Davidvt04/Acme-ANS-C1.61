@@ -44,7 +44,7 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 				status = status && (alreadyAddedPassengers.stream().anyMatch(p -> p.getId() == passengerId) || passengerId == 0);
 			}
 
-		} catch (Exception e) {
+		} catch (Throwable t) {
 			status = false;
 		}
 
@@ -83,20 +83,15 @@ public class CustomerBookingRecordDeleteService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		assert bookingRecord != null;
 		Dataset dataset;
 
 		dataset = super.unbindObject(bookingRecord, "passenger", "booking", "id");
-		//int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Collection<Passenger> addedPassengers = this.repository.findAllPassengersByBookingId(bookingId);
 		SelectChoices passengerChoices;
-		try {
-			passengerChoices = SelectChoices.from(addedPassengers, "fullName", bookingRecord.getPassenger());
-		} catch (NullPointerException e) {
-			throw new IllegalArgumentException("The selected passenger is not available");
-		}
+		passengerChoices = SelectChoices.from(addedPassengers, "fullName", bookingRecord.getPassenger());
+
 		dataset.put("passengers", passengerChoices);
 		dataset.put("locatorCode", bookingRecord.getBooking().getLocatorCode());
 

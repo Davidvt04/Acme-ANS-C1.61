@@ -43,7 +43,7 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 				status = status && alreadyAddedPassengers.stream().noneMatch(p -> p.getId() == passengerId);
 			}
 
-		} catch (Exception e) {
+		} catch (Throwable t) {
 			status = false;
 		}
 		super.getResponse().setAuthorised(status);
@@ -82,7 +82,6 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 	@Override
 	public void unbind(final BookingRecord bookingRecord) {
-		assert bookingRecord != null;
 		Dataset dataset;
 
 		dataset = super.unbindObject(bookingRecord, "passenger", "booking", "id");
@@ -93,11 +92,8 @@ public class CustomerBookingRecordCreateService extends AbstractGuiService<Custo
 
 		Collection<Passenger> passengers = this.repository.findAllPassengersByCustomerId(customerId).stream().filter(p -> !addedPassengers.contains(p)).toList();
 		SelectChoices passengerChoices;
-		try {
-			passengerChoices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
-		} catch (NullPointerException e) {
-			throw new IllegalArgumentException("The selected passenger is not available");
-		}
+		passengerChoices = SelectChoices.from(passengers, "fullName", bookingRecord.getPassenger());
+
 		dataset.put("passengers", passengerChoices);
 		dataset.put("locatorCode", bookingRecord.getBooking().getLocatorCode());
 
