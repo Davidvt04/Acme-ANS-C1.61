@@ -23,17 +23,23 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int activityLogId;
-		ActivityLog activityLog;
+		boolean status = false;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET"))
+			status = false;
+		else {
+			int activityLogId;
+			ActivityLog activityLog;
 
-		activityLogId = super.getRequest().getData("id", int.class);
-		activityLog = this.repository.findActivityLogById(activityLogId);
-		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean authorised = this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
-		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId) && authorised;
-		status = authorised1 && activityLog != null && activityLog.isDraftMode();
-
+			activityLogId = super.getRequest().getData("id", int.class);
+			activityLog = this.repository.findActivityLogById(activityLogId);
+			if (activityLog != null) {
+				int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				boolean authorised = this.repository.thatActivityLogIsOf(activityLogId, flightCrewMemberId);
+				boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId) && authorised;
+				status = authorised1 && activityLog != null && activityLog.isDraftMode();
+			}
+		}
 		super.getResponse().setAuthorised(status);
 	}
 

@@ -48,4 +48,6 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 	@Query("SELECT CASE WHEN COUNT(al) > 0 THEN true ELSE false END FROM ActivityLog al WHERE al.id = :id")
 	boolean existsActivityLog(int id);
 
+	@Query("select case when count(fa) > 0 then true else false end from FlightAssignament fa where fa.leg.scheduledArrival < :currentMoment and fa.id = :flightAssignamentId")
+	boolean isFlightAssignamentCompleted(Date currentMoment, int flightAssignamentId);
 }

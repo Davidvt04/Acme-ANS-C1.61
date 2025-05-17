@@ -21,15 +21,23 @@ public class FlightCrewMemberFlightAssignamentDeleteService extends AbstractGuiS
 
 	@Override
 	public void authorise() {
-		int flightAssignamentId = super.getRequest().getData("id", int.class);
+		boolean status = false;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET"))
+			status = false;
+		else {
+			int flightAssignamentId = super.getRequest().getData("id", int.class);
+			FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
+			int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			if (flightAssignament != null) {
 
-		FlightAssignament flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
-		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
-		boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
-		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
-
-		super.getResponse().setAuthorised(flightAssignament != null && flightAssignament.isDraftMode() && authorised && isHis);
+				boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+				boolean authorised = authorised1 && this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+				boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+				status = flightAssignament.isDraftMode() && authorised && isHis;
+			}
+		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

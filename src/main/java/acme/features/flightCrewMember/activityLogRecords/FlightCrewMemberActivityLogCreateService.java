@@ -20,7 +20,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = false;
 		int masterId;
 		FlightAssignament flightAssignament;
 
@@ -29,10 +29,15 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		boolean authorised = this.repository.existsFlightCrewMember(flightCrewMemberId);
 
 		flightAssignament = this.repository.findFlightAssignamentById(masterId);
-		status = authorised && flightAssignament != null;
-		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
+		boolean authorised2 = false;
+		if (flightAssignament != null) {
+			authorised2 = this.repository.existsFlightAssignament(masterId);
+			status = authorised && authorised2;
+			boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
 
-		super.getResponse().setAuthorised(status && isHis);
+			status = status && isHis && this.repository.isFlightAssignamentCompleted(MomentHelper.getCurrentMoment(), masterId);
+		}
+		super.getResponse().setAuthorised(status);
 
 	}
 
