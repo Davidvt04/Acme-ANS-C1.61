@@ -23,8 +23,6 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 
 			super.getResponse().setAuthorised(status);
 
-			if (!super.getRequest().getMethod().equals("POST"))
-				super.getResponse().setAuthorised(false);
 		} catch (Throwable t) {
 			super.getResponse().setAuthorised(false);
 		}

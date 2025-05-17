@@ -62,9 +62,6 @@ public class CustomerPassengerDeleteService extends AbstractGuiService<Customer,
 
 	@Override
 	public void perform(final Passenger passenger) {
-		Collection<BookingRecord> associatedBookings = this.repository.findAllBookingRecordsByPassengerId(passenger.getId());
-		if (!associatedBookings.isEmpty())
-			this.repository.deleteAll(associatedBookings);
 
 		Passenger deletedPassenger = this.repository.findPassengerById(passenger.getId());
 		this.repository.delete(deletedPassenger);

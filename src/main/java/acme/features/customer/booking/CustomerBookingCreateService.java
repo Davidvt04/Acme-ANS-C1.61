@@ -28,20 +28,17 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		try {
 			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 			super.getResponse().setAuthorised(status);
-			if (!super.getRequest().getMethod().equals("POST"))
-				super.getResponse().setAuthorised(false);
-			else {
-				if (super.getRequest().hasData("id")) {
-					Integer flightId = super.getRequest().getData("flight", Integer.class);
-					if (flightId == null)
-						status = false;
-					else if (flightId != 0) {
-						Flight flight = this.repository.getFlightById(flightId);
-						status = status && flight != null && !flight.isDraftMode();
-					}
+
+			if (super.getRequest().hasData("id")) {
+				Integer flightId = super.getRequest().getData("flight", Integer.class);
+				if (flightId == null)
+					status = false;
+				else if (flightId != 0) {
+					Flight flight = this.repository.getFlightById(flightId);
+					status = status && flight != null && !flight.isDraftMode();
 				}
-				super.getResponse().setAuthorised(status);
 			}
+			super.getResponse().setAuthorised(status);
 
 		} catch (Throwable t) {
 			super.getResponse().setAuthorised(false);
