@@ -27,23 +27,26 @@ public class FlightCrewMemberFlightAssignamentPublishService extends AbstractGui
 	@Override
 	public void authorise() {
 		boolean status;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET"))
+			status = false;
+		else {
+			int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			int flightAssignamentId = super.getRequest().getData("id", int.class);
+			boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
+			FlightAssignament flightAssignament;
+			boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+			flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
+			int legId = super.getRequest().getData("leg", int.class);
+			boolean authorised3 = true;
+			if (legId != 0)
+				authorised3 = this.repository.existsLeg(legId);
 
-		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int flightAssignamentId = super.getRequest().getData("id", int.class);
-		boolean authorised = this.repository.thatFlightAssignamentIsOf(flightAssignamentId, flightCrewMemberId);
-		FlightAssignament flightAssignament;
-		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
-		flightAssignament = this.repository.findFlightAssignamentById(flightAssignamentId);
-		int legId = super.getRequest().getData("leg", int.class);
-		boolean authorised3 = true;
-		if (legId != 0)
-			authorised3 = this.repository.existsLeg(legId);
+			status = authorised3 && authorised1 && authorised && flightAssignament.isDraftMode() && MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival());
+			boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
 
-		status = authorised3 && authorised1 && authorised && flightAssignament.isDraftMode() && MomentHelper.isFuture(flightAssignament.getLeg().getScheduledArrival());
-		boolean isHis = flightAssignament.getFlightCrewMember().getId() == flightCrewMemberId;
-
-		status = status && isHis;
-
+			status = status && isHis;
+		}
 		super.getResponse().setAuthorised(status);
 
 	}
