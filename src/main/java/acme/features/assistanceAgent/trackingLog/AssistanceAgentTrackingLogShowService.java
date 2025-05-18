@@ -70,7 +70,7 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode");
 		dataset.put("statusChoices", statusChoices);
 
-		dataset.put("masterId", claim.getId());
+		dataset.put("claimId", claim.getId());
 
 		super.getResponse().addData(dataset);
 

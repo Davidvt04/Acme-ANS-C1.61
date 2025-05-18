@@ -11,6 +11,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
@@ -66,12 +67,12 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		boolean valid;
-		// Verificar si la Claim asociada está publicada
+		
 		valid = trackingLog.getClaim() != null && !trackingLog.getClaim().isDraftMode();
 		super.state(valid, "*", "assistanceAgent.trackingLog.form.error.claimNotPublished");
 
 		if (!valid)
-			return; // Si la Claim no está publicada, no continuar con otras validaciones
+			return; 
 		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() != null && trackingLog.getStatus() != null && trackingLog.getResolutionPercentage() < 100.0) {
 			valid = trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus");
@@ -121,6 +122,8 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode");
 		dataset.put("statusChoices", statusChoices);
+		Claim claim = this.repository.findClaimByTrackingLogId(trackingLog.getId());
+		dataset.put("claimId", claim.getId());
 
 		super.getResponse().addData(dataset);
 

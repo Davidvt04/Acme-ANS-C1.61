@@ -7,6 +7,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
@@ -77,6 +78,8 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution");
 		dataset.put("status", choices);
+		Claim claim = this.repository.findClaimByTrackingLogId(trackingLog.getId());
+		dataset.put("claimId", claim.getId());
 
 	}
 }

@@ -23,7 +23,7 @@
 	<acme:input-textbox code="assistanceAgent.trackingLog.form.label.resolution" path="resolution"/>
 	
 	<jstl:if test="${_command != 'create'}">
-    <acme:input-integer code="assistanceAgent.trackingLog.form.label.claim" path="id" readonly="true"/>	
+    <acme:input-integer code="assistanceAgent.trackingLog.form.label.claim" path="claimId" readonly="true"/>	
 	</jstl:if>
 	<jstl:if test="${_command == 'create'}">
 	</jstl:if>
