@@ -24,9 +24,10 @@ public class AdministratorClaimShowService extends AbstractGuiService<Administra
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
-
-		super.getResponse().setAuthorised(status);
+		if (!super.getRequest().getMethod().equals("GET"))
+			super.getResponse().setAuthorised(false);
+		else
+			super.getResponse().setAuthorised(true);
 	}
 
 	@Override
