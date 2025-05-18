@@ -20,7 +20,10 @@ public class AirlineListService extends AbstractGuiService<Administrator, Airlin
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		if (!super.getRequest().getMethod().equals("GET"))
+			super.getResponse().setAuthorised(false);
+		else
+			super.getResponse().setAuthorised(true);
 	}
 
 	@Override
