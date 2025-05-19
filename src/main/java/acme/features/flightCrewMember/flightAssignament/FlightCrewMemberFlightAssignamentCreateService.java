@@ -28,11 +28,15 @@ public class FlightCrewMemberFlightAssignamentCreateService extends AbstractGuiS
 
 		int flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		boolean authorised1 = this.repository.existsFlightCrewMember(flightCrewMemberId);
+		if (super.getRequest().getMethod().equals("GET"))
+			if (super.getRequest().hasData("id", int.class))
+				authorised1 = false;
 		boolean authorised2 = true;
 		if (super.getRequest().hasData("leg", int.class)) {
 			int legId = super.getRequest().getData("leg", int.class);
 			if (legId != 0)
 				authorised2 = this.repository.existsLeg(legId);
+
 		}
 
 		boolean authorised = authorised1 && authorised2;
