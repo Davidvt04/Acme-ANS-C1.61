@@ -17,11 +17,17 @@ public class LegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		int legId = super.getRequest().getData("id", int.class);
-		Leg leg = this.repository.findLegById(legId);
-		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-		// Allow deletion only if the leg exists, is in draft mode, and belongs to the current manager.
-		boolean status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().getId() == manager.getId();
+		boolean status = true;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET"))
+			status = false;
+		else {
+			int legId = super.getRequest().getData("id", int.class);
+			Leg leg = this.repository.findLegById(legId);
+			Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+			// Allow deletion only if the leg exists, is in draft mode, and belongs to the current manager.
+			status = leg != null && leg.isDraftMode() && leg.getFlight().getManager().getId() == manager.getId();
+		}
 		super.getResponse().setAuthorised(status);
 	}
 

@@ -36,13 +36,13 @@
 
         <!-- still read-only -->
         <acme:input-textbox
-            code="manager.flight.form.label.originAirport"
-            path="originAirport"
+            code="manager.flight.form.label.originCity"
+            path="originCity"
             readonly="true" />
 
         <acme:input-textbox
-            code="manager.flight.form.label.destinationAirport"
-            path="destinationAirport"
+            code="manager.flight.form.label.destinationCity"
+            path="destinationCity"
             readonly="true" />
 
         <acme:input-integer

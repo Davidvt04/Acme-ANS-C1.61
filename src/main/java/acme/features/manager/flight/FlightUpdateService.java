@@ -18,12 +18,20 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void authorise() {
-		int flightId = super.getRequest().getData("id", int.class);
-		Flight flight = this.repository.findById(flightId);
-		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		boolean status = true;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET"))
+			status = false;
+		else {
+			int flightId = super.getRequest().getData("id", int.class);
+			Flight flight = this.repository.findById(flightId);
+			Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
 
-		boolean status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
+			status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
+		}
+
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -63,21 +71,18 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 
 		// Origin / destination
 		if (flight.getOriginAirport() != null)
-			dataset.put("originAirport", flight.getOriginAirport().getCity());
+			dataset.put("originCity", flight.getOriginAirport().getCity());
 		else
-			dataset.put("originAirport", "");
+			dataset.put("originCity", "");
 		if (flight.getDestinationAirport() != null)
-			dataset.put("destinationAirport", flight.getDestinationAirport().getCity());
+			dataset.put("destinationCity", flight.getDestinationAirport().getCity());
 		else
-			dataset.put("destinationAirport", "");
+			dataset.put("destinationCity", "");
 
 		// Layovers
 		Integer layovers = flight.getNumberOfLayovers();
 		if (layovers == -1)
 			dataset.put("numberOfLayovers", 0);
-		else
-			dataset.put("numberOfLayovers", layovers != null ? layovers : 0);
-		dataset.put("flightSummary", flight.getFlightSummary());
 		super.getResponse().addData(dataset);
 
 	}

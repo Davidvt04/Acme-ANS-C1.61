@@ -44,16 +44,15 @@ public class FlightListService extends AbstractGuiService<Manager, Flight> {
 
 		// Handle possible null airports
 		if (flight.getOriginAirport() != null)
-			dataset.put("originAirport", flight.getOriginAirport().getName());
+			dataset.put("originCity", flight.getOriginAirport().getCity());
 		else
-			dataset.put("originAirport", "");
+			dataset.put("originCity", "");
 		if (flight.getDestinationAirport() != null)
-			dataset.put("destinationAirport", flight.getDestinationAirport().getName());
+			dataset.put("destinationCity", flight.getDestinationAirport().getCity());
 		else
-			dataset.put("destinationAirport", "");
+			dataset.put("destinationCity", "");
 
 		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
-		dataset.put("flightSummary", flight.getFlightSummary());
 		super.getResponse().addData(dataset);
 	}
 }
