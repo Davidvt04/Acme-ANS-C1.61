@@ -92,4 +92,12 @@ public class Flight extends AbstractEntity {
 		return list.isEmpty() ? null : list.get(0);
 	}
 
+	@Transient
+	public String getFlightSummary() {
+		Airport origin = this.getOriginAirport();
+		Airport dest = this.getDestinationAirport();
+		String originCity = origin != null ? origin.getCity() : "";
+		String destCity = dest != null ? dest.getCity() : "";
+		return "Flight: " + originCity + " --> " + destCity;
+	}
 }

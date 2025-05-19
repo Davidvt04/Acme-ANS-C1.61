@@ -19,7 +19,11 @@ public class FlightCreateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = true;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET") && super.getRequest().hasData("id", int.class))
+			status = false;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
