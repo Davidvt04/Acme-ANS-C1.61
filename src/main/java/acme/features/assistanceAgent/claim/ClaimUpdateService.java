@@ -29,26 +29,31 @@ public class ClaimUpdateService extends AbstractGuiService<AssistanceAgent, Clai
 	@Override
 	public void authorise() {
 		boolean status;
-		int claimId;
+		Integer claimId;
 		Claim claim;
 		AssistanceAgent assistanceAgent;
 		try {
-			claimId = super.getRequest().getData("id", int.class);
-			claim = this.repository.findClaimById(claimId);
-			assistanceAgent = claim == null ? null : claim.getAssistanceAgent();
-			status = super.getRequest().getPrincipal().hasRealm(assistanceAgent);
+			if (!super.getRequest().getMethod().equals("POST"))
+				super.getResponse().setAuthorised(false);
+			else {
+				claimId = super.getRequest().getData("id", Integer.class);
+				claim = this.repository.findClaimById(claimId);
+				assistanceAgent = claim == null ? null : claim.getAssistanceAgent();
+				status = super.getRequest().getPrincipal().hasRealm(assistanceAgent);
 
-			if (super.getRequest().hasData("id")) {
-				Integer legId = super.getRequest().getData("leg", Integer.class);
-				if (legId == null || legId != 0) {
-					Leg leg = this.repository.getLegById(legId);
-					status = status && leg != null && !leg.isDraftMode();
+				if (super.getRequest().hasData("id")) {
+					Integer legId = super.getRequest().getData("leg", Integer.class);
+					if (legId == null || legId != 0) {
+						Leg leg = this.repository.getLegById(legId);
+						status = status && leg != null && !leg.isDraftMode();
+					}
 				}
+				super.getResponse().setAuthorised(status);
 			}
 		} catch (Exception e) {
-			status = false;
+			super.getResponse().setAuthorised(false);
 		}
-		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override

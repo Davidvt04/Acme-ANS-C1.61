@@ -28,6 +28,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		try {
 			status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 			super.getResponse().setAuthorised(status);
+
 			if (super.getRequest().hasData("id")) {
 				Integer flightId = super.getRequest().getData("flight", Integer.class);
 				if (flightId == null)
@@ -37,11 +38,12 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 					status = status && flight != null && !flight.isDraftMode();
 				}
 			}
-		} catch (Exception e) {
-			status = false;
+			super.getResponse().setAuthorised(status);
+
+		} catch (Throwable t) {
+			super.getResponse().setAuthorised(false);
 		}
 
-		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -69,8 +71,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		super.state(valid, "locatorCode", "customer.booking.form.error.duplicateLocatorCode");
 		valid = booking.getFlight() != null;
 		super.state(valid, "flight", "customer.booking.form.error.invalidFlight");
-		if (booking.getFlight() != null && booking.getFlight().isDraftMode())
-			throw new IllegalArgumentException("The selected flight is not available");
 
 	}
 
@@ -82,7 +82,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void unbind(final Booking booking) {
-		assert booking != null;
 		Dataset dataset;
 		SelectChoices travelClasses = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
@@ -91,11 +90,8 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		dataset = super.unbindObject(booking, "flight", "locatorCode", "travelClass", "lastNibble", "draftMode", "id");
 		dataset.put("travelClasses", travelClasses);
 		SelectChoices flightChoices;
-		try {
-			flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
-		} catch (NullPointerException e) {
-			throw new IllegalArgumentException("Selected flight is not available");
-		}
+
+		flightChoices = SelectChoices.from(flights, "flightSummary", booking.getFlight());
 
 		dataset.put("flights", flightChoices);
 

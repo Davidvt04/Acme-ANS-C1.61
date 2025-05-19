@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -26,6 +28,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAirline
+@Table(indexes = {
+	@Index(columnList = "id"), @Index(columnList = "iataCode")
+})
 public class Airline extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;

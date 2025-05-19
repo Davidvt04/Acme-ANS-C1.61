@@ -21,15 +21,25 @@ public class CustomerPassengerDeleteService extends AbstractGuiService<Customer,
 
 	@Override
 	public void authorise() {
-		boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		try {
+			boolean status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
 
-		super.getResponse().setAuthorised(status);
+			super.getResponse().setAuthorised(status);
 
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int passengerId = super.getRequest().getData("id", int.class);
-		Passenger passenger = this.repository.findPassengerById(passengerId);
+			if (!super.getRequest().getMethod().equals("POST"))
+				super.getResponse().setAuthorised(false);
+			else {
+				int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+				int passengerId = super.getRequest().getData("id", int.class);
+				Passenger passenger = this.repository.findPassengerById(passengerId);
 
-		super.getResponse().setAuthorised(customerId == passenger.getCustomer().getId() && passenger.isDraftMode());
+				super.getResponse().setAuthorised(customerId == passenger.getCustomer().getId() && passenger.isDraftMode());
+			}
+
+		} catch (Throwable t) {
+			super.getResponse().setAuthorised(false);
+		}
+
 	}
 
 	@Override
@@ -52,9 +62,6 @@ public class CustomerPassengerDeleteService extends AbstractGuiService<Customer,
 
 	@Override
 	public void perform(final Passenger passenger) {
-		Collection<BookingRecord> associatedBookings = this.repository.findAllBookingRecordsByPassengerId(passenger.getId());
-		if (!associatedBookings.isEmpty())
-			this.repository.deleteAll(associatedBookings);
 
 		Passenger deletedPassenger = this.repository.findPassengerById(passenger.getId());
 		this.repository.delete(deletedPassenger);

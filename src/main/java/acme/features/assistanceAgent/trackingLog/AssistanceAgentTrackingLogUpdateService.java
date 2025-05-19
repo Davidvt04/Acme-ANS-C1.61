@@ -11,6 +11,7 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.claim.Claim;
 import acme.entities.trackingLog.ClaimStatus;
 import acme.entities.trackingLog.TrackingLog;
 import acme.realms.AssistanceAgent;
@@ -24,17 +25,25 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		boolean status;
-		TrackingLog trackingLog;
-		int id;
-		AssistanceAgent assistanceAgent;
-
-		id = super.getRequest().getData("id", int.class);
-		trackingLog = this.repository.findTrackingLogById(id);
-		assistanceAgent = trackingLog == null ? null : trackingLog.getClaim().getAssistanceAgent();
-		status = super.getRequest().getPrincipal().hasRealm(assistanceAgent);
-
-		super.getResponse().setAuthorised(status);
+		try {
+			boolean status;
+			TrackingLog trackingLog;
+			Integer id;
+			AssistanceAgent assistanceAgent;
+			if (!super.getRequest().getMethod().equals("POST"))
+				super.getResponse().setAuthorised(false);
+			else {
+				id = super.getRequest().getData("id", Integer.class);
+				trackingLog = null;
+				if (id != null)
+					trackingLog = this.repository.findTrackingLogById(id);
+				assistanceAgent = trackingLog == null ? null : trackingLog.getClaim().getAssistanceAgent();
+				status = super.getRequest().getPrincipal().hasRealm(assistanceAgent) && (trackingLog == null || trackingLog.isDraftMode());
+				super.getResponse().setAuthorised(status);
+			}
+		} catch (Throwable t) {
+			super.getResponse().setAuthorised(false);
+		}
 
 	}
 
@@ -57,9 +66,7 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog trackingLog) {
 		boolean valid;
-		//valid = trackingLog.getResolutionPercentage() != null;
-		//super.state(valid, "ResolutionPercentage", "assistanceAgent.trackingLog.form.error.cantBeNull");
-
+		
 		if (trackingLog.getResolutionPercentage() != null && trackingLog.getResolutionPercentage() != null && trackingLog.getStatus() != null && trackingLog.getResolutionPercentage() < 100.0) {
 			valid = trackingLog.getStatus().equals(ClaimStatus.PENDING);
 			super.state(valid, "status", "assistanceAgent.trackingLog.form.error.badStatus");
@@ -110,6 +117,8 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 		dataset = super.unbindObject(trackingLog, "lastUpdateMoment", "step", "resolutionPercentage", "status", "resolution", "draftMode");
 		dataset.put("statusChoices", statusChoices);
+		Claim claim = this.repository.findClaimByTrackingLogId(trackingLog.getId());
+		dataset.put("claimId", claim.getId());
 
 		super.getResponse().addData(dataset);
 
