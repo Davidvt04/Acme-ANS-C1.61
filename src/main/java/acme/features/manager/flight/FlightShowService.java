@@ -33,7 +33,7 @@ public class FlightShowService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void unbind(final Flight flight) {
-		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
+		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 
 		// Transient dates
 		if (flight.getScheduledDeparture() != null)
@@ -55,9 +55,10 @@ public class FlightShowService extends AbstractGuiService<Manager, Flight> {
 		if (flight.getNumberOfLayovers() == -1)
 			dataset.put("numberOfLayovers", 0);
 		else
-		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+			dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
 		dataset.put("draftMode", flight.isDraftMode());
 
 		super.getResponse().addData(dataset);
+
 	}
 }

@@ -39,14 +39,20 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		Integer flightId = super.getRequest().getData("flightId", Integer.class);
-		if (flightId == null) {
-			super.getResponse().setAuthorised(false);
-			return;
+		boolean status = true;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET") && super.getRequest().hasData("id", int.class))
+			status = false;
+		else {
+			Integer flightId = super.getRequest().getData("flightId", Integer.class);
+			if (flightId == null) {
+				super.getResponse().setAuthorised(false);
+				return;
+			}
+			Flight flight = this.flightRepository.findFlightById(flightId);
+			Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+			status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
 		}
-		Flight flight = this.flightRepository.findFlightById(flightId);
-		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-		boolean status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -87,7 +93,6 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 		SelectChoices aircraftChoices = new SelectChoices();
 		aircraftChoices.add("0", "----", true);
 		for (Aircraft ac : aircrafts) {
-			// Use aircraft id as key (converted to String) and its registration number as label.
 			String key = Integer.toString(ac.getId());
 			String label = ac.getRegistrationNumber();
 			aircraftChoices.add(key, label, false);
@@ -109,23 +114,43 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 				LegStatus newStatus = LegStatus.valueOf(statusStr);
 				leg.setStatus(newStatus);
 			} catch (IllegalArgumentException ex) {
-				// Optionally log or handle the conversion error.
+				// ignore
 			}
 
-		// Bind airport selections using IATA codes.
+		// Tamper‐proof airport binding (as before)…
 		String departureIata = super.getRequest().getData("departureAirport", String.class);
-		String arrivalIata = super.getRequest().getData("arrivalAirport", String.class);
-		Airport departureAirport = this.airportRepository.findByIataCode(departureIata);
-		Airport arrivalAirport = this.airportRepository.findByIataCode(arrivalIata);
-		leg.setDepartureAirport(departureAirport);
-		leg.setArrivalAirport(arrivalAirport);
+		if ("0".equals(departureIata))
+			leg.setDepartureAirport(null);
+		else {
+			Airport departureAirport = this.airportRepository.findByIataCode(departureIata);
+			if (departureAirport == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setDepartureAirport(departureAirport);
+		}
 
-		// Bind aircraft selection using aircraft id.
+		String arrivalIata = super.getRequest().getData("arrivalAirport", String.class);
+		if ("0".equals(arrivalIata))
+			leg.setArrivalAirport(null);
+		else {
+			Airport arrivalAirport = this.airportRepository.findByIataCode(arrivalIata);
+			if (arrivalAirport == null)
+				throw new IllegalStateException("Access not authorised");
+			leg.setArrivalAirport(arrivalAirport);
+		}
+
+		// --- Tamper‐proof aircraft binding below: ---
 		Integer aircraftId = super.getRequest().getData("aircraft", Integer.class);
-		if (aircraftId != null && aircraftId != 0) {
+		if (aircraftId == null || aircraftId == 0)
+			// user chose "----"
+			leg.setAircraft(null);
+		else {
 			Aircraft aircraft = this.aircraftRepository.findAircraftById(aircraftId);
+			if (aircraft == null)
+				// invalid/tampered ID → 500
+				throw new IllegalStateException("Access not authorised");
 			leg.setAircraft(aircraft);
 		}
+
 	}
 
 	@Override
@@ -137,6 +162,13 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 			Leg existing = this.repository.findLegByFlightNumber(leg.getFlightNumber());
 			boolean validFlightNumber = existing == null || existing.getId() == leg.getId();
 			super.state(validFlightNumber, "flightNumber", "manager.leg.error.duplicateFlightNumber");
+
+			super.state(leg.getScheduledDeparture() != null, "scheduledDeparture", "manager.leg.error.required.date");
+			super.state(leg.getScheduledArrival() != null, "scheduledArrival", "manager.leg.error.required.date");
+
+			// Chronology
+			if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null)
+				super.state(leg.getScheduledDeparture().before(leg.getScheduledArrival()), "scheduledDeparture", "manager.leg.error.departureBeforeArrival");
 		}
 	}
 

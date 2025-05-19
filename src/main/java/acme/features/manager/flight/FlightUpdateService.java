@@ -18,21 +18,20 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int flightId;
-		Flight flight;
-		Manager manager;
+		boolean status = true;
+		String method = super.getRequest().getMethod();
+		if (method.equals("GET"))
+			status = false;
+		else {
+			int flightId = super.getRequest().getData("id", int.class);
+			Flight flight = this.repository.findById(flightId);
+			Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
 
-		flightId = super.getRequest().getData("id", int.class);
-		flight = this.repository.findById(flightId);
-		manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+			status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
+		}
 
-		// Allow update only if:
-		// - the flight exists,
-		// - the flight is still in draft mode (i.e. not published),
-		// - and the flight belongs to the current manager.
-		status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -44,13 +43,15 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void bind(final Flight flight) {
-		// Bind the editable fields from the request.
-		super.bindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
+		// now also bind the date fields so they survive validation errors
+		super.bindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "scheduledDeparture",    // ← added
+			"scheduledArrival"       // ← added
+		);
 	}
 
 	@Override
 	public void validate(final Flight flight) {
-		// You can add additional validation here if needed.
+		// no extra business rules here for now
 	}
 
 	@Override
@@ -60,15 +61,29 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 
 	@Override
 	public void unbind(final Flight flight) {
-		// Leave unbind as per your desired structure.
-		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description");
-		// Optionally, add transient fields (to be enhanced with leg services later)
-		dataset.put("scheduledDeparture", flight.getScheduledDeparture());
-		dataset.put("scheduledArrival", flight.getScheduledArrival());
-		dataset.put("originCity", flight.getOriginAirport().getCity());
-		dataset.put("destinationCity", flight.getDestinationAirport().getCity());
-		dataset.put("numberOfLayovers", flight.getNumberOfLayovers());
+		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 
+		// Transient dates (only put if non-null)
+		if (flight.getScheduledDeparture() != null)
+			dataset.put("scheduledDeparture", flight.getScheduledDeparture());
+		if (flight.getScheduledArrival() != null)
+			dataset.put("scheduledArrival", flight.getScheduledArrival());
+
+		// Origin / destination
+		if (flight.getOriginAirport() != null)
+			dataset.put("originCity", flight.getOriginAirport().getCity());
+		else
+			dataset.put("originCity", "");
+		if (flight.getDestinationAirport() != null)
+			dataset.put("destinationCity", flight.getDestinationAirport().getCity());
+		else
+			dataset.put("destinationCity", "");
+
+		// Layovers
+		Integer layovers = flight.getNumberOfLayovers();
+		if (layovers == -1)
+			dataset.put("numberOfLayovers", 0);
 		super.getResponse().addData(dataset);
+
 	}
 }
