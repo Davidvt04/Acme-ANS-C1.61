@@ -3,7 +3,9 @@ package acme.realms.flightCrewMembers;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
@@ -25,6 +27,9 @@ import lombok.Setter;
 @Setter
 @Entity
 @ValidFlightCrewMember
+@Table(indexes = {
+	@Index(columnList = "availabilityStatus"), @Index(columnList = "airline_id"), @Index(columnList = "yearsOfExperience"), @Index(columnList = "salary_amount, salary_currency"), @Index(columnList = "languageSkill")
+})
 public class FlightCrewMember extends AbstractRole {
 
 	private static final long	serialVersionUID	= 1L;
