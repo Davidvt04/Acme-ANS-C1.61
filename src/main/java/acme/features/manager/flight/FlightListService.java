@@ -21,9 +21,8 @@ public class FlightListService extends AbstractGuiService<Manager, Flight> {
 	@Override
 	public void authorise() {
 		// Only the manager may list their own flights
-		int managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		boolean status = !this.repository.findFlightsByManagerId(managerId).isEmpty();
-		super.getResponse().setAuthorised(status);
+		boolean isManager = super.getRequest().getPrincipal().hasRealmOfType(Manager.class);
+		super.getResponse().setAuthorised(isManager);
 	}
 
 	@Override
