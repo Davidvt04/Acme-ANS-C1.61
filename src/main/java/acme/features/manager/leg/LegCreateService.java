@@ -39,20 +39,16 @@ public class LegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		boolean status = true;
-		String method = super.getRequest().getMethod();
-		if (method.equals("GET"))
-			status = false;
-		else {
-			Integer flightId = super.getRequest().getData("flightId", Integer.class);
-			if (flightId == null) {
-				super.getResponse().setAuthorised(false);
-				return;
-			}
-			Flight flight = this.flightRepository.findFlightById(flightId);
-			Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
-			status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
+
+		Integer flightId = super.getRequest().getData("flightId", Integer.class);
+		if (flightId == null) {
+			super.getResponse().setAuthorised(false);
+			return;
 		}
+		Flight flight = this.flightRepository.findFlightById(flightId);
+		Manager manager = (Manager) super.getRequest().getPrincipal().getActiveRealm();
+		boolean status = flight != null && flight.isDraftMode() && flight.getManager().getId() == manager.getId();
+
 		super.getResponse().setAuthorised(status);
 	}
 

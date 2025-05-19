@@ -49,10 +49,7 @@
             code="manager.flight.form.label.numberOfLayovers"
             path="numberOfLayovers"
             readonly="true" />
-		  <acme:input-textbox
-		            code="manager.flight.form.label.flightSummary"
-		            path="flightSummary"
-		            readonly="true" />
+		  
         <!-- Publish button only in draft -->
         <c:if test="${draftMode}">
             <acme:submit
