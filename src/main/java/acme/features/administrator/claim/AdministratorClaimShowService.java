@@ -26,8 +26,14 @@ public class AdministratorClaimShowService extends AbstractGuiService<Administra
 	public void authorise() {
 		if (!super.getRequest().getMethod().equals("GET"))
 			super.getResponse().setAuthorised(false);
-		else
-			super.getResponse().setAuthorised(true);
+		else {
+			int id = super.getRequest().getData("id", int.class);
+			Claim claim = this.repository.findClaimById(id);
+			if (claim == null)
+				super.getResponse().setAuthorised(false);
+			else
+				super.getResponse().setAuthorised(true);
+		}
 	}
 
 	@Override
