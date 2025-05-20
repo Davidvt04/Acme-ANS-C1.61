@@ -9,13 +9,13 @@
 </head>
 <body>
     <acme:list navigable="true" show="show">
-        <acme:list-column path="flightNumber" code="manager.leg.list.label.flightNumber" />
-        <acme:list-column path="originCity" code="manager.leg.list.label.departureCity" />
-        <acme:list-column path="destinationCity" code="manager.leg.list.label.arrivalCity" />
+        <acme:list-column path="flightNumber" code="manager.leg.list.label.flightNumber" sortable="false"/>
+        <acme:list-column path="originCity" code="manager.leg.list.label.departureCity" sortable="false"/>
+        <acme:list-column path="destinationCity" code="manager.leg.list.label.arrivalCity" sortable="false"/>
         <acme:list-column path="scheduledDeparture" code="manager.leg.list.label.scheduledDeparture" />
-        <acme:list-column path="scheduledArrival" code="manager.leg.list.label.scheduledArrival"/>
-        <acme:list-column path="durationInHours" code="manager.leg.list.label.duration" />
-        <acme:list-column path="status" code="manager.leg.list.label.status" />
+        <acme:list-column path="scheduledArrival" code="manager.leg.list.label.scheduledArrival" sortable="false"/>
+        <acme:list-column path="durationInHours" code="manager.leg.list.label.duration" sortable="false"/>
+        <acme:list-column path="status" code="manager.leg.list.label.status" sortable="false"/>
         
     </acme:list>
     
