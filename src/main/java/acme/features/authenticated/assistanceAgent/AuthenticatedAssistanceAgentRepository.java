@@ -34,4 +34,7 @@ public interface AuthenticatedAssistanceAgentRepository extends AbstractReposito
 	@Query("select a from Airline a")
 	Collection<Airline> findAllAirlines();
 
+	@Query("select a from AssistanceAgent a where a.employeeCode =:employeeCode")
+	AssistanceAgent findAssistanceAgentByEmployeeCode(String employeeCode);
+
 }

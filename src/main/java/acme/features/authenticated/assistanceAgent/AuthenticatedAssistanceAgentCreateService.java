@@ -70,7 +70,10 @@ public class AuthenticatedAssistanceAgentCreateService extends AbstractGuiServic
 
 	@Override
 	public void validate(final AssistanceAgent object) {
-		assert object != null;
+		String employeeCode = object.getEmployeeCode();
+		AssistanceAgent existing = this.repository.findAssistanceAgentByEmployeeCode(employeeCode);
+		boolean valid = existing == null || existing.getId() == object.getId();
+		super.state(valid, "employeeCode", "acme.validation.employeeCode.invalidEmployeeCode.message");
 	}
 
 	@Override
