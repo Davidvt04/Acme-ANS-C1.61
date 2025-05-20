@@ -79,3 +79,6 @@ acme.validation.script.message = El script "{0}" debe devolver true
 acme.validation.currency.message = Moneda incorrecta
 acme.validation.confirmation.message = Debe confirmar
 acme.validation.lastNibble.notPattern.message = Los 4 últimos digitos deben ser numéricos
+acme.validation.lastNibble.startIdentifier.message = El identificador debe comenzar por las iniciales del usuario
+acme.validation.identifier.invalidIdentifier.message = El identificador dado no es válido
+acme.validation.employeeCode.invalidEmployeeCode.message = El código de empleado no es válido

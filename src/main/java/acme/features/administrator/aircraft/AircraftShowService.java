@@ -25,8 +25,15 @@ public class AircraftShowService extends AbstractGuiService<Administrator, Aircr
 	public void authorise() {
 		if (!super.getRequest().getMethod().equals("GET"))
 			super.getResponse().setAuthorised(false);
-		else
-			super.getResponse().setAuthorised(true);
+		else {
+			int id = super.getRequest().getData("id", int.class);
+			Aircraft aircraft = this.repository.findAircraftById(id);
+			if (aircraft == null)
+				super.getResponse().setAuthorised(false);
+			else
+				super.getResponse().setAuthorised(true);
+		}
+
 	}
 	@Override
 	public void load() {
@@ -38,9 +45,6 @@ public class AircraftShowService extends AbstractGuiService<Administrator, Aircr
 
 	@Override
 	public void unbind(final Aircraft aircraft) {
-		//Dataset dataset;
-		//dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "status", "cargoWeight", "details", "airline");
-		//super.getResponse().addData(dataset);
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices selectedAirlines;
