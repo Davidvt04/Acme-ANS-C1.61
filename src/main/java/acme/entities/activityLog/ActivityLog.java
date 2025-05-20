@@ -28,11 +28,7 @@ import lombok.Setter;
 @Setter
 @ValidActivityLog
 @Table(indexes = {
-    @Index(columnList = "draftMode"),
-    @Index(columnList = "flight_assignament_id"), 
-    @Index(columnList = "registrationMoment"),
-    @Index(columnList = "typeOfIncident"), 
-    @Index(columnList = "severityLevel") 
+	@Index(columnList = "draftMode"), @Index(columnList = "registrationMoment")
 })
 
 public class ActivityLog extends AbstractEntity {
@@ -49,7 +45,7 @@ public class ActivityLog extends AbstractEntity {
 	private FlightAssignament	flightAssignament;
 
 	@Mandatory
-	@ValidMoment(past = true) //Sacar el past = true para probarlo
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationMoment;
 
