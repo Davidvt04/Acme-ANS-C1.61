@@ -28,13 +28,7 @@ import lombok.Setter;
 @Setter
 @ValidFlightAssignament
 @Table(indexes = {
-	@Index(columnList = "draftMode"), 
-	@Index(columnList = "leg_id"), 
-	@Index(columnList = "flight_crew_member_id"), 
-	@Index(columnList = "leg_id, duty"), 
-	@Index(columnList = "flight_crew_member_id, leg_id"), 
-	@Index(columnList = "moment"), 
-	@Index(columnList = "currentStatus") 
+	@Index(columnList = "draftMode"), @Index(columnList = "moment"), @Index(columnList = "currentStatus")
 })
 
 public class FlightAssignament extends AbstractEntity {
