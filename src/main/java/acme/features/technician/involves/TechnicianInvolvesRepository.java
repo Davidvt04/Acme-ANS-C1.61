@@ -14,9 +14,6 @@ import acme.entities.task.Task;
 @Repository
 public interface TechnicianInvolvesRepository extends AbstractRepository {
 
-	@Query("select i from Involves i where i.maintenanceRecord.id = :masterId")
-	Collection<Involves> findInvolvesByMasterId(int masterId);
-
 	@Query("select i from Involves i where i.id = :id")
 	Involves findInvolvesById(int id);
 
@@ -25,12 +22,6 @@ public interface TechnicianInvolvesRepository extends AbstractRepository {
 
 	@Query("select t from Task t")
 	Collection<Task> findAllTasks();
-
-	@Query("select i.maintenanceRecord from Involves i where i.id = :id")
-	MaintenanceRecord findMaintenanceRecordByInvolvesId(int id);
-
-	@Query("select i from Involves i")
-	Collection<Involves> findAllInvolves();
 
 	@Query("select m from MaintenanceRecord m where m.draftMode = true")
 	Collection<MaintenanceRecord> findAllDraftMaintenanceRecords();
