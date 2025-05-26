@@ -63,13 +63,13 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 	public void unbind(final Flight flight) {
 		Dataset dataset = super.unbindObject(flight, "tag", "requiresSelfTransfer", "cost", "description", "draftMode");
 
-		// Transient dates (only put if non-null)
+		// Solo se establece la hora de salida o llegada si no es nulo (hay alguna leg)
 		if (flight.getScheduledDeparture() != null)
 			dataset.put("scheduledDeparture", flight.getScheduledDeparture());
 		if (flight.getScheduledArrival() != null)
 			dataset.put("scheduledArrival", flight.getScheduledArrival());
 
-		// Origin / destination
+		// Origen / destino
 		if (flight.getOriginAirport() != null)
 			dataset.put("originCity", flight.getOriginAirport().getCity());
 		else
@@ -79,7 +79,7 @@ public class FlightUpdateService extends AbstractGuiService<Manager, Flight> {
 		else
 			dataset.put("destinationCity", "");
 
-		// Layovers
+		// Saltos
 		Integer layovers = flight.getNumberOfLayovers();
 		if (layovers == -1)
 			dataset.put("numberOfLayovers", 0);

@@ -15,7 +15,7 @@ manager.flight.form.label.destinationCity = Destination City
 manager.flight.form.label.numberOfLayovers = Number of Layovers
 manager.flight.form.label.flightSummary = Flight Summary
 manager.flight.form.label.confirmation = Confirm
-
+manager.flight.list.label.numberOfLayovers= Layovers
 manager.flight.list.title = Manager Flight Listing
 
 manager.flight.list.label.tag = Tag

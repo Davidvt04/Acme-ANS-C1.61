@@ -16,7 +16,7 @@ manager.flight.form.label.destinationCity = Ciudad de destino
 manager.flight.form.label.numberOfLayovers = Número de Escalas
 manager.flight.form.label.flightSummary = Resumen del Vuelo
 manager.flight.form.label.confirmation = Confirmar
-
+manager.flight.list.label.numberOfLayovers= Saltos
 manager.flight.list.title = Listado de Vuelos del Gestor
 
 manager.flight.list.label.tag = Etiqueta

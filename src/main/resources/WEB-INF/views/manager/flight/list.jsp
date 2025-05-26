@@ -9,8 +9,6 @@
     <h1>Flight List</h1>
     <acme:list navigable="true" show="show">
         <acme:list-column path="tag" code="manager.flight.list.label.tag" />
-        <acme:list-column path="originAirport" code="manager.flight.list.label.originAirport" />
-        <acme:list-column path="destinationAirport" code="manager.flight.list.label.destinationAirport" />
         <acme:list-column path="requiresSelfTransfer" code="manager.flight.list.label.requiresSelfTransfer" />
         <acme:list-column path="cost" code="manager.flight.list.label.cost" />
         <acme:list-column path="description" code="manager.flight.list.label.description" />
