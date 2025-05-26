@@ -8,8 +8,13 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+** Delivery 04
+4.1.0 Tested all the features of the delivery 03
+4.0.0 Updated project and framework for the fourth delivery
+
 ** Delivery 03
-3.00 2.0.0 Updated project and framework for the third delivery
+3.1.0 Added all the features required
+3.0.0 Updated project and framework for the third delivery
 
 ** Delivery 02 
 2.1.0 Added data models of the project
