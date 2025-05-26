@@ -21,7 +21,7 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 
 		if (assistanceAgent.getEmployeeCode() == null || assistanceAgent.getEmployeeCode().isBlank() || !assistanceAgent.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$")) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("acme.validation.identifier.invalidIdentifier.message").addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("{acme.validation.identifier.invalidIdentifier.message}").addConstraintViolation();
 			return false;
 		}
 
@@ -59,9 +59,8 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 
 		if (!iniciales.equals(identifierInitials)) {
 			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate("acme.validation.lastNibble.startIdentifier.message").addConstraintViolation();
+			context.buildConstraintViolationWithTemplate("{acme.validation.lastNibble.startIdentifier.message}").addConstraintViolation();
 			return false;
-			//Estandarizar mensajes
 		}
 		return true;
 	}
